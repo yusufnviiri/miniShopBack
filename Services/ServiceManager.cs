@@ -1,0 +1,125 @@
+﻿using AutoMapper;
+using Contracts;
+using Contracts.Repo;
+using Contracts.Service;
+using Entities.Models;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Options;
+using Repository.context;
+
+
+namespace Services
+{
+    public sealed class ServiceManager:IServiceManager
+    {
+        private readonly ApplicationDbContext _dbContext;
+
+        private readonly Lazy<IPaymentService> _paymentService;
+        private readonly Lazy<IWishListService> _wishListService;
+        private readonly Lazy<IReviewService> _reviewService;
+        private readonly Lazy<IShoppingCartService> _shoppingCartService;
+        private readonly Lazy<ICartItemService> _cartItemService;
+        private readonly Lazy<IOrderItemService> _orderItemService;
+        private readonly Lazy<IOrderService> _orderService;
+        private readonly Lazy<IProductService> _productService;
+        private readonly Lazy<IProductImageService> _productImageService;
+        private readonly Lazy<IUserGroupService> _userGroupService;
+        private readonly Lazy<IApplicationUserService> _userService;
+        private readonly Lazy<ICategoryService> _categoryService;
+        private readonly Lazy<ISubCategoryService> _subCategoryService;
+        private readonly Lazy<ISubCategoryCategoryService> _subCategoryCategoryService;
+        private readonly Lazy<IWishListItemService> _wishListItemService;
+        private readonly Lazy<IAddressService> _addressService;
+        private readonly Lazy<IUserProfileService> _userProfileService;
+        private readonly Lazy<IGroupMemberService> _groupMemberService;
+        private readonly Lazy<IAuthService>  _authService;
+        private readonly Lazy<ISellerRestrictionService> _sellerRestrictionService;
+        private readonly Lazy<IBuyerProfileService> _buyerProfileService;
+        private readonly Lazy<ISellerProfileService> _sellerProfileService;
+        private readonly Lazy<ISellerViolationService> _sellerViolationService;
+        private readonly Lazy<IUserGroupSellerService> _userGroupSellerService;
+        private readonly Lazy<IUserGroupNotificationService> _userGroupNotificationService;
+        private readonly Lazy<ICategoryAttributeService> _categoryAttributeService;
+        private readonly Lazy<IProductAttributeValueService> _productAttributeValueService;
+        private readonly Lazy<IUserOtpService> _userOtpService;
+        private readonly Lazy<IGeneralCategoryService> _genericCategoryService;
+        private readonly Lazy<ITradeService> _tradeService;
+        private readonly Lazy<ITradeAttributeValueService> _tradeAttributeValueService;
+        private readonly Lazy<ITradeImageService> _tradeImageService;
+        private readonly Lazy<IGroupSellerService> _groupSellerService;
+
+
+        public ServiceManager(ILoggerManager logger, IRepositoryManager repository, IMapper mapper, UserManager<ApplicationUser> userManager, IConfiguration configuration, SignInManager<ApplicationUser> signInManager,RoleManager<IdentityRole> roleManager, IUserClaimsPrincipalFactory<ApplicationUser> claimsFactory,ISmsSender smsSender,IHttpContextAccessor httpContextAccessor, IOptions<JwtSettings> jwtOptions, IWebHostEnvironment env, ApplicationDbContext dbContext) {
+            _dbContext= dbContext;
+            _paymentService = new Lazy<IPaymentService>(() => new PaymentService(logger, repository, mapper, userManager));
+            _wishListService = new Lazy<IWishListService>(()=> new WishListService(logger, repository, mapper, userManager));
+            _reviewService = new Lazy<IReviewService>(()=> new ReviewService(logger, repository, mapper, userManager));
+            _shoppingCartService = new Lazy<IShoppingCartService>(()=> new ShoppingCartService(logger, repository, mapper, userManager));
+            _cartItemService = new Lazy<ICartItemService>(()=> new CartItemService(logger, repository, mapper, userManager));
+            _orderItemService = new Lazy<IOrderItemService>(()=> new OrderItemService(logger, repository, mapper, userManager));
+            _orderService = new Lazy<IOrderService>(()=> new OrderService(logger, repository, mapper, userManager));
+            _productService = new Lazy<IProductService>(()=>new ProductService(logger, repository, mapper, userManager));
+            _productImageService = new Lazy<IProductImageService>(()=>new ProductImageService(logger, repository, mapper, userManager,env));
+            _userGroupService = new Lazy<IUserGroupService>(()=> new UserGroupService(logger, repository, mapper, userManager));
+            _userService = new Lazy<IApplicationUserService>(()=> new ApplicationUserService(logger, repository, mapper, userManager,configuration,signInManager));  
+            _categoryService = new Lazy<ICategoryService>(()=>new CategoryService(logger, repository, mapper,userManager));
+            _subCategoryService = new Lazy<ISubCategoryService>(()=> new SubCategoryService(logger, repository, mapper, userManager));
+            _subCategoryCategoryService = new Lazy<ISubCategoryCategoryService>(()=>new SubCategoryCategoryService(logger, repository, mapper, userManager));
+            _addressService = new Lazy<IAddressService>(()=> new AddressService(logger, repository, mapper, userManager));
+            _userProfileService = new Lazy<IUserProfileService>(()=>new UserProfileService(logger, repository, mapper, userManager, roleManager,smsSender, httpContextAccessor));
+            _groupMemberService = new Lazy<IGroupMemberService>(()=> new GroupMemberService(logger, repository, mapper, userManager,roleManager));
+            _authService = new Lazy<IAuthService>(() => new AuthService(logger,   userManager, configuration, signInManager, repository,claimsFactory, smsSender, httpContextAccessor, jwtOptions,roleManager));          
+            _sellerRestrictionService = new Lazy<ISellerRestrictionService>(() => new SellerRestrictionService(logger, repository, mapper, userManager));
+            _buyerProfileService = new Lazy<IBuyerProfileService>(() => new BuyerProfileService(logger, repository, mapper, userManager));
+            _sellerProfileService = new Lazy<ISellerProfileService>(() => new SellerProfileService(logger, repository, mapper, userManager));
+            _sellerViolationService = new Lazy<ISellerViolationService>(() => new SellerViolationService(logger, repository, mapper, userManager));
+            _userGroupSellerService = new Lazy<IUserGroupSellerService>(() => new UserGroupSellerService(logger, repository, mapper, userManager));
+            _userGroupNotificationService = new Lazy<IUserGroupNotificationService>(() => new UserGroupNotificationService(logger, repository, mapper, userManager));
+            _wishListItemService = new Lazy<IWishListItemService>(()=> new WishListItemService(logger,repository, mapper, userManager));
+            _categoryAttributeService = new Lazy<ICategoryAttributeService>(()=> new CategoryAttributeService( logger,repository));
+            _productAttributeValueService = new Lazy<IProductAttributeValueService>(()=> new ProductAttributeValueService(logger, repository));
+            _userOtpService = new Lazy<IUserOtpService>(() => new UserOtpService(logger, repository, mapper, userManager));
+            _genericCategoryService = new Lazy<IGeneralCategoryService>(()=>new GeneralCategoryService(logger, repository, mapper, userManager));
+            _tradeService = new Lazy<ITradeService>(()=>new TradeService(logger, repository, mapper, userManager, _dbContext));
+            _tradeAttributeValueService = new Lazy<ITradeAttributeValueService>(()=>new TradeAttributeValueService(logger, repository));
+            _tradeImageService = new Lazy<ITradeImageService>(()=>new TradeImageService(logger, repository, mapper, userManager, env));
+            _groupSellerService = new Lazy<IGroupSellerService>(() => new GroupSellerService(logger, repository, mapper));
+        }   
+        public IPaymentService PaymentService =>_paymentService.Value;
+        public IWishListService WishListService =>_wishListService.Value;
+        public IReviewService ReviewService =>_reviewService.Value;
+        public IShoppingCartService ShoppingCartService =>_shoppingCartService.Value;
+        public ICartItemService CartItemService =>_cartItemService.Value;
+        public IOrderItemService OrderItemService =>_orderItemService.Value;
+        public IOrderService OrderService =>_orderService.Value;
+        public IProductImageService ProductImageService =>_productImageService.Value;
+        public IProductService ProductService =>_productService.Value;
+        public IUserGroupService UserGroupService =>_userGroupService.Value;
+        public IApplicationUserService UserService =>_userService.Value;
+        public ICategoryService CategoryService =>_categoryService.Value;
+        public ISubCategoryCategoryService SubCategoryCategoryService =>_subCategoryCategoryService.Value;
+        public ISubCategoryService SubCategoryService=> _subCategoryService.Value;
+        public IWishListItemService WishListItemService =>_wishListItemService.Value;
+        public IAddressService AddressService =>_addressService.Value;
+        public IUserProfileService UserProfileService =>_userProfileService.Value;
+        public IGroupMemberService GroupMemberService =>_groupMemberService.Value;
+        public IAuthService AuthService => _authService.Value;   
+        public ISellerRestrictionService SellerRestrictionService => _sellerRestrictionService.Value;
+        public IBuyerProfileService BuyerProfileService => _buyerProfileService.Value;
+        public ISellerProfileService SellerProfileService => _sellerProfileService.Value;
+        public ISellerViolationService SellerViolationService => _sellerViolationService.Value;
+        public IUserGroupSellerService UserGroupSellerService => _userGroupSellerService.Value;
+        public IUserGroupNotificationService UserGroupNotificationService => _userGroupNotificationService.Value;
+        public ICategoryAttributeService CategoryAttributeService => _categoryAttributeService.Value;
+        public IProductAttributeValueService ProductAttributeValueService => _productAttributeValueService.Value;
+        public IUserOtpService UserOtpService => _userOtpService.Value;
+        public IGeneralCategoryService GeneralCategoryService => _genericCategoryService.Value;
+        public ITradeService TradeService => _tradeService.Value;
+        public ITradeAttributeValueService TradeAttributeValueService => _tradeAttributeValueService.Value;
+        public ITradeImageService TradeImageService => _tradeImageService.Value;
+        public IGroupSellerService GroupSellerService => _groupSellerService.Value;        
+    }
+}

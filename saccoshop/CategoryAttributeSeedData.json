@@ -1,0 +1,4700 @@
+{
+  "categoryAttributes": [
+    {
+      "categoryAttributeId": 1,
+      "categoryId": 19,
+      "attributeDataTypeId": 1,
+      "attributeName": "Ingredients",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 2,
+      "categoryId": 19,
+      "attributeDataTypeId": 1,
+      "attributeName": "Net Weight / Volume",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 3,
+      "categoryId": 19,
+      "attributeDataTypeId": 1,
+      "attributeName": "Expiry Date",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 4,
+      "categoryId": 19,
+      "attributeDataTypeId": 1,
+      "attributeName": "Storage Instructions",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 5,
+      "categoryId": 19,
+      "attributeDataTypeId": 1,
+      "attributeName": "Certification",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 6,
+      "categoryId": 61,
+      "attributeDataTypeId": 1,
+      "attributeName": "Brand",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 7,
+      "categoryId": 61,
+      "attributeDataTypeId": 1,
+      "attributeName": "Model Name/Generation",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 10,
+      "categoryId": 61,
+      "attributeDataTypeId": 1,
+      "attributeName": "Operating System",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 11,
+      "categoryId": 61,
+      "attributeDataTypeId": 1,
+      "attributeName": "Processor Model",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 12,
+      "categoryId": 61,
+      "attributeDataTypeId": 1,
+      "attributeName": "Processor Speed",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 13,
+      "categoryId": 61,
+      "attributeDataTypeId": 1,
+      "attributeName": "Number of Cores",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 14,
+      "categoryId": 61,
+      "attributeDataTypeId": 1,
+      "attributeName": "RAM Size",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 15,
+      "categoryId": 61,
+      "attributeDataTypeId": 1,
+      "attributeName": "Storage Capacity",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 16,
+      "categoryId": 61,
+      "attributeDataTypeId": 1,
+      "attributeName": "Graphics Details",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 17,
+      "categoryId": 61,
+      "attributeDataTypeId": 1,
+      "attributeName": "Screen Size",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 21,
+      "categoryId": 61,
+      "attributeDataTypeId": 1,
+      "attributeName": "Color",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 22,
+      "categoryId": 61,
+      "attributeDataTypeId": 1,
+      "attributeName": "Battery Life",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 23,
+      "categoryId": 56,
+      "attributeDataTypeId": 1,
+      "attributeName": "Brand",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 24,
+      "categoryId": 56,
+      "attributeDataTypeId": 1,
+      "attributeName": "Model",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 25,
+      "categoryId": 56,
+      "attributeDataTypeId": 1,
+      "attributeName": "Operating System",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 26,
+      "categoryId": 56,
+      "attributeDataTypeId": 1,
+      "attributeName": "Release Year",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 27,
+      "categoryId": 56,
+      "attributeDataTypeId": 1,
+      "attributeName": "Screen Size (inches)",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 28,
+      "categoryId": 56,
+      "attributeDataTypeId": 1,
+      "attributeName": "RAM",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 29,
+      "categoryId": 56,
+      "attributeDataTypeId": 1,
+      "attributeName": "Processor Info",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 30,
+      "categoryId": 56,
+      "attributeDataTypeId": 1,
+      "attributeName": "Internal Storage",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 31,
+      "categoryId": 56,
+      "attributeDataTypeId": 1,
+      "attributeName": "Expandable Storage",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 32,
+      "categoryId": 56,
+      "attributeDataTypeId": 1,
+      "attributeName": "Rear Camera (MP)",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 33,
+      "categoryId": 56,
+      "attributeDataTypeId": 1,
+      "attributeName": "Front Camera (MP)",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 34,
+      "categoryId": 56,
+      "attributeDataTypeId": 1,
+      "attributeName": "Battery Capacity (mAh)",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 36,
+      "categoryId": 56,
+      "attributeDataTypeId": 1,
+      "attributeName": "Charging Type (USB-C, Micro-USB)",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 37,
+      "categoryId": 56,
+      "attributeDataTypeId": 1,
+      "attributeName": "Number of SIMs",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 38,
+      "categoryId": 56,
+      "attributeDataTypeId": 1,
+      "attributeName": "Network (2G / 3G / 4G / 5G)",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 39,
+      "categoryId": 56,
+      "attributeDataTypeId": 1,
+      "attributeName": "Color",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 40,
+      "categoryId": 56,
+      "attributeDataTypeId": 1,
+      "attributeName": "Build Material",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 44,
+      "categoryId": 19,
+      "attributeDataTypeId": 1,
+      "attributeName": "Specify Animal ",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 45,
+      "categoryId": 18,
+      "attributeDataTypeId": 1,
+      "attributeName": "Crop Type",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 46,
+      "categoryId": 18,
+      "attributeDataTypeId": 1,
+      "attributeName": "Packaging",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 47,
+      "categoryId": 18,
+      "attributeDataTypeId": 1,
+      "attributeName": "Storage",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 48,
+      "categoryId": 18,
+      "attributeDataTypeId": 1,
+      "attributeName": "Expiry Date",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 49,
+      "categoryId": 18,
+      "attributeDataTypeId": 1,
+      "attributeName": "Nutrition",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 50,
+      "categoryId": 20,
+      "attributeDataTypeId": 1,
+      "attributeName": "General data",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 51,
+      "categoryId": 50,
+      "attributeDataTypeId": 1,
+      "attributeName": "Land Use",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 52,
+      "categoryId": 50,
+      "attributeDataTypeId": 1,
+      "attributeName": "Land Size",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 53,
+      "categoryId": 50,
+      "attributeDataTypeId": 1,
+      "attributeName": "Title Status",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 54,
+      "categoryId": 50,
+      "attributeDataTypeId": 1,
+      "attributeName": "Electricity Availability",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 55,
+      "categoryId": 50,
+      "attributeDataTypeId": 1,
+      "attributeName": "Road Access",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 56,
+      "categoryId": 50,
+      "attributeDataTypeId": 1,
+      "attributeName": "Water Access",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 57,
+      "categoryId": 48,
+      "attributeDataTypeId": 1,
+      "attributeName": "Land Use",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 58,
+      "categoryId": 48,
+      "attributeDataTypeId": 1,
+      "attributeName": "Land Size",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 59,
+      "categoryId": 48,
+      "attributeDataTypeId": 1,
+      "attributeName": "Title Status",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 60,
+      "categoryId": 48,
+      "attributeDataTypeId": 1,
+      "attributeName": "Electricity Availability",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 61,
+      "categoryId": 48,
+      "attributeDataTypeId": 1,
+      "attributeName": "Road Access",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 62,
+      "categoryId": 48,
+      "attributeDataTypeId": 1,
+      "attributeName": "Water Access",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 63,
+      "categoryId": 63,
+      "attributeDataTypeId": 1,
+      "attributeName": "Brand",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 64,
+      "categoryId": 63,
+      "attributeDataTypeId": 1,
+      "attributeName": "Model Name/Generation",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 67,
+      "categoryId": 63,
+      "attributeDataTypeId": 1,
+      "attributeName": "Operating System",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 68,
+      "categoryId": 63,
+      "attributeDataTypeId": 1,
+      "attributeName": "Processor Model",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 69,
+      "categoryId": 63,
+      "attributeDataTypeId": 1,
+      "attributeName": "Screen Size",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 70,
+      "categoryId": 63,
+      "attributeDataTypeId": 1,
+      "attributeName": "Processor Speed",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 71,
+      "categoryId": 63,
+      "attributeDataTypeId": 1,
+      "attributeName": "Number of Cores",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 72,
+      "categoryId": 63,
+      "attributeDataTypeId": 1,
+      "attributeName": "RAM Size",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 74,
+      "categoryId": 63,
+      "attributeDataTypeId": 1,
+      "attributeName": "Graphics Details",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 76,
+      "categoryId": 63,
+      "attributeDataTypeId": 1,
+      "attributeName": "Ethernet Port",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 83,
+      "categoryId": 62,
+      "attributeDataTypeId": 1,
+      "attributeName": "Operating System",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 84,
+      "categoryId": 62,
+      "attributeDataTypeId": 1,
+      "attributeName": "Processor Model",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 85,
+      "categoryId": 62,
+      "attributeDataTypeId": 1,
+      "attributeName": "Processor Speed",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 86,
+      "categoryId": 62,
+      "attributeDataTypeId": 1,
+      "attributeName": "Number of Cores",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 87,
+      "categoryId": 62,
+      "attributeDataTypeId": 1,
+      "attributeName": "RAM Size",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 88,
+      "categoryId": 62,
+      "attributeDataTypeId": 1,
+      "attributeName": "Storage Capacity",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 89,
+      "categoryId": 62,
+      "attributeDataTypeId": 1,
+      "attributeName": "Graphics Details",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 78,
+      "categoryId": 63,
+      "attributeDataTypeId": 1,
+      "attributeName": "Color",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 79,
+      "categoryId": 62,
+      "attributeDataTypeId": 1,
+      "attributeName": "Brand",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 80,
+      "categoryId": 62,
+      "attributeDataTypeId": 1,
+      "attributeName": "Model Name/Generation",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 93,
+      "categoryId": 62,
+      "attributeDataTypeId": 1,
+      "attributeName": "Color",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 94,
+      "categoryId": 64,
+      "attributeDataTypeId": 1,
+      "attributeName": "Brand",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 95,
+      "categoryId": 64,
+      "attributeDataTypeId": 1,
+      "attributeName": "Model Name/Generation",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 98,
+      "categoryId": 64,
+      "attributeDataTypeId": 1,
+      "attributeName": "Operating System",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 99,
+      "categoryId": 64,
+      "attributeDataTypeId": 1,
+      "attributeName": "Processor Model",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 100,
+      "categoryId": 64,
+      "attributeDataTypeId": 1,
+      "attributeName": "Processor Speed",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 101,
+      "categoryId": 64,
+      "attributeDataTypeId": 1,
+      "attributeName": "Number of Cores",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 102,
+      "categoryId": 64,
+      "attributeDataTypeId": 1,
+      "attributeName": "RAM Size",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 103,
+      "categoryId": 64,
+      "attributeDataTypeId": 1,
+      "attributeName": "Storage Capacity",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 104,
+      "categoryId": 64,
+      "attributeDataTypeId": 1,
+      "attributeName": "Graphics Details",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 112,
+      "categoryId": 65,
+      "attributeDataTypeId": 1,
+      "attributeName": "Operating System",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 113,
+      "categoryId": 65,
+      "attributeDataTypeId": 1,
+      "attributeName": "Processor Model",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 114,
+      "categoryId": 65,
+      "attributeDataTypeId": 1,
+      "attributeName": "Processor Speed",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 115,
+      "categoryId": 65,
+      "attributeDataTypeId": 1,
+      "attributeName": "Number of Cores",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 116,
+      "categoryId": 65,
+      "attributeDataTypeId": 1,
+      "attributeName": "RAM Size",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 117,
+      "categoryId": 65,
+      "attributeDataTypeId": 1,
+      "attributeName": "Storage Capacity",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 118,
+      "categoryId": 65,
+      "attributeDataTypeId": 1,
+      "attributeName": "Graphics Details",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 121,
+      "categoryId": 65,
+      "attributeDataTypeId": 1,
+      "attributeName": "Color",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 122,
+      "categoryId": 39,
+      "attributeDataTypeId": 1,
+      "attributeName": "Brand",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 123,
+      "categoryId": 39,
+      "attributeDataTypeId": 1,
+      "attributeName": "Weight",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 124,
+      "categoryId": 39,
+      "attributeDataTypeId": 1,
+      "attributeName": "Capacity",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 125,
+      "categoryId": 39,
+      "attributeDataTypeId": 1,
+      "attributeName": "Power Consumption",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 126,
+      "categoryId": 39,
+      "attributeDataTypeId": 1,
+      "attributeName": "Voltage rating",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 127,
+      "categoryId": 39,
+      "attributeDataTypeId": 1,
+      "attributeName": "Frequency",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 128,
+      "categoryId": 39,
+      "attributeDataTypeId": 1,
+      "attributeName": "Warranty Period",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 129,
+      "categoryId": 43,
+      "attributeDataTypeId": 1,
+      "attributeName": "Brand",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 130,
+      "categoryId": 43,
+      "attributeDataTypeId": 1,
+      "attributeName": "Model Number",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 131,
+      "categoryId": 43,
+      "attributeDataTypeId": 1,
+      "attributeName": "Weight",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 142,
+      "categoryId": 37,
+      "attributeDataTypeId": 1,
+      "attributeName": "Warranty Period",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 143,
+      "categoryId": 37,
+      "attributeDataTypeId": 1,
+      "attributeName": "Weight",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 144,
+      "categoryId": 37,
+      "attributeDataTypeId": 1,
+      "attributeName": "Color",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 145,
+      "categoryId": 37,
+      "attributeDataTypeId": 1,
+      "attributeName": "Capacity",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 146,
+      "categoryId": 37,
+      "attributeDataTypeId": 1,
+      "attributeName": "Power Rating",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 147,
+      "categoryId": 37,
+      "attributeDataTypeId": 1,
+      "attributeName": "Voltage Rating",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 148,
+      "categoryId": 37,
+      "attributeDataTypeId": 1,
+      "attributeName": "Frequency",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 149,
+      "categoryId": 42,
+      "attributeDataTypeId": 1,
+      "attributeName": "Brand",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 150,
+      "categoryId": 42,
+      "attributeDataTypeId": 1,
+      "attributeName": "Model",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 151,
+      "categoryId": 42,
+      "attributeDataTypeId": 1,
+      "attributeName": "Warranty Period",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 152,
+      "categoryId": 42,
+      "attributeDataTypeId": 1,
+      "attributeName": "Condition",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 153,
+      "categoryId": 42,
+      "attributeDataTypeId": 1,
+      "attributeName": "Fuel Type",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 154,
+      "categoryId": 42,
+      "attributeDataTypeId": 1,
+      "attributeName": "Dimensions",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 155,
+      "categoryId": 42,
+      "attributeDataTypeId": 1,
+      "attributeName": "Power Rating",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 156,
+      "categoryId": 42,
+      "attributeDataTypeId": 1,
+      "attributeName": "Voltage Rating",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 157,
+      "categoryId": 42,
+      "attributeDataTypeId": 1,
+      "attributeName": "Color",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 158,
+      "categoryId": 42,
+      "attributeDataTypeId": 1,
+      "attributeName": "Material",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 159,
+      "categoryId": 42,
+      "attributeDataTypeId": 1,
+      "attributeName": "Capacity",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 160,
+      "categoryId": 41,
+      "attributeDataTypeId": 1,
+      "attributeName": "Brand",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 161,
+      "categoryId": 41,
+      "attributeDataTypeId": 1,
+      "attributeName": "Weight",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 162,
+      "categoryId": 41,
+      "attributeDataTypeId": 1,
+      "attributeName": "Capacity",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 163,
+      "categoryId": 36,
+      "attributeDataTypeId": 1,
+      "attributeName": "Color",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 164,
+      "categoryId": 36,
+      "attributeDataTypeId": 1,
+      "attributeName": "Material",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 165,
+      "categoryId": 38,
+      "attributeDataTypeId": 1,
+      "attributeName": "Brand",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 166,
+      "categoryId": 38,
+      "attributeDataTypeId": 1,
+      "attributeName": "Model",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 168,
+      "categoryId": 38,
+      "attributeDataTypeId": 1,
+      "attributeName": "Power Rating",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 169,
+      "categoryId": 38,
+      "attributeDataTypeId": 1,
+      "attributeName": "Voltage Rating",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 170,
+      "categoryId": 38,
+      "attributeDataTypeId": 1,
+      "attributeName": "Frequency",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 171,
+      "categoryId": 38,
+      "attributeDataTypeId": 1,
+      "attributeName": "Warranty Period",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 172,
+      "categoryId": 40,
+      "attributeDataTypeId": 1,
+      "attributeName": "Weight",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 173,
+      "categoryId": 40,
+      "attributeDataTypeId": 1,
+      "attributeName": "Voltage Rating",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 174,
+      "categoryId": 40,
+      "attributeDataTypeId": 1,
+      "attributeName": "Brand",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 175,
+      "categoryId": 40,
+      "attributeDataTypeId": 1,
+      "attributeName": "Condition",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 176,
+      "categoryId": 40,
+      "attributeDataTypeId": 1,
+      "attributeName": "Warranty Period",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 177,
+      "categoryId": 40,
+      "attributeDataTypeId": 1,
+      "attributeName": "Power Rating",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 178,
+      "categoryId": 40,
+      "attributeDataTypeId": 1,
+      "attributeName": "Model",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 179,
+      "categoryId": 54,
+      "attributeDataTypeId": 1,
+      "attributeName": "Manufacturer",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 180,
+      "categoryId": 54,
+      "attributeDataTypeId": 1,
+      "attributeName": "Size",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 181,
+      "categoryId": 54,
+      "attributeDataTypeId": 1,
+      "attributeName": "Color",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 182,
+      "categoryId": 54,
+      "attributeDataTypeId": 1,
+      "attributeName": "Material",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 133,
+      "categoryId": 43,
+      "attributeDataTypeId": 1,
+      "attributeName": "Color",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 134,
+      "categoryId": 43,
+      "attributeDataTypeId": 1,
+      "attributeName": "Capacity",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 135,
+      "categoryId": 43,
+      "attributeDataTypeId": 1,
+      "attributeName": "Power Consumption",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 136,
+      "categoryId": 43,
+      "attributeDataTypeId": 1,
+      "attributeName": "Voltage Rating",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 137,
+      "categoryId": 43,
+      "attributeDataTypeId": 1,
+      "attributeName": "Frequency",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 138,
+      "categoryId": 43,
+      "attributeDataTypeId": 1,
+      "attributeName": "Warranty Period",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 139,
+      "categoryId": 37,
+      "attributeDataTypeId": 1,
+      "attributeName": "Brand",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 140,
+      "categoryId": 37,
+      "attributeDataTypeId": 1,
+      "attributeName": "Model",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 108,
+      "categoryId": 64,
+      "attributeDataTypeId": 1,
+      "attributeName": "Color",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 109,
+      "categoryId": 65,
+      "attributeDataTypeId": 1,
+      "attributeName": "Brand",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 110,
+      "categoryId": 65,
+      "attributeDataTypeId": 1,
+      "attributeName": "Model Name/Generation",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 184,
+      "categoryId": 52,
+      "attributeDataTypeId": 1,
+      "attributeName": "Manufacturer",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 185,
+      "categoryId": 52,
+      "attributeDataTypeId": 1,
+      "attributeName": "Size",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 186,
+      "categoryId": 52,
+      "attributeDataTypeId": 1,
+      "attributeName": "Color",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 187,
+      "categoryId": 52,
+      "attributeDataTypeId": 1,
+      "attributeName": "Material",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 197,
+      "categoryId": 53,
+      "attributeDataTypeId": 1,
+      "attributeName": "Size",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 198,
+      "categoryId": 53,
+      "attributeDataTypeId": 1,
+      "attributeName": "Material",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 199,
+      "categoryId": 9,
+      "attributeDataTypeId": 1,
+      "attributeName": "Color",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 200,
+      "categoryId": 9,
+      "attributeDataTypeId": 1,
+      "attributeName": "Manufacturer",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 201,
+      "categoryId": 10,
+      "attributeDataTypeId": 1,
+      "attributeName": "Color",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 202,
+      "categoryId": 10,
+      "attributeDataTypeId": 1,
+      "attributeName": "Manufacturer",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 203,
+      "categoryId": 10,
+      "attributeDataTypeId": 1,
+      "attributeName": "Warranty Period",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 204,
+      "categoryId": 59,
+      "attributeDataTypeId": 1,
+      "attributeName": "Color",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 205,
+      "categoryId": 59,
+      "attributeDataTypeId": 1,
+      "attributeName": "Manufacturer",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 206,
+      "categoryId": 59,
+      "attributeDataTypeId": 1,
+      "attributeName": "Power Rating",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 207,
+      "categoryId": 59,
+      "attributeDataTypeId": 1,
+      "attributeName": "Voltage Rating",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 208,
+      "categoryId": 59,
+      "attributeDataTypeId": 1,
+      "attributeName": "Screen Size (inches)",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 209,
+      "categoryId": 59,
+      "attributeDataTypeId": 1,
+      "attributeName": "Application",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 210,
+      "categoryId": 58,
+      "attributeDataTypeId": 1,
+      "attributeName": "Color",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 211,
+      "categoryId": 58,
+      "attributeDataTypeId": 1,
+      "attributeName": "Screen Size (inches)",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 212,
+      "categoryId": 58,
+      "attributeDataTypeId": 1,
+      "attributeName": "Manufacturer",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 213,
+      "categoryId": 58,
+      "attributeDataTypeId": 1,
+      "attributeName": "Warranty Period",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 214,
+      "categoryId": 58,
+      "attributeDataTypeId": 1,
+      "attributeName": "Operating System",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 189,
+      "categoryId": 55,
+      "attributeDataTypeId": 1,
+      "attributeName": "Manufacturer",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 190,
+      "categoryId": 55,
+      "attributeDataTypeId": 1,
+      "attributeName": "Size",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 191,
+      "categoryId": 55,
+      "attributeDataTypeId": 1,
+      "attributeName": "Color",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 192,
+      "categoryId": 55,
+      "attributeDataTypeId": 1,
+      "attributeName": "Material",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 194,
+      "categoryId": 53,
+      "attributeDataTypeId": 1,
+      "attributeName": "Color",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 195,
+      "categoryId": 53,
+      "attributeDataTypeId": 1,
+      "attributeName": "Manufacturer",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 220,
+      "categoryId": 58,
+      "attributeDataTypeId": 1,
+      "attributeName": "Power Rating",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 221,
+      "categoryId": 58,
+      "attributeDataTypeId": 1,
+      "attributeName": "Voltage Rating",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 222,
+      "categoryId": 58,
+      "attributeDataTypeId": 1,
+      "attributeName": "Resolution",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 223,
+      "categoryId": 58,
+      "attributeDataTypeId": 1,
+      "attributeName": "HDR Support",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 224,
+      "categoryId": 60,
+      "attributeDataTypeId": 1,
+      "attributeName": "Resolution",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 225,
+      "categoryId": 60,
+      "attributeDataTypeId": 1,
+      "attributeName": "Manufacturer",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 226,
+      "categoryId": 60,
+      "attributeDataTypeId": 1,
+      "attributeName": "Operating System",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 227,
+      "categoryId": 60,
+      "attributeDataTypeId": 1,
+      "attributeName": "Power Rating",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 228,
+      "categoryId": 60,
+      "attributeDataTypeId": 1,
+      "attributeName": "Voltage Rating",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 236,
+      "categoryId": 34,
+      "attributeDataTypeId": 1,
+      "attributeName": "Scope of Work",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 237,
+      "categoryId": 34,
+      "attributeDataTypeId": 1,
+      "attributeName": "Design Software Used",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 238,
+      "categoryId": 34,
+      "attributeDataTypeId": 1,
+      "attributeName": "Deliverables",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 239,
+      "categoryId": 34,
+      "attributeDataTypeId": 1,
+      "attributeName": "Consultation Fee",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 240,
+      "categoryId": 34,
+      "attributeDataTypeId": 1,
+      "attributeName": "Additional Details",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 241,
+      "categoryId": 32,
+      "attributeDataTypeId": 1,
+      "attributeName": "Brand",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 242,
+      "categoryId": 32,
+      "attributeDataTypeId": 1,
+      "attributeName": "Grade / Strength",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 243,
+      "categoryId": 32,
+      "attributeDataTypeId": 1,
+      "attributeName": "Material Composition",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 244,
+      "categoryId": 32,
+      "attributeDataTypeId": 1,
+      "attributeName": "Weight",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 245,
+      "categoryId": 32,
+      "attributeDataTypeId": 1,
+      "attributeName": "Color",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 246,
+      "categoryId": 32,
+      "attributeDataTypeId": 1,
+      "attributeName": "Packaging",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 230,
+      "categoryId": 60,
+      "attributeDataTypeId": 1,
+      "attributeName": "Warranty Period",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 231,
+      "categoryId": 60,
+      "attributeDataTypeId": 1,
+      "attributeName": "AV Input",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 233,
+      "categoryId": 34,
+      "attributeDataTypeId": 1,
+      "attributeName": "Professional Qualification",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 234,
+      "categoryId": 34,
+      "attributeDataTypeId": 1,
+      "attributeName": "Experience (Years)",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 248,
+      "categoryId": 32,
+      "attributeDataTypeId": 1,
+      "attributeName": "Suitable Use",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 250,
+      "categoryId": 32,
+      "attributeDataTypeId": 1,
+      "attributeName": "Warranty Period",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 251,
+      "categoryId": 32,
+      "attributeDataTypeId": 1,
+      "attributeName": "Additional Details",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 252,
+      "categoryId": 35,
+      "attributeDataTypeId": 1,
+      "attributeName": "Brand",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 253,
+      "categoryId": 35,
+      "attributeDataTypeId": 1,
+      "attributeName": "Model Number",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 254,
+      "categoryId": 35,
+      "attributeDataTypeId": 1,
+      "attributeName": "Power Source",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 255,
+      "categoryId": 35,
+      "attributeDataTypeId": 1,
+      "attributeName": "Power Rating",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 256,
+      "categoryId": 35,
+      "attributeDataTypeId": 1,
+      "attributeName": "Capacity",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 257,
+      "categoryId": 35,
+      "attributeDataTypeId": 1,
+      "attributeName": "Weight",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 261,
+      "categoryId": 35,
+      "attributeDataTypeId": 1,
+      "attributeName": "Accessories Included",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 262,
+      "categoryId": 35,
+      "attributeDataTypeId": 1,
+      "attributeName": "Additional Details",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 263,
+      "categoryId": 33,
+      "attributeDataTypeId": 1,
+      "attributeName": "Experience (Years)",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 264,
+      "categoryId": 26,
+      "attributeDataTypeId": 1,
+      "attributeName": "Schedule",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 265,
+      "categoryId": 26,
+      "attributeDataTypeId": 1,
+      "attributeName": "Delivery Mode (online,physical or workshop)",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 266,
+      "categoryId": 26,
+      "attributeDataTypeId": 1,
+      "attributeName": "Entry Requirements",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 267,
+      "categoryId": 26,
+      "attributeDataTypeId": 1,
+      "attributeName": "Language of Instruction",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 268,
+      "categoryId": 26,
+      "attributeDataTypeId": 1,
+      "attributeName": "Skill Level (Beginner, Intermediate, Advanced)",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 270,
+      "categoryId": 26,
+      "attributeDataTypeId": 1,
+      "attributeName": "Training Field",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 271,
+      "categoryId": 23,
+      "attributeDataTypeId": 1,
+      "attributeName": "Programming Language",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 272,
+      "categoryId": 23,
+      "attributeDataTypeId": 1,
+      "attributeName": "Software/Tools Covered",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 273,
+      "categoryId": 23,
+      "attributeDataTypeId": 1,
+      "attributeName": "Skill Level (Beginner, Intermediate, Advanced)",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 274,
+      "categoryId": 23,
+      "attributeDataTypeId": 1,
+      "attributeName": "Delivery Mode (Online, Onsite, Hybrid)",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 275,
+      "categoryId": 23,
+      "attributeDataTypeId": 1,
+      "attributeName": "Course Duration",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 277,
+      "categoryId": 23,
+      "attributeDataTypeId": 1,
+      "attributeName": "Certificate Provider",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 278,
+      "categoryId": 23,
+      "attributeDataTypeId": 1,
+      "attributeName": "Entry Requirements",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 279,
+      "categoryId": 23,
+      "attributeDataTypeId": 1,
+      "attributeName": "Target Audience",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 281,
+      "categoryId": 23,
+      "attributeDataTypeId": 1,
+      "attributeName": "Course Schedule (Weekend, weekday, evening)",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 282,
+      "categoryId": 24,
+      "attributeDataTypeId": 1,
+      "attributeName": "Engineering Discipline(Mechanical, Civil, Electrical)",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 283,
+      "categoryId": 24,
+      "attributeDataTypeId": 1,
+      "attributeName": "Skill Level (Beginner, Intermediate, Advanced)",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 284,
+      "categoryId": 24,
+      "attributeDataTypeId": 1,
+      "attributeName": "Training Type(Certification, workshop, diploma)",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 285,
+      "categoryId": 24,
+      "attributeDataTypeId": 1,
+      "attributeName": "Delivery Mode (Online, Onsite, Hybrid)",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 286,
+      "categoryId": 24,
+      "attributeDataTypeId": 1,
+      "attributeName": "Training Duration",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 287,
+      "categoryId": 24,
+      "attributeDataTypeId": 1,
+      "attributeName": "Required Background",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 289,
+      "categoryId": 24,
+      "attributeDataTypeId": 1,
+      "attributeName": "Assessment Type",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 292,
+      "categoryId": 24,
+      "attributeDataTypeId": 1,
+      "attributeName": "Hardware Requirements",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 293,
+      "categoryId": 25,
+      "attributeDataTypeId": 1,
+      "attributeName": "Entry Requirements",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 294,
+      "categoryId": 25,
+      "attributeDataTypeId": 1,
+      "attributeName": "Training Duration",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 259,
+      "categoryId": 35,
+      "attributeDataTypeId": 1,
+      "attributeName": "Usage Type",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 296,
+      "categoryId": 25,
+      "attributeDataTypeId": 1,
+      "attributeName": "Training Location",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 299,
+      "categoryId": 25,
+      "attributeDataTypeId": 1,
+      "attributeName": "Instructor Profile",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 300,
+      "categoryId": 25,
+      "attributeDataTypeId": 1,
+      "attributeName": "Delivery Mode (Online, Onsite, Hybrid)",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 301,
+      "categoryId": 28,
+      "attributeDataTypeId": 1,
+      "attributeName": "Electrical Contractor License / Certification",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 302,
+      "categoryId": 28,
+      "attributeDataTypeId": 1,
+      "attributeName": "Years of Experience",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 303,
+      "categoryId": 28,
+      "attributeDataTypeId": 1,
+      "attributeName": "Service Area",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 304,
+      "categoryId": 27,
+      "attributeDataTypeId": 1,
+      "attributeName": "Electrical Contractor License / Certification",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 305,
+      "categoryId": 27,
+      "attributeDataTypeId": 1,
+      "attributeName": "Years of Experience",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 306,
+      "categoryId": 27,
+      "attributeDataTypeId": 1,
+      "attributeName": "Service Area",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 307,
+      "categoryId": 82,
+      "attributeDataTypeId": 1,
+      "attributeName": "Brand",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 320,
+      "categoryId": 81,
+      "attributeDataTypeId": 1,
+      "attributeName": "Color",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 321,
+      "categoryId": 81,
+      "attributeDataTypeId": 1,
+      "attributeName": "Warranty Period",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 322,
+      "categoryId": 81,
+      "attributeDataTypeId": 1,
+      "attributeName": "Weight",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 323,
+      "categoryId": 80,
+      "attributeDataTypeId": 1,
+      "attributeName": "Brand",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 324,
+      "categoryId": 80,
+      "attributeDataTypeId": 1,
+      "attributeName": "Model",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 325,
+      "categoryId": 80,
+      "attributeDataTypeId": 1,
+      "attributeName": "Camera Type (DSLR, Mirrorless, Action Camera)",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 326,
+      "categoryId": 80,
+      "attributeDataTypeId": 1,
+      "attributeName": "Megapixels",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 327,
+      "categoryId": 80,
+      "attributeDataTypeId": 1,
+      "attributeName": "Optical Zoom",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 328,
+      "categoryId": 80,
+      "attributeDataTypeId": 1,
+      "attributeName": "Digital Zoom",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 329,
+      "categoryId": 80,
+      "attributeDataTypeId": 1,
+      "attributeName": "Video Resolution (1080p, 4K, 8K)",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 330,
+      "categoryId": 80,
+      "attributeDataTypeId": 1,
+      "attributeName": "Display Screen Size",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 331,
+      "categoryId": 80,
+      "attributeDataTypeId": 1,
+      "attributeName": "Connectivity (Wi-Fi, Bluetooth, NFC)",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 332,
+      "categoryId": 80,
+      "attributeDataTypeId": 1,
+      "attributeName": "Memory Card Type",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 333,
+      "categoryId": 80,
+      "attributeDataTypeId": 1,
+      "attributeName": "Battery Life(hrs)",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 334,
+      "categoryId": 80,
+      "attributeDataTypeId": 1,
+      "attributeName": "Weight",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 335,
+      "categoryId": 80,
+      "attributeDataTypeId": 1,
+      "attributeName": "Warranty Period",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 336,
+      "categoryId": 80,
+      "attributeDataTypeId": 1,
+      "attributeName": "Color",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 337,
+      "categoryId": 5,
+      "attributeDataTypeId": 1,
+      "attributeName": "Brand",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 338,
+      "categoryId": 5,
+      "attributeDataTypeId": 1,
+      "attributeName": "Model",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 339,
+      "categoryId": 5,
+      "attributeDataTypeId": 1,
+      "attributeName": "Console Type (Home / Portable)",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 340,
+      "categoryId": 5,
+      "attributeDataTypeId": 1,
+      "attributeName": "Storage Capacity (GB/TB)",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 309,
+      "categoryId": 82,
+      "attributeDataTypeId": 1,
+      "attributeName": "Capacity",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 310,
+      "categoryId": 82,
+      "attributeDataTypeId": 1,
+      "attributeName": "Input Voltage",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 311,
+      "categoryId": 82,
+      "attributeDataTypeId": 1,
+      "attributeName": "Connector Type (USB-A, USB-C, Lightning)",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 312,
+      "categoryId": 82,
+      "attributeDataTypeId": 1,
+      "attributeName": "Color",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 313,
+      "categoryId": 82,
+      "attributeDataTypeId": 1,
+      "attributeName": "Warranty Period",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 314,
+      "categoryId": 81,
+      "attributeDataTypeId": 1,
+      "attributeName": "Brand",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 315,
+      "categoryId": 81,
+      "attributeDataTypeId": 1,
+      "attributeName": "Model",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 342,
+      "categoryId": 5,
+      "attributeDataTypeId": 1,
+      "attributeName": "RAM Size",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 343,
+      "categoryId": 5,
+      "attributeDataTypeId": 1,
+      "attributeName": "Maximum Resolution (1080p / 4K / 8K)",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 344,
+      "categoryId": 5,
+      "attributeDataTypeId": 1,
+      "attributeName": "Connectivity (Wi-Fi, Ethernet, Bluetooth)",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 345,
+      "categoryId": 5,
+      "attributeDataTypeId": 1,
+      "attributeName": "Supported Game Media (Disc / Digital)",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 317,
+      "categoryId": 81,
+      "attributeDataTypeId": 1,
+      "attributeName": "Connectivity (Bluetooth, Wi-Fi, NFC)",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 318,
+      "categoryId": 81,
+      "attributeDataTypeId": 1,
+      "attributeName": "Battery Life(hrs)",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 347,
+      "categoryId": 5,
+      "attributeDataTypeId": 1,
+      "attributeName": "Controller Type (Wireless / Wired)",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 354,
+      "categoryId": 4,
+      "attributeDataTypeId": 1,
+      "attributeName": "Battery Capacity (mAh)",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 355,
+      "categoryId": 4,
+      "attributeDataTypeId": 1,
+      "attributeName": "Charging Type (USB-C, Micro-USB, Lightning)",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 356,
+      "categoryId": 4,
+      "attributeDataTypeId": 1,
+      "attributeName": "Color",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 357,
+      "categoryId": 4,
+      "attributeDataTypeId": 1,
+      "attributeName": "Compatibility (Android, iOS, Windows)",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 358,
+      "categoryId": 29,
+      "attributeDataTypeId": 1,
+      "attributeName": "Years of Experience",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 359,
+      "categoryId": 29,
+      "attributeDataTypeId": 1,
+      "attributeName": "Team Size",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 360,
+      "categoryId": 30,
+      "attributeDataTypeId": 1,
+      "attributeName": "Years of Experience",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 361,
+      "categoryId": 30,
+      "attributeDataTypeId": 1,
+      "attributeName": "Team Size",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 362,
+      "categoryId": 31,
+      "attributeDataTypeId": 1,
+      "attributeName": "Year Established",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 363,
+      "categoryId": 31,
+      "attributeDataTypeId": 1,
+      "attributeName": "Location",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 364,
+      "categoryId": 31,
+      "attributeDataTypeId": 1,
+      "attributeName": "GPS Coordinates",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 365,
+      "categoryId": 31,
+      "attributeDataTypeId": 1,
+      "attributeName": "Capacity",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 366,
+      "categoryId": 31,
+      "attributeDataTypeId": 1,
+      "attributeName": "Number of Halls / Rooms",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 367,
+      "categoryId": 31,
+      "attributeDataTypeId": 1,
+      "attributeName": "Parking Capacity",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 349,
+      "categoryId": 5,
+      "attributeDataTypeId": 1,
+      "attributeName": "Warranty Period",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 350,
+      "categoryId": 4,
+      "attributeDataTypeId": 1,
+      "attributeName": "Brand",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 351,
+      "categoryId": 4,
+      "attributeDataTypeId": 1,
+      "attributeName": "Model",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 352,
+      "categoryId": 4,
+      "attributeDataTypeId": 1,
+      "attributeName": "Connectivity Type (Bluetooth, Wired, Wi-Fi)",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 371,
+      "categoryId": 31,
+      "attributeDataTypeId": 1,
+      "attributeName": "Kitchen Facilities",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 376,
+      "categoryId": 31,
+      "attributeDataTypeId": 1,
+      "attributeName": "Check-in / Check-out Times",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 377,
+      "categoryId": 31,
+      "attributeDataTypeId": 1,
+      "attributeName": "Event Permit Requirements",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 378,
+      "categoryId": 75,
+      "attributeDataTypeId": 1,
+      "attributeName": "Ingredients",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 379,
+      "categoryId": 75,
+      "attributeDataTypeId": 1,
+      "attributeName": "Net Weight / Volume",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 380,
+      "categoryId": 75,
+      "attributeDataTypeId": 1,
+      "attributeName": "Packaging Type",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 381,
+      "categoryId": 75,
+      "attributeDataTypeId": 1,
+      "attributeName": "Expiry Date",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 382,
+      "categoryId": 75,
+      "attributeDataTypeId": 1,
+      "attributeName": "Storage Recommendation",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 383,
+      "categoryId": 75,
+      "attributeDataTypeId": 1,
+      "attributeName": "Flavor",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 384,
+      "categoryId": 75,
+      "attributeDataTypeId": 1,
+      "attributeName": "Certification",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 385,
+      "categoryId": 77,
+      "attributeDataTypeId": 1,
+      "attributeName": "Ingredients",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 388,
+      "categoryId": 77,
+      "attributeDataTypeId": 1,
+      "attributeName": "Net Weight / Volume",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 389,
+      "categoryId": 77,
+      "attributeDataTypeId": 1,
+      "attributeName": "Packaging Type",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 390,
+      "categoryId": 77,
+      "attributeDataTypeId": 1,
+      "attributeName": "Expiry Date",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 391,
+      "categoryId": 77,
+      "attributeDataTypeId": 1,
+      "attributeName": "Storage Recommendation",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 392,
+      "categoryId": 77,
+      "attributeDataTypeId": 1,
+      "attributeName": "Flavor",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 393,
+      "categoryId": 77,
+      "attributeDataTypeId": 1,
+      "attributeName": "Organic / Natural",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 394,
+      "categoryId": 79,
+      "attributeDataTypeId": 1,
+      "attributeName": "Ingredients",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 395,
+      "categoryId": 79,
+      "attributeDataTypeId": 1,
+      "attributeName": "Net Weight / Volume",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 396,
+      "categoryId": 79,
+      "attributeDataTypeId": 1,
+      "attributeName": "Packaging Type",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 397,
+      "categoryId": 79,
+      "attributeDataTypeId": 1,
+      "attributeName": "Storage Recommendation",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 406,
+      "categoryId": 75,
+      "attributeDataTypeId": 1,
+      "attributeName": "Storage",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 407,
+      "categoryId": 78,
+      "attributeDataTypeId": 1,
+      "attributeName": "Ingredients",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 408,
+      "categoryId": 78,
+      "attributeDataTypeId": 1,
+      "attributeName": "Net Weight / Volume",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 409,
+      "categoryId": 78,
+      "attributeDataTypeId": 1,
+      "attributeName": "Expiry Date",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 410,
+      "categoryId": 78,
+      "attributeDataTypeId": 1,
+      "attributeName": "Storage Recommendation",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 411,
+      "categoryId": 11,
+      "attributeDataTypeId": 1,
+      "attributeName": "Brand",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 412,
+      "categoryId": 11,
+      "attributeDataTypeId": 1,
+      "attributeName": "Target Area",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 413,
+      "categoryId": 11,
+      "attributeDataTypeId": 1,
+      "attributeName": "Key Ingredients",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 414,
+      "categoryId": 11,
+      "attributeDataTypeId": 1,
+      "attributeName": "Skin Concern (Acne, Aging, Brightening, Hydration)",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 430,
+      "categoryId": 44,
+      "attributeDataTypeId": 1,
+      "attributeName": "Survey Outputs",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 431,
+      "categoryId": 44,
+      "attributeDataTypeId": 1,
+      "attributeName": "Other details",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 432,
+      "categoryId": 49,
+      "attributeDataTypeId": 1,
+      "attributeName": "Land Use",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 433,
+      "categoryId": 49,
+      "attributeDataTypeId": 1,
+      "attributeName": "Land Size",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 434,
+      "categoryId": 49,
+      "attributeDataTypeId": 1,
+      "attributeName": "Title Status",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 435,
+      "categoryId": 49,
+      "attributeDataTypeId": 1,
+      "attributeName": "Electricity Availability",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 436,
+      "categoryId": 49,
+      "attributeDataTypeId": 1,
+      "attributeName": "Road Access",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 437,
+      "categoryId": 49,
+      "attributeDataTypeId": 1,
+      "attributeName": "Water Access",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 438,
+      "categoryId": 47,
+      "attributeDataTypeId": 1,
+      "attributeName": "Land Use",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 439,
+      "categoryId": 47,
+      "attributeDataTypeId": 1,
+      "attributeName": "Land Size",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 440,
+      "categoryId": 47,
+      "attributeDataTypeId": 1,
+      "attributeName": "Title Status",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 441,
+      "categoryId": 47,
+      "attributeDataTypeId": 1,
+      "attributeName": "Electricity Availability",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 442,
+      "categoryId": 47,
+      "attributeDataTypeId": 1,
+      "attributeName": "Road Access",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 443,
+      "categoryId": 47,
+      "attributeDataTypeId": 1,
+      "attributeName": "Water Access",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 444,
+      "categoryId": 57,
+      "attributeDataTypeId": 1,
+      "attributeName": "Brand",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 445,
+      "categoryId": 57,
+      "attributeDataTypeId": 1,
+      "attributeName": "Model",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 446,
+      "categoryId": 57,
+      "attributeDataTypeId": 1,
+      "attributeName": "Battery Capacity (mAh)",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 447,
+      "categoryId": 57,
+      "attributeDataTypeId": 1,
+      "attributeName": "Number of SIMs",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 448,
+      "categoryId": 57,
+      "attributeDataTypeId": 1,
+      "attributeName": "Color",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 416,
+      "categoryId": 11,
+      "attributeDataTypeId": 1,
+      "attributeName": "Gender",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 417,
+      "categoryId": 11,
+      "attributeDataTypeId": 1,
+      "attributeName": "Expiry Date",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 418,
+      "categoryId": 11,
+      "attributeDataTypeId": 1,
+      "attributeName": "Usage Instructions",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 419,
+      "categoryId": 84,
+      "attributeDataTypeId": 1,
+      "attributeName": "Brand",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 420,
+      "categoryId": 84,
+      "attributeDataTypeId": 1,
+      "attributeName": "Tool Type",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 421,
+      "categoryId": 84,
+      "attributeDataTypeId": 1,
+      "attributeName": "Power Source (Manual/Battery/Electric)",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 422,
+      "categoryId": 84,
+      "attributeDataTypeId": 1,
+      "attributeName": "Skin Type Compatibility",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 423,
+      "categoryId": 84,
+      "attributeDataTypeId": 1,
+      "attributeName": "Color",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 424,
+      "categoryId": 84,
+      "attributeDataTypeId": 1,
+      "attributeName": "Usage Area",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 425,
+      "categoryId": 84,
+      "attributeDataTypeId": 1,
+      "attributeName": "Warranty Period",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 426,
+      "categoryId": 45,
+      "attributeDataTypeId": 1,
+      "attributeName": "Years of Experience",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 427,
+      "categoryId": 45,
+      "attributeDataTypeId": 1,
+      "attributeName": "Location",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 428,
+      "categoryId": 46,
+      "attributeDataTypeId": 1,
+      "attributeName": "Estimated Processing Time",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 399,
+      "categoryId": 76,
+      "attributeDataTypeId": 1,
+      "attributeName": "Ingredients",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 400,
+      "categoryId": 76,
+      "attributeDataTypeId": 1,
+      "attributeName": "Net Weight / Volume",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 401,
+      "categoryId": 76,
+      "attributeDataTypeId": 1,
+      "attributeName": "Packaging Type",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 402,
+      "categoryId": 76,
+      "attributeDataTypeId": 1,
+      "attributeName": "Storage Recommendation",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 403,
+      "categoryId": 76,
+      "attributeDataTypeId": 1,
+      "attributeName": "Flavor",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 451,
+      "categoryId": 14,
+      "attributeDataTypeId": 1,
+      "attributeName": "Software Version / Release",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 452,
+      "categoryId": 14,
+      "attributeDataTypeId": 1,
+      "attributeName": "Supported Operating Systems (Windows, Linux, MacOS)",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 453,
+      "categoryId": 14,
+      "attributeDataTypeId": 1,
+      "attributeName": "Minimum System Requirements",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 454,
+      "categoryId": 14,
+      "attributeDataTypeId": 1,
+      "attributeName": "Architecture (32-bit / 64-bit)",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 455,
+      "categoryId": 14,
+      "attributeDataTypeId": 1,
+      "attributeName": "License Type (Single-user, Multi-user, Enterprise, Subscription)",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 457,
+      "categoryId": 14,
+      "attributeDataTypeId": 1,
+      "attributeName": "File Size",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 458,
+      "categoryId": 17,
+      "attributeDataTypeId": 1,
+      "attributeName": "Category (Web development, design, automation)",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 459,
+      "categoryId": 17,
+      "attributeDataTypeId": 1,
+      "attributeName": "Version",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 460,
+      "categoryId": 17,
+      "attributeDataTypeId": 1,
+      "attributeName": "Compatible Platforms ",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 461,
+      "categoryId": 17,
+      "attributeDataTypeId": 1,
+      "attributeName": "File Size",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 462,
+      "categoryId": 17,
+      "attributeDataTypeId": 1,
+      "attributeName": "Installation Instructions",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 463,
+      "categoryId": 17,
+      "attributeDataTypeId": 1,
+      "attributeName": "License Type (Commercial, Personal, Extended license)",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 464,
+      "categoryId": 17,
+      "attributeDataTypeId": 1,
+      "attributeName": "Delivery Criteria",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 465,
+      "categoryId": 17,
+      "attributeDataTypeId": 1,
+      "attributeName": "Programming Language",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 466,
+      "categoryId": 15,
+      "attributeDataTypeId": 1,
+      "attributeName": "Engineering Field",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 467,
+      "categoryId": 15,
+      "attributeDataTypeId": 1,
+      "attributeName": "Developer / Vendor",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 468,
+      "categoryId": 15,
+      "attributeDataTypeId": 1,
+      "attributeName": "Supported Platforms",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 469,
+      "categoryId": 15,
+      "attributeDataTypeId": 1,
+      "attributeName": "System Requirements",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 470,
+      "categoryId": 15,
+      "attributeDataTypeId": 1,
+      "attributeName": "License Type ",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 471,
+      "categoryId": 15,
+      "attributeDataTypeId": 1,
+      "attributeName": "Serial Key",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 472,
+      "categoryId": 16,
+      "attributeDataTypeId": 1,
+      "attributeName": "Developer / Publisher",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 473,
+      "categoryId": 16,
+      "attributeDataTypeId": 1,
+      "attributeName": "App Version",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 474,
+      "categoryId": 16,
+      "attributeDataTypeId": 1,
+      "attributeName": "Platform (Android, iOS, Cross-platform)",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 475,
+      "categoryId": 16,
+      "attributeDataTypeId": 1,
+      "attributeName": "Minimum OS Version",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 476,
+      "categoryId": 16,
+      "attributeDataTypeId": 1,
+      "attributeName": "File Size",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 478,
+      "categoryId": 16,
+      "attributeDataTypeId": 1,
+      "attributeName": "Activation Method",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 479,
+      "categoryId": 16,
+      "attributeDataTypeId": 1,
+      "attributeName": "Delivery Criteria",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 480,
+      "categoryId": 16,
+      "attributeDataTypeId": 1,
+      "attributeName": "Other details",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 481,
+      "categoryId": 13,
+      "attributeDataTypeId": 1,
+      "attributeName": "Developer / Vendor",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 482,
+      "categoryId": 13,
+      "attributeDataTypeId": 1,
+      "attributeName": "Release Year",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 483,
+      "categoryId": 13,
+      "attributeDataTypeId": 1,
+      "attributeName": "Version",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 484,
+      "categoryId": 13,
+      "attributeDataTypeId": 1,
+      "attributeName": "Architecture (32-bit / 64-bit)",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 485,
+      "categoryId": 13,
+      "attributeDataTypeId": 1,
+      "attributeName": "Minimum System Requirements",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 486,
+      "categoryId": 13,
+      "attributeDataTypeId": 1,
+      "attributeName": "Activation Method",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 487,
+      "categoryId": 21,
+      "attributeDataTypeId": 1,
+      "attributeName": "Passenger Capacity",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 488,
+      "categoryId": 21,
+      "attributeDataTypeId": 1,
+      "attributeName": "Number Plate",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 489,
+      "categoryId": 21,
+      "attributeDataTypeId": 1,
+      "attributeName": "Number of Vehicles",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 490,
+      "categoryId": 22,
+      "attributeDataTypeId": 1,
+      "attributeName": "Cargo Capacity",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 491,
+      "categoryId": 22,
+      "attributeDataTypeId": 1,
+      "attributeName": "Number Plate",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 492,
+      "categoryId": 22,
+      "attributeDataTypeId": 1,
+      "attributeName": "Other details",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 493,
+      "categoryId": 12,
+      "attributeDataTypeId": 1,
+      "attributeName": "Brand",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 494,
+      "categoryId": 12,
+      "attributeDataTypeId": 1,
+      "attributeName": "Power Type (Manual / Electric / Battery)",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 495,
+      "categoryId": 12,
+      "attributeDataTypeId": 1,
+      "attributeName": "Motor Power (HP) – for treadmills",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 496,
+      "categoryId": 12,
+      "attributeDataTypeId": 1,
+      "attributeName": "Speed Range",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 497,
+      "categoryId": 12,
+      "attributeDataTypeId": 1,
+      "attributeName": "Maximum User Weight Capacity",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 498,
+      "categoryId": 12,
+      "attributeDataTypeId": 1,
+      "attributeName": "Dimensions (L × W × H)",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 499,
+      "categoryId": 12,
+      "attributeDataTypeId": 1,
+      "attributeName": "Frame Material",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 501,
+      "categoryId": 12,
+      "attributeDataTypeId": 1,
+      "attributeName": "Warranty Period",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 502,
+      "categoryId": 86,
+      "attributeDataTypeId": 1,
+      "attributeName": "Brand",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 503,
+      "categoryId": 86,
+      "attributeDataTypeId": 1,
+      "attributeName": "Individual Weight",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 504,
+      "categoryId": 86,
+      "attributeDataTypeId": 1,
+      "attributeName": "Total Set Weight",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 505,
+      "categoryId": 86,
+      "attributeDataTypeId": 1,
+      "attributeName": "Material",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 506,
+      "categoryId": 86,
+      "attributeDataTypeId": 1,
+      "attributeName": "Size/Diameter",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 507,
+      "categoryId": 87,
+      "attributeDataTypeId": 1,
+      "attributeName": "Brand",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 508,
+      "categoryId": 87,
+      "attributeDataTypeId": 1,
+      "attributeName": "Weight",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 509,
+      "categoryId": 87,
+      "attributeDataTypeId": 1,
+      "attributeName": "Dimensions",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 510,
+      "categoryId": 87,
+      "attributeDataTypeId": 1,
+      "attributeName": "Material",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 511,
+      "categoryId": 87,
+      "attributeDataTypeId": 1,
+      "attributeName": "Usage Instructions",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 512,
+      "categoryId": 88,
+      "attributeDataTypeId": 1,
+      "attributeName": "Brand",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 513,
+      "categoryId": 88,
+      "attributeDataTypeId": 1,
+      "attributeName": "Material",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 514,
+      "categoryId": 88,
+      "attributeDataTypeId": 1,
+      "attributeName": "Dimensions",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 515,
+      "categoryId": 89,
+      "attributeDataTypeId": 1,
+      "attributeName": "Brand",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 516,
+      "categoryId": 89,
+      "attributeDataTypeId": 1,
+      "attributeName": "Material",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 517,
+      "categoryId": 89,
+      "attributeDataTypeId": 1,
+      "attributeName": "Weight",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 518,
+      "categoryId": 89,
+      "attributeDataTypeId": 1,
+      "attributeName": "Other details",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 519,
+      "categoryId": 85,
+      "attributeDataTypeId": 1,
+      "attributeName": "Brand",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 520,
+      "categoryId": 85,
+      "attributeDataTypeId": 1,
+      "attributeName": "Maximum Load Capacity",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 521,
+      "categoryId": 85,
+      "attributeDataTypeId": 1,
+      "attributeName": "Material",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 522,
+      "categoryId": 66,
+      "attributeDataTypeId": 1,
+      "attributeName": "Brand",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 523,
+      "categoryId": 66,
+      "attributeDataTypeId": 1,
+      "attributeName": "Size",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 524,
+      "categoryId": 66,
+      "attributeDataTypeId": 1,
+      "attributeName": "Color",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 525,
+      "categoryId": 66,
+      "attributeDataTypeId": 1,
+      "attributeName": "Neckline",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 526,
+      "categoryId": 66,
+      "attributeDataTypeId": 1,
+      "attributeName": "Material / Fabric",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 527,
+      "categoryId": 72,
+      "attributeDataTypeId": 1,
+      "attributeName": "Brand",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 528,
+      "categoryId": 72,
+      "attributeDataTypeId": 1,
+      "attributeName": "Material / Fabric",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 529,
+      "categoryId": 72,
+      "attributeDataTypeId": 1,
+      "attributeName": "Color",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 530,
+      "categoryId": 72,
+      "attributeDataTypeId": 1,
+      "attributeName": "Size",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 531,
+      "categoryId": 70,
+      "attributeDataTypeId": 1,
+      "attributeName": "Brand",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 532,
+      "categoryId": 70,
+      "attributeDataTypeId": 1,
+      "attributeName": "Size",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 533,
+      "categoryId": 70,
+      "attributeDataTypeId": 1,
+      "attributeName": "Material / Fabric",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 534,
+      "categoryId": 70,
+      "attributeDataTypeId": 1,
+      "attributeName": "Color",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 535,
+      "categoryId": 68,
+      "attributeDataTypeId": 1,
+      "attributeName": "Brand",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 536,
+      "categoryId": 68,
+      "attributeDataTypeId": 1,
+      "attributeName": "Color",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 537,
+      "categoryId": 68,
+      "attributeDataTypeId": 1,
+      "attributeName": "Material / Fabric",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 538,
+      "categoryId": 68,
+      "attributeDataTypeId": 1,
+      "attributeName": "Size",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 542,
+      "categoryId": 69,
+      "attributeDataTypeId": 1,
+      "attributeName": "Brand",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 543,
+      "categoryId": 69,
+      "attributeDataTypeId": 1,
+      "attributeName": "Color",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 544,
+      "categoryId": 69,
+      "attributeDataTypeId": 1,
+      "attributeName": "Size",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 545,
+      "categoryId": 69,
+      "attributeDataTypeId": 1,
+      "attributeName": "Material / Fabric",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 546,
+      "categoryId": 74,
+      "attributeDataTypeId": 1,
+      "attributeName": "Brand",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 547,
+      "categoryId": 74,
+      "attributeDataTypeId": 1,
+      "attributeName": "Color",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 548,
+      "categoryId": 74,
+      "attributeDataTypeId": 1,
+      "attributeName": "Size",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 549,
+      "categoryId": 74,
+      "attributeDataTypeId": 1,
+      "attributeName": "Material / Fabric",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 550,
+      "categoryId": 71,
+      "attributeDataTypeId": 1,
+      "attributeName": "Brand",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 551,
+      "categoryId": 71,
+      "attributeDataTypeId": 1,
+      "attributeName": "Color",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 552,
+      "categoryId": 71,
+      "attributeDataTypeId": 1,
+      "attributeName": "Material / Fabric",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 553,
+      "categoryId": 71,
+      "attributeDataTypeId": 1,
+      "attributeName": "Size",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 554,
+      "categoryId": 67,
+      "attributeDataTypeId": 1,
+      "attributeName": "Brand",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 555,
+      "categoryId": 67,
+      "attributeDataTypeId": 1,
+      "attributeName": "Color",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 556,
+      "categoryId": 67,
+      "attributeDataTypeId": 1,
+      "attributeName": "Material / Fabric",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 557,
+      "categoryId": 67,
+      "attributeDataTypeId": 1,
+      "attributeName": "Size",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 559,
+      "categoryId": 73,
+      "attributeDataTypeId": 1,
+      "attributeName": "Brand",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 560,
+      "categoryId": 73,
+      "attributeDataTypeId": 1,
+      "attributeName": "Color",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 562,
+      "categoryId": 73,
+      "attributeDataTypeId": 1,
+      "attributeName": "Size",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 563,
+      "categoryId": 73,
+      "attributeDataTypeId": 1,
+      "attributeName": "Material / Fabric",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 564,
+      "categoryId": 90,
+      "attributeDataTypeId": 1,
+      "attributeName": "Brand",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 565,
+      "categoryId": 90,
+      "attributeDataTypeId": 1,
+      "attributeName": "Color",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 566,
+      "categoryId": 90,
+      "attributeDataTypeId": 1,
+      "attributeName": "Size",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 567,
+      "categoryId": 90,
+      "attributeDataTypeId": 1,
+      "attributeName": "Material / Fabric",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 568,
+      "categoryId": 91,
+      "attributeDataTypeId": 1,
+      "attributeName": "Brand",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 569,
+      "categoryId": 91,
+      "attributeDataTypeId": 1,
+      "attributeName": "Color",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 570,
+      "categoryId": 91,
+      "attributeDataTypeId": 1,
+      "attributeName": "Size",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 571,
+      "categoryId": 91,
+      "attributeDataTypeId": 1,
+      "attributeName": "Material / Fabric",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 572,
+      "categoryId": 91,
+      "attributeDataTypeId": 1,
+      "attributeName": "Other details",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 573,
+      "categoryId": 92,
+      "attributeDataTypeId": 1,
+      "attributeName": "Brand",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 574,
+      "categoryId": 92,
+      "attributeDataTypeId": 1,
+      "attributeName": "Size",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 575,
+      "categoryId": 92,
+      "attributeDataTypeId": 1,
+      "attributeName": "Material / Fabric",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 576,
+      "categoryId": 92,
+      "attributeDataTypeId": 1,
+      "attributeName": "Color",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 577,
+      "categoryId": 93,
+      "attributeDataTypeId": 1,
+      "attributeName": "Brand",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 578,
+      "categoryId": 93,
+      "attributeDataTypeId": 1,
+      "attributeName": "Size",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 579,
+      "categoryId": 93,
+      "attributeDataTypeId": 1,
+      "attributeName": "Material / Fabric",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 580,
+      "categoryId": 93,
+      "attributeDataTypeId": 1,
+      "attributeName": "Color",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 581,
+      "categoryId": 94,
+      "attributeDataTypeId": 1,
+      "attributeName": "Brand",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 582,
+      "categoryId": 94,
+      "attributeDataTypeId": 1,
+      "attributeName": "Size",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 583,
+      "categoryId": 94,
+      "attributeDataTypeId": 1,
+      "attributeName": "Color",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 584,
+      "categoryId": 94,
+      "attributeDataTypeId": 1,
+      "attributeName": "Material / Fabric",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 585,
+      "categoryId": 95,
+      "attributeDataTypeId": 1,
+      "attributeName": "Brand",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 586,
+      "categoryId": 95,
+      "attributeDataTypeId": 1,
+      "attributeName": "Size",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 587,
+      "categoryId": 95,
+      "attributeDataTypeId": 1,
+      "attributeName": "Color",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 588,
+      "categoryId": 95,
+      "attributeDataTypeId": 1,
+      "attributeName": "Material / Fabric",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 589,
+      "categoryId": 96,
+      "attributeDataTypeId": 1,
+      "attributeName": "Brand",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 590,
+      "categoryId": 96,
+      "attributeDataTypeId": 1,
+      "attributeName": "Size",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 591,
+      "categoryId": 96,
+      "attributeDataTypeId": 1,
+      "attributeName": "Color",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 592,
+      "categoryId": 96,
+      "attributeDataTypeId": 1,
+      "attributeName": "Material / Fabric",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 593,
+      "categoryId": 97,
+      "attributeDataTypeId": 1,
+      "attributeName": "Brand",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 594,
+      "categoryId": 97,
+      "attributeDataTypeId": 1,
+      "attributeName": "Size",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 595,
+      "categoryId": 97,
+      "attributeDataTypeId": 1,
+      "attributeName": "Color",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 596,
+      "categoryId": 97,
+      "attributeDataTypeId": 1,
+      "attributeName": "Material / Fabric",
+      "inputType": 0,
+      "inputTypeValue": "text"
+    },
+    {
+      "categoryAttributeId": 107,
+      "categoryId": 64,
+      "attributeDataTypeId": 2,
+      "attributeName": "USB Ports",
+      "inputType": 0,
+      "inputTypeValue": "number"
+    },
+    {
+      "categoryAttributeId": 346,
+      "categoryId": 5,
+      "attributeDataTypeId": 2,
+      "attributeName": "Number of Controllers Included",
+      "inputType": 0,
+      "inputTypeValue": "number"
+    },
+    {
+      "categoryAttributeId": 235,
+      "categoryId": 34,
+      "attributeDataTypeId": 2,
+      "attributeName": "Project Type",
+      "inputType": 0,
+      "inputTypeValue": "number"
+    },
+    {
+      "categoryAttributeId": 20,
+      "categoryId": 61,
+      "attributeDataTypeId": 2,
+      "attributeName": "USB Ports",
+      "inputType": 0,
+      "inputTypeValue": "number"
+    },
+    {
+      "categoryAttributeId": 92,
+      "categoryId": 62,
+      "attributeDataTypeId": 2,
+      "attributeName": "USB Ports",
+      "inputType": 0,
+      "inputTypeValue": "number"
+    },
+    {
+      "categoryAttributeId": 77,
+      "categoryId": 63,
+      "attributeDataTypeId": 2,
+      "attributeName": "USB Ports",
+      "inputType": 0,
+      "inputTypeValue": "number"
+    },
+    {
+      "categoryAttributeId": 73,
+      "categoryId": 63,
+      "attributeDataTypeId": 2,
+      "attributeName": "Storage Capacity",
+      "inputType": 0,
+      "inputTypeValue": "number"
+    },
+    {
+      "categoryAttributeId": 217,
+      "categoryId": 58,
+      "attributeDataTypeId": 3,
+      "attributeName": "Wireless Connectivity",
+      "inputType": 0,
+      "inputTypeValue": "number"
+    },
+    {
+      "categoryAttributeId": 218,
+      "categoryId": 58,
+      "attributeDataTypeId": 4,
+      "attributeName": "BlueTooth",
+      "inputType": 0,
+      "inputTypeValue": "checkbox"
+    },
+    {
+      "categoryAttributeId": 219,
+      "categoryId": 58,
+      "attributeDataTypeId": 4,
+      "attributeName": "AV Input",
+      "inputType": 0,
+      "inputTypeValue": "checkbox"
+    },
+    {
+      "categoryAttributeId": 232,
+      "categoryId": 60,
+      "attributeDataTypeId": 4,
+      "attributeName": "HDR Support",
+      "inputType": 0,
+      "inputTypeValue": "checkbox"
+    },
+    {
+      "categoryAttributeId": 249,
+      "categoryId": 32,
+      "attributeDataTypeId": 4,
+      "attributeName": "Delivery Available",
+      "inputType": 0,
+      "inputTypeValue": "checkbox"
+    },
+    {
+      "categoryAttributeId": 247,
+      "categoryId": 32,
+      "attributeDataTypeId": 4,
+      "attributeName": "Water Resistance",
+      "inputType": 0,
+      "inputTypeValue": "checkbox"
+    },
+    {
+      "categoryAttributeId": 196,
+      "categoryId": 53,
+      "attributeDataTypeId": 4,
+      "attributeName": "Brand New?",
+      "inputType": 0,
+      "inputTypeValue": "checkbox"
+    },
+    {
+      "categoryAttributeId": 193,
+      "categoryId": 55,
+      "attributeDataTypeId": 4,
+      "attributeName": "Brand New?",
+      "inputType": 0,
+      "inputTypeValue": "checkbox"
+    },
+    {
+      "categoryAttributeId": 229,
+      "categoryId": 60,
+      "attributeDataTypeId": 4,
+      "attributeName": "HDMI Ports",
+      "inputType": 0,
+      "inputTypeValue": "checkbox"
+    },
+    {
+      "categoryAttributeId": 215,
+      "categoryId": 58,
+      "attributeDataTypeId": 4,
+      "attributeName": "HDMI Port",
+      "inputType": 0,
+      "inputTypeValue": "checkbox"
+    },
+    {
+      "categoryAttributeId": 216,
+      "categoryId": 58,
+      "attributeDataTypeId": 4,
+      "attributeName": "USB Ports",
+      "inputType": 0,
+      "inputTypeValue": "checkbox"
+    },
+    {
+      "categoryAttributeId": 188,
+      "categoryId": 52,
+      "attributeDataTypeId": 4,
+      "attributeName": "Brand New?",
+      "inputType": 0,
+      "inputTypeValue": "checkbox"
+    },
+    {
+      "categoryAttributeId": 111,
+      "categoryId": 65,
+      "attributeDataTypeId": 4,
+      "attributeName": "Brand New",
+      "inputType": 0,
+      "inputTypeValue": "checkbox"
+    },
+    {
+      "categoryAttributeId": 141,
+      "categoryId": 37,
+      "attributeDataTypeId": 4,
+      "attributeName": "Brand New?",
+      "inputType": 0,
+      "inputTypeValue": "checkbox"
+    },
+    {
+      "categoryAttributeId": 341,
+      "categoryId": 5,
+      "attributeDataTypeId": 4,
+      "attributeName": "Graphics Processing Unit (GPU)",
+      "inputType": 0,
+      "inputTypeValue": "checkbox"
+    },
+    {
+      "categoryAttributeId": 308,
+      "categoryId": 82,
+      "attributeDataTypeId": 4,
+      "attributeName": "Brand New?",
+      "inputType": 0,
+      "inputTypeValue": "checkbox"
+    },
+    {
+      "categoryAttributeId": 297,
+      "categoryId": 25,
+      "attributeDataTypeId": 4,
+      "attributeName": "Job Placement Assistance",
+      "inputType": 0,
+      "inputTypeValue": "checkbox"
+    },
+    {
+      "categoryAttributeId": 298,
+      "categoryId": 25,
+      "attributeDataTypeId": 4,
+      "attributeName": "Accreditation",
+      "inputType": 0,
+      "inputTypeValue": "checkbox"
+    },
+    {
+      "categoryAttributeId": 260,
+      "categoryId": 35,
+      "attributeDataTypeId": 4,
+      "attributeName": "Rental Available",
+      "inputType": 0,
+      "inputTypeValue": "checkbox"
+    },
+    {
+      "categoryAttributeId": 295,
+      "categoryId": 25,
+      "attributeDataTypeId": 4,
+      "attributeName": "Certification Offered",
+      "inputType": 0,
+      "inputTypeValue": "checkbox"
+    },
+    {
+      "categoryAttributeId": 288,
+      "categoryId": 24,
+      "attributeDataTypeId": 4,
+      "attributeName": "Certification Offered",
+      "inputType": 0,
+      "inputTypeValue": "checkbox"
+    },
+    {
+      "categoryAttributeId": 280,
+      "categoryId": 23,
+      "attributeDataTypeId": 4,
+      "attributeName": "Job Placement Support",
+      "inputType": 0,
+      "inputTypeValue": "checkbox"
+    },
+    {
+      "categoryAttributeId": 276,
+      "categoryId": 23,
+      "attributeDataTypeId": 4,
+      "attributeName": "Hands-on Projects",
+      "inputType": 0,
+      "inputTypeValue": "checkbox"
+    },
+    {
+      "categoryAttributeId": 269,
+      "categoryId": 26,
+      "attributeDataTypeId": 4,
+      "attributeName": "Accredited",
+      "inputType": 0,
+      "inputTypeValue": "checkbox"
+    },
+    {
+      "categoryAttributeId": 258,
+      "categoryId": 35,
+      "attributeDataTypeId": 4,
+      "attributeName": "Brand New?",
+      "inputType": 0,
+      "inputTypeValue": "checkbox"
+    },
+    {
+      "categoryAttributeId": 75,
+      "categoryId": 63,
+      "attributeDataTypeId": 4,
+      "attributeName": "HDMI / DisplayPort",
+      "inputType": 0,
+      "inputTypeValue": "checkbox"
+    },
+    {
+      "categoryAttributeId": 90,
+      "categoryId": 62,
+      "attributeDataTypeId": 4,
+      "attributeName": "HDMI / DisplayPort",
+      "inputType": 0,
+      "inputTypeValue": "checkbox"
+    },
+    {
+      "categoryAttributeId": 91,
+      "categoryId": 62,
+      "attributeDataTypeId": 4,
+      "attributeName": "Ethernet Port",
+      "inputType": 0,
+      "inputTypeValue": "checkbox"
+    },
+    {
+      "categoryAttributeId": 65,
+      "categoryId": 63,
+      "attributeDataTypeId": 4,
+      "attributeName": "New?",
+      "inputType": 0,
+      "inputTypeValue": "checkbox"
+    },
+    {
+      "categoryAttributeId": 66,
+      "categoryId": 63,
+      "attributeDataTypeId": 4,
+      "attributeName": "Refurbished",
+      "inputType": 0,
+      "inputTypeValue": "checkbox"
+    },
+    {
+      "categoryAttributeId": 41,
+      "categoryId": 56,
+      "attributeDataTypeId": 4,
+      "attributeName": "Fingerprint Sensor",
+      "inputType": 0,
+      "inputTypeValue": "checkbox"
+    },
+    {
+      "categoryAttributeId": 42,
+      "categoryId": 56,
+      "attributeDataTypeId": 4,
+      "attributeName": "Torchlight",
+      "inputType": 0,
+      "inputTypeValue": "checkbox"
+    },
+    {
+      "categoryAttributeId": 43,
+      "categoryId": 56,
+      "attributeDataTypeId": 4,
+      "attributeName": "FM Radio",
+      "inputType": 0,
+      "inputTypeValue": "checkbox"
+    },
+    {
+      "categoryAttributeId": 35,
+      "categoryId": 56,
+      "attributeDataTypeId": 4,
+      "attributeName": "Removable Battery ",
+      "inputType": 0,
+      "inputTypeValue": "checkbox"
+    },
+    {
+      "categoryAttributeId": 18,
+      "categoryId": 61,
+      "attributeDataTypeId": 4,
+      "attributeName": "HDMI / DisplayPort",
+      "inputType": 0,
+      "inputTypeValue": "checkbox"
+    },
+    {
+      "categoryAttributeId": 19,
+      "categoryId": 61,
+      "attributeDataTypeId": 4,
+      "attributeName": "Ethernet Port",
+      "inputType": 0,
+      "inputTypeValue": "checkbox"
+    },
+    {
+      "categoryAttributeId": 8,
+      "categoryId": 61,
+      "attributeDataTypeId": 4,
+      "attributeName": "New?",
+      "inputType": 0,
+      "inputTypeValue": "checkbox"
+    },
+    {
+      "categoryAttributeId": 9,
+      "categoryId": 61,
+      "attributeDataTypeId": 4,
+      "attributeName": "Refurbished",
+      "inputType": 0,
+      "inputTypeValue": "checkbox"
+    },
+    {
+      "categoryAttributeId": 183,
+      "categoryId": 54,
+      "attributeDataTypeId": 4,
+      "attributeName": "Brand New?",
+      "inputType": 0,
+      "inputTypeValue": "checkbox"
+    },
+    {
+      "categoryAttributeId": 167,
+      "categoryId": 38,
+      "attributeDataTypeId": 4,
+      "attributeName": "Brand New?",
+      "inputType": 0,
+      "inputTypeValue": "checkbox"
+    },
+    {
+      "categoryAttributeId": 132,
+      "categoryId": 43,
+      "attributeDataTypeId": 4,
+      "attributeName": "Brand New?",
+      "inputType": 0,
+      "inputTypeValue": "checkbox"
+    },
+    {
+      "categoryAttributeId": 119,
+      "categoryId": 65,
+      "attributeDataTypeId": 4,
+      "attributeName": "HDMI / DisplayPort",
+      "inputType": 0,
+      "inputTypeValue": "checkbox"
+    },
+    {
+      "categoryAttributeId": 120,
+      "categoryId": 65,
+      "attributeDataTypeId": 4,
+      "attributeName": "Ethernet Port",
+      "inputType": 0,
+      "inputTypeValue": "checkbox"
+    },
+    {
+      "categoryAttributeId": 105,
+      "categoryId": 64,
+      "attributeDataTypeId": 4,
+      "attributeName": "HDMI / DisplayPort",
+      "inputType": 0,
+      "inputTypeValue": "checkbox"
+    },
+    {
+      "categoryAttributeId": 106,
+      "categoryId": 64,
+      "attributeDataTypeId": 4,
+      "attributeName": "Ethernet Port",
+      "inputType": 0,
+      "inputTypeValue": "checkbox"
+    },
+    {
+      "categoryAttributeId": 96,
+      "categoryId": 64,
+      "attributeDataTypeId": 4,
+      "attributeName": "New?",
+      "inputType": 0,
+      "inputTypeValue": "checkbox"
+    },
+    {
+      "categoryAttributeId": 97,
+      "categoryId": 64,
+      "attributeDataTypeId": 4,
+      "attributeName": "Refurbished",
+      "inputType": 0,
+      "inputTypeValue": "checkbox"
+    },
+    {
+      "categoryAttributeId": 81,
+      "categoryId": 62,
+      "attributeDataTypeId": 4,
+      "attributeName": "Brand New?",
+      "inputType": 0,
+      "inputTypeValue": "checkbox"
+    },
+    {
+      "categoryAttributeId": 82,
+      "categoryId": 62,
+      "attributeDataTypeId": 4,
+      "attributeName": "Refurbished",
+      "inputType": 0,
+      "inputTypeValue": "checkbox"
+    },
+    {
+      "categoryAttributeId": 348,
+      "categoryId": 5,
+      "attributeDataTypeId": 4,
+      "attributeName": "Online Gaming Support",
+      "inputType": 0,
+      "inputTypeValue": "checkbox"
+    },
+    {
+      "categoryAttributeId": 319,
+      "categoryId": 81,
+      "attributeDataTypeId": 4,
+      "attributeName": "App Support",
+      "inputType": 0,
+      "inputTypeValue": "checkbox"
+    },
+    {
+      "categoryAttributeId": 316,
+      "categoryId": 81,
+      "attributeDataTypeId": 4,
+      "attributeName": "Brand New?",
+      "inputType": 0,
+      "inputTypeValue": "checkbox"
+    },
+    {
+      "categoryAttributeId": 368,
+      "categoryId": 31,
+      "attributeDataTypeId": 4,
+      "attributeName": "Wi-Fi Availability",
+      "inputType": 0,
+      "inputTypeValue": "checkbox"
+    },
+    {
+      "categoryAttributeId": 369,
+      "categoryId": 31,
+      "attributeDataTypeId": 4,
+      "attributeName": "Power Backup (Generator)",
+      "inputType": 0,
+      "inputTypeValue": "checkbox"
+    },
+    {
+      "categoryAttributeId": 370,
+      "categoryId": 31,
+      "attributeDataTypeId": 4,
+      "attributeName": "Catering Services Available",
+      "inputType": 0,
+      "inputTypeValue": "checkbox"
+    },
+    {
+      "categoryAttributeId": 415,
+      "categoryId": 11,
+      "attributeDataTypeId": 4,
+      "attributeName": "Organic/Natural",
+      "inputType": 0,
+      "inputTypeValue": "checkbox"
+    },
+    {
+      "categoryAttributeId": 398,
+      "categoryId": 79,
+      "attributeDataTypeId": 4,
+      "attributeName": "Organic / Natural",
+      "inputType": 0,
+      "inputTypeValue": "checkbox"
+    },
+    {
+      "categoryAttributeId": 386,
+      "categoryId": 75,
+      "attributeDataTypeId": 4,
+      "attributeName": "Organic / Natural",
+      "inputType": 0,
+      "inputTypeValue": "checkbox"
+    },
+    {
+      "categoryAttributeId": 372,
+      "categoryId": 31,
+      "attributeDataTypeId": 4,
+      "attributeName": "Sound System Availability",
+      "inputType": 0,
+      "inputTypeValue": "checkbox"
+    },
+    {
+      "categoryAttributeId": 373,
+      "categoryId": 31,
+      "attributeDataTypeId": 4,
+      "attributeName": "Stage Availability",
+      "inputType": 0,
+      "inputTypeValue": "checkbox"
+    },
+    {
+      "categoryAttributeId": 374,
+      "categoryId": 31,
+      "attributeDataTypeId": 4,
+      "attributeName": "Live Streaming Capability",
+      "inputType": 0,
+      "inputTypeValue": "checkbox"
+    },
+    {
+      "categoryAttributeId": 375,
+      "categoryId": 31,
+      "attributeDataTypeId": 4,
+      "attributeName": "Security",
+      "inputType": 0,
+      "inputTypeValue": "checkbox"
+    },
+    {
+      "categoryAttributeId": 353,
+      "categoryId": 4,
+      "attributeDataTypeId": 4,
+      "attributeName": "Noise Cancellation",
+      "inputType": 0,
+      "inputTypeValue": "checkbox"
+    },
+    {
+      "categoryAttributeId": 500,
+      "categoryId": 12,
+      "attributeDataTypeId": 4,
+      "attributeName": "App compatibility",
+      "inputType": 0,
+      "inputTypeValue": "checkbox"
+    },
+    {
+      "categoryAttributeId": 477,
+      "categoryId": 16,
+      "attributeDataTypeId": 4,
+      "attributeName": "Offline Capability?",
+      "inputType": 0,
+      "inputTypeValue": "checkbox"
+    },
+    {
+      "categoryAttributeId": 456,
+      "categoryId": 14,
+      "attributeDataTypeId": 4,
+      "attributeName": "License key",
+      "inputType": 0,
+      "inputTypeValue": "checkbox"
+    },
+    {
+      "categoryAttributeId": 404,
+      "categoryId": 76,
+      "attributeDataTypeId": 4,
+      "attributeName": "Carbonated",
+      "inputType": 0,
+      "inputTypeValue": "checkbox"
+    },
+    {
+      "categoryAttributeId": 429,
+      "categoryId": 46,
+      "attributeDataTypeId": 4,
+      "attributeName": "Digital Document Copies",
+      "inputType": 0,
+      "inputTypeValue": "checkbox"
+    },
+    {
+      "categoryAttributeId": 449,
+      "categoryId": 57,
+      "attributeDataTypeId": 4,
+      "attributeName": "Torchlight",
+      "inputType": 0,
+      "inputTypeValue": "checkbox"
+    },
+    {
+      "categoryAttributeId": 450,
+      "categoryId": 57,
+      "attributeDataTypeId": 4,
+      "attributeName": "FM Radio",
+      "inputType": 0,
+      "inputTypeValue": "checkbox"
+    }
+  ]
+}

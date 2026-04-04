@@ -1,0 +1,510 @@
+{
+  "Categories": [
+    {
+      "CategoryId": 1,
+      "CategoryName": "Transport & Logistics",
+      "GeneralCategoryId": 12
+
+    },
+    {
+      "CategoryId": 2,
+      "CategoryName": "Education and Professional Training",
+      "GeneralCategoryId": 12
+
+    },
+    {
+      "CategoryId": 3,
+      "CategoryName": "Electrical Services",
+      "GeneralCategoryId": 12
+
+    },
+    {
+      "CategoryId": 4,
+      "CategoryName": "Events & Hospitality (Mikolo)",
+      "GeneralCategoryId": 12
+
+    },
+    {
+      "CategoryId": 5,
+      "CategoryName": "Construction & Building",
+      "GeneralCategoryId": 12
+
+    },
+    {
+      "CategoryId": 6,
+      "CategoryName": "Interior and Urban Design",
+      "GeneralCategoryId": 12
+
+    }
+  ],
+  //subcategories for Transport and Logitics 1
+  "SubCategories": [
+    {
+      "SubCategoryId": 1,
+      "SubCategoryName": "Passenger Transport",
+      "CategoryId": 1
+    },
+    {
+      "SubCategoryId": 2,
+      "SubCategoryName": "Freigt and Cargo",
+      "CategoryId": 1
+    },
+    //subcategories Education and Professional Training 2
+    {
+      "SubCategoryId": 3,
+      "SubCategoryName": "ICT and Digital Skills",
+      "CategoryId": 2
+    },
+    {
+      "SubCategoryId": 4,
+      "SubCategoryName": "Technical and Engineering Training",
+      "CategoryId": 2
+    },
+    {
+      "SubCategoryId": 5,
+      "SubCategoryName": "Vocational Training",
+      "CategoryId": 2
+    },
+
+    {
+      "SubCategoryId": 6,
+      "SubCategoryName": "Adult and Continous Training",
+      "CategoryId": 2
+    },
+
+    //Electrical Services 3
+
+    {
+      "SubCategoryId": 7,
+      "SubCategoryName": "Residential Electrical Works",
+      "CategoryId": 3
+    },
+    {
+      "SubCategoryId": 8,
+      "SubCategoryName": "Industrial Electrical Works",
+      "CategoryId": 3
+    },
+
+    //Events & Hospitality (Mikolo) 4
+    {
+      "SubCategoryId": 9,
+      "SubCategoryName": "Event Planning",
+      "CategoryId": 4
+    },
+    {
+      "SubCategoryId": 10,
+      "SubCategoryName": "Event Services",
+      "CategoryId": 4
+    },
+
+    {
+      "SubCategoryId": 11,
+      "SubCategoryName": "Venues",
+      "CategoryId": 4
+    },
+    // Construction & Building 5
+    {
+      "SubCategoryId": 12,
+      "SubCategoryName": "Architectual Design",
+      "CategoryId": 5
+    },
+    {
+      "SubCategoryId": 13,
+      "SubCategoryName": "Site Planning and Approval",
+      "CategoryId": 5
+    },
+    // Interior and Urban Design 6
+    {
+      "SubCategoryId": 14,
+      "SubCategoryName": "Surveying and Land Services",
+      "CategoryId": 6
+    },
+    {
+      "SubCategoryId": 15,
+      "SubCategoryName": "Interior Design",
+      "CategoryId": 6
+    },
+
+    {
+      "SubCategoryId": 16,
+      "SubCategoryName": "Land Documentation",
+      "CategoryId": 6
+    }
+
+  ],
+  //subcategories for Passenger Transport 1
+
+
+  "SubCategoryCategories": [
+    {
+      "SubCategoryCategoryId": 1,
+      "SubCategoryId": 1,
+      "SubCategoryCategoryName": "Private Car Hire"
+    },
+    {
+      "SubCategoryCategoryId": 2,
+      "SubCategoryId": 1,
+      "SubCategoryCategoryName": "Airport Transport"
+    },
+
+    {
+      "SubCategoryCategoryId": 3,
+      "SubCategoryId": 1,
+      "SubCategoryCategoryName": "Taxi/Ride"
+    },
+    {
+      "SubCategoryCategoryId": 4,
+      "SubCategoryId": 1,
+      "SubCategoryCategoryName": "Bus Services"
+    },
+
+    {
+      "SubCategoryCategoryId": 5,
+      "SubCategoryId": 1,
+      "SubCategoryCategoryName": "School Transport"
+    },
+
+    //subcategories for Freigt and Cargo 2
+    {
+      "SubCategoryCategoryId": 6,
+      "SubCategoryId": 2,
+      "SubCategoryCategoryName": "Local Delivery (lorry)"
+    },
+
+    {
+      "SubCategoryCategoryId": 7,
+      "SubCategoryId": 2,
+      "SubCategoryCategoryName": "Long Distance Haulage"
+    },
+    {
+      "SubCategoryCategoryId": 8,
+      "SubCategoryId": 2,
+      "SubCategoryCategoryName": "Motor Cycle(boda)"
+    },
+
+    {
+      "SubCategoryCategoryId": 9,
+      "SubCategoryId": 2,
+      "SubCategoryCategoryName": "Refrigrate Transport"
+    },
+
+    //subcategories for ICT and Digital Skills 3
+
+    {
+      "SubCategoryCategoryId": 10,
+      "SubCategoryId": 3,
+      "SubCategoryCategoryName": "Computer Training"
+    },
+
+    {
+      "SubCategoryCategoryId": 11,
+      "SubCategoryId": 3,
+      "SubCategoryCategoryName": "Microsoft Office  Training"
+    },
+    {
+      "SubCategoryCategoryId": 12,
+      "SubCategoryId": 3,
+      "SubCategoryCategoryName": "Programming Courses"
+    },
+
+    {
+      "SubCategoryCategoryId": 13,
+      "SubCategoryId": 3,
+      "SubCategoryCategoryName": "AI Training"
+    },
+    {
+      "SubCategoryCategoryId": 14,
+      "SubCategoryId": 3,
+      "SubCategoryCategoryName": "Graphics Design"
+    },
+    //subcategories for Technical and Engineering Training 4
+
+
+
+    {
+      "SubCategoryCategoryId": 15,
+      "SubCategoryId": 4,
+      "SubCategoryCategoryName": "AutoCad Training"
+    },
+    {
+      "SubCategoryCategoryId": 16,
+      "SubCategoryId": 4,
+      "SubCategoryCategoryName": "Civil 3D Training"
+    },
+
+    {
+      "SubCategoryCategoryId": 17,
+      "SubCategoryId": 4,
+      "SubCategoryCategoryName": "Solid Works Training"
+    },
+
+    //subcategories for Vocational Training 5
+
+
+    {
+      "SubCategoryCategoryId": 18,
+      "SubCategoryId": 5,
+      "SubCategoryCategoryName": "Tailoring"
+    },
+
+    {
+      "SubCategoryCategoryId": 19,
+      "SubCategoryId": 5,
+      "SubCategoryCategoryName": "Plumbing"
+    },
+    {
+      "SubCategoryCategoryId": 20,
+      "SubCategoryId": 5,
+      "SubCategoryCategoryName": "Welding"
+    },
+
+    {
+      "SubCategoryCategoryId": 21,
+      "SubCategoryId": 5,
+      "SubCategoryCategoryName": "Electrical Installation Training"
+    },
+    //subcategories for Adult and Continous Training 6
+
+
+    {
+      "SubCategoryCategoryId": 22,
+      "SubCategoryId": 6,
+      "SubCategoryCategoryName": "Adult Literacy Program"
+    },
+
+    //subcategories for Residential Electrical Works 7
+
+
+    {
+      "SubCategoryCategoryId": 23,
+      "SubCategoryId": 7,
+      "SubCategoryCategoryName": "House Wiring"
+    },
+    {
+      "SubCategoryCategoryId": 24,
+      "SubCategoryId": 7,
+      "SubCategoryCategoryName": "Generator Installation/Hire"
+    },
+
+    {
+      "SubCategoryCategoryId": 25,
+      "SubCategoryId": 7,
+      "SubCategoryCategoryName": "Solar System Installation"
+    },
+    {
+      "SubCategoryCategoryId": 26,
+      "SubCategoryId": 7,
+      "SubCategoryCategoryName": "Camera Installation"
+    },
+    //subcategories for Industrial Electrical Works 8
+
+    {
+      "SubCategoryCategoryId": 27,
+      "SubCategoryId": 8,
+      "SubCategoryCategoryName": "Industrial Wiring"
+    },
+    {
+      "SubCategoryCategoryId": 28,
+      "SubCategoryId": 8,
+      "SubCategoryCategoryName": "Electrical Panel Design & Installation"
+    },
+
+    {
+      "SubCategoryCategoryId": 29,
+      "SubCategoryId": 8,
+      "SubCategoryCategoryName": "Factory Maintainance"
+    },
+    {
+      "SubCategoryCategoryId": 30,
+      "SubCategoryId": 8,
+      "SubCategoryCategoryName": "Power BackUp Systems"
+    },
+
+
+    //subcategories for Event Planning 9
+
+
+    {
+      "SubCategoryCategoryId": 31,
+      "SubCategoryId": 9,
+      "SubCategoryCategoryName": "Wedding Planning"
+    },
+    {
+      "SubCategoryCategoryId": 32,
+      "SubCategoryId": 9,
+      "SubCategoryCategoryName": "Corporate Events"
+    },
+
+    {
+      "SubCategoryCategoryId": 33,
+      "SubCategoryId": 9,
+      "SubCategoryCategoryName": "Funeral Services"
+    },
+    {
+      "SubCategoryCategoryId": 34,
+      "SubCategoryId": 9,
+      "SubCategoryCategoryName": "Cultural Ceremonies"
+    },
+
+    //subcategories for Event Services 10
+
+
+    {
+      "SubCategoryCategoryId": 35,
+      "SubCategoryId": 10,
+      "SubCategoryCategoryName": "Catering"
+    },
+    {
+      "SubCategoryCategoryId": 36,
+      "SubCategoryId": 10,
+      "SubCategoryCategoryName": "Decoration"
+    },
+
+    {
+      "SubCategoryCategoryId": 37,
+      "SubCategoryId": 10,
+      "SubCategoryCategoryName": "Tent & Chair Hire"
+    },
+    {
+      "SubCategoryCategoryId": 38,
+      "SubCategoryId": 10,
+      "SubCategoryCategoryName": "Photography and Videography"
+    },
+
+    {
+      "SubCategoryCategoryId": 39,
+      "SubCategoryId": 10,
+      "SubCategoryCategoryName": "Sound and DJ services"
+    },
+    {
+      "SubCategoryCategoryId": 40,
+      "SubCategoryId": 10,
+      "SubCategoryCategoryName": "MC and Host Services"
+    },
+
+    //subcategories for Venues 11
+
+
+    {
+      "SubCategoryCategoryId": 41,
+      "SubCategoryId": 11,
+      "SubCategoryCategoryName": "Venues"
+    },
+    {
+      "SubCategoryCategoryId": 42,
+      "SubCategoryId": 11,
+      "SubCategoryCategoryName": "Event Security"
+    },
+
+    {
+      "SubCategoryCategoryId": 43,
+      "SubCategoryId": 11,
+      "SubCategoryCategoryName": "Stage Set-Up"
+    },
+
+    //subcategories for Architectual Design 12
+
+
+    {
+      "SubCategoryCategoryId": 44,
+      "SubCategoryId": 12,
+      "SubCategoryCategoryName": "Residential Design"
+    },
+
+    {
+      "SubCategoryCategoryId": 45,
+      "SubCategoryId": 12,
+      "SubCategoryCategoryName": "Commercial Design"
+    },
+    {
+      "SubCategoryCategoryId": 46,
+      "SubCategoryId": 12,
+      "SubCategoryCategoryName": "Institutional Buildings Design"
+    },
+
+    {
+      "SubCategoryCategoryId": 47,
+      "SubCategoryId": 12,
+      "SubCategoryCategoryName": "3D Modelling and Visualiztion"
+    },
+    {
+      "SubCategoryCategoryId": 48,
+      "SubCategoryId": 12,
+      "SubCategoryCategoryName": "Renovation Design"
+    },
+
+
+    //subcategories for Site Planning and Approval 13
+
+
+    {
+      "SubCategoryCategoryId": 49,
+      "SubCategoryId": 13,
+      "SubCategoryCategoryName": "Building Plan Approval"
+    },
+    {
+      "SubCategoryCategoryId": 50,
+      "SubCategoryId": 13,
+      "SubCategoryCategoryName": "Permit Assistance"
+    },
+
+    //subcategories for Surveying and Land Services 14
+
+
+    {
+      "SubCategoryCategoryId": 51,
+      "SubCategoryId": 14,
+      "SubCategoryCategoryName": "Land Survey"
+    },
+    {
+      "SubCategoryCategoryId": 52,
+      "SubCategoryId": 14,
+      "SubCategoryCategoryName": "Construction Setting Out"
+    },
+    {
+      "SubCategoryCategoryId": 53,
+      "SubCategoryId": 14,
+      "SubCategoryCategoryName": "Topographic Survey"
+    },
+
+    //subcategories for Interior Design 15
+
+    {
+      "SubCategoryCategoryId": 54,
+      "SubCategoryId": 15,
+      "SubCategoryCategoryName": "Interior Design"
+    },
+    {
+      "SubCategoryCategoryId": 55,
+      "SubCategoryId": 15,
+      "SubCategoryCategoryName": "Landscape Design"
+    },
+    {
+      "SubCategoryCategoryId": 56,
+      "SubCategoryId": 15,
+      "SubCategoryCategoryName": "Urban Planning"
+    },
+    //subcategories for Land Documentation 16
+
+
+
+
+    {
+      "SubCategoryCategoryId": 57,
+      "SubCategoryId": 16,
+      "SubCategoryCategoryName": "Title Processing"
+    },
+    {
+      "SubCategoryCategoryId": 58,
+      "SubCategoryId": 16,
+      "SubCategoryCategoryName": "Land Valuation"
+    },
+    {
+      "SubCategoryCategoryId": 59,
+      "SubCategoryId": 16,
+      "SubCategoryCategoryName": "Property Demarcation"
+    }
+    
+  ]
+
+}

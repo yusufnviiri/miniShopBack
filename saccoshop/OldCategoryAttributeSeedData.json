@@ -1,0 +1,306 @@
+{
+  "categories": [
+    {
+      "categoryId": 1,
+      "categoryName": "Electronics & Gadgets",
+      "generalCategoryId": 1
+    },
+    {
+      "categoryId": 2,
+      "categoryName": "Fashion & Apparel",
+      "generalCategoryId": 2
+    },
+    {
+      "categoryId": 3,
+      "categoryName": "Home & Kitchen Appliances",
+      "generalCategoryId": 9
+    },
+    {
+      "categoryId": 4,
+      "categoryName": "Health & Beauty Products",
+      "generalCategoryId": 11
+    },
+    {
+      "categoryId": 5,
+      "categoryName": "Sports & Fitness Equipment",
+      "generalCategoryId": 10
+    },
+    {
+      "categoryId": 6,
+      "categoryName": "Software & Digital Products",
+      "generalCategoryId": null
+    },
+    {
+      "categoryId": 7,
+      "categoryName": "Agricultural Products",
+      "generalCategoryId": null
+    }
+  ],
+
+  "subCategories": [
+    {
+      "subCategoryId": 1,
+      "subCategoryName": "Smartphones",
+      "categoryId": 1
+    },
+    {
+      "subCategoryId": 2,
+      "subCategoryName": "Laptops",
+      "categoryId": 1
+    },
+    {
+      "subCategoryId": 3,
+      "subCategoryName": "Televisions",
+      "categoryId": 1
+    },
+    {
+      "subCategoryId": 4,
+      "subCategoryName": "Audio Devices",
+      "categoryId": 1
+    },
+    {
+      "subCategoryId": 5,
+      "subCategoryName": "Gaming Consoles",
+      "categoryId": 1
+    },
+
+    {
+      "subCategoryId": 6,
+      "subCategoryName": "Men Clothing",
+      "categoryId": 2
+    },
+    {
+      "subCategoryId": 7,
+      "subCategoryName": "Women Clothing",
+      "categoryId": 2
+    },
+    {
+      "subCategoryId": 8,
+      "subCategoryName": "Shoes",
+      "categoryId": 2
+    },
+    {
+      "subCategoryId": 9,
+      "subCategoryName": "Bags",
+      "categoryId": 2
+    },
+    {
+      "subCategoryId": 10,
+      "subCategoryName": "Watches",
+      "categoryId": 2
+    },
+
+    {
+      "subCategoryId": 11,
+      "subCategoryName": "Kitchen Appliances",
+      "categoryId": 3
+    },
+    {
+      "subCategoryId": 12,
+      "subCategoryName": "Furniture",
+      "categoryId": 3
+    },
+
+    {
+      "subCategoryId": 16,
+      "subCategoryName": "Skincare",
+      "categoryId": 4
+    },
+
+    {
+      "subCategoryId": 21,
+      "subCategoryName": "Gym Equipment",
+      "categoryId": 5
+    },
+
+    {
+      "subCategoryId": 101,
+      "subCategoryName": "Operating Systems",
+      "categoryId": 6
+    },
+
+    {
+      "subCategoryId": 201,
+      "subCategoryName": "Fresh Produce",
+      "categoryId": 7
+    }
+  ],
+
+  "subCategoryCategories": [
+    {
+      "subCategoryCategoryId": 1,
+      "subCategoryCategoryName": "Android Smartphones",
+      "subCategoryId": 1
+    },
+    {
+      "subCategoryCategoryId": 2,
+      "subCategoryCategoryName": "iOS Smartphones",
+      "subCategoryId": 1
+    },
+
+    {
+      "subCategoryCategoryId": 3,
+      "subCategoryCategoryName": "Gaming Laptops",
+      "subCategoryId": 2
+    },
+    {
+      "subCategoryCategoryId": 4,
+      "subCategoryCategoryName": "Business Laptops",
+      "subCategoryId": 2
+    },
+
+    {
+      "subCategoryCategoryId": 5,
+      "subCategoryCategoryName": "Smart TVs",
+      "subCategoryId": 3
+    },
+    {
+      "subCategoryCategoryId": 6,
+      "subCategoryCategoryName": "4K Ultra HD TVs",
+      "subCategoryId": 3
+    },
+
+    {
+      "subCategoryCategoryId": 7,
+      "subCategoryCategoryName": "Bluetooth Speakers",
+      "subCategoryId": 4
+    },
+    {
+      "subCategoryCategoryId": 8,
+      "subCategoryCategoryName": "Wireless Headphones",
+      "subCategoryId": 4
+    },
+
+    {
+      "subCategoryCategoryId": 9,
+      "subCategoryCategoryName": "PlayStation Consoles",
+      "subCategoryId": 5
+    },
+    {
+      "subCategoryCategoryId": 10,
+      "subCategoryCategoryName": "Xbox Consoles",
+      "subCategoryId": 5
+    },
+
+    {
+      "subCategoryCategoryId": 11,
+      "subCategoryCategoryName": "Men T-Shirts",
+      "subCategoryId": 6
+    },
+    {
+      "subCategoryCategoryId": 12,
+      "subCategoryCategoryName": "Men Jeans",
+      "subCategoryId": 6
+    },
+
+    {
+      "subCategoryCategoryId": 13,
+      "subCategoryCategoryName": "Women Dresses",
+      "subCategoryId": 7
+    },
+    {
+      "subCategoryCategoryId": 14,
+      "subCategoryCategoryName": "Women Tops",
+      "subCategoryId": 7
+    },
+
+    {
+      "subCategoryCategoryId": 15,
+      "subCategoryCategoryName": "Running Shoes",
+      "subCategoryId": 8
+    },
+    {
+      "subCategoryCategoryId": 16,
+      "subCategoryCategoryName": "Formal Shoes",
+      "subCategoryId": 8
+    },
+
+    {
+      "subCategoryCategoryId": 17,
+      "subCategoryCategoryName": "Handbags",
+      "subCategoryId": 9
+    },
+    {
+      "subCategoryCategoryId": 18,
+      "subCategoryCategoryName": "Travel Bags",
+      "subCategoryId": 9
+    },
+
+    {
+      "subCategoryCategoryId": 19,
+      "subCategoryCategoryName": "Smart Watches",
+      "subCategoryId": 10
+    },
+    {
+      "subCategoryCategoryId": 20,
+      "subCategoryCategoryName": "Luxury Watches",
+      "subCategoryId": 10
+    },
+
+    {
+      "subCategoryCategoryId": 21,
+      "subCategoryCategoryName": "Blenders & Mixers",
+      "subCategoryId": 11
+    },
+    {
+      "subCategoryCategoryId": 22,
+      "subCategoryCategoryName": "Microwave Ovens",
+      "subCategoryId": 11
+    },
+
+    {
+      "subCategoryCategoryId": 23,
+      "subCategoryCategoryName": "Sofas & Couches",
+      "subCategoryId": 12
+    },
+    {
+      "subCategoryCategoryId": 24,
+      "subCategoryCategoryName": "Beds & Mattresses",
+      "subCategoryId": 12
+    },
+
+    {
+      "subCategoryCategoryId": 31,
+      "subCategoryCategoryName": "Face Creams",
+      "subCategoryId": 16
+    },
+    {
+      "subCategoryCategoryId": 32,
+      "subCategoryCategoryName": "Serums & Toners",
+      "subCategoryId": 16
+    },
+
+    {
+      "subCategoryCategoryId": 41,
+      "subCategoryCategoryName": "Treadmills",
+      "subCategoryId": 21
+    },
+    {
+      "subCategoryCategoryId": 42,
+      "subCategoryCategoryName": "Dumbbells",
+      "subCategoryId": 21
+    },
+
+    {
+      "subCategoryCategoryId": 10101,
+      "subCategoryCategoryName": "Windows 11 Pro License",
+      "subCategoryId": 101
+    },
+    {
+      "subCategoryCategoryId": 10102,
+      "subCategoryCategoryName": "Windows 10 Pro License",
+      "subCategoryId": 101
+    },
+
+    {
+      "subCategoryCategoryId": 20101,
+      "subCategoryCategoryName": "Fresh Bananas (Matooke)",
+      "subCategoryId": 201
+    },
+    {
+      "subCategoryCategoryId": 20102,
+      "subCategoryCategoryName": "Fresh Tomatoes",
+      "subCategoryId": 201
+    }
+  ]
+}

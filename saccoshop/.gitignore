@@ -1,0 +1,72 @@
+## Ignore Visual Studio files
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+## Ignore build results
+bin/
+obj/
+[Bb]uild/
+[Ll]ogs/
+
+*.log
+## Ignore build results recursively
+**/bin/
+**/obj/
+**/[Bb]uild/
+**/[Ll]ogs/
+*.log
+
+## Ignore Rider IDE files
+.idea/
+
+## Ignore temporary files
+*.tmp
+*.bak
+*.swp
+*~ 
+*.DS_Store
+Thumbs.db
+
+## Ignore dotnet-specific files
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+## Ignore packages (for older versions of .NET)
+packages/
+*.nupkg
+*.snupkg
+
+## Ignore test results
+TestResults/
+*.trx
+*.coverage
+*.coveragexml
+
+## Ignore secrets (if using User Secrets for dev)
+secrets.json
+
+## Ignore Publish output
+publish/
+*.publishsettings
+
+## Ignore compiled debug files
+*.pdb
+
+## Ignore migrations if not needed
+# (Uncomment if EF migrations should not be tracked)
+# Migrations/
+
+## Ignore ReSharper files
+_ReSharper*/
+*.DotSettings.user
+
+## Ignore local configuration
+appsettings.Development.json
+appsettings.Local.json
+appsettings.json
+
+

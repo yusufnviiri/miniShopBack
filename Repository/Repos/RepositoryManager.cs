@@ -1,0 +1,131 @@
+﻿using Contracts.Repo;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Caching.Memory;
+using Repository.context;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Repository.Repos
+{
+    
+
+    public class RepositoryManager : IRepositoryManager
+    {
+        //private readonly IMemoryCache _cache;
+
+        private readonly ApplicationDbContext _dbContext;
+        private readonly Lazy<IPaymentRepo> _paymentRepo;
+        private readonly Lazy<IWishListRepo> _wishListRepo;
+        private readonly Lazy<IWishListItemRepo> _wishListItemRepo;
+        private readonly Lazy<IReviewRepo> _reviewRepo;
+        private readonly Lazy<IShoppingCartRepo> _shoppingCartRepo;
+        private readonly Lazy<ICartItemRepo> _cartItemRepo;
+        private readonly Lazy<IOrderItemRepo> _orderItemRepo;
+        private readonly Lazy<IOrderRepo> _orderRepo;
+        private readonly Lazy<IProductRepo> _productRepo;
+        private readonly Lazy<IProductImageRepo> _productImageRepo;
+        private readonly Lazy<IUserGroupRepo> _userGroupRepo;
+        private readonly Lazy<IApplicationUserRepo> _userRepo;
+        private readonly Lazy<ICategoryRepo> _categoryRepo;
+        private readonly Lazy<ISubCategoryRepo> _subCategoryRepo;
+        private readonly Lazy<ISubCategoryCategoryRepo> _subCategoryCategoryRepo;
+        private readonly Lazy<IUserProfileRepo> _userProfileRepo;
+        private readonly Lazy<IGroupMemberRepo> _groupMemberRepo;
+        private readonly Lazy<IAddressRepo> _addressRepo;
+        private readonly Lazy<ApplicationUserRepo> _applicationUserRepo;
+        private readonly Lazy<ISellerRestrictionRepo> _sellerRestrictionRepo;
+        private readonly Lazy<IBuyerProfileRepo> _buyerProfileRepo;
+        private readonly Lazy<ISellerProfileRepo> _sellerProfileRepo;
+        private readonly Lazy<ISellerViolationRepo> _sellerViolationRepo;
+        private readonly Lazy<IUserGroupSellerRepo> _userGroupSellerRepo;
+        private readonly Lazy<IUserGroupNotificationRepo> _userGroupNotificationRepo;
+        private readonly Lazy<ICategoryAttributeRepo> _categoryAttributeRepo;
+        private readonly Lazy<IProductAttributeValueRepo> _productAttributeValueRepo;
+        private readonly Lazy<IUserOtpRepo> _userOtpRepo;
+        private readonly Lazy<IUserDeviceRepo> _userDeviceRepo;
+        private readonly Lazy<IRefreshTokenRepo> _refreshTokenRepo;
+        private readonly Lazy<IGeneralCategoryRepo> _generalCategoryRepo;
+        private readonly Lazy<ITradeRepo> _tradeRepo;
+        private readonly Lazy<ITradeAttributeValueRepo> _tradeAttributeValueRepo;
+        private readonly Lazy<ITradeImageRepo> _tradeImageRepo;
+        private readonly Lazy<IGroupSellerRepo> _groupSellerRepo;
+        public RepositoryManager(ApplicationDbContext dbContext, IMemoryCache cache)
+        {
+            _dbContext = dbContext;
+            _paymentRepo = new Lazy<IPaymentRepo>(()=>new PaymentRepo(dbContext));
+            _wishListRepo = new Lazy<IWishListRepo>(()=>new WishListRepo(dbContext));
+            _reviewRepo = new Lazy<IReviewRepo>(()=>new ReviewRepo(dbContext));
+            _shoppingCartRepo = new Lazy<IShoppingCartRepo>(()=> new  ShoppingCartRepo(dbContext));
+            _cartItemRepo = new Lazy<ICartItemRepo>(()=>new CartItemRepo(dbContext));
+            _orderItemRepo = new Lazy<IOrderItemRepo>(()=>new OrderItemRepo(dbContext));
+            _orderRepo = new Lazy<IOrderRepo>(()=>new OrderRepo(dbContext));
+            _productImageRepo = new Lazy<IProductImageRepo>(()=>new ProductImageRepo(dbContext));
+            _productRepo = new Lazy<IProductRepo>(()=>new ProductRepo(dbContext,cache));
+            _userGroupRepo = new Lazy<IUserGroupRepo>(()=>new UserGroupRepo(dbContext));
+            _userRepo = new Lazy<IApplicationUserRepo>(()=>new ApplicationUserRepo(dbContext));
+            _categoryRepo = new Lazy<ICategoryRepo>(()=>new CategoryRepo(dbContext));
+            _subCategoryRepo = new Lazy<ISubCategoryRepo>(()=>new SubCategoryRepo(dbContext));
+            _subCategoryCategoryRepo = new Lazy<ISubCategoryCategoryRepo>(()=>new SubCategoryCategoryRepo(dbContext));
+            _wishListItemRepo = new Lazy<IWishListItemRepo>(()=> new WishListItemRepo(dbContext));
+            _userProfileRepo =new Lazy<IUserProfileRepo>(()=> new UserProfileRepo(dbContext));
+            _groupMemberRepo = new Lazy<IGroupMemberRepo>(()=>new GroupMemberRepo(dbContext));
+            _addressRepo = new Lazy<IAddressRepo>(()=> new AddressRepo(dbContext));
+            _applicationUserRepo = new Lazy<ApplicationUserRepo>(()=>new ApplicationUserRepo(dbContext));
+           _sellerRestrictionRepo = new Lazy<ISellerRestrictionRepo>(()=>new SellerRestrictionRepo(dbContext));
+            _buyerProfileRepo = new Lazy<IBuyerProfileRepo>(()=> new BuyerProfileRepo(dbContext));
+            _sellerProfileRepo = new Lazy<ISellerProfileRepo>(()=> new SellerProfileRepo(dbContext));
+            _sellerViolationRepo = new Lazy<ISellerViolationRepo>(()=> new SellerViolationRepo(dbContext));
+            _userGroupSellerRepo = new Lazy<IUserGroupSellerRepo>(() => new UserGroupSellerRepo(dbContext));
+            _userGroupNotificationRepo = new Lazy<IUserGroupNotificationRepo>(() => new UserGroupNotificationRepo(dbContext));
+            _categoryAttributeRepo = new Lazy<ICategoryAttributeRepo>(()=>new CategoryAttributeRepo(dbContext));
+            _productAttributeValueRepo = new Lazy<IProductAttributeValueRepo>(()=>new ProductAttributeValueRepo(dbContext));
+            _userOtpRepo = new Lazy<IUserOtpRepo>(()=>new UserOtpRepo(dbContext));
+            _userDeviceRepo = new Lazy<IUserDeviceRepo>(()=>new UserDeviceRepo(dbContext));
+            _refreshTokenRepo = new Lazy<IRefreshTokenRepo>(()=>new RefreshTokenRepo(dbContext));
+            _generalCategoryRepo = new Lazy<IGeneralCategoryRepo> (()=> new GeneralCategoryRepo(dbContext));
+            _tradeRepo = new Lazy<ITradeRepo>(()=> new TradeRepo(dbContext));
+            _tradeAttributeValueRepo = new Lazy<ITradeAttributeValueRepo> (()=>new TradeAttributeValueRepo(dbContext));
+            _tradeImageRepo= new Lazy<ITradeImageRepo>(()=>new TradeImageRepo(dbContext));
+            _groupSellerRepo = new Lazy<IGroupSellerRepo>(()=>new GroupSellerRepo(dbContext));
+        }
+        public async Task SaveRepoDataAsync()=> await _dbContext.SaveChangesAsync();
+        public IPaymentRepo PaymentRepo =>_paymentRepo.Value;
+        public IWishListRepo WishListRepo =>_wishListRepo.Value;
+        public IReviewRepo ReviewRepo =>_reviewRepo.Value;
+        public IShoppingCartRepo ShoppingCartRepo =>_shoppingCartRepo.Value;
+        public ICartItemRepo CartItemRepo =>_cartItemRepo.Value;
+        public IOrderRepo OrderRepo =>_orderRepo.Value;
+        public IOrderItemRepo OrderItemRepo =>_orderItemRepo.Value;
+        public IProductImageRepo ProductImageRepo =>_productImageRepo.Value;
+        public IProductRepo ProductRepo =>_productRepo.Value;
+        public  IUserGroupRepo UserGroupRepo =>_userGroupRepo.Value;
+        public IApplicationUserRepo UserRepo =>_userRepo.Value;
+        public ICategoryRepo CategoryRepo =>_categoryRepo.Value;
+        public  ISubCategoryRepo SubCategoryRepo =>_subCategoryRepo.Value;
+        public ISubCategoryCategoryRepo SubCategoryCategoryRepo => _subCategoryCategoryRepo.Value;
+        public IWishListItemRepo WishListItemRepo => _wishListItemRepo.Value;
+        public IGroupMemberRepo GroupMemberRepo =>_groupMemberRepo.Value;
+        public IUserProfileRepo UserProfileRepo =>_userProfileRepo.Value;
+        public IAddressRepo AddressRepo => _addressRepo.Value;
+        public IApplicationUserRepo ApplicationUserRepo =>_applicationUserRepo.Value;
+        public ISellerRestrictionRepo SellerRestrictionRepo =>_sellerRestrictionRepo.Value;
+        public IBuyerProfileRepo BuyerProfileRepo =>_buyerProfileRepo.Value;
+        public ISellerProfileRepo SellerProfileRepo =>_sellerProfileRepo.Value;
+        public ISellerViolationRepo SellerViolationRepo =>_sellerViolationRepo.Value;
+        public IUserGroupSellerRepo UserGroupSellerRepo =>_userGroupSellerRepo.Value;
+        public IUserGroupNotificationRepo UserGroupNotificationRepo => _userGroupNotificationRepo.Value;
+        public ICategoryAttributeRepo CategoryAttributeRepo=>_categoryAttributeRepo.Value;
+        public IProductAttributeValueRepo ProductAttributeValueRepo =>_productAttributeValueRepo.Value;
+        public IUserOtpRepo UserOtpRepo =>_userOtpRepo.Value;
+        public IUserDeviceRepo UserDeviceRepo =>_userDeviceRepo.Value;
+        public IRefreshTokenRepo RefreshTokenRepo =>_refreshTokenRepo.Value;
+        public IGeneralCategoryRepo GeneralCategoryRepo =>_generalCategoryRepo.Value;
+        public ITradeRepo TradeRepo =>_tradeRepo.Value;
+        public ITradeAttributeValueRepo TradeAttributeValueRepo =>_tradeAttributeValueRepo.Value;
+        public ITradeImageRepo TradeImageRepo =>_tradeImageRepo.Value;
+        public IGroupSellerRepo GroupSellerRepo =>_groupSellerRepo.Value;
+    }
+}

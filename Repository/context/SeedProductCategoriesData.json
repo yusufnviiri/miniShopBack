@@ -1,0 +1,1763 @@
+{
+  "categories": [
+    {
+      "categoryId": 1,
+      "categoryName": "Electronics & Gadgets",
+      "generalCategoryId": 1,
+      "type": "product"
+    },
+    {
+      "categoryId": 2,
+      "categoryName": "Fashion & Apparel",
+      "generalCategoryId": 2,
+      "type": "product"
+    },
+    {
+      "categoryId": 3,
+      "categoryName": "Home & Kitchen Appliances",
+      "generalCategoryId": 9,
+      "type": "product"
+    },
+    {
+      "categoryId": 4,
+      "categoryName": "Health & Beauty Products",
+      "generalCategoryId": 11,
+      "type": "product"
+    },
+    {
+      "categoryId": 5,
+      "categoryName": "Sports & Fitness Equipment",
+      "generalCategoryId": 10,
+      "type": "product"
+    },
+    {
+      "categoryId": 6,
+      "categoryName": "Software & Digital Products",
+      "generalCategoryId": 13,
+      "type": "product"
+    },
+    {
+      "categoryId": 7,
+      "categoryName": "Agricultural Products",
+      "generalCategoryId": 14,
+      "type": "product"
+    },
+    {
+      "categoryId": 8,
+      "categoryName": "Transport & Logistics",
+      "generalCategoryId": 12,
+      "type": "service"
+    },
+    {
+      "categoryId": 9,
+      "categoryName": "Education and Professional Training",
+      "generalCategoryId": 12,
+      "type": "service"
+    },
+    {
+      "categoryId": 10,
+      "categoryName": "Electrical Services",
+      "generalCategoryId": 12,
+      "type": "service"
+    },
+    {
+      "categoryId": 11,
+      "categoryName": "Events & Hospitality (Mikolo)",
+      "generalCategoryId": 12,
+      "type": "service"
+    },
+    {
+      "categoryId": 12,
+      "categoryName": "Construction & Building",
+      "generalCategoryId": 12,
+      "type": "service"
+    },
+    {
+      "categoryId": 13,
+      "categoryName": "Interior and Urban Design",
+      "generalCategoryId": 12,
+      "type": "service"
+    },
+    {
+      "categoryId": 14,
+      "categoryName": "Land",
+      "generalCategoryId": 15,
+      "type": "product"
+    },
+    {
+      "categoryId": 15,
+      "categoryName": "Shoes",
+      "generalCategoryId": 16,
+      "type": ""
+    },
+    {
+      "categoryId": 16,
+      "categoryName": "Phones",
+      "generalCategoryId": 1,
+      "type": ""
+    },
+    {
+      "categoryId": 17,
+      "categoryName": "Televisions(TVs)",
+      "generalCategoryId": 17,
+      "type": ""
+    },
+    {
+      "categoryId": 18,
+      "categoryName": "Computers & Laptops",
+      "generalCategoryId": 2,
+      "type": ""
+    },
+    {
+      "categoryId": 19,
+      "categoryName": "Women’s Clothing",
+      "generalCategoryId": 16,
+      "type": ""
+    },
+    {
+      "categoryId": 20,
+      "categoryName": "Food & Beverages",
+      "generalCategoryId": 18,
+      "type": ""
+    }
+  ],
+  "subCategories": [
+    {
+      "subCategoryId": 4,
+      "subCategoryName": "Audio Devices",
+      "categoryId": 1
+    },
+    {
+      "subCategoryId": 5,
+      "subCategoryName": "Gaming Consoles",
+      "categoryId": 1
+    },
+    {
+      "subCategoryId": 9,
+      "subCategoryName": "Bags",
+      "categoryId": 2
+    },
+    {
+      "subCategoryId": 10,
+      "subCategoryName": "Watches",
+      "categoryId": 2
+    },
+    {
+      "subCategoryId": 11,
+      "subCategoryName": "Skincare",
+      "categoryId": 4
+    },
+    {
+      "subCategoryId": 12,
+      "subCategoryName": "Gym Equipment",
+      "categoryId": 5
+    },
+    {
+      "subCategoryId": 13,
+      "subCategoryName": "Operating Systems",
+      "categoryId": 6
+    },
+    {
+      "subCategoryId": 14,
+      "subCategoryName": "Application Software",
+      "categoryId": 6
+    },
+    {
+      "subCategoryId": 15,
+      "subCategoryName": "Engineering & CAD Software",
+      "categoryId": 6
+    },
+    {
+      "subCategoryId": 16,
+      "subCategoryName": "Mobile Applications (APK & App Licenses)",
+      "categoryId": 6
+    },
+    {
+      "subCategoryId": 17,
+      "subCategoryName": "Digital Assets",
+      "categoryId": 6
+    },
+    {
+      "subCategoryId": 18,
+      "subCategoryName": "Plant-Based Foods",
+      "categoryId": 7
+    },
+    {
+      "subCategoryId": 19,
+      "subCategoryName": "Animal-Based Foods",
+      "categoryId": 7
+    },
+    {
+      "subCategoryId": 20,
+      "subCategoryName": "Others",
+      "categoryId": 7
+    },
+    {
+      "subCategoryId": 21,
+      "subCategoryName": "Passenger Transport",
+      "categoryId": 8
+    },
+    {
+      "subCategoryId": 22,
+      "subCategoryName": "Freight and Cargo",
+      "categoryId": 8
+    },
+    {
+      "subCategoryId": 23,
+      "subCategoryName": "ICT and Digital Skills",
+      "categoryId": 9
+    },
+    {
+      "subCategoryId": 24,
+      "subCategoryName": "Technical and Engineering Training",
+      "categoryId": 9
+    },
+    {
+      "subCategoryId": 25,
+      "subCategoryName": "Vocational Training",
+      "categoryId": 9
+    },
+    {
+      "subCategoryId": 26,
+      "subCategoryName": "Adult and Continuous Training",
+      "categoryId": 9
+    },
+    {
+      "subCategoryId": 27,
+      "subCategoryName": "Residential Electrical Works",
+      "categoryId": 10
+    },
+    {
+      "subCategoryId": 28,
+      "subCategoryName": "Industrial Electrical Works",
+      "categoryId": 10
+    },
+    {
+      "subCategoryId": 29,
+      "subCategoryName": "Event Planning",
+      "categoryId": 11
+    },
+    {
+      "subCategoryId": 30,
+      "subCategoryName": "Event Services",
+      "categoryId": 11
+    },
+    {
+      "subCategoryId": 31,
+      "subCategoryName": "Venues",
+      "categoryId": 11
+    },
+    {
+      "subCategoryId": 32,
+      "subCategoryName": "Building Materials",
+      "categoryId": 12
+    },
+    {
+      "subCategoryId": 33,
+      "subCategoryName": "Construction Services",
+      "categoryId": 12
+    },
+    {
+      "subCategoryId": 34,
+      "subCategoryName": "Architecture & Engineering Services",
+      "categoryId": 12
+    },
+    {
+      "subCategoryId": 35,
+      "subCategoryName": "Construction Equipment & Tools",
+      "categoryId": 12
+    },
+    {
+      "subCategoryId": 36,
+      "subCategoryName": "Kitchen Appliances",
+      "categoryId": 3
+    },
+    {
+      "subCategoryId": 37,
+      "subCategoryName": "Cooling & Climate Control",
+      "categoryId": 3
+    },
+    {
+      "subCategoryId": 38,
+      "subCategoryName": "Laundry Appliances",
+      "categoryId": 3
+    },
+    {
+      "subCategoryId": 39,
+      "subCategoryName": "Cleaning Appliances",
+      "categoryId": 3
+    },
+    {
+      "subCategoryId": 40,
+      "subCategoryName": "Water & Heating Appliances",
+      "categoryId": 3
+    },
+    {
+      "subCategoryId": 41,
+      "subCategoryName": "Home Comfort & Living Appliances",
+      "categoryId": 3
+    },
+    {
+      "subCategoryId": 42,
+      "subCategoryName": "Gas & Energy Appliances",
+      "categoryId": 3
+    },
+    {
+      "subCategoryId": 43,
+      "subCategoryName": "Commercial Home Appliances",
+      "categoryId": 3
+    },
+    {
+      "subCategoryId": 44,
+      "subCategoryName": "Surveying and Land Services",
+      "categoryId": 13
+    },
+    {
+      "subCategoryId": 45,
+      "subCategoryName": "Interior Design",
+      "categoryId": 13
+    },
+    {
+      "subCategoryId": 46,
+      "subCategoryName": "Land Documentation",
+      "categoryId": 13
+    },
+    {
+      "subCategoryId": 47,
+      "subCategoryName": "Mailo Land",
+      "categoryId": 14
+    },
+    {
+      "subCategoryId": 48,
+      "subCategoryName": "Freehold Land",
+      "categoryId": 14
+    },
+    {
+      "subCategoryId": 49,
+      "subCategoryName": "Leasehold Land",
+      "categoryId": 14
+    },
+    {
+      "subCategoryId": 50,
+      "subCategoryName": "Customary Land",
+      "categoryId": 14
+    },
+    {
+      "subCategoryId": 52,
+      "subCategoryName": "Men Shoes",
+      "categoryId": 15
+    },
+    {
+      "subCategoryId": 53,
+      "subCategoryName": "Women Shoes",
+      "categoryId": 15
+    },
+    {
+      "subCategoryId": 54,
+      "subCategoryName": "Kids Shoes",
+      "categoryId": 15
+    },
+    {
+      "subCategoryId": 55,
+      "subCategoryName": "Unisex",
+      "categoryId": 15
+    },
+    {
+      "subCategoryId": 56,
+      "subCategoryName": "Smartphones",
+      "categoryId": 16
+    },
+    {
+      "subCategoryId": 57,
+      "subCategoryName": "Feature Phones (Non-Smartphones- mapeesa)",
+      "categoryId": 16
+    },
+    {
+      "subCategoryId": 58,
+      "subCategoryName": "Smart Televisions",
+      "categoryId": 17
+    },
+    {
+      "subCategoryId": 59,
+      "subCategoryName": "Non-Smart Televisions",
+      "categoryId": 17
+    },
+    {
+      "subCategoryId": 60,
+      "subCategoryName": "Special Purpose TVs",
+      "categoryId": 17
+    },
+    {
+      "subCategoryId": 61,
+      "subCategoryName": "Laptops",
+      "categoryId": 18
+    },
+    {
+      "subCategoryId": 62,
+      "subCategoryName": "Desktop & Tower Computers",
+      "categoryId": 18
+    },
+    {
+      "subCategoryId": 63,
+      "subCategoryName": "All-in-One Computers",
+      "categoryId": 18
+    },
+    {
+      "subCategoryId": 64,
+      "subCategoryName": "Mini / Compact PCs",
+      "categoryId": 18
+    },
+    {
+      "subCategoryId": 65,
+      "subCategoryName": "Workstations",
+      "categoryId": 18
+    },
+    {
+      "subCategoryId": 66,
+      "subCategoryName": "Dresses",
+      "categoryId": 19
+    },
+    {
+      "subCategoryId": 67,
+      "subCategoryName": "Tops & Blouses",
+      "categoryId": 19
+    },
+    {
+      "subCategoryId": 68,
+      "subCategoryName": "Pants & Trousers",
+      "categoryId": 19
+    },
+    {
+      "subCategoryId": 69,
+      "subCategoryName": "Skirts",
+      "categoryId": 19
+    },
+    {
+      "subCategoryId": 70,
+      "subCategoryName": "Outerwear",
+      "categoryId": 19
+    },
+    {
+      "subCategoryId": 71,
+      "subCategoryName": "Suits & Sets",
+      "categoryId": 19
+    },
+    {
+      "subCategoryId": 72,
+      "subCategoryName": "Jumpsuits & Rompers",
+      "categoryId": 19
+    },
+    {
+      "subCategoryId": 73,
+      "subCategoryName": "Traditional / African Wear",
+      "categoryId": 19
+    },
+    {
+      "subCategoryId": 74,
+      "subCategoryName": "Sportswear & Activewear",
+      "categoryId": 19
+    },
+    {
+      "subCategoryId": 75,
+      "subCategoryName": "Traditional Beverages and Drinks",
+      "categoryId": 20
+    },
+    {
+      "subCategoryId": 76,
+      "subCategoryName": "Packaged Juices & Soft Drinks",
+      "categoryId": 20
+    },
+    {
+      "subCategoryId": 77,
+      "subCategoryName": "Dairy Drinks",
+      "categoryId": 20
+    },
+    {
+      "subCategoryId": 78,
+      "subCategoryName": "Traditional Snacks & Seeds",
+      "categoryId": 20
+    },
+    {
+      "subCategoryId": 79,
+      "subCategoryName": "Nut Butters & Pastes",
+      "categoryId": 20
+    }
+  ],
+  "subCategoryCategories": [
+    {
+      "subCategoryCategoryId": 7,
+      "subCategoryId": 7,
+      "subCategoryCategoryName": "Bluetooth Speakers"
+    },
+    {
+      "subCategoryCategoryId": 8,
+      "subCategoryId": 8,
+      "subCategoryCategoryName": "Wireless Headphones"
+    },
+    {
+      "subCategoryCategoryId": 9,
+      "subCategoryId": 9,
+      "subCategoryCategoryName": "PlayStation Consoles"
+    },
+    {
+      "subCategoryCategoryId": 10,
+      "subCategoryId": 10,
+      "subCategoryCategoryName": "Xbox Consoles"
+    },
+    {
+      "subCategoryCategoryId": 17,
+      "subCategoryId": 17,
+      "subCategoryCategoryName": "Handbags"
+    },
+    {
+      "subCategoryCategoryId": 18,
+      "subCategoryId": 18,
+      "subCategoryCategoryName": "Travel Bags"
+    },
+    {
+      "subCategoryCategoryId": 19,
+      "subCategoryId": 19,
+      "subCategoryCategoryName": "Smart Watches"
+    },
+    {
+      "subCategoryCategoryId": 20,
+      "subCategoryId": 20,
+      "subCategoryCategoryName": "Luxury Watches"
+    },
+    {
+      "subCategoryCategoryId": 21,
+      "subCategoryId": 21,
+      "subCategoryCategoryName": "Face Creams"
+    },
+    {
+      "subCategoryCategoryId": 22,
+      "subCategoryId": 22,
+      "subCategoryCategoryName": "Serums & Toners"
+    },
+    {
+      "subCategoryCategoryId": 23,
+      "subCategoryId": 23,
+      "subCategoryCategoryName": "Treadmills"
+    },
+    {
+      "subCategoryCategoryId": 24,
+      "subCategoryId": 24,
+      "subCategoryCategoryName": "Dumbbells"
+    },
+    {
+      "subCategoryCategoryId": 25,
+      "subCategoryId": 25,
+      "subCategoryCategoryName": "Desktop OS"
+    },
+    {
+      "subCategoryCategoryId": 26,
+      "subCategoryId": 26,
+      "subCategoryCategoryName": "Server OS"
+    },
+    {
+      "subCategoryCategoryId": 27,
+      "subCategoryId": 27,
+      "subCategoryCategoryName": "Mobile OS"
+    },
+    {
+      "subCategoryCategoryId": 28,
+      "subCategoryId": 28,
+      "subCategoryCategoryName": "Security Software"
+    },
+    {
+      "subCategoryCategoryId": 29,
+      "subCategoryId": 29,
+      "subCategoryCategoryName": "Productivity Software (Office)"
+    },
+    {
+      "subCategoryCategoryId": 30,
+      "subCategoryId": 30,
+      "subCategoryCategoryName": "Accounting & Business Software"
+    },
+    {
+      "subCategoryCategoryId": 31,
+      "subCategoryId": 31,
+      "subCategoryCategoryName": "Engineering & CAD Software"
+    },
+    {
+      "subCategoryCategoryId": 32,
+      "subCategoryId": 32,
+      "subCategoryCategoryName": "Creative & Design Software"
+    },
+    {
+      "subCategoryCategoryId": 33,
+      "subCategoryId": 33,
+      "subCategoryCategoryName": "AutoCAD"
+    },
+    {
+      "subCategoryCategoryId": 34,
+      "subCategoryId": 34,
+      "subCategoryCategoryName": "AutoCAD Electrical"
+    },
+    {
+      "subCategoryCategoryId": 35,
+      "subCategoryId": 35,
+      "subCategoryCategoryName": "SolidWorks"
+    },
+    {
+      "subCategoryCategoryId": 36,
+      "subCategoryId": 36,
+      "subCategoryCategoryName": "PLC Software"
+    },
+    {
+      "subCategoryCategoryId": 37,
+      "subCategoryId": 37,
+      "subCategoryCategoryName": "Android Applications"
+    },
+    {
+      "subCategoryCategoryId": 38,
+      "subCategoryId": 38,
+      "subCategoryCategoryName": "iOS Applications"
+    },
+    {
+      "subCategoryCategoryId": 39,
+      "subCategoryId": 39,
+      "subCategoryCategoryName": "Premium App Licenses"
+    },
+    {
+      "subCategoryCategoryId": 40,
+      "subCategoryId": 40,
+      "subCategoryCategoryName": "Website Themes"
+    },
+    {
+      "subCategoryCategoryId": 41,
+      "subCategoryId": 41,
+      "subCategoryCategoryName": "Software/Platforms"
+    },
+    {
+      "subCategoryCategoryId": 42,
+      "subCategoryId": 42,
+      "subCategoryCategoryName": "Tubers & Root Crops"
+    },
+    {
+      "subCategoryCategoryId": 43,
+      "subCategoryId": 43,
+      "subCategoryCategoryName": "Bananas & Plantains"
+    },
+    {
+      "subCategoryCategoryId": 44,
+      "subCategoryId": 44,
+      "subCategoryCategoryName": "Legumes & Nuts"
+    },
+    {
+      "subCategoryCategoryId": 45,
+      "subCategoryId": 45,
+      "subCategoryCategoryName": "Grains & Cereals"
+    },
+    {
+      "subCategoryCategoryId": 46,
+      "subCategoryId": 46,
+      "subCategoryCategoryName": "Vegetables"
+    },
+    {
+      "subCategoryCategoryId": 47,
+      "subCategoryId": 47,
+      "subCategoryCategoryName": "Fruits"
+    },
+    {
+      "subCategoryCategoryId": 48,
+      "subCategoryId": 48,
+      "subCategoryCategoryName": "Others"
+    },
+    {
+      "subCategoryCategoryId": 49,
+      "subCategoryId": 49,
+      "subCategoryCategoryName": "Meat"
+    },
+    {
+      "subCategoryCategoryId": 50,
+      "subCategoryId": 50,
+      "subCategoryCategoryName": "Poultry"
+    },
+    {
+      "subCategoryCategoryId": 51,
+      "subCategoryId": 51,
+      "subCategoryCategoryName": "Fish & Seafood"
+    },
+    {
+      "subCategoryCategoryId": 52,
+      "subCategoryId": 52,
+      "subCategoryCategoryName": "Dairy"
+    },
+    {
+      "subCategoryCategoryId": 53,
+      "subCategoryId": 53,
+      "subCategoryCategoryName": "Eggs"
+    },
+    {
+      "subCategoryCategoryId": 54,
+      "subCategoryId": 54,
+      "subCategoryCategoryName": "General"
+    },
+    {
+      "subCategoryCategoryId": 55,
+      "subCategoryId": 55,
+      "subCategoryCategoryName": "Private Car Hire"
+    },
+    {
+      "subCategoryCategoryId": 56,
+      "subCategoryId": 56,
+      "subCategoryCategoryName": "Airport Transport"
+    },
+    {
+      "subCategoryCategoryId": 57,
+      "subCategoryId": 57,
+      "subCategoryCategoryName": "Taxi/Ride"
+    },
+    {
+      "subCategoryCategoryId": 58,
+      "subCategoryId": 58,
+      "subCategoryCategoryName": "Bus Services"
+    },
+    {
+      "subCategoryCategoryId": 59,
+      "subCategoryId": 59,
+      "subCategoryCategoryName": "School Transport"
+    },
+    {
+      "subCategoryCategoryId": 60,
+      "subCategoryId": 60,
+      "subCategoryCategoryName": "Local Delivery (Lorry)"
+    },
+    {
+      "subCategoryCategoryId": 61,
+      "subCategoryId": 61,
+      "subCategoryCategoryName": "Long Distance Haulage"
+    },
+    {
+      "subCategoryCategoryId": 62,
+      "subCategoryId": 62,
+      "subCategoryCategoryName": "Motor Cycle (Boda)"
+    },
+    {
+      "subCategoryCategoryId": 63,
+      "subCategoryId": 63,
+      "subCategoryCategoryName": "Refrigerated Transport"
+    },
+    {
+      "subCategoryCategoryId": 64,
+      "subCategoryId": 64,
+      "subCategoryCategoryName": "Computer Training"
+    },
+    {
+      "subCategoryCategoryId": 65,
+      "subCategoryId": 65,
+      "subCategoryCategoryName": "Microsoft Office Training"
+    },
+    {
+      "subCategoryCategoryId": 66,
+      "subCategoryId": 66,
+      "subCategoryCategoryName": "Programming Courses"
+    },
+    {
+      "subCategoryCategoryId": 67,
+      "subCategoryId": 67,
+      "subCategoryCategoryName": "AI Training"
+    },
+    {
+      "subCategoryCategoryId": 68,
+      "subCategoryId": 68,
+      "subCategoryCategoryName": "Graphics Design"
+    },
+    {
+      "subCategoryCategoryId": 69,
+      "subCategoryId": 69,
+      "subCategoryCategoryName": "AutoCad Training"
+    },
+    {
+      "subCategoryCategoryId": 70,
+      "subCategoryId": 70,
+      "subCategoryCategoryName": "Civil 3D Training"
+    },
+    {
+      "subCategoryCategoryId": 71,
+      "subCategoryId": 71,
+      "subCategoryCategoryName": "Solid Works Training"
+    },
+    {
+      "subCategoryCategoryId": 72,
+      "subCategoryId": 72,
+      "subCategoryCategoryName": "Tailoring"
+    },
+    {
+      "subCategoryCategoryId": 73,
+      "subCategoryId": 73,
+      "subCategoryCategoryName": "Plumbing"
+    },
+    {
+      "subCategoryCategoryId": 74,
+      "subCategoryId": 74,
+      "subCategoryCategoryName": "Welding"
+    },
+    {
+      "subCategoryCategoryId": 75,
+      "subCategoryId": 75,
+      "subCategoryCategoryName": "Electrical Installation Training"
+    },
+    {
+      "subCategoryCategoryId": 76,
+      "subCategoryId": 76,
+      "subCategoryCategoryName": "Adult Literacy Program"
+    },
+    {
+      "subCategoryCategoryId": 77,
+      "subCategoryId": 77,
+      "subCategoryCategoryName": "House Wiring"
+    },
+    {
+      "subCategoryCategoryId": 78,
+      "subCategoryId": 78,
+      "subCategoryCategoryName": "Generator Installation/Hire"
+    },
+    {
+      "subCategoryCategoryId": 79,
+      "subCategoryId": 79,
+      "subCategoryCategoryName": "Solar System Installation"
+    },
+    {
+      "subCategoryCategoryId": 80,
+      "subCategoryId": 80,
+      "subCategoryCategoryName": "Camera Installation"
+    },
+    {
+      "subCategoryCategoryId": 81,
+      "subCategoryId": 81,
+      "subCategoryCategoryName": "Industrial Wiring"
+    },
+    {
+      "subCategoryCategoryId": 82,
+      "subCategoryId": 82,
+      "subCategoryCategoryName": "Electrical Panel Design & Installation"
+    },
+    {
+      "subCategoryCategoryId": 83,
+      "subCategoryId": 83,
+      "subCategoryCategoryName": "Factory Maintenance"
+    },
+    {
+      "subCategoryCategoryId": 84,
+      "subCategoryId": 84,
+      "subCategoryCategoryName": "Power Backup Systems"
+    },
+    {
+      "subCategoryCategoryId": 85,
+      "subCategoryId": 85,
+      "subCategoryCategoryName": "Wedding Planning"
+    },
+    {
+      "subCategoryCategoryId": 86,
+      "subCategoryId": 86,
+      "subCategoryCategoryName": "Corporate Events"
+    },
+    {
+      "subCategoryCategoryId": 87,
+      "subCategoryId": 87,
+      "subCategoryCategoryName": "Funeral Services"
+    },
+    {
+      "subCategoryCategoryId": 88,
+      "subCategoryId": 88,
+      "subCategoryCategoryName": "Cultural Ceremonies"
+    },
+    {
+      "subCategoryCategoryId": 89,
+      "subCategoryId": 89,
+      "subCategoryCategoryName": "Catering"
+    },
+    {
+      "subCategoryCategoryId": 90,
+      "subCategoryId": 90,
+      "subCategoryCategoryName": "Decoration"
+    },
+    {
+      "subCategoryCategoryId": 91,
+      "subCategoryId": 91,
+      "subCategoryCategoryName": "Tent & Chair Hire"
+    },
+    {
+      "subCategoryCategoryId": 92,
+      "subCategoryId": 92,
+      "subCategoryCategoryName": "Photography and Videography"
+    },
+    {
+      "subCategoryCategoryId": 93,
+      "subCategoryId": 93,
+      "subCategoryCategoryName": "Sound and DJ Services"
+    },
+    {
+      "subCategoryCategoryId": 94,
+      "subCategoryId": 94,
+      "subCategoryCategoryName": "MC and Host Services"
+    },
+    {
+      "subCategoryCategoryId": 95,
+      "subCategoryId": 95,
+      "subCategoryCategoryName": "Venues"
+    },
+    {
+      "subCategoryCategoryId": 96,
+      "subCategoryId": 96,
+      "subCategoryCategoryName": "Event Security"
+    },
+    {
+      "subCategoryCategoryId": 97,
+      "subCategoryId": 97,
+      "subCategoryCategoryName": "Stage Set-Up"
+    },
+    {
+      "subCategoryCategoryId": 98,
+      "subCategoryId": 98,
+      "subCategoryCategoryName": "Cement & Concrete Materials"
+    },
+    {
+      "subCategoryCategoryId": 99,
+      "subCategoryId": 99,
+      "subCategoryCategoryName": "Steel & Reinforcement"
+    },
+    {
+      "subCategoryCategoryId": 100,
+      "subCategoryId": 100,
+      "subCategoryCategoryName": "Roofing Materials"
+    },
+    {
+      "subCategoryCategoryId": 101,
+      "subCategoryId": 101,
+      "subCategoryCategoryName": "Timber & Wood Products"
+    },
+    {
+      "subCategoryCategoryId": 102,
+      "subCategoryId": 102,
+      "subCategoryCategoryName": "Plumbing Materials"
+    },
+    {
+      "subCategoryCategoryId": 103,
+      "subCategoryId": 103,
+      "subCategoryCategoryName": "Finishing Materials"
+    },
+    {
+      "subCategoryCategoryId": 104,
+      "subCategoryId": 104,
+      "subCategoryCategoryName": "General Construction"
+    },
+    {
+      "subCategoryCategoryId": 105,
+      "subCategoryId": 105,
+      "subCategoryCategoryName": "Specialized Trades"
+    },
+    {
+      "subCategoryCategoryId": 106,
+      "subCategoryId": 106,
+      "subCategoryCategoryName": "Civil & Infrastructure Works"
+    },
+    {
+      "subCategoryCategoryId": 107,
+      "subCategoryId": 107,
+      "subCategoryCategoryName": "Architectural Services"
+    },
+    {
+      "subCategoryCategoryId": 108,
+      "subCategoryId": 108,
+      "subCategoryCategoryName": "Engineering Services"
+    },
+    {
+      "subCategoryCategoryId": 109,
+      "subCategoryId": 109,
+      "subCategoryCategoryName": "Surveying & Planning"
+    },
+    {
+      "subCategoryCategoryId": 110,
+      "subCategoryId": 110,
+      "subCategoryCategoryName": "Heavy Machinery"
+    },
+    {
+      "subCategoryCategoryId": 111,
+      "subCategoryId": 111,
+      "subCategoryCategoryName": "Hand & Power Tools"
+    },
+    {
+      "subCategoryCategoryId": 112,
+      "subCategoryId": 112,
+      "subCategoryCategoryName": "Large Kitchen Appliances"
+    },
+    {
+      "subCategoryCategoryId": 113,
+      "subCategoryId": 113,
+      "subCategoryCategoryName": "Small Kitchen Appliances"
+    },
+    {
+      "subCategoryCategoryId": 114,
+      "subCategoryId": 114,
+      "subCategoryCategoryName": "Cooking & Food Preparation"
+    },
+    {
+      "subCategoryCategoryId": 115,
+      "subCategoryId": 115,
+      "subCategoryCategoryName": "Coffee & Beverage Appliances"
+    },
+    {
+      "subCategoryCategoryId": 116,
+      "subCategoryId": 116,
+      "subCategoryCategoryName": "Air Conditioning"
+    },
+    {
+      "subCategoryCategoryId": 117,
+      "subCategoryId": 117,
+      "subCategoryCategoryName": "Fans & Ventilation"
+    },
+    {
+      "subCategoryCategoryId": 118,
+      "subCategoryId": 118,
+      "subCategoryCategoryName": "Air Quality"
+    },
+    {
+      "subCategoryCategoryId": 119,
+      "subCategoryId": 119,
+      "subCategoryCategoryName": "Washing Machines"
+    },
+    {
+      "subCategoryCategoryId": 120,
+      "subCategoryId": 120,
+      "subCategoryCategoryName": "Washer-Dryer "
+    },
+    {
+      "subCategoryCategoryId": 121,
+      "subCategoryId": 121,
+      "subCategoryCategoryName": "Steam Irons"
+    },
+    {
+      "subCategoryCategoryId": 122,
+      "subCategoryId": 122,
+      "subCategoryCategoryName": "Vacuum Cleaners"
+    },
+    {
+      "subCategoryCategoryId": 123,
+      "subCategoryId": 123,
+      "subCategoryCategoryName": "Carpet Cleaners"
+    },
+    {
+      "subCategoryCategoryId": 124,
+      "subCategoryId": 124,
+      "subCategoryCategoryName": "Water Heaters"
+    },
+    {
+      "subCategoryCategoryId": 125,
+      "subCategoryId": 125,
+      "subCategoryCategoryName": "Water Pumps"
+    },
+    {
+      "subCategoryCategoryId": 126,
+      "subCategoryId": 126,
+      "subCategoryCategoryName": "Electric Heaters"
+    },
+    {
+      "subCategoryCategoryId": 127,
+      "subCategoryId": 127,
+      "subCategoryCategoryName": "Mosquito Killers"
+    },
+    {
+      "subCategoryCategoryId": 128,
+      "subCategoryId": 128,
+      "subCategoryCategoryName": "Aroma Diffusers"
+    },
+    {
+      "subCategoryCategoryId": 129,
+      "subCategoryId": 129,
+      "subCategoryCategoryName": "Insect Repellents"
+    },
+    {
+      "subCategoryCategoryId": 130,
+      "subCategoryId": 130,
+      "subCategoryCategoryName": "Gas Cylinders"
+    },
+    {
+      "subCategoryCategoryId": 131,
+      "subCategoryId": 131,
+      "subCategoryCategoryName": "Solar Home Systems"
+    },
+    {
+      "subCategoryCategoryId": 132,
+      "subCategoryId": 132,
+      "subCategoryCategoryName": "Commercial Refrigerators"
+    },
+    {
+      "subCategoryCategoryId": 133,
+      "subCategoryId": 133,
+      "subCategoryCategoryName": "Bakery Ovens"
+    },
+    {
+      "subCategoryCategoryId": 134,
+      "subCategoryId": 134,
+      "subCategoryCategoryName": "Cookers"
+    },
+    {
+      "subCategoryCategoryId": 135,
+      "subCategoryId": 135,
+      "subCategoryCategoryName": "Land Survey"
+    },
+    {
+      "subCategoryCategoryId": 136,
+      "subCategoryId": 136,
+      "subCategoryCategoryName": "Construction Setting Out"
+    },
+    {
+      "subCategoryCategoryId": 137,
+      "subCategoryId": 137,
+      "subCategoryCategoryName": "Topographic Survey"
+    },
+    {
+      "subCategoryCategoryId": 138,
+      "subCategoryId": 138,
+      "subCategoryCategoryName": "Interior Design"
+    },
+    {
+      "subCategoryCategoryId": 139,
+      "subCategoryId": 139,
+      "subCategoryCategoryName": "Landscape Design"
+    },
+    {
+      "subCategoryCategoryId": 140,
+      "subCategoryId": 140,
+      "subCategoryCategoryName": "Urban Planning"
+    },
+    {
+      "subCategoryCategoryId": 141,
+      "subCategoryId": 141,
+      "subCategoryCategoryName": "Title Processing"
+    },
+    {
+      "subCategoryCategoryId": 142,
+      "subCategoryId": 142,
+      "subCategoryCategoryName": "Land Valuation"
+    },
+    {
+      "subCategoryCategoryId": 143,
+      "subCategoryId": 143,
+      "subCategoryCategoryName": "Property Demarcation"
+    },
+    {
+      "subCategoryCategoryId": 144,
+      "subCategoryId": 144,
+      "subCategoryCategoryName": "Mailo Residential Plots"
+    },
+    {
+      "subCategoryCategoryId": 145,
+      "subCategoryId": 145,
+      "subCategoryCategoryName": "Mailo Agricultural Land"
+    },
+    {
+      "subCategoryCategoryId": 146,
+      "subCategoryId": 146,
+      "subCategoryCategoryName": "Mailo Estate Development Land"
+    },
+    {
+      "subCategoryCategoryId": 147,
+      "subCategoryId": 147,
+      "subCategoryCategoryName": "Freehold Residential Plots"
+    },
+    {
+      "subCategoryCategoryId": 148,
+      "subCategoryId": 148,
+      "subCategoryCategoryName": "Freehold Farm Land"
+    },
+    {
+      "subCategoryCategoryId": 149,
+      "subCategoryId": 149,
+      "subCategoryCategoryName": "Freehold Commercial Land"
+    },
+    {
+      "subCategoryCategoryId": 150,
+      "subCategoryId": 150,
+      "subCategoryCategoryName": "Leasehold Residential Land"
+    },
+    {
+      "subCategoryCategoryId": 151,
+      "subCategoryId": 151,
+      "subCategoryCategoryName": "Leasehold Industrial Land"
+    },
+    {
+      "subCategoryCategoryId": 152,
+      "subCategoryId": 152,
+      "subCategoryCategoryName": "Leasehold Agricultural Land"
+    },
+    {
+      "subCategoryCategoryId": 153,
+      "subCategoryId": 153,
+      "subCategoryCategoryName": "Customary Agricultural Land"
+    },
+    {
+      "subCategoryCategoryId": 154,
+      "subCategoryId": 154,
+      "subCategoryCategoryName": "Customary Farm Land"
+    },
+    {
+      "subCategoryCategoryId": 155,
+      "subCategoryId": 155,
+      "subCategoryCategoryName": "Casual Shoes"
+    },
+    {
+      "subCategoryCategoryId": 156,
+      "subCategoryId": 156,
+      "subCategoryCategoryName": "Formal Shoes"
+    },
+    {
+      "subCategoryCategoryId": 157,
+      "subCategoryId": 157,
+      "subCategoryCategoryName": "Sports & Athletic Shoes"
+    },
+    {
+      "subCategoryCategoryId": 158,
+      "subCategoryId": 158,
+      "subCategoryCategoryName": "Sandals"
+    },
+    {
+      "subCategoryCategoryId": 159,
+      "subCategoryId": 159,
+      "subCategoryCategoryName": "Slippers & Indoor Shoes"
+    },
+    {
+      "subCategoryCategoryId": 160,
+      "subCategoryId": 160,
+      "subCategoryCategoryName": "Casual Shoes"
+    },
+    {
+      "subCategoryCategoryId": 161,
+      "subCategoryId": 161,
+      "subCategoryCategoryName": "Formal Shoes (Gentle)"
+    },
+    {
+      "subCategoryCategoryId": 163,
+      "subCategoryId": 163,
+      "subCategoryCategoryName": "Boots"
+    },
+    {
+      "subCategoryCategoryId": 164,
+      "subCategoryId": 164,
+      "subCategoryCategoryName": "Slippers & Indoor Shoes"
+    },
+    {
+      "subCategoryCategoryId": 165,
+      "subCategoryId": 165,
+      "subCategoryCategoryName": "Work & Safety Shoes"
+    },
+    {
+      "subCategoryCategoryId": 166,
+      "subCategoryId": 166,
+      "subCategoryCategoryName": "Casual Shoes"
+    },
+    {
+      "subCategoryCategoryId": 167,
+      "subCategoryId": 167,
+      "subCategoryCategoryName": "Formal Shoes"
+    },
+    {
+      "subCategoryCategoryId": 168,
+      "subCategoryId": 168,
+      "subCategoryCategoryName": "Sports & Athletic Shoes"
+    },
+    {
+      "subCategoryCategoryId": 169,
+      "subCategoryId": 169,
+      "subCategoryCategoryName": "Heels"
+    },
+    {
+      "subCategoryCategoryId": 170,
+      "subCategoryId": 170,
+      "subCategoryCategoryName": "Flats"
+    },
+    {
+      "subCategoryCategoryId": 171,
+      "subCategoryId": 171,
+      "subCategoryCategoryName": "Casual Shoes"
+    },
+    {
+      "subCategoryCategoryId": 172,
+      "subCategoryId": 172,
+      "subCategoryCategoryName": "Sports & Athletic Shoes"
+    },
+    {
+      "subCategoryCategoryId": 173,
+      "subCategoryId": 173,
+      "subCategoryCategoryName": "Boots"
+    },
+    {
+      "subCategoryCategoryId": 174,
+      "subCategoryId": 174,
+      "subCategoryCategoryName": "Sandals"
+    },
+    {
+      "subCategoryCategoryId": 175,
+      "subCategoryId": 175,
+      "subCategoryCategoryName": "Slippers & Indoor Shoes"
+    },
+    {
+      "subCategoryCategoryId": 176,
+      "subCategoryId": 176,
+      "subCategoryCategoryName": "Work & Safety Shoes"
+    },
+    {
+      "subCategoryCategoryId": 177,
+      "subCategoryId": 177,
+      "subCategoryCategoryName": "Dual-SIM"
+    },
+    {
+      "subCategoryCategoryId": 178,
+      "subCategoryId": 178,
+      "subCategoryCategoryName": "Senior Citizen Phones"
+    },
+    {
+      "subCategoryCategoryId": 179,
+      "subCategoryId": 179,
+      "subCategoryCategoryName": "Basic Keypad Phones"
+    },
+    {
+      "subCategoryCategoryId": 180,
+      "subCategoryId": 180,
+      "subCategoryCategoryName": "Android Smartphones"
+    },
+    {
+      "subCategoryCategoryId": 181,
+      "subCategoryId": 181,
+      "subCategoryCategoryName": "iPhones (iOS Smartphones)"
+    },
+    {
+      "subCategoryCategoryId": 182,
+      "subCategoryId": 182,
+      "subCategoryCategoryName": "Gaming Smartphones"
+    },
+    {
+      "subCategoryCategoryId": 183,
+      "subCategoryId": 183,
+      "subCategoryCategoryName": "Digital LED TVs"
+    },
+    {
+      "subCategoryCategoryId": 184,
+      "subCategoryId": 184,
+      "subCategoryCategoryName": "Analog TVs"
+    },
+    {
+      "subCategoryCategoryId": 185,
+      "subCategoryId": 185,
+      "subCategoryCategoryName": "Basic Flat Screen TVs"
+    },
+    {
+      "subCategoryCategoryId": 186,
+      "subCategoryId": 186,
+      "subCategoryCategoryName": "Android TVs"
+    },
+    {
+      "subCategoryCategoryId": 187,
+      "subCategoryId": 187,
+      "subCategoryCategoryName": "Google TVs"
+    },
+    {
+      "subCategoryCategoryId": 188,
+      "subCategoryId": 188,
+      "subCategoryCategoryName": "WebOS TVs"
+    },
+    {
+      "subCategoryCategoryId": 189,
+      "subCategoryId": 189,
+      "subCategoryCategoryName": "Tizen OS TVs"
+    },
+    {
+      "subCategoryCategoryId": 190,
+      "subCategoryId": 190,
+      "subCategoryCategoryName": "Roku TVs"
+    },
+    {
+      "subCategoryCategoryId": 191,
+      "subCategoryId": 191,
+      "subCategoryCategoryName": "Fire TV Edition TVs"
+    },
+    {
+      "subCategoryCategoryId": 192,
+      "subCategoryId": 192,
+      "subCategoryCategoryName": "Gaming TVs"
+    },
+    {
+      "subCategoryCategoryId": 193,
+      "subCategoryId": 193,
+      "subCategoryCategoryName": "Outdoor TVs"
+    },
+    {
+      "subCategoryCategoryId": 194,
+      "subCategoryId": 194,
+      "subCategoryCategoryName": "Hospitality / Hotel TVs"
+    },
+    {
+      "subCategoryCategoryId": 195,
+      "subCategoryId": 195,
+      "subCategoryCategoryName": "Commercial Display TVs"
+    },
+    {
+      "subCategoryCategoryId": 196,
+      "subCategoryId": 196,
+      "subCategoryCategoryName": "Portable TVs"
+    },
+    {
+      "subCategoryCategoryId": 197,
+      "subCategoryId": 197,
+      "subCategoryCategoryName": "Business All-in-One PCs"
+    },
+    {
+      "subCategoryCategoryId": 198,
+      "subCategoryId": 198,
+      "subCategoryCategoryName": "Home All-in-One PCs"
+    },
+    {
+      "subCategoryCategoryId": 199,
+      "subCategoryId": 199,
+      "subCategoryCategoryName": "Touchscreen All-in-One PCs"
+    },
+    {
+      "subCategoryCategoryId": 200,
+      "subCategoryId": 200,
+      "subCategoryCategoryName": "Educational All-in-One PCs"
+    },
+    {
+      "subCategoryCategoryId": 201,
+      "subCategoryId": 201,
+      "subCategoryCategoryName": "Home & Office PC"
+    },
+    {
+      "subCategoryCategoryId": 202,
+      "subCategoryId": 202,
+      "subCategoryCategoryName": "Gaming PC"
+    },
+    {
+      "subCategoryCategoryId": 203,
+      "subCategoryId": 203,
+      "subCategoryCategoryName": "Mini Desktop"
+    },
+    {
+      "subCategoryCategoryId": 204,
+      "subCategoryId": 204,
+      "subCategoryCategoryName": "Complete Unit (Full Set)"
+    },
+    {
+      "subCategoryCategoryId": 205,
+      "subCategoryId": 205,
+      "subCategoryCategoryName": "Ultrabooks"
+    },
+    {
+      "subCategoryCategoryId": 206,
+      "subCategoryId": 206,
+      "subCategoryCategoryName": "Student Laptops"
+    },
+    {
+      "subCategoryCategoryId": 207,
+      "subCategoryId": 207,
+      "subCategoryCategoryName": "General Purpose Laptops"
+    },
+    {
+      "subCategoryCategoryId": 208,
+      "subCategoryId": 208,
+      "subCategoryCategoryName": "2-in-1 Convertible Laptops"
+    },
+    {
+      "subCategoryCategoryId": 209,
+      "subCategoryId": 209,
+      "subCategoryCategoryName": "Chromebook"
+    },
+    {
+      "subCategoryCategoryId": 210,
+      "subCategoryId": 210,
+      "subCategoryCategoryName": "Mac Laptops"
+    },
+    {
+      "subCategoryCategoryId": 211,
+      "subCategoryId": 211,
+      "subCategoryCategoryName": "Thin Clients"
+    },
+    {
+      "subCategoryCategoryId": 212,
+      "subCategoryId": 212,
+      "subCategoryCategoryName": "Micro PCs"
+    },
+    {
+      "subCategoryCategoryId": 213,
+      "subCategoryId": 213,
+      "subCategoryCategoryName": "Stick PCs"
+    },
+    {
+      "subCategoryCategoryId": 214,
+      "subCategoryId": 214,
+      "subCategoryCategoryName": "Mini PCs"
+    },
+    {
+      "subCategoryCategoryId": 215,
+      "subCategoryId": 215,
+      "subCategoryCategoryName": "Engineering Workstations"
+    },
+    {
+      "subCategoryCategoryId": 216,
+      "subCategoryId": 216,
+      "subCategoryCategoryName": "Video Editing Workstations"
+    },
+    {
+      "subCategoryCategoryId": 217,
+      "subCategoryId": 217,
+      "subCategoryCategoryName": "AI / Data Workstations"
+    },
+    {
+      "subCategoryCategoryId": 218,
+      "subCategoryId": 218,
+      "subCategoryCategoryName": "CAD Workstations"
+    },
+    {
+      "subCategoryCategoryId": 219,
+      "subCategoryId": 219,
+      "subCategoryCategoryName": "Casual Dresses"
+    },
+    {
+      "subCategoryCategoryId": 220,
+      "subCategoryId": 220,
+      "subCategoryCategoryName": "Formal /Office Dresses"
+    },
+    {
+      "subCategoryCategoryId": 221,
+      "subCategoryId": 221,
+      "subCategoryCategoryName": "Evening / Party Dresses"
+    },
+    {
+      "subCategoryCategoryId": 222,
+      "subCategoryId": 222,
+      "subCategoryCategoryName": "Maxi Dresses"
+    },
+    {
+      "subCategoryCategoryId": 223,
+      "subCategoryId": 223,
+      "subCategoryCategoryName": "Bodycon Dresses"
+    },
+    {
+      "subCategoryCategoryId": 224,
+      "subCategoryId": 224,
+      "subCategoryCategoryName": "Dresses  for Pregnant Women"
+    },
+    {
+      "subCategoryCategoryId": 225,
+      "subCategoryId": 225,
+      "subCategoryCategoryName": "African Print Dresses"
+    },
+    {
+      "subCategoryCategoryId": 226,
+      "subCategoryId": 226,
+      "subCategoryCategoryName": "Formal Trousers"
+    },
+    {
+      "subCategoryCategoryId": 227,
+      "subCategoryId": 227,
+      "subCategoryCategoryName": "Casual Pants"
+    },
+    {
+      "subCategoryCategoryId": 228,
+      "subCategoryId": 228,
+      "subCategoryCategoryName": "Leggings"
+    },
+    {
+      "subCategoryCategoryId": 229,
+      "subCategoryId": 229,
+      "subCategoryCategoryName": "Sports & Athletic "
+    },
+    {
+      "subCategoryCategoryId": 230,
+      "subCategoryId": 230,
+      "subCategoryCategoryName": "Jackets & Hoodies"
+    },
+    {
+      "subCategoryCategoryId": 231,
+      "subCategoryId": 231,
+      "subCategoryCategoryName": "Cardigans & Coats"
+    },
+    {
+      "subCategoryCategoryId": 232,
+      "subCategoryId": 232,
+      "subCategoryCategoryName": "Mini Skirts"
+    },
+    {
+      "subCategoryCategoryId": 233,
+      "subCategoryId": 233,
+      "subCategoryCategoryName": "Maxi Skirts"
+    },
+    {
+      "subCategoryCategoryId": 234,
+      "subCategoryId": 234,
+      "subCategoryCategoryName": "General Purpose"
+    },
+    {
+      "subCategoryCategoryId": 235,
+      "subCategoryId": 235,
+      "subCategoryCategoryName": "Gym & Yoga Wear"
+    },
+    {
+      "subCategoryCategoryId": 236,
+      "subCategoryId": 236,
+      "subCategoryCategoryName": "Tracksuits"
+    },
+    {
+      "subCategoryCategoryId": 237,
+      "subCategoryId": 237,
+      "subCategoryCategoryName": "T-Shirts"
+    },
+    {
+      "subCategoryCategoryId": 238,
+      "subCategoryId": 238,
+      "subCategoryCategoryName": "Tank Tops / Camisoles"
+    },
+    {
+      "subCategoryCategoryId": 239,
+      "subCategoryId": 239,
+      "subCategoryCategoryName": "Shirts & Blouses"
+    },
+    {
+      "subCategoryCategoryId": 240,
+      "subCategoryId": 240,
+      "subCategoryCategoryName": "Two-Piece Sets"
+    },
+    {
+      "subCategoryCategoryId": 241,
+      "subCategoryId": 241,
+      "subCategoryCategoryName": "Skirt & Pant Suits"
+    },
+    {
+      "subCategoryCategoryId": 242,
+      "subCategoryId": 242,
+      "subCategoryCategoryName": "Lounge Sets"
+    },
+    {
+      "subCategoryCategoryId": 243,
+      "subCategoryId": 243,
+      "subCategoryCategoryName": "Gomesi / Busuuti"
+    },
+    {
+      "subCategoryCategoryId": 244,
+      "subCategoryId": 244,
+      "subCategoryCategoryName": "Kitenge Wear"
+    },
+    {
+      "subCategoryCategoryId": 245,
+      "subCategoryId": 245,
+      "subCategoryCategoryName": "African Gowns"
+    },
+    {
+      "subCategoryCategoryId": 246,
+      "subCategoryId": 246,
+      "subCategoryCategoryName": "Ankara Wear"
+    },
+    {
+      "subCategoryCategoryId": 247,
+      "subCategoryId": 247,
+      "subCategoryCategoryName": "Nigerian Style"
+    },
+    {
+      "subCategoryCategoryId": 248,
+      "subCategoryId": 248,
+      "subCategoryCategoryName": "Casual Jumpsuits"
+    },
+    {
+      "subCategoryCategoryId": 249,
+      "subCategoryId": 249,
+      "subCategoryCategoryName": "Formal Jumpsuits"
+    },
+    {
+      "subCategoryCategoryId": 250,
+      "subCategoryId": 250,
+      "subCategoryCategoryName": "Rompers"
+    },
+    {
+      "subCategoryCategoryId": 251,
+      "subCategoryId": 251,
+      "subCategoryCategoryName": "Drinking Yoghurt"
+    },
+    {
+      "subCategoryCategoryId": 252,
+      "subCategoryId": 252,
+      "subCategoryCategoryName": "Fresh Milk"
+    },
+    {
+      "subCategoryCategoryId": 253,
+      "subCategoryId": 253,
+      "subCategoryCategoryName": "Flavoured Milk"
+    },
+    {
+      "subCategoryCategoryId": 254,
+      "subCategoryId": 254,
+      "subCategoryCategoryName": "Cultured Milk"
+    },
+    {
+      "subCategoryCategoryId": 255,
+      "subCategoryId": 255,
+      "subCategoryCategoryName": "Groundnut Paste"
+    },
+    {
+      "subCategoryCategoryId": 256,
+      "subCategoryId": 256,
+      "subCategoryCategoryName": "Simsim Paste"
+    },
+    {
+      "subCategoryCategoryId": 257,
+      "subCategoryId": 257,
+      "subCategoryCategoryName": "Peanut Butter"
+    },
+    {
+      "subCategoryCategoryId": 258,
+      "subCategoryId": 258,
+      "subCategoryCategoryName": "Fruit Juice"
+    },
+    {
+      "subCategoryCategoryId": 259,
+      "subCategoryId": 259,
+      "subCategoryCategoryName": "Soft Drinks"
+    },
+    {
+      "subCategoryCategoryId": 260,
+      "subCategoryId": 260,
+      "subCategoryCategoryName": "Energy Drinks"
+    },
+    {
+      "subCategoryCategoryId": 262,
+      "subCategoryId": 262,
+      "subCategoryCategoryName": "Malt Drinks"
+    },
+    {
+      "subCategoryCategoryId": 263,
+      "subCategoryId": 263,
+      "subCategoryCategoryName": "Bushera"
+    },
+    {
+      "subCategoryCategoryId": 264,
+      "subCategoryId": 264,
+      "subCategoryCategoryName": "Natural Juice (no preservatives)"
+    },
+    {
+      "subCategoryCategoryId": 265,
+      "subCategoryId": 265,
+      "subCategoryCategoryName": "Fermented Traditional Drinks"
+    },
+    {
+      "subCategoryCategoryId": 266,
+      "subCategoryId": 266,
+      "subCategoryCategoryName": "Roasted Groundnuts"
+    },
+    {
+      "subCategoryCategoryId": 267,
+      "subCategoryId": 267,
+      "subCategoryCategoryName": "Powdered Groundnuts (Groundnut Paste)"
+    },
+    {
+      "subCategoryCategoryId": 268,
+      "subCategoryId": 268,
+      "subCategoryCategoryName": "Roasted Simsim"
+    },
+    {
+      "subCategoryCategoryId": 269,
+      "subCategoryId": 269,
+      "subCategoryCategoryName": "Simsim Seeds"
+    }
+  ]
+}
