@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "qUu3o0iBWwg=",
+  "dgSpecHash": "VmXnp6k1A3w=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Darc\\source\\repos\\@mySaccoShop\\Shared\\Shared.csproj",
+  "projectFilePath": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Shared\\Shared.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Darc\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\8.0.0\\microsoft.aspnetcore.authentication.jwtbearer.8.0.0.nupkg.sha512",
     "C:\\Users\\Darc\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\8.0.0\\microsoft.aspnetcore.cryptography.internal.8.0.0.nupkg.sha512",

@@ -1271,11 +1271,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Darc\\source\\repos\\@mySaccoShop\\LoggerService\\LoggerService.csproj",
+      "projectUniqueName": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\LoggerService\\LoggerService.csproj",
       "projectName": "LoggerService",
-      "projectPath": "C:\\Users\\Darc\\source\\repos\\@mySaccoShop\\LoggerService\\LoggerService.csproj",
+      "projectPath": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\LoggerService\\LoggerService.csproj",
       "packagesPath": "C:\\Users\\Darc\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Darc\\source\\repos\\@mySaccoShop\\LoggerService\\obj\\",
+      "outputPath": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\LoggerService\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -1297,8 +1297,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\Darc\\source\\repos\\@mySaccoShop\\Contracts\\Contracts.csproj": {
-              "projectPath": "C:\\Users\\Darc\\source\\repos\\@mySaccoShop\\Contracts\\Contracts.csproj"
+            "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Contracts\\Contracts.csproj": {
+              "projectPath": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Contracts\\Contracts.csproj"
             }
           }
         }

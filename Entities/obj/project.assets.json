@@ -1125,11 +1125,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Darc\\source\\repos\\@mySaccoShop\\Entities\\Entities.csproj",
+      "projectUniqueName": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Entities\\Entities.csproj",
       "projectName": "Entities",
-      "projectPath": "C:\\Users\\Darc\\source\\repos\\@mySaccoShop\\Entities\\Entities.csproj",
+      "projectPath": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Entities\\Entities.csproj",
       "packagesPath": "C:\\Users\\Darc\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Darc\\source\\repos\\@mySaccoShop\\Entities\\obj\\",
+      "outputPath": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Entities\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

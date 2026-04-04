@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "CmHi/fpjYs4=",
+  "dgSpecHash": "VQqu0dzGz9U=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Darc\\source\\repos\\@mySaccoShop\\Repository\\Repository.csproj",
+  "projectFilePath": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Repository\\Repository.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Darc\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\Darc\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",

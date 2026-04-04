@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "TGjZRqst6F8=",
+  "dgSpecHash": "wexNt/fNc7M=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Darc\\source\\repos\\@mySaccoShop\\saccoshop\\saccoshop.csproj",
+  "projectFilePath": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\saccoshop\\saccoshop.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Darc\\.nuget\\packages\\africastalking.net\\1.2.4\\africastalking.net.1.2.4.nupkg.sha512",
     "C:\\Users\\Darc\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",

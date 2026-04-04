@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "M6HEwfsor/E=",
+  "dgSpecHash": "hICP/tVgtUI=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Darc\\source\\repos\\@mySaccoShop\\LoggerService\\LoggerService.csproj",
+  "projectFilePath": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\LoggerService\\LoggerService.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Darc\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\8.0.0\\microsoft.aspnetcore.authentication.jwtbearer.8.0.0.nupkg.sha512",
     "C:\\Users\\Darc\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\8.0.0\\microsoft.aspnetcore.cryptography.internal.8.0.0.nupkg.sha512",

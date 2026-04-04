@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Darc\\source\\repos\\@mySaccoShop\\saccoshop\\saccoshop.csproj": {}
+    "C:\\Users\\Darc\\source\\repos\\miniShopBack\\saccoshop\\saccoshop.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Darc\\source\\repos\\@mySaccoShop\\Contracts\\Contracts.csproj": {
+    "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Contracts\\Contracts.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Darc\\source\\repos\\@mySaccoShop\\Contracts\\Contracts.csproj",
+        "projectUniqueName": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Contracts\\Contracts.csproj",
         "projectName": "Contracts",
-        "projectPath": "C:\\Users\\Darc\\source\\repos\\@mySaccoShop\\Contracts\\Contracts.csproj",
+        "projectPath": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Contracts\\Contracts.csproj",
         "packagesPath": "C:\\Users\\Darc\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Darc\\source\\repos\\@mySaccoShop\\Contracts\\obj\\",
+        "outputPath": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Contracts\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -33,11 +33,11 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\Darc\\source\\repos\\@mySaccoShop\\Entities\\Entities.csproj": {
-                "projectPath": "C:\\Users\\Darc\\source\\repos\\@mySaccoShop\\Entities\\Entities.csproj"
+              "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Entities\\Entities.csproj": {
+                "projectPath": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Entities\\Entities.csproj"
               },
-              "C:\\Users\\Darc\\source\\repos\\@mySaccoShop\\Shared\\Shared.csproj": {
-                "projectPath": "C:\\Users\\Darc\\source\\repos\\@mySaccoShop\\Shared\\Shared.csproj"
+              "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Shared\\Shared.csproj": {
+                "projectPath": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Shared\\Shared.csproj"
               }
             }
           }
@@ -77,14 +77,14 @@
         }
       }
     },
-    "C:\\Users\\Darc\\source\\repos\\@mySaccoShop\\Entities\\Entities.csproj": {
+    "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Entities\\Entities.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Darc\\source\\repos\\@mySaccoShop\\Entities\\Entities.csproj",
+        "projectUniqueName": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Entities\\Entities.csproj",
         "projectName": "Entities",
-        "projectPath": "C:\\Users\\Darc\\source\\repos\\@mySaccoShop\\Entities\\Entities.csproj",
+        "projectPath": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Entities\\Entities.csproj",
         "packagesPath": "C:\\Users\\Darc\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Darc\\source\\repos\\@mySaccoShop\\Entities\\obj\\",
+        "outputPath": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Entities\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -153,14 +153,14 @@
         }
       }
     },
-    "C:\\Users\\Darc\\source\\repos\\@mySaccoShop\\LoggerService\\LoggerService.csproj": {
+    "C:\\Users\\Darc\\source\\repos\\miniShopBack\\LoggerService\\LoggerService.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Darc\\source\\repos\\@mySaccoShop\\LoggerService\\LoggerService.csproj",
+        "projectUniqueName": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\LoggerService\\LoggerService.csproj",
         "projectName": "LoggerService",
-        "projectPath": "C:\\Users\\Darc\\source\\repos\\@mySaccoShop\\LoggerService\\LoggerService.csproj",
+        "projectPath": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\LoggerService\\LoggerService.csproj",
         "packagesPath": "C:\\Users\\Darc\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Darc\\source\\repos\\@mySaccoShop\\LoggerService\\obj\\",
+        "outputPath": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\LoggerService\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -182,8 +182,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\Darc\\source\\repos\\@mySaccoShop\\Contracts\\Contracts.csproj": {
-                "projectPath": "C:\\Users\\Darc\\source\\repos\\@mySaccoShop\\Contracts\\Contracts.csproj"
+              "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Contracts\\Contracts.csproj": {
+                "projectPath": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Contracts\\Contracts.csproj"
               }
             }
           }
@@ -229,14 +229,14 @@
         }
       }
     },
-    "C:\\Users\\Darc\\source\\repos\\@mySaccoShop\\Presentation\\Presentation.csproj": {
+    "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Presentation\\Presentation.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Darc\\source\\repos\\@mySaccoShop\\Presentation\\Presentation.csproj",
+        "projectUniqueName": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Presentation\\Presentation.csproj",
         "projectName": "Presentation",
-        "projectPath": "C:\\Users\\Darc\\source\\repos\\@mySaccoShop\\Presentation\\Presentation.csproj",
+        "projectPath": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Presentation\\Presentation.csproj",
         "packagesPath": "C:\\Users\\Darc\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Darc\\source\\repos\\@mySaccoShop\\Presentation\\obj\\",
+        "outputPath": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Presentation\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -258,11 +258,11 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\Darc\\source\\repos\\@mySaccoShop\\Services\\Services.csproj": {
-                "projectPath": "C:\\Users\\Darc\\source\\repos\\@mySaccoShop\\Services\\Services.csproj"
+              "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Services\\Services.csproj": {
+                "projectPath": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Services\\Services.csproj"
               },
-              "C:\\Users\\Darc\\source\\repos\\@mySaccoShop\\Shared\\Shared.csproj": {
-                "projectPath": "C:\\Users\\Darc\\source\\repos\\@mySaccoShop\\Shared\\Shared.csproj"
+              "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Shared\\Shared.csproj": {
+                "projectPath": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Shared\\Shared.csproj"
               }
             }
           }
@@ -312,14 +312,14 @@
         }
       }
     },
-    "C:\\Users\\Darc\\source\\repos\\@mySaccoShop\\Repository\\Repository.csproj": {
+    "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Repository\\Repository.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Darc\\source\\repos\\@mySaccoShop\\Repository\\Repository.csproj",
+        "projectUniqueName": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Repository\\Repository.csproj",
         "projectName": "Repository",
-        "projectPath": "C:\\Users\\Darc\\source\\repos\\@mySaccoShop\\Repository\\Repository.csproj",
+        "projectPath": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Repository\\Repository.csproj",
         "packagesPath": "C:\\Users\\Darc\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Darc\\source\\repos\\@mySaccoShop\\Repository\\obj\\",
+        "outputPath": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Repository\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -341,11 +341,11 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\Darc\\source\\repos\\@mySaccoShop\\Contracts\\Contracts.csproj": {
-                "projectPath": "C:\\Users\\Darc\\source\\repos\\@mySaccoShop\\Contracts\\Contracts.csproj"
+              "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Contracts\\Contracts.csproj": {
+                "projectPath": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Contracts\\Contracts.csproj"
               },
-              "C:\\Users\\Darc\\source\\repos\\@mySaccoShop\\Entities\\Entities.csproj": {
-                "projectPath": "C:\\Users\\Darc\\source\\repos\\@mySaccoShop\\Entities\\Entities.csproj"
+              "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Entities\\Entities.csproj": {
+                "projectPath": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Entities\\Entities.csproj"
               }
             }
           }
@@ -415,14 +415,14 @@
         }
       }
     },
-    "C:\\Users\\Darc\\source\\repos\\@mySaccoShop\\saccoshop\\saccoshop.csproj": {
+    "C:\\Users\\Darc\\source\\repos\\miniShopBack\\saccoshop\\saccoshop.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Darc\\source\\repos\\@mySaccoShop\\saccoshop\\saccoshop.csproj",
+        "projectUniqueName": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\saccoshop\\saccoshop.csproj",
         "projectName": "saccoshop",
-        "projectPath": "C:\\Users\\Darc\\source\\repos\\@mySaccoShop\\saccoshop\\saccoshop.csproj",
+        "projectPath": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\saccoshop\\saccoshop.csproj",
         "packagesPath": "C:\\Users\\Darc\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Darc\\source\\repos\\@mySaccoShop\\saccoshop\\obj\\",
+        "outputPath": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\saccoshop\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -444,20 +444,20 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\Darc\\source\\repos\\@mySaccoShop\\Entities\\Entities.csproj": {
-                "projectPath": "C:\\Users\\Darc\\source\\repos\\@mySaccoShop\\Entities\\Entities.csproj"
+              "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Entities\\Entities.csproj": {
+                "projectPath": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Entities\\Entities.csproj"
               },
-              "C:\\Users\\Darc\\source\\repos\\@mySaccoShop\\LoggerService\\LoggerService.csproj": {
-                "projectPath": "C:\\Users\\Darc\\source\\repos\\@mySaccoShop\\LoggerService\\LoggerService.csproj"
+              "C:\\Users\\Darc\\source\\repos\\miniShopBack\\LoggerService\\LoggerService.csproj": {
+                "projectPath": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\LoggerService\\LoggerService.csproj"
               },
-              "C:\\Users\\Darc\\source\\repos\\@mySaccoShop\\Presentation\\Presentation.csproj": {
-                "projectPath": "C:\\Users\\Darc\\source\\repos\\@mySaccoShop\\Presentation\\Presentation.csproj"
+              "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Presentation\\Presentation.csproj": {
+                "projectPath": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Presentation\\Presentation.csproj"
               },
-              "C:\\Users\\Darc\\source\\repos\\@mySaccoShop\\Repository\\Repository.csproj": {
-                "projectPath": "C:\\Users\\Darc\\source\\repos\\@mySaccoShop\\Repository\\Repository.csproj"
+              "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Repository\\Repository.csproj": {
+                "projectPath": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Repository\\Repository.csproj"
               },
-              "C:\\Users\\Darc\\source\\repos\\@mySaccoShop\\Services\\Services.csproj": {
-                "projectPath": "C:\\Users\\Darc\\source\\repos\\@mySaccoShop\\Services\\Services.csproj"
+              "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Services\\Services.csproj": {
+                "projectPath": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Services\\Services.csproj"
               }
             }
           }
@@ -534,14 +534,14 @@
         }
       }
     },
-    "C:\\Users\\Darc\\source\\repos\\@mySaccoShop\\Services\\Services.csproj": {
+    "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Services\\Services.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Darc\\source\\repos\\@mySaccoShop\\Services\\Services.csproj",
+        "projectUniqueName": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Services\\Services.csproj",
         "projectName": "Services",
-        "projectPath": "C:\\Users\\Darc\\source\\repos\\@mySaccoShop\\Services\\Services.csproj",
+        "projectPath": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Services\\Services.csproj",
         "packagesPath": "C:\\Users\\Darc\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Darc\\source\\repos\\@mySaccoShop\\Services\\obj\\",
+        "outputPath": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Services\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -563,17 +563,17 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\Darc\\source\\repos\\@mySaccoShop\\Contracts\\Contracts.csproj": {
-                "projectPath": "C:\\Users\\Darc\\source\\repos\\@mySaccoShop\\Contracts\\Contracts.csproj"
+              "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Contracts\\Contracts.csproj": {
+                "projectPath": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Contracts\\Contracts.csproj"
               },
-              "C:\\Users\\Darc\\source\\repos\\@mySaccoShop\\LoggerService\\LoggerService.csproj": {
-                "projectPath": "C:\\Users\\Darc\\source\\repos\\@mySaccoShop\\LoggerService\\LoggerService.csproj"
+              "C:\\Users\\Darc\\source\\repos\\miniShopBack\\LoggerService\\LoggerService.csproj": {
+                "projectPath": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\LoggerService\\LoggerService.csproj"
               },
-              "C:\\Users\\Darc\\source\\repos\\@mySaccoShop\\Repository\\Repository.csproj": {
-                "projectPath": "C:\\Users\\Darc\\source\\repos\\@mySaccoShop\\Repository\\Repository.csproj"
+              "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Repository\\Repository.csproj": {
+                "projectPath": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Repository\\Repository.csproj"
               },
-              "C:\\Users\\Darc\\source\\repos\\@mySaccoShop\\Shared\\Shared.csproj": {
-                "projectPath": "C:\\Users\\Darc\\source\\repos\\@mySaccoShop\\Shared\\Shared.csproj"
+              "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Shared\\Shared.csproj": {
+                "projectPath": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Shared\\Shared.csproj"
               }
             }
           }
@@ -639,14 +639,14 @@
         }
       }
     },
-    "C:\\Users\\Darc\\source\\repos\\@mySaccoShop\\Shared\\Shared.csproj": {
+    "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Shared\\Shared.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Darc\\source\\repos\\@mySaccoShop\\Shared\\Shared.csproj",
+        "projectUniqueName": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Shared\\Shared.csproj",
         "projectName": "Shared",
-        "projectPath": "C:\\Users\\Darc\\source\\repos\\@mySaccoShop\\Shared\\Shared.csproj",
+        "projectPath": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Shared\\Shared.csproj",
         "packagesPath": "C:\\Users\\Darc\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Darc\\source\\repos\\@mySaccoShop\\Shared\\obj\\",
+        "outputPath": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Shared\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -668,8 +668,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\Darc\\source\\repos\\@mySaccoShop\\Entities\\Entities.csproj": {
-                "projectPath": "C:\\Users\\Darc\\source\\repos\\@mySaccoShop\\Entities\\Entities.csproj"
+              "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Entities\\Entities.csproj": {
+                "projectPath": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Entities\\Entities.csproj"
               }
             }
           }
