@@ -571,6 +571,56 @@ namespace saccoshop.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "ProductAttributeValues",
+                columns: table => new
+                {
+                    ProductAttributeValueId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ProductId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    CategoryAttributeId = table.Column<int>(type: "int", nullable: false),
+                    StringValue = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    IntValue = table.Column<int>(type: "int", nullable: true),
+                    DecimalValue = table.Column<decimal>(type: "decimal(18,2)", precision: 18, scale: 2, nullable: true),
+                    BoolValue = table.Column<bool>(type: "bit", nullable: true),
+                    DateValue = table.Column<DateOnly>(type: "date", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ProductAttributeValues", x => x.ProductAttributeValueId);
+                    table.ForeignKey(
+                        name: "FK_ProductAttributeValues_CategoryAttributes_CategoryAttributeId",
+                        column: x => x.CategoryAttributeId,
+                        principalTable: "CategoryAttributes",
+                        principalColumn: "CategoryAttributeId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "TradeAttributeValues",
+                columns: table => new
+                {
+                    TradeAttributeValueId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    TradeId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    CategoryAttributeId = table.Column<int>(type: "int", nullable: false),
+                    StringValue = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    IntValue = table.Column<int>(type: "int", nullable: true),
+                    DecimalValue = table.Column<decimal>(type: "decimal(18,2)", precision: 18, scale: 2, nullable: true),
+                    BoolValue = table.Column<bool>(type: "bit", nullable: true),
+                    DateValue = table.Column<DateOnly>(type: "date", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_TradeAttributeValues", x => x.TradeAttributeValueId);
+                    table.ForeignKey(
+                        name: "FK_TradeAttributeValues_CategoryAttributes_CategoryAttributeId",
+                        column: x => x.CategoryAttributeId,
+                        principalTable: "CategoryAttributes",
+                        principalColumn: "CategoryAttributeId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "SubCategories",
                 columns: table => new
                 {
@@ -748,15 +798,12 @@ namespace saccoshop.Migrations
                     SubCategoryId = table.Column<int>(type: "int", nullable: false),
                     SubCategoryCategoryId = table.Column<int>(type: "int", nullable: false),
                     Price = table.Column<decimal>(type: "decimal(18,2)", precision: 18, scale: 2, nullable: false),
-                    StockQuantity = table.Column<int>(type: "int", nullable: false),
                     OldPrice = table.Column<decimal>(type: "decimal(18,2)", precision: 18, scale: 2, nullable: false),
                     IsActive = table.Column<bool>(type: "bit", nullable: false),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
                     IsFeatured = table.Column<bool>(type: "bit", nullable: false),
                     HasImage = table.Column<bool>(type: "bit", nullable: false),
-                    IsModified = table.Column<bool>(type: "bit", nullable: false),
-                    Manufacturer = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    MeasurementUnit = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     SellerProfileId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     CommodityClassId = table.Column<int>(type: "int", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
@@ -800,16 +847,11 @@ namespace saccoshop.Migrations
                     SubCategoryId = table.Column<int>(type: "int", nullable: false),
                     SubCategoryCategoryId = table.Column<int>(type: "int", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    FixedPrice = table.Column<decimal>(type: "decimal(18,2)", precision: 18, scale: 2, nullable: true),
-                    HourlyRate = table.Column<decimal>(type: "decimal(18,2)", precision: 18, scale: 2, nullable: true),
-                    IsNegotiable = table.Column<bool>(type: "bit", nullable: false),
-                    StockQuantity = table.Column<int>(type: "int", nullable: false),
                     IsActive = table.Column<bool>(type: "bit", nullable: false),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
                     HasImage = table.Column<bool>(type: "bit", nullable: false),
                     IsModified = table.Column<bool>(type: "bit", nullable: false),
                     IsFeatured = table.Column<bool>(type: "bit", nullable: false),
-                    MinimumPrice = table.Column<decimal>(type: "decimal(18,2)", precision: 18, scale: 2, nullable: false),
                     SellerProfileId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     CommodityClassId = table.Column<int>(type: "int", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
@@ -886,37 +928,6 @@ namespace saccoshop.Migrations
                         column: x => x.UserStatusId,
                         principalTable: "UserStatuses",
                         principalColumn: "UserStatusId",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "ProductAttributeValues",
-                columns: table => new
-                {
-                    ProductAttributeValueId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    ProductId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
-                    CategoryAttributeId = table.Column<int>(type: "int", nullable: false),
-                    StringValue = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    IntValue = table.Column<int>(type: "int", nullable: true),
-                    DecimalValue = table.Column<decimal>(type: "decimal(18,2)", precision: 18, scale: 2, nullable: true),
-                    BoolValue = table.Column<bool>(type: "bit", nullable: true),
-                    DateValue = table.Column<DateOnly>(type: "date", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_ProductAttributeValues", x => x.ProductAttributeValueId);
-                    table.ForeignKey(
-                        name: "FK_ProductAttributeValues_CategoryAttributes_CategoryAttributeId",
-                        column: x => x.CategoryAttributeId,
-                        principalTable: "CategoryAttributes",
-                        principalColumn: "CategoryAttributeId",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_ProductAttributeValues_Products_ProductId",
-                        column: x => x.ProductId,
-                        principalTable: "Products",
-                        principalColumn: "ProductId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -1003,37 +1014,6 @@ namespace saccoshop.Migrations
                         column: x => x.TradeId,
                         principalTable: "Trades",
                         principalColumn: "TradeId");
-                });
-
-            migrationBuilder.CreateTable(
-                name: "TradeAttributeValues",
-                columns: table => new
-                {
-                    TradeAttributeValueId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    TradeId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    CategoryAttributeId = table.Column<int>(type: "int", nullable: false),
-                    StringValue = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    IntValue = table.Column<int>(type: "int", nullable: true),
-                    DecimalValue = table.Column<decimal>(type: "decimal(18,2)", precision: 18, scale: 2, nullable: true),
-                    BoolValue = table.Column<bool>(type: "bit", nullable: true),
-                    DateValue = table.Column<DateOnly>(type: "date", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_TradeAttributeValues", x => x.TradeAttributeValueId);
-                    table.ForeignKey(
-                        name: "FK_TradeAttributeValues_CategoryAttributes_CategoryAttributeId",
-                        column: x => x.CategoryAttributeId,
-                        principalTable: "CategoryAttributes",
-                        principalColumn: "CategoryAttributeId",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_TradeAttributeValues_Trades_TradeId",
-                        column: x => x.TradeId,
-                        principalTable: "Trades",
-                        principalColumn: "TradeId",
-                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -1296,9 +1276,9 @@ namespace saccoshop.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "AccountConfirmed", "ConcurrencyStamp", "CreatedAt", "Email", "EmailConfirmed", "FirstName", "LastName", "LockoutEnabled", "LockoutEnd", "MfaEnabled", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "PhoneNumberVerified", "RecoveryAnswer", "RecoveryPhoneNumber", "RecoveryQuestion", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { "42cd3af3-f319-4118-a604-4442d487b923", 0, false, "4659d3ec-aca0-4735-9b32-12e1af415a17", new DateTime(2026, 3, 26, 1, 51, 29, 452, DateTimeKind.Utc).AddTicks(7442), "gdevol417@gmail.com", true, "George", "Devol", false, null, false, "GDEVOL417@GMAIL.COM", "+256709958370", "AQAAAAIAAYagAAAAENaKew+RLasF1LT7Gev2pDnTL1+Fn8qsgCfHoUBRc1O6YVDX8csa2sih+kWMDGU65w==", "+256709958370", false, false, "", "", "", "328d6a59-8dbd-4403-95ed-a95d0385c9be", false, "+256709958370" },
-                    { "5f2b8a40-d899-4345-aa3e-7b98712bc112", 0, false, "a1c972f4-b04c-4311-a2de-6136332eab69", new DateTime(2026, 3, 26, 1, 51, 29, 550, DateTimeKind.Utc).AddTicks(2088), "canabill@gmail.com", true, "Canada", "Bill", false, null, false, "CANADABILL@GMAIL.COM", "+256726186350", "AQAAAAIAAYagAAAAEAB5gbUe34bX94mlF9SS9KmJScNnt2hl7eHyqvEdHAviXTg8RLSsADtmNnTlAwr+pg==", "+256726186350", false, false, "", "", "", "16012e63-3d43-41d2-9184-315966fbd8db", false, "+256726186350" },
-                    { "bd363936-63d0-4ace-bc46-a2f1348cb61e", 0, false, "76f0c5e1-7a02-4c4d-9844-998017411969", new DateTime(2026, 3, 26, 1, 51, 29, 654, DateTimeKind.Utc).AddTicks(2738), "monorib@gmail.com", false, "Monorib", "Admin", false, null, false, "MONORIB@GMAIL.COM", "+256777471583", "AQAAAAIAAYagAAAAEAVDt6Bxl2ZE1w81AZcDKOgRQeNQoiSy/rqMnwunw3petUCi1ENmOdOx1JM/cLG5jQ==", "+256777471583", false, false, "", "", "", "a0f0614b-b931-4f63-ac95-c3ff93742665", false, "+256777471583" }
+                    { "42cd3af3-f319-4118-a604-4442d487b923", 0, false, "6e78e0e2-2d75-4163-a4d2-6ba4951cd682", new DateTime(2026, 4, 4, 13, 13, 45, 954, DateTimeKind.Utc).AddTicks(6882), "gdevol417@gmail.com", true, "George", "Devol", false, null, false, "GDEVOL417@GMAIL.COM", "+256709958370", "AQAAAAIAAYagAAAAEIlpuL9OzSfvkzrnhC7TsJWcaM1FdQU4HiewXnSnD2yDsoqppwEgMxkkhiCF2YGvUA==", "+256709958370", false, false, "", "", "", "4f93a028-31ee-48f1-9833-583a3b6e6bb9", false, "+256709958370" },
+                    { "5f2b8a40-d899-4345-aa3e-7b98712bc112", 0, false, "20df1c70-a634-4e11-af9f-60ec36f3f2b3", new DateTime(2026, 4, 4, 13, 13, 46, 62, DateTimeKind.Utc).AddTicks(5419), "canabill@gmail.com", true, "Canada", "Bill", false, null, false, "CANADABILL@GMAIL.COM", "+256726186350", "AQAAAAIAAYagAAAAEEa0mn6GoU9NmoLkRUUvfbESQqU2aLQb6Lo4atKDryldNAIv+Z+6AUyfW4DGkS/buA==", "+256726186350", false, false, "", "", "", "e667172e-ed49-4c20-b6f4-57eff0e3258d", false, "+256726186350" },
+                    { "bd363936-63d0-4ace-bc46-a2f1348cb61e", 0, false, "309317a8-bb3f-4808-ab40-052483c14395", new DateTime(2026, 4, 4, 13, 13, 46, 163, DateTimeKind.Utc).AddTicks(6276), "monorib@gmail.com", false, "Monorib", "Admin", false, null, false, "MONORIB@GMAIL.COM", "+256777471583", "AQAAAAIAAYagAAAAELs6yis7qXARutliuIBs35YZYkAlzrVkH4i3pvuBlVLzLrnXJLObiD38p039C4O0Uw==", "+256777471583", false, false, "", "", "", "192ee46c-8a4f-4aa8-968c-716ea3c63a8c", false, "+256777471583" }
                 });
 
             migrationBuilder.InsertData(
@@ -2106,9 +2086,9 @@ namespace saccoshop.Migrations
                 columns: new[] { "UserProfileId", "ActiveGroupId", "AddressId", "BuyerProfileId", "CreatedAt", "IdentityUserId", "SellerProfileId", "UserStatusId" },
                 values: new object[,]
                 {
-                    { new Guid("6b427624-2c02-4671-a3f1-36b5ea4949ab"), null, 1, null, new DateTime(2026, 3, 26, 1, 51, 29, 753, DateTimeKind.Utc).AddTicks(4803), "5f2b8a40-d899-4345-aa3e-7b98712bc112", null, 1 },
-                    { new Guid("e442f801-13ef-4871-8755-c145c2c87a31"), null, 1, null, new DateTime(2026, 3, 26, 1, 51, 29, 753, DateTimeKind.Utc).AddTicks(4806), "bd363936-63d0-4ace-bc46-a2f1348cb61e", null, 1 },
-                    { new Guid("f6ee42e8-cc5b-41ac-9e62-c37129e9e862"), null, 1, null, new DateTime(2026, 3, 26, 1, 51, 29, 753, DateTimeKind.Utc).AddTicks(4774), "42cd3af3-f319-4118-a604-4442d487b923", null, 1 }
+                    { new Guid("471c7d67-9faa-4beb-b28a-98eb9ae40983"), null, 1, null, new DateTime(2026, 4, 4, 13, 13, 46, 266, DateTimeKind.Utc).AddTicks(2435), "42cd3af3-f319-4118-a604-4442d487b923", null, 1 },
+                    { new Guid("644f775e-5871-425e-8182-a8523877041b"), null, 1, null, new DateTime(2026, 4, 4, 13, 13, 46, 266, DateTimeKind.Utc).AddTicks(2469), "5f2b8a40-d899-4345-aa3e-7b98712bc112", null, 1 },
+                    { new Guid("caeac90a-7543-4bf1-a81d-2f2f59078512"), null, 1, null, new DateTime(2026, 4, 4, 13, 13, 46, 266, DateTimeKind.Utc).AddTicks(2473), "bd363936-63d0-4ace-bc46-a2f1348cb61e", null, 1 }
                 });
 
             migrationBuilder.InsertData(
@@ -2810,9 +2790,9 @@ namespace saccoshop.Migrations
                 column: "TradeId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Trades_CategoryId_IsActive_IsDeleted_FixedPrice",
+                name: "IX_Trades_CategoryId",
                 table: "Trades",
-                columns: new[] { "CategoryId", "IsActive", "IsDeleted", "FixedPrice" });
+                column: "CategoryId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Trades_CreatedAt",

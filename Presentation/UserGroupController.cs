@@ -11,6 +11,8 @@ using System.Threading.Tasks;
 
 namespace Presentation
 {
+
+
     [Route("api/groups")]
     [ApiController]
     public class UserGroupController : ControllerBase
@@ -40,7 +42,7 @@ namespace Presentation
         public async Task<IActionResult> CreateUsergroup([FromBody] NewUserGroupDto groupDto)
         {
             if (groupDto is null)
-                return BadRequest("group object is null");
+                return BadRequest(new { message = "Item is null" });
             await _service.UserGroupService.CreateUserGroupAsync(groupDto);
             return Ok(new { message = "Group created" });
         }

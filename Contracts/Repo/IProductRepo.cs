@@ -14,6 +14,7 @@ namespace Contracts.Repo
         Task<IEnumerable<ShowProductMiniDetailsDto>> GetAllProducts(bool tracking);
         void MakeProductFeautured(Guid productId);
         void MakeAllProductsFeautured();
+        Task<HomePageCustomProductsDto?> HomePageCustomProducts ();
 
         Task<PagedList<HomePageProductDto>> GetHomePageProducts(ProductRequestParameters requestParameters);
 
@@ -25,7 +26,6 @@ namespace Contracts.Repo
         Task<ShowProductDto?> FindSellerProduct( Guid productId);
 
         Task<Product?> FindProductForUpdate( Guid productId);
-        Task<double> GetProductStockQuantity(Guid productId);
         Guid CreateProduct(Product product);
         void UpdateProduct(Product product);
         void DeleteProduct(Product productId);

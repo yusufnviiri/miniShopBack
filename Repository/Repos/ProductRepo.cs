@@ -14,10 +14,12 @@ namespace Repository.Repos
     public class ProductRepo : RepositoryBase<Product>, IProductRepo
     {
         private readonly IMemoryCache _cache;
+        ApplicationDbContext _context;  
 
         public ProductRepo(ApplicationDbContext _db, IMemoryCache cache) : base(_db)
         {
             _cache = cache;
+                _context = _db;
 
         }
 
@@ -45,91 +47,17 @@ namespace Repository.Repos
            CategoryName = x.Category != null ? x.Category.CategoryName : "General",
            SellerProfileId = x.SellerProfileId,
            SellerName = x.SellerProfile != null ? $"{x.SellerProfile.SellerName}" : "Unkown Seller",
+           ProductImageRefs = x.Images.Any() ? x.Images.Select(i => new ProductImageRefDto
+           {
+               ProductImageId = i.ProductImageId,
+               IsPrimary = i.IsPrimary
+
+           }).ToList() : new List<ProductImageRefDto>()
 
        }).ToListAsync();
+          
         }
 
-       // public async Task<PagedList<HomePageProductDto>> GetHomePageProducts([FromQuery]
-       //ProductRequestParameters requestParameters)
-       // {
-       //     //var indivisualProducts = FindByCondition(p => p.SellerProfile!=null? p.SellerProfile.SellerTypeId == 1:false, false);
-
-        
-       //     var query = FindAll(false)
-       //         .Where(p => p.IsActive && !p.IsDeleted && p.SellerProfile != null ? p.SellerProfile.SellerTypeId == 1:true );
-
-       //     // 🔎 Filter by Category
-       //     if (requestParameters.CategoryId.HasValue && requestParameters.CategoryId.Value > 0)
-       //     {
-       //         var category = requestParameters.CategoryId;
-       //         query = query.Where(p =>
-       //             p.Category != null &&
-       //             p.Category.CategoryId == category);
-       //     }
-
-       //     // 🔎 Filter by Manufacturer
-       //     if (!string.IsNullOrWhiteSpace(requestParameters.Manufacturer))
-       //     {
-       //         var name = requestParameters.Manufacturer.Trim().ToLower();
-       //         query = query.Where(p => p.Manufacturer.Contains(name, StringComparison.CurrentCultureIgnoreCase));
-       //     }
-
-
-       //     // 🔎 Filter by SubCategory
-       //     if (requestParameters.SubCategoryId.HasValue && requestParameters.SubCategoryId.Value > 0)
-       //     {
-
-       //         var subCategory = requestParameters.SubCategoryId;
-       //         query = query.Where(p =>
-       //             p.SubCategory != null &&
-       //             p.SubCategory.SubCategoryId == subCategory);
-
-       //     }
-       //     // 💰 Price Filtering
-       //     if (requestParameters.MinPrice.HasValue)
-       //     {
-       //         query = query.Where(p => p.Price >= requestParameters.MinPrice.Value);
-       //     }
-
-       //     if (requestParameters.MaxPrice.HasValue)
-       //     {
-       //         query = query.Where(p => p.Price <= requestParameters.MaxPrice.Value);
-       //     }
-
-       //     // 🔤 Product Name Search
-       //     if (!string.IsNullOrWhiteSpace(requestParameters.ProductName))
-       //     {
-       //         var name = requestParameters.ProductName.Trim().ToLower();
-       //         query = query.Where(p => p.ProductName.ToLower().Contains(name));
-       //     }
-
-       //     query = query.OrderByDescending(p => p.CreatedAt);
-
-       //     var count = await query.CountAsync();
-
-       //     var items = await query
-       //         .Skip((requestParameters.PageNumber - 1) * requestParameters.PageSize)
-       //         .Take(requestParameters.PageSize)
-       //         .Select(p => new HomePageProductDto
-       //         {
-       //             ProductId = p.ProductId,
-       //             OldPrice = p.OldPrice,
-       //             ProductName = p.ProductName,
-       //             Price = p.Price,
-       //             SellerName = p.SellerProfile != null
-       //                 ? p.SellerProfile.SellerName
-       //                 : "Unknown",
-       //             SellerProfileId = p.SellerProfileId,
-       //             ProductImageId = p.Images
-       //                 .OrderByDescending(i => i.IsPrimary)
-       //                 .Select(i => i.ProductImageId)
-       //                 .FirstOrDefault()
-       //         })
-       //         .ToListAsync();
-
-       //     return PagedList<HomePageProductDto>.ToPagedList(items, requestParameters.PageNumber, requestParameters.PageSize);
-
-       // }
 
 
         public async Task<IEnumerable<ShowProductMiniDetailsDto>> GetAllProductsByCategory(bool tracking, string categoryName)
@@ -142,20 +70,7 @@ namespace Repository.Repos
            ProductName = x.ProductName,
            Price = x.Price,
            CategoryName = x.Category != null ? x.Category.CategoryName : "General",
-           ProductAttributeValues = x.ProductAttributeValues.Any() ? x.ProductAttributeValues.Select(k => new ProductAttributeValueDto()
-           {
-               ProductAttributeValueId = k.ProductAttributeValueId,
-               ProductId = k.ProductId,
-               CategoryAttributeId = k.CategoryAttributeId,
-               StringValue = k.StringValue,
-               IntValue = k.IntValue,
-               DecimalValue = k.DecimalValue,
-               BoolValue = k.BoolValue,
-
-
-
-           }).ToList() : new List<ProductAttributeValueDto>(),
-
+        
            ProductImageRefs = x.Images.Any() ? x.Images.Select(i => new ProductImageRefDto
            {
                ProductImageId = i.ProductImageId,
@@ -184,24 +99,10 @@ namespace Repository.Repos
 
                     ProductName = p.ProductName,
                     Category = p.Category != null ? p.Category.CategoryName : "Not Categorised",
-                    StockQuantity = p.StockQuantity,
                     CreatedAt = p.CreatedAt,
                     SellerProfileId = p.SellerProfileId,
                     
-                    SellerName = p.SellerProfile != null ? $"{p.SellerProfile.SellerName}" : "Unkown Seller",
-                    ProductAttributeValues = p.ProductAttributeValues.Any() ? p.ProductAttributeValues.Select(k => new ProductAttributeValueDto()
-                    {
-                        ProductAttributeValueId = k.ProductAttributeValueId,
-                        ProductId = k.ProductId,
-                        CategoryAttributeId = k.CategoryAttributeId,
-                        StringValue = k.StringValue,
-                        IntValue = k.IntValue,
-                        DecimalValue = k.DecimalValue,
-                        BoolValue = k.BoolValue,
-
-
-
-                    }).ToList() : new List<ProductAttributeValueDto>(),
+                    SellerName = p.SellerProfile != null ? $"{p.SellerProfile.SellerName}" : "Unkown Seller",                 
 
                     Reviews = p.Reviews.Any() ? p.Reviews.Select(r => new ShowReviewDto
                     {
@@ -232,26 +133,12 @@ namespace Repository.Repos
              ProductId = p.ProductId,
              Price = p.Price,
              OldPrice = p.OldPrice,
-             MeasurementUnit = p.MeasurementUnit,
              ProductName = p.ProductName,
              Category = p.Category != null ? p.Category.CategoryName : "Not Categorised",
-             StockQuantity = p.StockQuantity,
              CreatedAt = p.CreatedAt,
              SellerProfileId = p.SellerProfileId,
              SellerName = p.SellerProfile != null ? p.SellerProfile.SellerName : "Unknown Seller",
              SellerUserProfileId = p.SellerProfile != null ? p.SellerProfile.SellerId : Guid.Empty,
-
-             ProductAttributeDataDto = p.ProductAttributeValues.Select(k => new ProductAttributeDataDto
-             {
-                 ProductAttributeValueId = k.ProductAttributeValueId,
-                 CategoryAttributeId = k.CategoryAttributeId,
-                 AttributeDataType = k.CategoryAttribute!.AttributeDataType!.DataTypeName,
-                 AttributeName = k.CategoryAttribute.AttributeName,
-                 StringValue = k.StringValue,
-                 IntValue = k.IntValue,
-                 DecimalValue = k.DecimalValue,
-                 BoolValue = k.BoolValue
-             }).ToList(),
 
              Reviews = p.Reviews.Select(r => new ShowReviewDto
              {
@@ -304,12 +191,7 @@ namespace Repository.Repos
             return product.Product;
         }
 
-        public async Task<double> GetProductStockQuantity(Guid productId)
-        {
-            return await FindByCondition(p => p.ProductId == productId, false)
-                .Select(p => p.StockQuantity)
-                .SingleAsync();
-        }
+    
         public Task<Product?> FindProductForUpdate(Guid productId)
         {
             return FindByCondition(p => p.ProductId == productId, true).FirstOrDefaultAsync();
@@ -333,22 +215,10 @@ namespace Repository.Repos
                     OldPrice = p.OldPrice,
                     ProductName = p.ProductName,
                     Category = p.Category != null ? p.Category.CategoryName : "Not Categorised",
-                    StockQuantity = p.StockQuantity,
                     CreatedAt = p.CreatedAt,
                     HasImage = p.HasImage,
                     SellerProfileId = p.SellerProfileId,
-                    SellerName = p.SellerProfile != null ? $"{p.SellerProfile.SellerName}" : "Unkown Seller",
-                    ProductAttributeValues = p.ProductAttributeValues.Any() ? p.ProductAttributeValues.Select(k => new ProductAttributeValueDto()
-                    {
-                        ProductAttributeValueId = k.ProductAttributeValueId,
-                        ProductId = k.ProductId,
-                        CategoryAttributeId = k.CategoryAttributeId,
-                        StringValue = k.StringValue,
-                        IntValue = k.IntValue,
-                        DecimalValue = k.DecimalValue,
-                        BoolValue = k.BoolValue,
-
-                    }).ToList() : new List<ProductAttributeValueDto>(),
+                    SellerName = p.SellerProfile != null ? $"{p.SellerProfile.SellerName}" : "Unkown Seller",                 
 
                     Reviews = p.Reviews.Any() ? p.Reviews.Select(r => new ShowReviewDto
                     {
@@ -393,7 +263,6 @@ namespace Repository.Repos
                         .Select(i => i.ProductImageId).FirstOrDefault(),
 
 
-                        StockQuantity = t.StockQuantity,
                         SellerName = t.SellerProfile != null
                             ? t.SellerProfile.SellerName
                             : "Unknown Seller"
@@ -440,10 +309,10 @@ namespace Repository.Repos
                                          p.Category.CategoryId == requestParameters.CategoryId);
             }
 
-            if (!string.IsNullOrWhiteSpace(requestParameters.Manufacturer))
+            if (!string.IsNullOrWhiteSpace(requestParameters.ProductDescription))
             {
                 var name = requestParameters.Manufacturer.Trim();
-                query = query.Where(p => p.Manufacturer.Contains(name));
+                query = query.Where(p => p.Description.Contains(name));
             }
 
             if (requestParameters.SubCategoryId.HasValue && requestParameters.SubCategoryId.Value > 0)
@@ -500,6 +369,120 @@ namespace Repository.Repos
             return result;
         }
 
+
+
+        public async Task<HomePageCustomProductsDto?> HomePageCustomProducts()
+        {
+            var productsCount = FindAll(false).Count();
+            var cacheKey = $"homepage_custom_products {productsCount}";
+
+            if (_cache.TryGetValue(cacheKey, out HomePageCustomProductsDto cached))
+            {
+                return cached;
+            }
+
+            var baseQuery = FindAll(false)
+                .Where(p => p.IsActive && !p.IsDeleted &&
+                    (p.SellerProfile != null ? p.SellerProfile.SellerTypeId == 1 : true))
+                .AsNoTracking();
+
+            IQueryable<HomePageProductDto> ProjectToDto(IQueryable<Product> query) =>
+                query.Select(p => new HomePageProductDto
+                {
+                    ProductId = p.ProductId,
+                    ProductName = p.ProductName,
+                    Price = p.Price,
+                    OldPrice = p.OldPrice,
+                    SellerName = p.SellerProfile != null
+                        ? p.SellerProfile.SellerName
+                        : "Unknown",
+                    SellerProfileId = p.SellerProfileId,
+                    ProductImageId = p.Images
+                        .OrderByDescending(i => i.IsPrimary)
+                        .Select(i => i.ProductImageId)
+                        .FirstOrDefault()
+                });
+
+            // =========================
+            // ⭐ FEATURED (EXECUTE FIRST)
+            // =========================
+            var featured = await ProjectToDto(
+                baseQuery.Where(p => p.IsFeatured)
+                         .OrderByDescending(p => p.CreatedAt)
+                         .Take(20)
+            ).ToListAsync();
+
+            // =========================
+            // 👥 GROUP PRODUCTS (FIXED JOIN)
+            // =========================
+            var topGroupId = await _context.GroupMembers
+                .GroupBy(g => g.UserGroupId)
+                .OrderByDescending(g => g.Count())
+                .Select(g => g.Key)
+                .FirstOrDefaultAsync();
+
+            List<HomePageProductDto> groupProducts = [];
+
+            if (topGroupId != Guid.Empty)
+            {
+                groupProducts = await ProjectToDto(
+                    baseQuery.Where(p =>
+                        p.SellerProfile != null &&
+                        _context.GroupMembers
+                            .Where(g => g.UserGroupId == topGroupId)
+                            .Any(g => g.UserProfileId == p.SellerProfile.SellerId)
+                    )
+                    .OrderByDescending(p => p.CreatedAt)
+                    .Take(20)
+                ).ToListAsync();
+            }
+
+            // =========================
+            // 📦 CARDS (SEQUENTIAL)
+            // =========================
+            var cards = await _context.HomePageCards
+                .Where(c => c.IsActive)
+                .Include(c => c.CategoryLinks)
+                .AsNoTracking()
+                .ToListAsync();
+
+            var advertisedProducts = new List<HomeProductCardDto>();
+
+            foreach (var card in cards)
+            {
+                var categoryIds = card.CategoryLinks.Select(cl => cl.CategoryId);
+
+                var products = await ProjectToDto(
+                    baseQuery.Where(p => categoryIds.Contains(p.CategoryId))
+                             .OrderByDescending(p => p.CreatedAt)
+                             .Take(10)
+                ).ToListAsync();
+
+                advertisedProducts.Add(new HomeProductCardDto
+                {
+                    HomePageCardId = card.HomePageCardId,
+                    Title = card.Title,
+                    Color = card.Color,
+                    LinkLabel = card.LinkLabel,
+                    Products = products
+                });
+            }
+
+            var result = new HomePageCustomProductsDto
+            {
+                FeaturedProducts = featured,
+                GroupProducts = groupProducts,
+                AdvertisedProducts = advertisedProducts
+            };
+
+            var cacheOptions = new MemoryCacheEntryOptions()
+                .SetAbsoluteExpiration(TimeSpan.FromMinutes(5))
+                .SetSlidingExpiration(TimeSpan.FromMinutes(1));
+
+            _cache.Set(cacheKey, result, cacheOptions);
+
+            return result;
+        }
     }
 }
 

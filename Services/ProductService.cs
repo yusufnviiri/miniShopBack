@@ -60,34 +60,18 @@ namespace Services
         }
         public async Task DeleteProductAsync(Guid productId)
         {
-            var productEntity = await _repoManager.ProductRepo.FindProductById(tracking: true, productId);
+            var productEntity = await _repoManager.ProductRepo.FindProductForUpdate( productId);
             if (productEntity == null)
             {
                 _logger.LogError($"Product with id: {productId} not found.");
                 throw new ArgumentNullException(nameof(productId), "Product not found.");
             }
-            _repoManager.ProductRepo.DeleteProduct(_mapper.Map<Product>(productEntity));
+            _repoManager.ProductRepo.DeleteProduct(productEntity);
             await _repoManager.SaveRepoDataAsync(); 
         }
 
-        public async Task<double> GetProductStockQuantityAsync(Guid productId)=>
-            await _repoManager.ProductRepo.GetProductStockQuantity(productId);
-        public async Task UpdateProductStockLevelAsync(Guid productId, double quantityToDeduct)
-        {
-            var productEntity = await _repoManager.ProductRepo.FindProductForUpdate(productId) ?? throw new ItemNotFoundException(productId);
-
-            if (quantityToDeduct <= 0)
-                throw new ArgumentOutOfRangeException(nameof(quantityToDeduct));
-
-            if (productEntity.StockQuantity < quantityToDeduct)
-                throw new InvalidOperationException("Insufficient stock.");
-
-            productEntity.StockQuantity -= (int)quantityToDeduct;
-
-            await _repoManager.SaveRepoDataAsync();       
-
-
-        }
+     
+     
 
         public async Task<(ICollection<HomePageProductDto> productsData, MetaData MetaData) >GetHomePageProductsAsync(
         ProductRequestParameters requestParameters) {
@@ -123,22 +107,6 @@ namespace Services
                 throw new ObjectBadRequestExeption($"product with id {productId} not found");
             }
         }
-
-        public async Task UpdateProductStockAsync(Guid productId, int newStockQuantity)
-        {
-            var productForUpdate = await _repoManager.ProductRepo.FindProductForUpdate(productId);
-            if (productForUpdate != null)
-            {
-                productForUpdate.StockQuantity = newStockQuantity;
-                await _repoManager.SaveRepoDataAsync();
-            }
-            else
-            {
-                throw new ObjectBadRequestExeption($"product with id {productId} not found");
-            }
-        }
-
-
         public void MakeAllProductsFeautured()
         {
             _repoManager.ProductRepo.MakeAllProductsFeautured();
@@ -150,7 +118,22 @@ namespace Services
 
         }
 
- 
 
+
+        public async Task UpdateProductDescription(SharedUpdatesDto sharedUpdates)
+        {
+            var product = await _repoManager.ProductRepo.FindProductForUpdate(sharedUpdates.ItemId);
+            if (product != null)
+            {
+                product.Description = sharedUpdates.ItemDescription;
+                await _repoManager.SaveRepoDataAsync();
+            }
+            else
+            {
+                throw new ObjectBadRequestExeption($"trade with id {sharedUpdates.ItemId} not found");
+            }
+
+        }
+        public async Task<HomePageCustomProductsDto?> HomePageCustomProductsAsync() => await _repoManager.ProductRepo.HomePageCustomProducts();
     }
 }

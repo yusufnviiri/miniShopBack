@@ -208,6 +208,139 @@
         }
       }
     },
+    "/api/home": {
+      "get": {
+        "tags": [
+          "HomePage"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "HomePage"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/HomePageCard"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/HomePageCard"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/HomePageCard"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/home/{id}": {
+      "get": {
+        "tags": [
+          "HomePage"
+        ],
+        "operationId": "homepagecardId",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/home/edit": {
+      "put": {
+        "tags": [
+          "HomePage"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/HomePageCard"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/HomePageCard"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/HomePageCard"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/home/card/{id}": {
+      "delete": {
+        "tags": [
+          "HomePage"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/home/index": {
+      "get": {
+        "tags": [
+          "HomePage"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
     "/api/product/images/{productId}/{fileName}/{size}": {
       "get": {
         "tags": [
@@ -302,6 +435,14 @@
           },
           {
             "name": "Manufacturer",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "ProductDescription",
             "in": "query",
             "style": "form",
             "schema": {
@@ -425,6 +566,14 @@
           },
           {
             "name": "Manufacturer",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "ProductDescription",
             "in": "query",
             "style": "form",
             "schema": {
@@ -706,6 +855,61 @@
         "parameters": [
           {
             "name": "sellerId",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/products/update-productdescription": {
+      "post": {
+        "tags": [
+          "Product"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SharedUpdatesDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SharedUpdatesDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SharedUpdatesDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/products/deleteproduct/{productId}": {
+      "delete": {
+        "tags": [
+          "Product"
+        ],
+        "parameters": [
+          {
+            "name": "productId",
             "in": "path",
             "required": true,
             "style": "simple",
@@ -1777,6 +1981,14 @@
             }
           },
           {
+            "name": "ProductDescription",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
             "name": "PageNumber",
             "in": "query",
             "style": "form",
@@ -1977,6 +2189,37 @@
             "application/*+json": {
               "schema": {
                 "$ref": "#/components/schemas/MiniTradeImage"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/trades/update-tradedescription": {
+      "post": {
+        "tags": [
+          "Trade"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SharedUpdatesDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SharedUpdatesDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SharedUpdatesDto"
               }
             }
           }
@@ -3208,6 +3451,59 @@
         },
         "additionalProperties": false
       },
+      "HomePageCard": {
+        "type": "object",
+        "properties": {
+          "homePageCardId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "title": {
+            "type": "string",
+            "nullable": true
+          },
+          "color": {
+            "type": "string",
+            "nullable": true
+          },
+          "linkLabel": {
+            "type": "string",
+            "nullable": true
+          },
+          "isActive": {
+            "type": "boolean"
+          },
+          "categoryLinks": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/HomePageCardCategory"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "HomePageCardCategory": {
+        "type": "object",
+        "properties": {
+          "homePageCardCategoryId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "homePageCardId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "categoryId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "homePageCard": {
+            "$ref": "#/components/schemas/HomePageCard"
+          }
+        },
+        "additionalProperties": false
+      },
       "LoginDataUpdateDto": {
         "type": "object",
         "properties": {
@@ -3482,10 +3778,6 @@
             "type": "number",
             "format": "double"
           },
-          "stockQuantity": {
-            "type": "integer",
-            "format": "int32"
-          },
           "oldPrice": {
             "type": "number",
             "format": "double"
@@ -3502,14 +3794,7 @@
           "hasImage": {
             "type": "boolean"
           },
-          "isModified": {
-            "type": "boolean"
-          },
-          "manufacturer": {
-            "type": "string",
-            "nullable": true
-          },
-          "measurementUnit": {
+          "description": {
             "type": "string",
             "nullable": true
           },
@@ -3541,13 +3826,6 @@
           "createdAt": {
             "type": "string",
             "format": "date-time"
-          },
-          "productAttributeValues": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ProductAttributeValue"
-            },
-            "nullable": true
           }
         },
         "additionalProperties": false
@@ -3823,6 +4101,24 @@
         },
         "additionalProperties": false
       },
+      "SharedUpdatesDto": {
+        "type": "object",
+        "properties": {
+          "itemId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "itemDescription": {
+            "type": "string",
+            "nullable": true
+          },
+          "price": {
+            "type": "number",
+            "format": "double"
+          }
+        },
+        "additionalProperties": false
+      },
       "ShowGroupMemberDto": {
         "type": "object",
         "properties": {
@@ -4044,23 +4340,6 @@
             "type": "string",
             "nullable": true
           },
-          "fixedPrice": {
-            "type": "number",
-            "format": "double",
-            "nullable": true
-          },
-          "hourlyRate": {
-            "type": "number",
-            "format": "double",
-            "nullable": true
-          },
-          "isNegotiable": {
-            "type": "boolean"
-          },
-          "stockQuantity": {
-            "type": "integer",
-            "format": "int32"
-          },
           "isActive": {
             "type": "boolean"
           },
@@ -4075,10 +4354,6 @@
           },
           "isFeatured": {
             "type": "boolean"
-          },
-          "minimumPrice": {
-            "type": "number",
-            "format": "double"
           },
           "sellerProfile": {
             "$ref": "#/components/schemas/SellerProfile"
@@ -4108,13 +4383,6 @@
           "createdAt": {
             "type": "string",
             "format": "date-time"
-          },
-          "tradeAttributeValues": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/TradeAttributeValue"
-            },
-            "nullable": true
           },
           "tradeBookings": {
             "type": "array",

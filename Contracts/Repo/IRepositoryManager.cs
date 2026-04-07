@@ -45,6 +45,7 @@ namespace Contracts.Repo
         public ITradeAttributeValueRepo TradeAttributeValueRepo { get; }
         public ITradeImageRepo TradeImageRepo { get; }
         public IGroupSellerRepo GroupSellerRepo { get; }
+        public IHomePageCardRepo HomePageCardRepo { get; }
 
     }
 }

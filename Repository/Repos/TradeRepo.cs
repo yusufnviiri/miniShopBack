@@ -47,16 +47,7 @@ namespace Repository.Repos
                     p.SubCategory.SubCategoryId == subCategory);
 
             }
-            // 💰 Price Filtering
-            if (requestParameters.MinPrice.HasValue)
-            {
-                query = query.Where(p => p.FixedPrice >= requestParameters.MinPrice.Value|| p.MinimumPrice >= requestParameters.MinPrice.Value);
-            }
-
-            if (requestParameters.MaxPrice.HasValue)
-            {
-                query = query.Where(p => p.FixedPrice <= requestParameters.MaxPrice.Value);
-            }
+          
 
             // 🔤 Product Name Search
             if (!string.IsNullOrWhiteSpace(requestParameters.ProductName))
@@ -74,12 +65,9 @@ namespace Repository.Repos
                 .Take(requestParameters.PageSize)
                 .Select(p => new HomePageTradeDto
                 {
-                    TradeId = p.TradeId,
-                    FixedPrice = p.FixedPrice,
-                    HourlyRate = p.HourlyRate,
+                    TradeId = p.TradeId,                  
                     TradeName = p.TradeName,
                     Description = p.Description,
-                    MinimumPrice= p.MinimumPrice ,                    
                     SellerName = p.SellerProfile != null
                         ? p.SellerProfile.SellerName
                         : "Unknown",
@@ -105,31 +93,15 @@ namespace Repository.Repos
                     {
                         TradeId = t.TradeId,
                         TradeName = t.TradeName,
-                        Description = t.Description,
-                        FixedPrice = t.FixedPrice,
-                        HourlyRate = t.HourlyRate,
-                        StockQuantity = t.StockQuantity,
+                        Description = t.Description,                       
                         CreatedAt = t.CreatedAt,
-                        MinimumPrice = t.MinimumPrice,
                         SellerProfileId = t.SellerProfileId,
                         SellerName = t.SellerProfile != null
                             ? t.SellerProfile.SellerName
                             : "Unknown Seller",
                         Category = t.Category != null
                             ? t.Category.CategoryName
-                            : "Not Categorised",
-
-                        TradeAttributeValues = t.TradeAttributeValues
-                            .Select(a => new TradeAttributeValueDto
-                            {
-                                TradeAttributeValueId = a.TradeAttributeValueId,
-                                CategoryAttributeId = a.CategoryAttributeId,
-                                StringValue = a.StringValue,
-                                IntValue = a.IntValue,
-                                DecimalValue = a.DecimalValue,
-                                BoolValue = a.BoolValue
-                            }).ToList(),
-
+                            : "Not Categorised",               
                         Reviews = t.Reviews
                             .Select(r => new ShowReviewDto
                             {
@@ -165,9 +137,7 @@ namespace Repository.Repos
                 .Select(t => new HomePageTradeDto
                 {
                     TradeId = t.TradeId,
-                    TradeName = t.TradeName,
-                    FixedPrice = t.FixedPrice,
-                    HourlyRate = t.HourlyRate,
+                    TradeName = t.TradeName,                   
                     SellerName = t.SellerProfile != null
                         ? t.SellerProfile.SellerName
                         : "Unknown",
@@ -207,29 +177,14 @@ namespace Repository.Repos
                 .Select(p => new ShowTradeDataDto
                 {
                     TradeId = p.TradeId,
-                    TradeName = p.TradeName,
-                    FixedPrice = p.FixedPrice,
-                    HourlyRate = p.HourlyRate,
-                    MinimumPrice = p.MinimumPrice,
+                    TradeName = p.TradeName,                 
                     TradeBookings = p.TradeBookings,
                     Category = p.Category != null ? p.Category.CategoryName : "Not Categorised",
-                    StockQuantity = p.StockQuantity,
                     CreatedAt = p.CreatedAt,
                     HasImage = p.HasImage,
                     SellerProfileId = p.SellerProfileId,
                     SellerName = p.SellerProfile != null ? $"{p.SellerProfile.SellerName}" : "Unkown Seller",
-                    TradeAttributeValues = p.TradeAttributeValues.Any() ? p.TradeAttributeValues.Select(k => new TradeAttributeValueDto()
-                    {
-                        TradeAttributeValueId = k.TradeAttributeValueId,
-                        TradeId = k.TradeId,
-                        CategoryAttributeId = k.CategoryAttributeId,
-                        StringValue = k.StringValue,
-                        IntValue = k.IntValue,
-                        DecimalValue = k.DecimalValue,
-                        BoolValue = k.BoolValue,
-
-                    }).ToList() : new List<TradeAttributeValueDto>(),
-
+                    
                     Reviews = p.Reviews.Any() ? p.Reviews.Select(r => new ShowReviewDto
                     {
                         ReviewId = r.ReviewId,
@@ -248,43 +203,7 @@ namespace Repository.Repos
                 })
                 .FirstOrDefaultAsync();
         }
-
-        //public async Task<ICollection<SellerTradeListDto?>> GetGroupMembersTrades(List<Guid> groupMembersIds)
-        //{
-        //    if (groupMembersIds == null || !groupMembersIds.Any())
-        //        return null;
-        //    IEnumerable<SellerTradeDto> trades = [];
-        //    ICollection<SellerTradeListDto> sellerTrades = [];
-        //    SellerTradeListDto sellerTradeListDto = new();
-
-        //    foreach (var id in groupMembersIds)
-        //    {
-
-        //        var trade = await FindByCondition(p => p.SellerProfileId != null ? p.SellerProfileId == id : true && !p.IsDeleted && p.IsActive, false)
-        //        .Select(t => new SellerTradeDto
-        //        {
-        //            TradeId = t.TradeId,
-        //            TradeName = t.TradeName,
-        //            Description = t.Description,
-        //            Category = t.Category != null ? t.Category.CategoryName : "Not Categorised",
-        //            ReviewSummary = t.Reviews.Any() ? (int)t.Reviews.Average(r => r.Rating) : 0,
-        //            TradeImageId = t.Images.OrderByDescending(i => i.IsPrimary).Select(i => i.TradeImageId).FirstOrDefault(),
-        //            FixedPrice = t.FixedPrice,
-        //            HourlyRate = t.HourlyRate,
-        //            StockQuantity = t.StockQuantity,
-        //            CategoryName = t.Category != null ? t.Category.CategoryName : "Not Categorised",
-        //            SellerName = t.SellerProfile != null ? $"{t.SellerProfile.SellerName}" : "Unknown Seller"
-        //        }).ToListAsync();
-        //        sellerTrades.Add(new SellerTradeListDto
-        //        {
-        //            SellerTrades = trade
-        //        });
-        //    }
-        //    return sellerTrades;
-
-
-        //}
-
+                
 
         public async Task<ICollection<SellerTradeListDto>> GetGroupMembersTrades(IList<Guid> groupMemberIds)
         {
@@ -304,18 +223,13 @@ namespace Repository.Repos
                         TradeId = t.TradeId,
                         TradeName = t.TradeName,
                         Description = t.Description,
-                        MinimumPrice = t.MinimumPrice,
-
                         Category = t.Category != null ? t.Category.CategoryName : "Not Categorised",
                         CategoryName = t.Category != null ? t.Category.CategoryName : "Not Categorised",
                         ReviewSummary = t.Reviews.Any() ? (int)t.Reviews.Average(r => r.Rating) : 0,
                         TradeImageId = t.Images
                             .OrderByDescending(i => i.IsPrimary)
                             .Select(i => i.TradeImageId)
-                            .FirstOrDefault(),
-                        FixedPrice = t.FixedPrice,
-                        HourlyRate = t.HourlyRate,
-                        StockQuantity = t.StockQuantity,
+                            .FirstOrDefault(),                    
                         SellerName = t.SellerProfile != null
                             ? t.SellerProfile.SellerName
                             : "Unknown Seller"

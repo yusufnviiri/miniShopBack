@@ -107,8 +107,8 @@ namespace Services
                 }
                 File.Delete(job.TempPath);
 
-                var processedImage = await _context.ProductImages
-                .FirstOrDefaultAsync(x => x.ProductImageId == job.ImageId);
+                var processedImage = await _context.TradeImages
+                .FirstOrDefaultAsync(x => x.TradeImageId == job.ImageId);
 
                 if (processedImage != null)
                 {

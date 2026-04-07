@@ -133,20 +133,13 @@ namespace Presentation
 
 
         [HttpPost("updateproductstock")]
-        public async Task<ActionResult> UpdateProductStockQuantity([FromBody] MiniProductUpdateDto updateDto)
+        public  ActionResult UpdateProductStockQuantity([FromBody] MiniProductUpdateDto updateDto)
         {
             if (updateDto == null)
             {
                 return BadRequest(new { message = "Object is Empty" });
 
-            }
-
-            if (updateDto.ProductId == Guid.Empty)
-            {
-                return BadRequest(new { message = "Product Id is required" });
-
-            }
-            await _service.ProductService.UpdateProductStockAsync(updateDto.ProductId, updateDto.ProductStock);
+            }           
             return Ok(new { message = "Product updated" });
 
         }
@@ -177,12 +170,13 @@ namespace Presentation
             var productDto = new NewProductDto
             {
                 ProductName = jsonNode["productName"]?.Value<string>() ?? string.Empty,
+                Description = jsonNode["description"]?.Value<string>() ?? string.Empty,
+
                 Price = jsonNode["price"]?.Value<decimal>() ?? 0,
-                StockQuantity = jsonNode["stockQuantity"]?.Value<int>() ?? 0,
                 CategoryId = jsonNode["categoryId"]?.Value<int>() ?? 0,
                 SubCategoryId = jsonNode["subCategoryId"]?.Value<int>() ?? 0,
                 SubCategoryCategoryId = jsonNode["subCategoryCategoryId"]?.Value<int>() ?? 0,
-                MeasurementUnit = jsonNode["measurementUnit"]?.Value<string>() ?? string.Empty,
+              
 
             };
 
@@ -196,33 +190,7 @@ namespace Presentation
             productDto.OldPrice = Math.Abs(productDto.Price * OldPriceRate);
 
             // Map attributes
-            var attributes = jsonNode["attributes"] as JArray;
-            if (attributes != null)
-            {
-                var attributeValues = new List<ProductAttributeValue>();
-
-                foreach (var attr in attributes)
-                {
-                    var categoryAttributeId = attr["categoryAttributeId"]?.Value<int>() ?? 0;
-                    var inputType = attr["inputTypeValue"]?.Value<string>();
-                    ProductAttributeValue productAttributeValue = inputType switch
-                    {
-                        "number" => await _service.ProductAttributeValueService
-                            .MapAttributeValueToCategoryAttribute(categoryAttributeId, intValue: attr["value"]?.Value<int>() ?? 0),
-                        "checkbox" => await _service.ProductAttributeValueService
-                            .MapAttributeValueToCategoryAttribute(categoryAttributeId, boolValue: attr["value"]?.Value<bool>() ?? false),
-                        "text" => await _service.ProductAttributeValueService
-                            .MapAttributeValueToCategoryAttribute(categoryAttributeId, stringValue: attr["value"]?.Value<string>()),
-                        "date" => await _service.ProductAttributeValueService
-                            .MapAttributeValueToCategoryAttribute(categoryAttributeId, dateOnlyValue: attr["value"]?.Value<DateOnly>() ?? default),
-                        _ => throw new NotSupportedException($"Unsupported AttributeDataType: {inputType}")
-                    };
-
-                    attributeValues.Add(productAttributeValue);
-                }
-
-                productDto.ProductAttributeValues = attributeValues;
-            }
+           
             if (images?.Count > 0)
             {
                 productDto.HasImage = true;
@@ -298,8 +266,7 @@ namespace Presentation
             return Ok(new { message = "Image Deleted" });
         }
 
-
-        
+    
         
         
         
@@ -318,21 +285,26 @@ namespace Presentation
 
 
 
+        [HttpPost("update-productdescription")]
+        public async Task<ActionResult> UpdateProductDescription([FromBody] SharedUpdatesDto sharedUpdates)
+        {
+            if (sharedUpdates.ItemId == Guid.Empty) return BadRequest(new { message = "Id not specified" });
+
+            await _service.ProductService.UpdateProductDescription(sharedUpdates);
+            return Ok(new { message = "success" });
+
+
+        }
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
+        [HttpDelete("deleteproduct/{productId:Guid}")]
+        public async Task<ActionResult> DeleteProductCategory([FromRoute] Guid productId)
+        {
+            if (productId == Guid.Empty) { return BadRequest(new { message = "Id is not specified" }); }
+            await _service.ProductService.DeleteProductAsync(productId);
+            return Ok(new { message = "Item Deleted" });
+        }
 
 
 

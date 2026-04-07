@@ -21,13 +21,11 @@ namespace Contracts.Service
         Task<Product> CreateProductAsync(NewProductDto product);
         Task UpdateProductAsync(NewProductDto product);
         Task DeleteProductAsync(Guid productId);
-        Task<double> GetProductStockQuantityAsync(Guid productId);
-        Task UpdateProductStockLevelAsync(Guid productId, double stockQuantity);
         Task<ShowProductDto?> FindSellerProductAsync(Guid productId);
         Task SetProductOldPriceAsync(Guid productId,decimal oldPrice);
         Task UpdateProductPriceAsync(Guid productId, decimal newPrice);
-        Task UpdateProductStockAsync(Guid productId, int newStockQuantity);
-
+        Task UpdateProductDescription(SharedUpdatesDto sharedUpdates);
+        Task<HomePageCustomProductsDto?> HomePageCustomProductsAsync();
 
 
 

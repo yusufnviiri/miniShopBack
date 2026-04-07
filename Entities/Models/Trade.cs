@@ -18,17 +18,11 @@ namespace Entities.Models
         public SubCategoryCategory? SubCategoryCategory { get; set; }
         public string Description { get; set; } = default!;
 
-        // Pricing
-        public decimal? FixedPrice { get; set; }
-        public decimal? HourlyRate { get; set; }
-        public bool IsNegotiable { get; set; }
-        public int StockQuantity { get; set; }
         public bool IsActive { get; set; } = true;
         public bool IsDeleted { get; set; }
         public bool HasImage { get; set; }
         public bool IsModified { get; set; }
         public bool IsFeatured { get; set; }
-        public decimal MinimumPrice { get; set; } 
 
         // Ownership (DOMAIN, not Identity)
         public SellerProfile? SellerProfile { get; set; }
@@ -37,7 +31,6 @@ namespace Entities.Models
         public int CommodityClassId { get; set; } = 2;
         public ICollection<Review> Reviews { get; set; } = [];
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
-        public ICollection<TradeAttributeValue> TradeAttributeValues { get; set; } = [];
         public ICollection<TradeBooking> TradeBookings  { get; set; } = [];
     }
 

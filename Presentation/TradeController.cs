@@ -100,10 +100,7 @@ namespace Presentation
             {
                 TradeName = jsonNode["tradeName"]?.Value<string>() ?? string.Empty,
                 Description = jsonNode["description"]?.Value<string>() ?? string.Empty,
-                FixedPrice = jsonNode["fixedPrice"]?.Value<decimal>() ?? 0,
-                HourlyRate = jsonNode["hourlyRate"]?.Value<decimal>() ?? 0,
-                IsNegotiable = jsonNode["isNegotiable"]?.Value<bool>() ?? false,
-                StockQuantity = jsonNode["stockQuantity"]?.Value<int>() ?? 0,
+                MinimumPrice = jsonNode["minimumPrice"]?.Value<decimal>() ?? 0,              
                 CategoryId = jsonNode["categoryId"]?.Value<int>() ?? 0,
                 SubCategoryId = jsonNode["subCategoryId"]?.Value<int>() ?? 0,
                 SubCategoryCategoryId = jsonNode["subCategoryCategoryId"]?.Value<int>() ?? 0,
@@ -118,34 +115,7 @@ namespace Presentation
                 return BadRequest(new { message = "Invalid SellerId." });
             tradeDto.SellerId = sellerId;
 
-            // Map attributes
-            var attributes = jsonNode["attributes"] as JArray;
-            if (attributes != null)
-            {
-                var attributeValues = new List<TradeAttributeValue>();
-
-                foreach (var attr in attributes)
-                {
-                    var categoryAttributeId = attr["categoryAttributeId"]?.Value<int>() ?? 0;
-                    var inputType = attr["inputTypeValue"]?.Value<string>();
-                    TradeAttributeValue tradeAttributeValue = inputType switch
-                    {
-                        "number" => await _service.TradeAttributeValueService
-                            .MapAttributeValueToCategoryAttribute(categoryAttributeId, intValue: attr["value"]?.Value<int>() ?? 0),
-                        "checkbox" => await _service.TradeAttributeValueService
-                            .MapAttributeValueToCategoryAttribute(categoryAttributeId, boolValue: attr["value"]?.Value<bool>() ?? false),
-                        "text" => await _service.TradeAttributeValueService
-                            .MapAttributeValueToCategoryAttribute(categoryAttributeId, stringValue: attr["value"]?.Value<string>()),
-                        "date" => await _service.TradeAttributeValueService
-                            .MapAttributeValueToCategoryAttribute(categoryAttributeId, dateOnlyValue: attr["value"]?.Value<DateOnly>() ?? default),
-                        _ => throw new NotSupportedException($"Unsupported AttributeDataType: {inputType}")
-                    };
-
-                    attributeValues.Add(tradeAttributeValue);
-                }
-
-                tradeDto.TradeAttributeValues = attributeValues;
-            }
+           
             if (images?.Count > 0)
             {
                 tradeDto.HasImage = true;
@@ -201,11 +171,11 @@ namespace Presentation
         [Authorize]
 
         [HttpPost("primary-tradeimage")]
-        public async Task<ActionResult> MakeTradeImagePrimary([FromBody] MiniTradeImage miniProduct)
+        public async Task<ActionResult> MakeTradeImagePrimary([FromBody] MiniTradeImage miniTradeImage )
         {
-            if (miniProduct.TradeId == Guid.Empty || miniProduct.ImageId == Guid.Empty) return BadRequest(new { message = "Ids not specified" });
+            if (miniTradeImage.TradeId == Guid.Empty || miniTradeImage.ImageId == Guid.Empty) return BadRequest(new { message = "Ids not specified" });
 
-            await _service.TradeImageService.MakeImagePrimaryAsync(miniProduct);
+            await _service.TradeImageService.MakeImagePrimaryAsync(miniTradeImage);
             return Ok(new { message = "success" });
 
 
@@ -222,7 +192,16 @@ namespace Presentation
             return Ok(new { message = "Image Deleted" });
      }
 
+        [HttpPost("update-tradedescription")]
+        public async Task<ActionResult> UpdateTradeDescription([FromBody] SharedUpdatesDto sharedUpdates )
+        {
+            if (sharedUpdates.ItemId == Guid.Empty ) return BadRequest(new { message = "Id not specified" });
 
+            await _service.TradeService.UpdateTradeDescription(sharedUpdates);
+            return Ok(new { message = "success" });
+
+
+        }
 
 
 

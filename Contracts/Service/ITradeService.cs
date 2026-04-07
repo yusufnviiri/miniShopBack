@@ -21,6 +21,7 @@ namespace Contracts.Service
         Task UpdateTradeAsync(Trade trade);
         Task DeleteTradeAsync(Guid tradeId);
         void MakeTradeFeautured(Guid tradeId);
+        Task UpdateTradeDescription(SharedUpdatesDto sharedUpdates);
         void MakeAllTradesFeautured();
     }
 }

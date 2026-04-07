@@ -52,10 +52,13 @@ namespace Repository.Repos
         private readonly Lazy<ITradeAttributeValueRepo> _tradeAttributeValueRepo;
         private readonly Lazy<ITradeImageRepo> _tradeImageRepo;
         private readonly Lazy<IGroupSellerRepo> _groupSellerRepo;
+        private readonly Lazy<IHomePageCardRepo> _homePageCardRepo;
         public RepositoryManager(ApplicationDbContext dbContext, IMemoryCache cache)
         {
             _dbContext = dbContext;
             _paymentRepo = new Lazy<IPaymentRepo>(()=>new PaymentRepo(dbContext));
+            _homePageCardRepo = new Lazy<IHomePageCardRepo>(() => new HomePageCardRepo(dbContext));
+
             _wishListRepo = new Lazy<IWishListRepo>(()=>new WishListRepo(dbContext));
             _reviewRepo = new Lazy<IReviewRepo>(()=>new ReviewRepo(dbContext));
             _shoppingCartRepo = new Lazy<IShoppingCartRepo>(()=> new  ShoppingCartRepo(dbContext));
@@ -127,5 +130,6 @@ namespace Repository.Repos
         public ITradeAttributeValueRepo TradeAttributeValueRepo =>_tradeAttributeValueRepo.Value;
         public ITradeImageRepo TradeImageRepo =>_tradeImageRepo.Value;
         public IGroupSellerRepo GroupSellerRepo =>_groupSellerRepo.Value;
+        public IHomePageCardRepo HomePageCardRepo => _homePageCardRepo.Value;
     }
 }

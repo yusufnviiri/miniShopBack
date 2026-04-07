@@ -47,8 +47,8 @@ namespace Services
         public async Task<TradeDataDto?> GetTradeDataAsync(Guid tradeId) => await _repoManager.TradeRepo.GetTradeData(tradeId);
         public async Task<ShowTradeDataDto?> FindSellerTradeAsync(Guid tradeId) => await _repoManager.TradeRepo.FindSellerTrade(tradeId);
         public async Task<Trade?> FindTradeForUpdateAsync(Guid tradeId) => await _repoManager.TradeRepo.FindTradeForUpdate(tradeId);
-        public async Task<Trade> CreateTradeAsync(NewTradeDto tradeDto )
-     
+        public async Task<Trade> CreateTradeAsync(NewTradeDto tradeDto)
+
         {
             if (tradeDto.MinimumPrice < 0 || tradeDto.MinimumPrice > 1000000000)
             {
@@ -56,12 +56,12 @@ namespace Services
             }
 
             var tradeEntity = _mapper.Map<Trade>(tradeDto);
-                var (commodityClass, sellerProfileId) = await SellerRules.CommodityClassToSellerRef(tradeDto.SellerId, _repoManager);
+            var (commodityClass, sellerProfileId) = await SellerRules.CommodityClassToSellerRef(tradeDto.SellerId, _repoManager);
 
 
             tradeEntity.CommodityClassId = commodityClass;
             tradeEntity.SellerProfileId = sellerProfileId;
-                _repoManager.TradeRepo.CreateTrade(tradeEntity);
+            _repoManager.TradeRepo.CreateTrade(tradeEntity);
 
             try
             {
@@ -91,15 +91,15 @@ namespace Services
 
 
 
-           
+
 
 
             return tradeEntity;
-            }
+        }
 
 
-           
-        
+
+
         public async Task UpdateTradeAsync(Trade trade)
         {
             _repoManager.TradeRepo.UpdateTrade(trade);
@@ -119,8 +119,24 @@ namespace Services
             }
         }
 
-       public void MakeTradeFeautured(Guid tradeId)=>_repoManager.TradeRepo.MakeTradeFeautured(tradeId);
+        public void MakeTradeFeautured(Guid tradeId) => _repoManager.TradeRepo.MakeTradeFeautured(tradeId);
         public void MakeAllTradesFeautured() => _repoManager.TradeRepo.MakeAllTradesFeautured();
+
+        public async Task UpdateTradeDescription(SharedUpdatesDto sharedUpdates)
+        {
+            var trade = await _repoManager.TradeRepo.FindTradeForUpdate(sharedUpdates.ItemId);
+            if (trade != null)
+            {
+                trade.Description = sharedUpdates.ItemDescription;
+                await _repoManager.SaveRepoDataAsync();
+            }
+            else
+            {
+                throw new ObjectBadRequestExeption($"trade with id {sharedUpdates.ItemId} not found");
+            }
+
+        }
     }
+
 
 }

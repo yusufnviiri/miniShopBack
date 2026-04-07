@@ -83,17 +83,13 @@ namespace Repository.Repos
                     Price = p.Price,
                     ProductName = p.ProductName,
                     CategoryName = p.Category != null ? p.Category.CategoryName : "Not Categorized",
-                    StockQuantity = p.StockQuantity,
-                    MeasurementUnit = p.MeasurementUnit,
                     ReviewSummary = p.Reviews.Count != 0 ? (int) p.Reviews.Average(r => r.Rating) : 0,
                     ProductImageId = p.Images.OrderByDescending(i => i.IsPrimary).Select(i => i.ProductImageId).FirstOrDefault(),
                 }).ToList() : new List<SellerProductDto>(),
                 Trades= s.Trades.Any() ? s.Trades.Select(p => new SellerTradeDto()
                 {
                     TradeId = p.TradeId,
-                    HourlyRate = p.HourlyRate,
-                    FixedPrice= p.FixedPrice,
-                    StockQuantity = p.StockQuantity,
+               
                     TradeName = p.TradeName,
                     Description = p.Description,
                      TradeImageId = p.Images.OrderByDescending(i => i.IsPrimary).Select(i => i.TradeImageId).FirstOrDefault(),
@@ -130,17 +126,13 @@ namespace Repository.Repos
                     Price = p.Price,
                     ProductName = p.ProductName,
                     CategoryName = p.Category != null ? p.Category.CategoryName : "Not Categorized",
-                    StockQuantity = p.StockQuantity,
-                    MeasurementUnit = p.MeasurementUnit,
                     ReviewSummary = p.Reviews.Count != 0 ? (int)p.Reviews.Average(r => r.Rating) : 0,
                     ProductImageId = p.Images.OrderByDescending(i => i.IsPrimary).Select(i => i.ProductImageId).FirstOrDefault(),
                 }).ToList() : new List<SellerProductDto>(),
                 GroupTrades = s.Trades.Any() ? s.Trades.Select(p => new SellerTradeDto()
                 {
                     TradeId = p.TradeId,
-                    HourlyRate = p.HourlyRate,
-                    FixedPrice = p.FixedPrice,
-                    StockQuantity = p.StockQuantity,
+                
                     TradeName = p.TradeName,
                     Description = p.Description,
                     TradeImageId = p.Images.OrderByDescending(i => i.IsPrimary).Select(i => i.TradeImageId).FirstOrDefault(),

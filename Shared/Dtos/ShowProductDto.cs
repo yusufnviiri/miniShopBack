@@ -16,12 +16,12 @@ namespace Shared.Dtos
         public int SubCategoryId { get; set; }
         public int SubCategoryCategoryId { get; set; }
         public decimal Price { get; set; }
-        public int StockQuantity { get; set; }
         public bool IsActive { get; set; } = true;
         public bool IsDeleted { get; set; }
         public bool IsModified { get; set; }
-        public string MeasurementUnit { get; set; } = string.Empty;
         public bool IsFeatured { get; set; }
+        public string Description { get; set; } = default!;
+
 
         // Ownership (DOMAIN, not Identity)
         public SellerProfile? SellerProfile { get; set; }
@@ -31,13 +31,14 @@ namespace Shared.Dtos
         public int CommodityClassId { get; set; } = 2;
         public ICollection<ShowReviewDto> Reviews { get; set; } = [];
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
-        public ICollection<ProductAttributeValueDto> ProductAttributeValues { get; set; } = [];    
+       
         public string Category { get; set; } = string.Empty;
         public string? SellerName { get; set; }
         public ICollection<ProductImageRefDto>? ProductImageRefs  { get; set; }
         public string Contact { get; set; } = string.Empty;
         public decimal OldPrice { get; set; }
         public bool HasImage { get; set; }
+        public Guid ProductImageId { get; set; }
 
 
 

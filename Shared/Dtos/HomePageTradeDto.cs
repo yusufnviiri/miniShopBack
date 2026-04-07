@@ -13,13 +13,9 @@ namespace Shared.Dtos
         public string TradeName { get; set; } = null!;
         public string Category {  get; set; } = string.Empty;
         public bool IsFeatured { get; set; }
-
-        public Guid SellerProfileId { get; set; }
-        public decimal? FixedPrice { get; set; }
-        public decimal? HourlyRate { get; set; }
+        public Guid SellerProfileId { get; set; }   
         public Guid TradeImageId { get; set; }
         public string SellerName { get; set; } = string.Empty;
-        public decimal MinimumPrice { get; set; } 
 
     }
 }

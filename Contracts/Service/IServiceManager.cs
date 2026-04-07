@@ -42,6 +42,7 @@ namespace Contracts.Service
         public ITradeAttributeValueService TradeAttributeValueService { get; }
         public ITradeImageService TradeImageService { get; }
         public IGroupSellerService GroupSellerService { get; }
+        public IHomePageCardService HomePageCardService { get; }
 
 
     }

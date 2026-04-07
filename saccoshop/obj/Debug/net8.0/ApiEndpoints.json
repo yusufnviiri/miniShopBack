@@ -249,6 +249,91 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "Presentation.HomePageController",
+    "Method": "GetAllHomepageCards",
+    "RelativePath": "api/home",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Presentation.HomePageController",
+    "Method": "CreateHomePageCard",
+    "RelativePath": "api/home",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "homePage",
+        "Type": "Entities.Models.HomePageCard",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Presentation.HomePageController",
+    "Method": "GetHomePageCard",
+    "RelativePath": "api/home/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [],
+    "EndpointName": "homepagecardId"
+  },
+  {
+    "ContainingType": "Presentation.HomePageController",
+    "Method": "DeleteProductCategory",
+    "RelativePath": "api/home/card/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Presentation.HomePageController",
+    "Method": "UpdateHomePageCard",
+    "RelativePath": "api/home/edit",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "homePageCard",
+        "Type": "Entities.Models.HomePageCard",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Presentation.HomePageController",
+    "Method": "HomePageProducts",
+    "RelativePath": "api/home/index",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "Presentation.ImageController",
     "Method": "Get",
     "RelativePath": "api/product/images/{productId}/{fileName}/{size}",
@@ -309,6 +394,11 @@
       },
       {
         "Name": "Manufacturer",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "ProductDescription",
         "Type": "System.String",
         "IsRequired": false
       },
@@ -381,6 +471,22 @@
   },
   {
     "ContainingType": "Presentation.ProductController",
+    "Method": "DeleteProductCategory",
+    "RelativePath": "api/products/deleteproduct/{productId}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "productId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Presentation.ProductController",
     "Method": "HomePageProducts",
     "RelativePath": "api/products/index",
     "HttpMethod": "GET",
@@ -414,6 +520,11 @@
       },
       {
         "Name": "Manufacturer",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "ProductDescription",
         "Type": "System.String",
         "IsRequired": false
       },
@@ -517,6 +628,22 @@
       {
         "Name": "updateDto",
         "Type": "Shared.Dtos.MiniProductUpdateDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Presentation.ProductController",
+    "Method": "UpdateProductDescription",
+    "RelativePath": "api/products/update-productdescription",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "sharedUpdates",
+        "Type": "Shared.Dtos.SharedUpdatesDto",
         "IsRequired": true
       }
     ],
@@ -1255,6 +1382,11 @@
         "IsRequired": false
       },
       {
+        "Name": "ProductDescription",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
         "Name": "PageNumber",
         "Type": "System.Int32",
         "IsRequired": false
@@ -1356,7 +1488,7 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "miniProduct",
+        "Name": "miniTradeImage",
         "Type": "Shared.Dtos.MiniTradeImage",
         "IsRequired": true
       }
@@ -1379,6 +1511,22 @@
     ],
     "ReturnTypes": [],
     "EndpointName": "SellerTradeById"
+  },
+  {
+    "ContainingType": "Presentation.TradeController",
+    "Method": "UpdateTradeDescription",
+    "RelativePath": "api/trades/update-tradedescription",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "sharedUpdates",
+        "Type": "Shared.Dtos.SharedUpdatesDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
   },
   {
     "ContainingType": "Presentation.UserController",

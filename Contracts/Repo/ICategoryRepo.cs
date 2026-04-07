@@ -11,6 +11,7 @@ namespace Contracts.Repo
     public interface ICategoryRepo
     {
         Task<IEnumerable<ShowAllCategoriesDto>> GetAllCategories();
+        IQueryable<Category> CategoriesQueryData();
         Task<IEnumerable<CategorySeedDto?>> GetCategorySeedData();
         Task<IEnumerable<CategoryRefDto>> TradeCategories();
         Task<IEnumerable<CategoryRefDto>> ProductCategories();

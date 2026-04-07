@@ -50,11 +50,13 @@ namespace Services
         private readonly Lazy<ITradeAttributeValueService> _tradeAttributeValueService;
         private readonly Lazy<ITradeImageService> _tradeImageService;
         private readonly Lazy<IGroupSellerService> _groupSellerService;
+        private readonly Lazy<IHomePageCardService> _homePageCardService;
 
 
         public ServiceManager(ILoggerManager logger, IRepositoryManager repository, IMapper mapper, UserManager<ApplicationUser> userManager, IConfiguration configuration, SignInManager<ApplicationUser> signInManager,RoleManager<IdentityRole> roleManager, IUserClaimsPrincipalFactory<ApplicationUser> claimsFactory,ISmsSender smsSender,IHttpContextAccessor httpContextAccessor, IOptions<JwtSettings> jwtOptions, IWebHostEnvironment env, ApplicationDbContext dbContext) {
             _dbContext= dbContext;
             _paymentService = new Lazy<IPaymentService>(() => new PaymentService(logger, repository, mapper, userManager));
+            _homePageCardService = new Lazy<IHomePageCardService>(() => new HomePageCardService(logger, repository, mapper));
             _wishListService = new Lazy<IWishListService>(()=> new WishListService(logger, repository, mapper, userManager));
             _reviewService = new Lazy<IReviewService>(()=> new ReviewService(logger, repository, mapper, userManager));
             _shoppingCartService = new Lazy<IShoppingCartService>(()=> new ShoppingCartService(logger, repository, mapper, userManager));
@@ -120,6 +122,7 @@ namespace Services
         public ITradeService TradeService => _tradeService.Value;
         public ITradeAttributeValueService TradeAttributeValueService => _tradeAttributeValueService.Value;
         public ITradeImageService TradeImageService => _tradeImageService.Value;
-        public IGroupSellerService GroupSellerService => _groupSellerService.Value;        
+        public IGroupSellerService GroupSellerService => _groupSellerService.Value; 
+        public IHomePageCardService HomePageCardService => _homePageCardService.Value;
     }
 }

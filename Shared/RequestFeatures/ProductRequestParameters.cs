@@ -14,6 +14,7 @@ namespace Shared.RequestFeatures
         public decimal? MinPrice { get; set; } = decimal.Zero;
         public string ProductName { get; set; } = null!;
         public string Manufacturer { get; set; } = null!;
+        public string ProductDescription { get; set; }=string.Empty;
 
     }
 }

@@ -33,10 +33,11 @@ namespace Repository.context
             string appUserAId = "42cd3af3-f319-4118-a604-4442d487b923";
             string appUserBId = "5f2b8a40-d899-4345-aa3e-7b98712bc112";
             string appUserCId = "bd363936-63d0-4ace-bc46-a2f1348cb61e";
-
+            string appUserDId = "d9c8e5b0-4dec-4f8e-9a2b-c41c725a1513";
             string ROLE1_ID = "25153dfe-8a7a-48f3-a2f9-c314232dd6a3";
             string ROLE2_ID = "bb69367c-0380-470b-8337-35644e861587";
             string ROLE3_ID = "1c13657c-0c92-4dec-b308-c41c725a1513";
+            string ROLE4_ID = "206cc3ce-9a8a-4360-ce15-08de92fa781e";
 
 
             modelBuilder.Entity<IdentityRole>().HasData(new IdentityRole
@@ -54,12 +55,20 @@ namespace Repository.context
                 ConcurrencyStamp = ROLE2_ID
             });
 
+
             modelBuilder.Entity<IdentityRole>().HasData(new IdentityRole
             {
                 Name = "operations",
                 NormalizedName = "OPERATIONS",
                 Id = ROLE3_ID,
                 ConcurrencyStamp = ROLE3_ID
+            });
+            modelBuilder.Entity<IdentityRole>().HasData(new IdentityRole
+            {
+                Name = "system admin",
+                NormalizedName = "SYSTEM ADMIN",
+                Id = ROLE4_ID,
+                ConcurrencyStamp = ROLE4_ID
             });
 
 
@@ -76,6 +85,7 @@ namespace Repository.context
                 NormalizedUserName = "+256709958370",
                 SecurityStamp = Guid.NewGuid().ToString()
             };
+
             //set user password
             PasswordHasher<ApplicationUser> ph = new PasswordHasher<ApplicationUser>();
             appUser1.PasswordHash = ph.HashPassword(appUser1, "GDevol@1");
@@ -142,15 +152,57 @@ namespace Repository.context
 
             //seed user
             modelBuilder.Entity<ApplicationUser>().HasData(appUser3);
+          
             // modelBuilder.Entity<IdentityUser>().HasData(appUser);
 
 
-            //set user role to pastor
             modelBuilder.Entity<IdentityUserRole<string>>().HasData(new IdentityUserRole<string>
             {
                 RoleId = ROLE2_ID,
                 UserId = appUserCId
             });
+
+
+
+
+
+
+
+            var appUser4 = new ApplicationUser
+            {
+                Id = appUserDId,
+                Email = "chiyiya@gmail.com",
+                EmailConfirmed = true,
+                FirstName = "Chiyiya",
+                LastName = "Yusuf",
+                UserName = "+256782909090",
+                PhoneNumber = "+256782909090",
+                NormalizedEmail = "CHIYIYA@GMAIL.COM",
+                NormalizedUserName = "+256782909090",
+                SecurityStamp = Guid.NewGuid().ToString()
+            };
+
+            //set user password
+            PasswordHasher<ApplicationUser> phx = new PasswordHasher<ApplicationUser>();
+            appUser4.PasswordHash = phx.HashPassword(appUser4, "Chiyiya@1");
+
+            //seed user
+            modelBuilder.Entity<ApplicationUser>().HasData(appUser4);
+            // modelBuilder.Entity<IdentityUser>().HasData(appUser);
+
+            //set user role to admin
+            modelBuilder.Entity<IdentityUserRole<string>>().HasData(new IdentityUserRole<string>
+            {
+                RoleId = ROLE4_ID,
+                UserId = appUserDId
+            });
+
+
+
+
+
+
+
             var address = new Address
             {
                 AddressId = 1,
@@ -162,28 +214,31 @@ namespace Repository.context
             modelBuilder.Entity<Address>().HasData(address);
 
             modelBuilder.Entity<UserProfile>().HasData(
-    new UserProfile
-    {
-        UserProfileId = Guid.NewGuid(),
-        IdentityUserId = appUserAId,
-        AddressId = address.AddressId
-    },
-    new UserProfile
-    {
-        UserProfileId = Guid.NewGuid(),
-        IdentityUserId = appUserBId,
-        AddressId = address.AddressId
-
-    },
-    new UserProfile
-    {
-        UserProfileId = Guid.NewGuid(),
-        IdentityUserId = appUserCId,
-        AddressId = address.AddressId
-
-    }
-);
-
+                new UserProfile
+                {
+                    UserProfileId = Guid.Parse("220cc6eb-238a-424d-962b-2dca18f731d1"),
+                    IdentityUserId = appUserAId,
+                    AddressId = address.AddressId
+                },
+                new UserProfile
+                {
+                    UserProfileId = Guid.Parse("440a45a7-dd82-4586-883a-6b2b1205dfad"),
+                    IdentityUserId = appUserBId,
+                    AddressId = address.AddressId
+                },
+                new UserProfile
+                {
+                    UserProfileId = Guid.Parse("4970c779-c767-4eb8-8ae4-12f38514fd5e"),
+                    IdentityUserId = appUserCId,
+                    AddressId = address.AddressId
+                },
+                new UserProfile
+                {
+                    UserProfileId = Guid.Parse("bb69367c-b5e1-4090-d8f4-08de930d2678"),
+                    IdentityUserId = appUserDId,
+                    AddressId = address.AddressId
+                }
+            );
         }
 
         #region 🔹 Seed Data
@@ -237,6 +292,10 @@ namespace Repository.context
               .HasMany(o => o.GroupSellers)
               .WithOne(i => i.Member)
               .OnDelete(DeleteBehavior.Cascade);
+            modelBuilder.Entity<HomePageCard>()
+          .HasMany(o => o.CategoryLinks)
+          .WithOne(i => i.HomePageCard)
+          .OnDelete(DeleteBehavior.Cascade);
 
             modelBuilder.Entity<GroupMember>(entity =>
             {
@@ -250,7 +309,7 @@ namespace Repository.context
                 entity.HasOne(x => x.UserProfile)
                     .WithMany(p => p.GroupMemberships)
                     .HasForeignKey(x => x.UserProfileId)
-                    .OnDelete(DeleteBehavior.Restrict);
+                    .OnDelete(DeleteBehavior.Cascade);
             });
         }
         #endregion
@@ -292,10 +351,10 @@ namespace Repository.context
                 .HasForeignKey(r => r.ProductId)
                 .OnDelete(DeleteBehavior.Cascade);
 
-            entity.HasMany(p => p.ProductAttributeValues)
-                .WithOne()
-                .HasForeignKey(v => v.ProductId)
-                .OnDelete(DeleteBehavior.Cascade);
+            //entity.HasMany(p => p.ProductAttributeValues)
+            //    .WithOne()
+            //    .HasForeignKey(v => v.ProductId)
+            //    .OnDelete(DeleteBehavior.Cascade);
         }
         #endregion
 
@@ -336,10 +395,10 @@ namespace Repository.context
                 .HasForeignKey(r => r.TradeId)
                 .OnDelete(DeleteBehavior.NoAction); 
 
-            entity.HasMany(t => t.TradeAttributeValues)
-                .WithOne()
-                .HasForeignKey(v => v.TradeId)
-                .OnDelete(DeleteBehavior.Cascade);
+            //entity.HasMany(t => t.TradeAttributeValues)
+            //    .WithOne()
+            //    .HasForeignKey(v => v.TradeId)
+            //    .OnDelete(DeleteBehavior.Cascade);
         }
         #endregion
 
@@ -366,8 +425,8 @@ namespace Repository.context
             modelBuilder.Entity<Product>()
                 .HasIndex(p => p.CreatedAt);
 
-            modelBuilder.Entity<Trade>()
-                .HasIndex(t => new { t.CategoryId, t.IsActive, t.IsDeleted, t.FixedPrice });
+            //modelBuilder.Entity<Trade>()
+            //    .HasIndex(t => new { t.CategoryId, t.IsActive, t.IsDeleted, t.FixedPrice });
 
             modelBuilder.Entity<Trade>()
                 .HasIndex(t => t.CreatedAt);
@@ -420,17 +479,17 @@ namespace Repository.context
         public DbSet<CategoryAttribute> CategoryAttributes { get; set; }
         public DbSet<ProductAttributeValue> ProductAttributeValues { get; set; }
         public DbSet<UserDevice> UserDevices { get; set; }
-
         public DbSet<UserOtp> UserOtps { get; set; }
         public DbSet<GeneralCategory> GeneralCategories { get; set; }
-
         public DbSet<UserRefreshToken> UserRefreshTokens { get; set; }
         public DbSet<Trade> Trades { get; set; }
         public DbSet<TradeAttributeValue> TradeAttributeValues { get; set; }
         public DbSet<TradeImage> TradeImages { get; set; }
         public DbSet<SellerOffering> SellerOfferings { get; set; }
         public DbSet<GroupSeller> GroupSellers  { get; set; }
-
+        public DbSet<HomePageCard> HomePageCards { get; set; }
+        public DbSet<HomePageCardCategory> HomePageCardCategories { get; set; }
+        
         #endregion
     }
 }

@@ -27,7 +27,8 @@ namespace Repository.Repos
 
             }).OrderBy(p => p.CategoryName).ToListAsync();
         }
-        
+        public IQueryable<Category> CategoriesQueryData()=>FindAll(false);
+
         public async Task<IEnumerable<CategoryRefDto>> ProductCategories()
         {
             return await FindByCondition(k => k.Type != null && EF.Functions.Like(k.Type, "%product%"), false).Select(c => new CategoryRefDto()
