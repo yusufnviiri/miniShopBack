@@ -76,7 +76,13 @@ namespace Presentation
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] LoginRequestDto request)
         {
-            _cache.Remove("cachedUser");
+
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            var cacheKey = $"cachedUser_{userId}";
+            if (userId != null)
+            {
+                _cache.Remove(cacheKey);
+            }
 
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
@@ -97,7 +103,10 @@ namespace Presentation
 
             public async Task<ActionResult> LogOutUser()
             {
-            _cache.Remove("cachedUser");
+
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            var cacheKey = $"cachedUser_{userId}";
+            _cache.Remove(cacheKey);
 
             var userName = User.Identity?.Name; // 
             if (userName != null)
@@ -126,10 +135,10 @@ namespace Presentation
 
 
             //var result = await _service.AuthService.RefreshAsync( request.RefreshToken,  request.DeviceId);
-
+            var cacheKey = $"cachedUser_{userId}";
 
             var result = await _service.AuthService.RefreshAsync(request.RefreshToken, userId);
-             _cache.Remove("cachedUser");
+             _cache.Remove(cacheKey);
 
 
             return Ok(result);
@@ -186,7 +195,8 @@ namespace Presentation
         public async Task<IActionResult> MyProfile()
         {
             LoggedInUserDataDto loggedInUser = new();
-            var cacheKey = "cachedUser";
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            var cacheKey = $"cachedUser_{userId}";
             if (_cache.TryGetValue(cacheKey, out LoggedInUserDataDto usercache))
             {
                 if (usercache != null)
@@ -220,7 +230,8 @@ namespace Presentation
         public  async Task<IActionResult> Me()
         {
             LoggedInUserDataDto loggedInUser = new ();
-            var cacheKey = "cachedUser";
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            var cacheKey = $"cachedUser_{userId}";
             if (_cache.TryGetValue(cacheKey, out LoggedInUserDataDto usercache))
             {
                 if (usercache != null)

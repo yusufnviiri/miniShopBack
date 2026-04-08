@@ -212,7 +212,7 @@ namespace Services
                 throw new ObjectBadRequestExeption("Invalid credentials");
 
             var newAccessToken = await GenerateAccessTokenAsync(user!);
-            await _signInManager.SignInAsync(user!, isPersistent: false);
+            //await _signInManager.SignInAsync(user!, isPersistent: false);
             var refreshToken = await IssueRefreshTokenAsync(user!);
                 return new TokenResponse
                 {

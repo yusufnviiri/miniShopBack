@@ -122,16 +122,16 @@ namespace Services
             GroupShopDto groupShopDto = new();
 
             var sellerProfileId = await _repoManager.SellerProfileRepo.GetSellerProfileId(sellerId);
-            var groupDetails = await _repoManager.SellerProfileRepo.FindMiniGroupDetailsById(sellerProfileId);
-            if (groupDetails != null)
-            {
-                groupShopDto.GroupDetails = groupDetails;
-            }
-            if (isMember)
-            {
-                var groupShopDetails = await _repoManager.SellerProfileRepo.GetGroupProductsAndTradesList(sellerProfileId);
-                groupShopDto.GroupProducts = groupShopDetails;
-            }
+            //var groupDetails = await _repoManager.SellerProfileRepo.FindMiniGroupDetailsById(sellerProfileId);
+            //if (groupDetails != null)
+            //{
+            //    groupShopDto.GroupDetails = groupDetails;
+            //}
+            //if (isMember)
+            //{
+            //    var groupShopDetails = await _repoManager.SellerProfileRepo.GetGroupProductsAndTradesList(sellerProfileId);
+            //    groupShopDto.GroupProducts = groupShopDetails;
+            //}
             var memberprofileIds = await _repoManager.GroupMemberRepo.GetGroupMemberProfileIds(sellerId);
             var membersellerProfileIds = await _repoManager.SellerProfileRepo.GetGroupMemberSellerProfileIds(memberprofileIds);
             if (membersellerProfileIds.Any())
