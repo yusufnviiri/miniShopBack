@@ -51,11 +51,13 @@ namespace Services
         private readonly Lazy<ITradeImageService> _tradeImageService;
         private readonly Lazy<IGroupSellerService> _groupSellerService;
         private readonly Lazy<IHomePageCardService> _homePageCardService;
+        private readonly Lazy<IUserPreferenceService> _userPreferenceService;
 
 
         public ServiceManager(ILoggerManager logger, IRepositoryManager repository, IMapper mapper, UserManager<ApplicationUser> userManager, IConfiguration configuration, SignInManager<ApplicationUser> signInManager,RoleManager<IdentityRole> roleManager, IUserClaimsPrincipalFactory<ApplicationUser> claimsFactory,ISmsSender smsSender,IHttpContextAccessor httpContextAccessor, IOptions<JwtSettings> jwtOptions, IWebHostEnvironment env, ApplicationDbContext dbContext) {
             _dbContext= dbContext;
             _paymentService = new Lazy<IPaymentService>(() => new PaymentService(logger, repository, mapper, userManager));
+            _userPreferenceService = new Lazy<IUserPreferenceService>(() => new UserPreferenceService(logger,repository, mapper));
             _homePageCardService = new Lazy<IHomePageCardService>(() => new HomePageCardService(logger, repository, mapper));
             _wishListService = new Lazy<IWishListService>(()=> new WishListService(logger, repository, mapper, userManager));
             _reviewService = new Lazy<IReviewService>(()=> new ReviewService(logger, repository, mapper, userManager));
@@ -124,5 +126,6 @@ namespace Services
         public ITradeImageService TradeImageService => _tradeImageService.Value;
         public IGroupSellerService GroupSellerService => _groupSellerService.Value; 
         public IHomePageCardService HomePageCardService => _homePageCardService.Value;
+        public IUserPreferenceService UserPreferenceService => _userPreferenceService.Value;
     }
 }

@@ -277,6 +277,10 @@ namespace Repository.context
               .HasOne(x => x.Member)
               .WithMany(p=>p.GroupSellers)
               .OnDelete(DeleteBehavior.SetNull);
+            modelBuilder.Entity<UserPreference>()
+            .HasOne(x => x.UserProfile)
+            .WithOne(p => p.UserPreference)
+            .OnDelete(DeleteBehavior.SetNull);
             modelBuilder.Entity<GeneralCategory>()
                 .HasMany(g => g.Categories)
                 .WithOne(c => c.GeneralCategory)

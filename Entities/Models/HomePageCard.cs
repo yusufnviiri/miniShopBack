@@ -13,7 +13,6 @@ namespace Entities.Models
         public string Color { get; set; } = string.Empty;
         public string LinkLabel { get; set; } = string.Empty;
         public bool IsActive { get; set; } = true;
-
         public ICollection<HomePageCardCategory> CategoryLinks { get; set; } = new List<HomePageCardCategory>();
     }
 }

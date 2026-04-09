@@ -23,6 +23,9 @@ namespace Entities.Models
         public Guid? BuyerProfileId { get; set; }
         public Guid? SellerProfileId { get; set; }
         public SellerProfile? SellerProfile { get; set; }
+        public UserPreference? UserPreference { get; set; }
+        public Guid UserPreferenceId { get; set; }
+
     }
 
 }

@@ -43,6 +43,7 @@ namespace Contracts.Service
         public ITradeImageService TradeImageService { get; }
         public IGroupSellerService GroupSellerService { get; }
         public IHomePageCardService HomePageCardService { get; }
+        public IUserPreferenceService UserPreferenceService { get; }
 
 
     }
