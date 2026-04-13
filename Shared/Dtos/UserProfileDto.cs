@@ -16,8 +16,8 @@ namespace Shared.Dtos
         public Address?Address { get;set; }
         public int AddressId { get; set; }
         public bool IsSeller { get; set; }= false;
-
-
+        public IEnumerable<UserPreferenceDto> UserPreferences { get; set; } = [];
+        public IEnumerable<UserFollowerDto> Following { get; set; } = [];
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 
     }

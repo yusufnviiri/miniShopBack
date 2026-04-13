@@ -926,6 +926,37 @@
         }
       }
     },
+    "/api/products/addreview": {
+      "post": {
+        "tags": [
+          "Product"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewReviewDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewReviewDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewReviewDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
     "/api/productvalues/categories": {
       "get": {
         "tags": [
@@ -2231,6 +2262,37 @@
         }
       }
     },
+    "/api/trades/addreview": {
+      "post": {
+        "tags": [
+          "Trade"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewReviewDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewReviewDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewReviewDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
     "/api/trade/images/{tradeId}/{fileName}/{size}": {
       "get": {
         "tags": [
@@ -2559,6 +2621,152 @@
             }
           }
         },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/users/addsellertouserpreferences": {
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserProfileJoinSellerDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserProfileJoinSellerDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserProfileJoinSellerDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/users/newuserpreference": {
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewUserPreferenceDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewUserPreferenceDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewUserPreferenceDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/users/userpreferences": {
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/users/userpreferences/{userProfileId}": {
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "parameters": [
+          {
+            "name": "userProfileId",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/users/userfollowers/{userProfileId}": {
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "parameters": [
+          {
+            "name": "userProfileId",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/users/userfollowing/{userProfileId}": {
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "parameters": [
+          {
+            "name": "userProfileId",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "Success"
@@ -3067,6 +3275,13 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/SubCategory"
+            },
+            "nullable": true
+          },
+          "userPreferenceCategories": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/UserPreferenceCategory"
             },
             "nullable": true
           }
@@ -3612,6 +3827,33 @@
         },
         "additionalProperties": false
       },
+      "NewReviewDto": {
+        "type": "object",
+        "properties": {
+          "refId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "userProfileId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "rating": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "comment": {
+            "type": "string",
+            "nullable": true
+          },
+          "reviewId": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "NewUserDataDto": {
         "type": "object",
         "properties": {
@@ -3728,6 +3970,29 @@
         },
         "additionalProperties": false
       },
+      "NewUserPreferenceDto": {
+        "type": "object",
+        "properties": {
+          "userProfileId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "sellerProfile": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "categoryIds": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "PasswordRecoveryDto": {
         "type": "object",
         "properties": {
@@ -3816,10 +4081,10 @@
             "type": "integer",
             "format": "int32"
           },
-          "reviews": {
+          "productReviews": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/Review"
+              "$ref": "#/components/schemas/ProductReview"
             },
             "nullable": true
           },
@@ -3909,6 +4174,42 @@
         },
         "additionalProperties": false
       },
+      "ProductReview": {
+        "type": "object",
+        "properties": {
+          "productReviewId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "productId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "product": {
+            "$ref": "#/components/schemas/Product"
+          },
+          "userProfileId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "reviewer": {
+            "$ref": "#/components/schemas/UserProfile"
+          },
+          "rating": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "comment": {
+            "type": "string",
+            "nullable": true
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false
+      },
       "RefreshRequestDto": {
         "required": [
           "accessToken",
@@ -3923,49 +4224,6 @@
           "accessToken": {
             "minLength": 1,
             "type": "string"
-          }
-        },
-        "additionalProperties": false
-      },
-      "Review": {
-        "type": "object",
-        "properties": {
-          "reviewId": {
-            "type": "string",
-            "format": "uuid"
-          },
-          "productId": {
-            "type": "string",
-            "format": "uuid"
-          },
-          "product": {
-            "$ref": "#/components/schemas/Product"
-          },
-          "tradeId": {
-            "type": "string",
-            "format": "uuid"
-          },
-          "trade": {
-            "$ref": "#/components/schemas/Trade"
-          },
-          "applicationUserId": {
-            "type": "string",
-            "nullable": true
-          },
-          "reviewer": {
-            "$ref": "#/components/schemas/ApplicationUser"
-          },
-          "rating": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "comment": {
-            "type": "string",
-            "nullable": true
-          },
-          "createdAt": {
-            "type": "string",
-            "format": "date-time"
           }
         },
         "additionalProperties": false
@@ -4056,6 +4314,13 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/Trade"
+            },
+            "nullable": true
+          },
+          "userPreferenceSellerProfiles": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/UserPreferenceSellerProfile"
             },
             "nullable": true
           }
@@ -4373,10 +4638,10 @@
             "type": "integer",
             "format": "int32"
           },
-          "reviews": {
+          "tradeReviews": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/Review"
+              "$ref": "#/components/schemas/TradeReview"
             },
             "nullable": true
           },
@@ -4541,6 +4806,42 @@
         },
         "additionalProperties": false
       },
+      "TradeReview": {
+        "type": "object",
+        "properties": {
+          "tradeReviewId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "tradeId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "trade": {
+            "$ref": "#/components/schemas/Trade"
+          },
+          "userProfileId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "reviewer": {
+            "$ref": "#/components/schemas/UserProfile"
+          },
+          "rating": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "comment": {
+            "type": "string",
+            "nullable": true
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false
+      },
       "UserDevice": {
         "required": [
           "deviceId",
@@ -4661,6 +4962,77 @@
         },
         "additionalProperties": false
       },
+      "UserPreference": {
+        "type": "object",
+        "properties": {
+          "userPreferenceId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "userProfileId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "userProfile": {
+            "$ref": "#/components/schemas/UserProfile"
+          },
+          "userPreferenceCategories": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/UserPreferenceCategory"
+            },
+            "nullable": true
+          },
+          "userPreferenceSellerProfiles": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/UserPreferenceSellerProfile"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "UserPreferenceCategory": {
+        "type": "object",
+        "properties": {
+          "userPreferenceId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "userPreference": {
+            "$ref": "#/components/schemas/UserPreference"
+          },
+          "categoryId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "category": {
+            "$ref": "#/components/schemas/Category"
+          }
+        },
+        "additionalProperties": false
+      },
+      "UserPreferenceSellerProfile": {
+        "type": "object",
+        "properties": {
+          "userPreferenceId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "userPreference": {
+            "$ref": "#/components/schemas/UserPreference"
+          },
+          "sellerProfileId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "sellerProfile": {
+            "$ref": "#/components/schemas/SellerProfile"
+          }
+        },
+        "additionalProperties": false
+      },
       "UserProfile": {
         "type": "object",
         "properties": {
@@ -4720,6 +5092,34 @@
           },
           "sellerProfile": {
             "$ref": "#/components/schemas/SellerProfile"
+          },
+          "productReviews": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ProductReview"
+            },
+            "nullable": true
+          },
+          "tradeReviews": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TradeReview"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "UserProfileJoinSellerDto": {
+        "type": "object",
+        "properties": {
+          "userProfileId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "sellerProfileId": {
+            "type": "string",
+            "format": "uuid"
           }
         },
         "additionalProperties": false

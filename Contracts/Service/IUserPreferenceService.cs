@@ -16,5 +16,13 @@ namespace Contracts.Service
         Task CreateUserPreferenceAsync(NewUserPreferenceDto userPreference);
         Task UpdateUserPreferenceAsync(UserPreference userPreference);
         Task DeleteUserPreferenceAsync(Guid userPreferenceId);
+        Task AddSellerToUserPreferenceAsync(Guid sellerProfileId,Guid userProfileId);
+        Task<UserPreference?> GetSellersFollowedByUserAsync(Guid userProfileId);
+        Task<IEnumerable<UserFollowerDto>> GetUserFollowingAsync(Guid userProfileId);
+        Task<IEnumerable<UserFollowerDto>> GetSellerFollowersAsync(Guid sellerProfileId);
+        Task<IEnumerable<UserPreferenceDto>> GetUserPreferencesAsync(Guid userProfileId);
+        Task<bool> IsFollowingAsync(Guid UserProfileId, Guid sellerProfileId);
+
+
     }
 }

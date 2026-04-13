@@ -44,7 +44,15 @@ namespace Services
             var tradesPagedList = await _repoManager.TradeRepo.GetHomePageTrades(requestParameters);
             return (tradersData: tradesPagedList, tradesPagedList.MetaData);
         }
-        public async Task<TradeDataDto?> GetTradeDataAsync(Guid tradeId) => await _repoManager.TradeRepo.GetTradeData(tradeId);
+        public async Task<TradeDataDto?> GetTradeDataAsync(Guid tradeId)
+        {
+            var trade = await _repoManager.TradeRepo.GetTradeData(tradeId);
+            if (trade != null)
+            {
+                trade.Contact = await _repoManager.UserProfileRepo.GetUserContact(trade.SellerUserProfileId) ?? "";
+            }
+            return trade;
+        }
         public async Task<ShowTradeDataDto?> FindSellerTradeAsync(Guid tradeId) => await _repoManager.TradeRepo.FindSellerTrade(tradeId);
         public async Task<Trade?> FindTradeForUpdateAsync(Guid tradeId) => await _repoManager.TradeRepo.FindTradeForUpdate(tradeId);
         public async Task<Trade> CreateTradeAsync(NewTradeDto tradeDto)

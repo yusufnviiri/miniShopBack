@@ -14,7 +14,11 @@ namespace Shared.Dtos
         public string Description { get; set; } = string.Empty;
         public string Category { get; set; } = string.Empty;
         public string SellerName { get; set; } = string.Empty;
-        public bool IsFeatured { get; set; }  
+        public bool IsFeatured { get; set; }
+        public string Contact { get; set; } = string.Empty;
+        public Guid SellerUserProfileId { get; set; }
+
+
 
         public Guid SellerProfileId { get; set; }
         public DateTime CreatedAt { get; set; }

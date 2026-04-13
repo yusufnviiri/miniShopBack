@@ -101,6 +101,7 @@ namespace Services
         {
             var groupData = await _repoManager.UserProfileRepo.GetSellerGroupsIds(sellerProfileId);
             var sellerShopDto = await _repoManager.SellerProfileRepo.GetSellerShopDetails(sellerProfileId);
+            var followers = await _repoManager.UserPreferenceRepo.GetSellerFollowers(sellerProfileId);
             if (groupData != null && sellerShopDto!=null)
             {
                 foreach (var item in groupData)
@@ -113,6 +114,12 @@ namespace Services
                     sellerShopDto.Groups.Add(groupDto);
                 }
 
+
+
+            }
+            if (followers != null && sellerShopDto != null)
+            {
+                sellerShopDto.Followers = followers;
             }
             return sellerShopDto;
         }

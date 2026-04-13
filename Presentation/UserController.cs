@@ -2,6 +2,7 @@
 using Entities.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Repository.Repos;
 using Shared.Dtos;
 using System;
 using System.Collections.Generic;
@@ -47,7 +48,8 @@ namespace Presentation
         public async Task<ActionResult> GetUserProfile(Guid id)
         {
             var userProfile = await _service.UserProfileService.ShowUserProfileAsync(id);
-            return Ok(userProfile);
+         
+                return Ok(userProfile);
         }
 
         [Authorize]
@@ -116,5 +118,52 @@ namespace Presentation
             await _service.SellerProfileService.CreateSellerProfile(sellerProfile);
             return Ok(new { message = "seller added" });
         }
+
+        [HttpPost("addsellertouserpreferences")]
+        public async Task<IActionResult> AddSellerToUserPreferences([FromBody] UserProfileJoinSellerDto userProfileJoin )
+        {
+            if (userProfileJoin.SellerProfileId == Guid.Empty|| userProfileJoin.UserProfileId  ==Guid.Empty)
+                return BadRequest("reference not specified");
+            await _service.UserPreferenceService.AddSellerToUserPreferenceAsync(userProfileJoin.SellerProfileId, userProfileJoin.UserProfileId);
+            return Ok(new { message = "  added" });
+        }
+        [HttpPost("newuserpreference")]
+        public async Task<IActionResult> NewUserPreference([FromBody] NewUserPreferenceDto userPreferenceDto)
+        {
+            if (userPreferenceDto == null)
+                return BadRequest("reference not specified");
+            if (userPreferenceDto.UserProfileId != Guid.Empty)
+            {
+                await _service.UserPreferenceService.CreateUserPreferenceAsync(userPreferenceDto);
+            }
+            return Ok(new { message = " added" });
+        }
+
+        [HttpGet("userpreferences")]
+        public async Task<ActionResult> GetAllUserPreferences()
+        {
+            var userPreferences = await _service.UserPreferenceService.GetAllUserPreferencesAsync();
+            return Ok(userPreferences);
+        }
+        [HttpGet("userpreferences/{userProfileId}")]
+        public async Task<ActionResult> GetUserPreferences([FromRoute] Guid userProfileId)
+        {
+            var userPreferences = await _service.UserPreferenceService.GetUserPreferencesAsync(userProfileId);
+            return Ok(userPreferences);
+        }
+
+        [HttpGet("userfollowers/{userProfileId}")]
+        public async Task<ActionResult> GetSellersFollowedByUser([FromRoute] Guid userProfileId)
+        {
+            var userPreferences = await _service.UserPreferenceService.GetSellersFollowedByUserAsync(userProfileId);
+            return Ok(userPreferences);
+        }
+        [HttpGet("userfollowing/{userProfileId}")]
+        public async Task<ActionResult> GetUserFollowing([FromRoute] Guid userProfileId)
+        {
+            var userFollowers = await _service.UserPreferenceService.GetUserFollowingAsync(userProfileId);
+            return Ok(userFollowers);
+        }
+
     }
 }

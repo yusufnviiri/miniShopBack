@@ -308,13 +308,27 @@ namespace Presentation
 
 
 
+        [HttpPost("addreview")]
+        public async Task<ActionResult> CreateProductReview([FromBody] NewReviewDto newReview)
+        {
+            if (newReview.RefId == Guid.Empty|| newReview.UserProfileId==Guid.Empty) return BadRequest(new { message = "Id not specified" });
+            var IsReviewed = await _service.ProductReviewService.IsReviewedByUserAsync(newReview.UserProfileId,newReview.RefId);
+            if (IsReviewed)
+            {
+                await _service.ProductReviewService.UpdateProductReviewAsync(newReview,IsReviewed);
+            }
+            else
+            {
 
 
+                await _service.ProductReviewService.CreateProductReviewAsync(newReview);
+            }
+                return Ok(new { message = "success" });
+            
 
+        }
 
-
-
+        }
     }
-}
 
 

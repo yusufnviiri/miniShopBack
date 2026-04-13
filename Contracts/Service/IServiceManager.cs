@@ -44,6 +44,8 @@ namespace Contracts.Service
         public IGroupSellerService GroupSellerService { get; }
         public IHomePageCardService HomePageCardService { get; }
         public IUserPreferenceService UserPreferenceService { get; }
+        public IProductReviewService ProductReviewService { get; }
+        public ITradeReviewService TradeReviewService { get; }
 
 
     }

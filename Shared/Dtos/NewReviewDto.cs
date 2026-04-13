@@ -9,11 +9,11 @@ namespace Shared.Dtos
 {
     public class NewReviewDto
     {
-        public Guid ProductId { get; set; }
-        public string ApplicationUserId { get; set; }= default!;
+        public Guid RefId { get; set; }
+        public Guid UserProfileId  { get; set; }= default!;
         public int Rating { get; set; } 
         public string Comment { get; set; } = default!;
-        public Guid ReviewId { get; set; }
+        public Guid? ReviewId { get; set; }
 
 
     }

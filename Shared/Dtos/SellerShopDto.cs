@@ -16,6 +16,8 @@ namespace Shared.Dtos
         public ICollection<SellerGroupDto> Groups { get; set; } = [];
         public ICollection<SellerProductDto> Products { get; set; } = [];
         public ICollection<SellerTradeDto> Trades { get; set; } = [];
+        public IEnumerable<UserFollowerDto> Followers { get; set; } = [];
+
 
     }
 }

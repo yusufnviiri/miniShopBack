@@ -38,7 +38,17 @@ namespace Services
         public async Task<IEnumerable<ShowProductMiniDetailsDto>> GetAllProductsByCategoryAsync(string categoryName)=>await _repoManager.ProductRepo.GetAllProductsByCategory(tracking: false, categoryName);
         public async Task<ShowProductDto?> FindProductByIdAsync(bool tracking, Guid productId)=>await _repoManager.ProductRepo.FindProductById(tracking, productId);
 
-        public async Task<ProductDataDto?> GetProductDataAsync(Guid productId) => await _repoManager.ProductRepo.GetProductData(productId);
+        public async Task<ProductDataDto?> GetProductDataAsync(Guid productId)
+        {
+            var product = await _repoManager.ProductRepo.GetProductData(productId);
+
+            if (product != null)
+            {
+                product.Contact = await _repoManager.UserProfileRepo.GetUserContact(product.SellerUserProfileId)??"";
+            }
+            return product;
+        }
+
         public async Task<Product> CreateProductAsync(NewProductDto product)
         {
            

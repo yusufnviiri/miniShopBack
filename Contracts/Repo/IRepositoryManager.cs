@@ -47,6 +47,8 @@ namespace Contracts.Repo
         public IGroupSellerRepo GroupSellerRepo { get; }
         public IHomePageCardRepo HomePageCardRepo { get; }
         public IUserPreferenceRepo UserPreferenceRepo  { get; }
+        public IProductReviewRepo ProductReviewRepo { get; }
+        public ITradeReviewRepo TradeReviewRepo { get; }
 
     }
 }

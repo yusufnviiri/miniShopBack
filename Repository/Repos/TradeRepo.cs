@@ -96,18 +96,20 @@ namespace Repository.Repos
                         Description = t.Description,                       
                         CreatedAt = t.CreatedAt,
                         SellerProfileId = t.SellerProfileId,
+                        SellerUserProfileId = t.SellerProfile != null ? t.SellerProfile.SellerId : Guid.Empty,
+
                         SellerName = t.SellerProfile != null
                             ? t.SellerProfile.SellerName
                             : "Unknown Seller",
                         Category = t.Category != null
                             ? t.Category.CategoryName
                             : "Not Categorised",               
-                        Reviews = t.Reviews
+                        Reviews = t.TradeReviews
                             .Select(r => new ShowReviewDto
                             {
-                                ReviewId = r.ReviewId,
+                                ReviewId = r.TradeReviewId,
                                 ReviewerName = r.Reviewer != null
-                                    ? r.Reviewer.FirstName + " " + r.Reviewer.LastName
+                                    ? r.Reviewer.IdentityUser.FirstName + " " + r.Reviewer.IdentityUser.LastName
                                     : "Unknown",
                                 Rating = r.Rating,
                                 Comment = r.Comment,
@@ -185,10 +187,10 @@ namespace Repository.Repos
                     SellerProfileId = p.SellerProfileId,
                     SellerName = p.SellerProfile != null ? $"{p.SellerProfile.SellerName}" : "Unkown Seller",
                     
-                    Reviews = p.Reviews.Any() ? p.Reviews.Select(r => new ShowReviewDto
+                    Reviews = p.TradeReviews.Count != 0 ? p.TradeReviews.Select(r => new ShowReviewDto
                     {
-                        ReviewId = r.ReviewId,
-                        ReviewerName = string.Join(" ", r.Reviewer != null ? r.Reviewer.FirstName : "Unknown", r.Reviewer != null ? r.Reviewer.LastName : "Unknown").Trim(),
+                        ReviewId = r.TradeReviewId,
+                        ReviewerName = string.Join(" ", r.Reviewer != null ? r.Reviewer.IdentityUser.FirstName : "Unknown", r.Reviewer != null ? r.Reviewer.IdentityUser.LastName : "Unknown").Trim(),
                         Rating = r.Rating,
                         Comment = r.Comment,
                         CreatedAt = r.CreatedAt
@@ -225,7 +227,7 @@ namespace Repository.Repos
                         Description = t.Description,
                         Category = t.Category != null ? t.Category.CategoryName : "Not Categorised",
                         CategoryName = t.Category != null ? t.Category.CategoryName : "Not Categorised",
-                        ReviewSummary = t.Reviews.Any() ? (int)t.Reviews.Average(r => r.Rating) : 0,
+                        ReviewSummary = t.TradeReviews.Any() ? (int)t.TradeReviews.Average(r => r.Rating) : 0,
                         TradeImageId = t.Images
                             .OrderByDescending(i => i.IsPrimary)
                             .Select(i => i.TradeImageId)

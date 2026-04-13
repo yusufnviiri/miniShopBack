@@ -104,10 +104,10 @@ namespace Repository.Repos
                     
                     SellerName = p.SellerProfile != null ? $"{p.SellerProfile.SellerName}" : "Unkown Seller",                 
 
-                    Reviews = p.Reviews.Any() ? p.Reviews.Select(r => new ShowReviewDto
+                    Reviews = p.ProductReviews.Any() ? p.ProductReviews.Select(r => new ShowReviewDto
                     {
-                        ReviewId = r.ReviewId,
-                        ReviewerName = string.Join(" ", r.Reviewer != null ? r.Reviewer.FirstName : "Unknown", r.Reviewer != null ? r.Reviewer.LastName : "Unknown").Trim(),
+                        ReviewId = r.ProductReviewId,
+                        ReviewerName = string.Join(" ", r.Reviewer != null ? r.Reviewer.IdentityUser.FirstName : "Unknown", r.Reviewer != null ? r.Reviewer.IdentityUser.LastName : "Unknown").Trim(),
                         Rating = r.Rating,
                         Comment = r.Comment,
                         CreatedAt = r.CreatedAt
@@ -140,16 +140,16 @@ namespace Repository.Repos
              SellerName = p.SellerProfile != null ? p.SellerProfile.SellerName : "Unknown Seller",
              SellerUserProfileId = p.SellerProfile != null ? p.SellerProfile.SellerId : Guid.Empty,
 
-             Reviews = p.Reviews.Select(r => new ShowReviewDto
+
+             Reviews = p.ProductReviews.Any() ? p.ProductReviews.Select(r => new ShowReviewDto
              {
-                 ReviewId = r.ReviewId,
-                 ReviewerName = r.Reviewer != null
-                     ? r.Reviewer.FirstName + " " + r.Reviewer.LastName
-                     : "Unknown",
+                 ReviewId = r.ProductReviewId,
+                 ReviewerName = string.Join(" ", r.Reviewer != null ? r.Reviewer.IdentityUser.FirstName : "Unknown", r.Reviewer != null ? r.Reviewer.IdentityUser.LastName : "Unknown").Trim(),
                  Rating = r.Rating,
                  Comment = r.Comment,
                  CreatedAt = r.CreatedAt
-             }).ToList(),
+             }).ToList() : new List<ShowReviewDto>(),
+
 
              ProductImageRefs = p.Images.Select(i => new ProductImageRefDto
              {
@@ -218,12 +218,12 @@ namespace Repository.Repos
                     CreatedAt = p.CreatedAt,
                     HasImage = p.HasImage,
                     SellerProfileId = p.SellerProfileId,
-                    SellerName = p.SellerProfile != null ? $"{p.SellerProfile.SellerName}" : "Unkown Seller",                 
+                    SellerName = p.SellerProfile != null ? $"{p.SellerProfile.SellerName}" : "Unkown Seller",
 
-                    Reviews = p.Reviews.Any() ? p.Reviews.Select(r => new ShowReviewDto
+                    Reviews = p.ProductReviews.Any() ? p.ProductReviews.Select(r => new ShowReviewDto
                     {
-                        ReviewId = r.ReviewId,
-                        ReviewerName = string.Join(" ", r.Reviewer != null ? r.Reviewer.FirstName : "Unknown", r.Reviewer != null ? r.Reviewer.LastName : "Unknown").Trim(),
+                        ReviewId = r.ProductReviewId,
+                        ReviewerName = string.Join(" ", r.Reviewer != null ? r.Reviewer.IdentityUser.FirstName : "Unknown", r.Reviewer != null ? r.Reviewer.IdentityUser.LastName : "Unknown").Trim(),
                         Rating = r.Rating,
                         Comment = r.Comment,
                         CreatedAt = r.CreatedAt
@@ -257,7 +257,7 @@ namespace Repository.Repos
                         ProductName = t.ProductName,
                         Price = t.Price,
                         CategoryName = t.Category != null ? t.Category.CategoryName : "Not Categorised",
-                        ReviewSummary = t.Reviews.Any() ? (int)t.Reviews.Average(r => r.Rating) : 0,
+                        ReviewSummary = t.ProductReviews.Any() ? (int)t.ProductReviews.Average(r => r.Rating) : 0,
                         ProductImageId = t.Images
                         .OrderByDescending(i => i.IsPrimary)
                         .Select(i => i.ProductImageId).FirstOrDefault(),

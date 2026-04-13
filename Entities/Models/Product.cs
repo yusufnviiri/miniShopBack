@@ -30,7 +30,7 @@ namespace Entities.Models
         public  Guid SellerProfileId { get; set; }
         public ICollection<ProductImage> Images { get; set; } = [];
         public int CommodityClassId { get; set; } = 2;
-        public ICollection<Review> Reviews { get; set; } = [];
+        public ICollection<ProductReview> ProductReviews  { get; set; } = [];
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
  
     }

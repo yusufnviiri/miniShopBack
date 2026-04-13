@@ -190,6 +190,14 @@ namespace Repository.Repos
 
         }
 
+        public async Task<string?> GetUserContact(Guid userProfileId)
+        {
+            return await FindByCondition(p => p.UserProfileId == userProfileId, false)
+                .Select(p => p.IdentityUser != null ? p.IdentityUser.PhoneNumber : "")
+                .FirstOrDefaultAsync();
+        }
+
+
     }
 }
    

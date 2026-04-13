@@ -29,7 +29,7 @@ namespace Entities.Models
         public Guid SellerProfileId { get; set; }
         public ICollection<TradeImage> Images { get; set; } = [];
         public int CommodityClassId { get; set; } = 2;
-        public ICollection<Review> Reviews { get; set; } = [];
+        public ICollection<TradeReview> TradeReviews { get; set; } = [];
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
         public ICollection<TradeBooking> TradeBookings  { get; set; } = [];
     }

@@ -455,6 +455,22 @@
   },
   {
     "ContainingType": "Presentation.ProductController",
+    "Method": "CreateProductReview",
+    "RelativePath": "api/products/addreview",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "newReview",
+        "Type": "Shared.Dtos.NewReviewDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Presentation.ProductController",
     "Method": "DeleteProductImage",
     "RelativePath": "api/products/deleteimage",
     "HttpMethod": "POST",
@@ -1439,6 +1455,22 @@
   },
   {
     "ContainingType": "Presentation.TradeController",
+    "Method": "CreateTradeReview",
+    "RelativePath": "api/trades/addreview",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "newReview",
+        "Type": "Shared.Dtos.NewReviewDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Presentation.TradeController",
     "Method": "DeleteTradeImage",
     "RelativePath": "api/trades/deletetradeimage",
     "HttpMethod": "POST",
@@ -1589,6 +1621,22 @@
   },
   {
     "ContainingType": "Presentation.UserController",
+    "Method": "AddSellerToUserPreferences",
+    "RelativePath": "api/users/addsellertouserpreferences",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userProfileJoin",
+        "Type": "Shared.Dtos.UserProfileJoinSellerDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Presentation.UserController",
     "Method": "AddUserToGroup",
     "RelativePath": "api/users/addusertogroup",
     "HttpMethod": "POST",
@@ -1685,12 +1733,86 @@
   },
   {
     "ContainingType": "Presentation.UserController",
+    "Method": "NewUserPreference",
+    "RelativePath": "api/users/newuserpreference",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userPreferenceDto",
+        "Type": "Shared.Dtos.NewUserPreferenceDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Presentation.UserController",
     "Method": "GetSellerUserProfiles",
     "RelativePath": "api/users/sellers",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Presentation.UserController",
+    "Method": "GetSellersFollowedByUser",
+    "RelativePath": "api/users/userfollowers/{userProfileId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userProfileId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Presentation.UserController",
+    "Method": "GetUserFollowing",
+    "RelativePath": "api/users/userfollowing/{userProfileId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userProfileId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Presentation.UserController",
+    "Method": "GetAllUserPreferences",
+    "RelativePath": "api/users/userpreferences",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Presentation.UserController",
+    "Method": "GetUserPreferences",
+    "RelativePath": "api/users/userpreferences/{userProfileId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userProfileId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
     "ReturnTypes": []
   },
   {

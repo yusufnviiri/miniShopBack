@@ -202,6 +202,22 @@ namespace Presentation
 
 
         }
+        [HttpPost("addreview")]
+        public async Task<ActionResult> CreateTradeReview([FromBody] NewReviewDto newReview)
+        {
+            if (newReview.RefId == Guid.Empty || newReview.UserProfileId == Guid.Empty) return BadRequest(new { message = "Id not specified" });
+            var IsReviewed = await _service.TradeReviewService.IsReviewedByUserAsync(newReview.UserProfileId, newReview.RefId);
+            if (IsReviewed)
+            {
+                await _service.TradeReviewService.UpdateTradeReviewAsync(newReview, IsReviewed);
+            }
+            else
+            {
+                await _service.TradeReviewService.CreateTradeReviewAsync(newReview);
+            }
+            return Ok(new { message = "success" });
+
+        }
 
 
 

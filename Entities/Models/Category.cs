@@ -17,6 +17,8 @@ namespace Entities.Models
         public string Type { get; set; } = string.Empty;
 
         public ICollection<SubCategory> SubCategories { get; set; } = [];
+        public ICollection<UserPreferenceCategory> UserPreferenceCategories { get; set; } = [];
+
 
     }
 }

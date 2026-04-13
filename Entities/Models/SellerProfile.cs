@@ -21,6 +21,8 @@ namespace Entities.Models
         public ICollection<SellerRestriction>? SellerRestrictions { get; set; } = [];
         public ICollection<Product> Products { get; set; } = [];
         public ICollection<Trade> Trades { get; set; } = [];
+        public ICollection<UserPreferenceSellerProfile> UserPreferenceSellerProfiles { get; set; } = [];
+
 
 
 

@@ -13,7 +13,6 @@ namespace Contracts.Repo
 
         Task<IEnumerable<UserProfileDto>> GetAllUserProfiles();
         Task<IEnumerable<UserProfileDto>> GetSellerUserProfiles();
-
         IQueryable<UserProfile> FindUserProfilesAsQueryable(Guid UserProfileId);
         Task<IEnumerable<UserProfileDto>> GetAllUserProfilesWithoutGroups();
         Task<UserProfileDto?> ShowUserProfile(Guid UserProfileId);
@@ -25,6 +24,9 @@ namespace Contracts.Repo
         Task <IReadOnlyCollection<Guid>> GetSellerGroupsIds(Guid sellerProfileId);
         Task<ICollection<GroupMemberRolesDto>> GetGroupMemberRolesDtos(Guid UserProfileId);
         Task<LoggedInUserDataDto?> GetLoggedInUserDataDto(Guid UserProfileId);
+        Task<string?> GetUserContact(Guid UserProfileId);
+
+
 
 
     }

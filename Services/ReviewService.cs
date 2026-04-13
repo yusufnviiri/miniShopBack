@@ -45,7 +45,7 @@ namespace Services
         }
         public async Task UpdateReviewAsync(NewReviewDto reviewDto)
         {
-            var existingReview = await _repoManager.ReviewRepo.FindReviewById(reviewDto.ReviewId, true);
+            var existingReview = await _repoManager.ReviewRepo.FindReviewById((Guid)reviewDto.ReviewId, true);
             if (reviewDto == null)
             {
                 throw new ObjectBadRequestExeption("Review data is null");

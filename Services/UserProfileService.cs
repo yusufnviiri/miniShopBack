@@ -74,7 +74,17 @@ namespace Services
 
         }
 
-        public async Task<UserProfileDto?> ShowUserProfileAsync(Guid UserProfileId) => await _repoManager.UserProfileRepo.ShowUserProfile(UserProfileId);
+        public async Task<UserProfileDto?> ShowUserProfileAsync(Guid UserProfileId)
+        {
+            var profile = await _repoManager.UserProfileRepo.ShowUserProfile(UserProfileId);
+            var userFollowing = await _repoManager.UserPreferenceRepo.GetUserFollowing(UserProfileId);
+            if (profile != null)
+            {
+                profile.Following = userFollowing;
+            }
+            return profile;
+
+        }
 
         public async Task DeleteUserProfileAsync(Guid userProfile)
         {

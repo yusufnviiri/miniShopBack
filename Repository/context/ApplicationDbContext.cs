@@ -268,6 +268,80 @@ namespace Repository.context
         private void ConfigureCoreRelationships(ModelBuilder modelBuilder)
         {
 
+            modelBuilder.Entity<TradeReview>(entity =>
+            {
+                entity.HasKey(x => x.TradeReviewId);
+
+                entity.HasOne(x => x.Trade)
+                    .WithMany(t => t.TradeReviews)
+                    .HasForeignKey(x => x.TradeId)
+                    .OnDelete(DeleteBehavior.Cascade);
+
+                entity.HasOne(x => x.Reviewer)
+                    .WithMany(u => u.TradeReviews)
+                    .HasForeignKey(x => x.UserProfileId)
+                    .OnDelete(DeleteBehavior.Restrict);
+            });
+
+            modelBuilder.Entity<ProductReview>(entity =>
+            {
+                entity.HasKey(x => x.ProductReviewId);
+
+                entity.HasOne(x => x.Product)
+                    .WithMany(p => p.ProductReviews)
+                    .HasForeignKey(x => x.ProductId)
+                    .OnDelete(DeleteBehavior.Cascade);
+
+                entity.HasOne(x => x.Reviewer)
+                    .WithMany(u => u.ProductReviews)
+                    .HasForeignKey(x => x.UserProfileId)
+                    .OnDelete(DeleteBehavior.Restrict); 
+            });
+
+            modelBuilder.Entity<ProductReview>()
+    .HasIndex(x => new { x.ProductId, x.UserProfileId })
+    .IsUnique();
+
+            modelBuilder.Entity<TradeReview>()
+                .HasIndex(x => new { x.TradeId, x.UserProfileId })
+                .IsUnique();
+
+            modelBuilder.Entity<UserPreferenceCategory>()
+    .ToTable("UserPreferenceCategories")
+    .HasKey(x => new { x.UserPreferenceId, x.CategoryId });
+
+            modelBuilder.Entity<UserPreferenceCategory>()
+                .HasOne(x => x.UserPreference)
+                .WithMany(x => x.UserPreferenceCategories)
+                .HasForeignKey(x => x.UserPreferenceId);
+
+            modelBuilder.Entity<UserPreferenceCategory>()
+                .HasOne(x => x.Category)
+                .WithMany(x => x.UserPreferenceCategories)
+                .HasForeignKey(x => x.CategoryId);
+
+
+            modelBuilder.Entity<UserPreferenceSellerProfile>()
+    .ToTable("UserPreferenceSellerProfiles")
+    .HasKey(x => new { x.UserPreferenceId, x.SellerProfileId });
+
+            modelBuilder.Entity<UserPreferenceSellerProfile>()
+                .HasOne(x => x.UserPreference)
+                .WithMany(x => x.UserPreferenceSellerProfiles)
+                .HasForeignKey(x => x.UserPreferenceId);
+
+            modelBuilder.Entity<UserPreferenceSellerProfile>()
+                .HasOne(x => x.SellerProfile)
+                .WithMany(x => x.UserPreferenceSellerProfiles)
+                .HasForeignKey(x => x.SellerProfileId);
+
+            modelBuilder.Entity<UserPreference>()
+    .HasOne(up => up.UserProfile)
+    .WithOne()
+    .HasForeignKey<UserPreference>(up => up.UserProfileId);
+
+
+
             modelBuilder.Entity<UserGroupNotification>()
                .HasOne(x => x.UserProfile)
                .WithMany()
@@ -277,10 +351,7 @@ namespace Repository.context
               .HasOne(x => x.Member)
               .WithMany(p=>p.GroupSellers)
               .OnDelete(DeleteBehavior.SetNull);
-            modelBuilder.Entity<UserPreference>()
-            .HasOne(x => x.UserProfile)
-            .WithOne(p => p.UserPreference)
-            .OnDelete(DeleteBehavior.SetNull);
+         
             modelBuilder.Entity<GeneralCategory>()
                 .HasMany(g => g.Categories)
                 .WithOne(c => c.GeneralCategory)
@@ -350,10 +421,7 @@ namespace Repository.context
                 .HasForeignKey(i => i.ProductId)
                 .OnDelete(DeleteBehavior.Cascade);
 
-            entity.HasMany(p => p.Reviews)
-                .WithOne(p=>p.Product)
-                .HasForeignKey(r => r.ProductId)
-                .OnDelete(DeleteBehavior.Cascade);
+         
 
             //entity.HasMany(p => p.ProductAttributeValues)
             //    .WithOne()
@@ -394,10 +462,6 @@ namespace Repository.context
                 .HasForeignKey(i => i.TradeId)
                 .OnDelete(DeleteBehavior.Cascade);
 
-            entity.HasMany(t => t.Reviews)
-                .WithOne(r => r.Trade)
-                .HasForeignKey(r => r.TradeId)
-                .OnDelete(DeleteBehavior.NoAction); 
 
             //entity.HasMany(t => t.TradeAttributeValues)
             //    .WithOne()
@@ -453,7 +517,9 @@ namespace Repository.context
         public DbSet<Product> Products { get; set; }
         public DbSet<ProductImage> ProductImages { get; set; }
         public DbSet<Category> Categories { get; set; }
-        public DbSet<Review> Reviews { get; set; }
+        public DbSet<ProductReview> ProductReviews  { get; set; }
+        public DbSet<TradeReview> TradeReviews  { get; set; }
+
         public DbSet<UserGroup> UserGroups { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderItem> OrderItems { get; set; }
@@ -493,7 +559,10 @@ namespace Repository.context
         public DbSet<GroupSeller> GroupSellers  { get; set; }
         public DbSet<HomePageCard> HomePageCards { get; set; }
         public DbSet<HomePageCardCategory> HomePageCardCategories { get; set; }
-        
+public DbSet<UserPreference> UserPreferences { get; set; }
+        public DbSet<UserPreferenceCategory> UserPreferenceCategories { get; set; }
+        public DbSet<UserPreferenceSellerProfile> UserPreferenceSellerProfiles { get; set; }
+
         #endregion
     }
 }

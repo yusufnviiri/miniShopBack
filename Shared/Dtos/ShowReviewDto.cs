@@ -11,7 +11,7 @@ namespace Shared.Dtos
     {
 
         public Guid ReviewId { get; set; }
-        public string ApplicationUserId { get; set; } = default!;
+        public Guid UserProfileId { get; set; } = default!;
         public string? ReviewerName { get; set; }
         public int Rating { get; set; } // 1–5
         public string Comment { get; set; } = default!;

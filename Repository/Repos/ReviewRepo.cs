@@ -24,7 +24,6 @@ namespace Repository.Repos
             return await FindAll(false).Select(r=> new ShowReviewDto
             {
                 ReviewId = r.ReviewId,
-                ApplicationUserId = r.ApplicationUserId,
                 ReviewerName = $"{r.Reviewer.FirstName}" +" "+ $"{r.Reviewer.LastName}",
                 Rating = r.Rating,
                 Comment = r.Comment,
@@ -37,7 +36,6 @@ namespace Repository.Repos
             return await FindByCondition(r=>r.ProductId==productId,false).Select(r => new ShowReviewDto
             {
                 ReviewId = r.ReviewId,
-                ApplicationUserId = r.ApplicationUserId,
                 ReviewerName = $"{r.Reviewer.FirstName}" + " " + $"{r.Reviewer.LastName}",
                 Rating = r.Rating,
                 Comment = r.Comment,
