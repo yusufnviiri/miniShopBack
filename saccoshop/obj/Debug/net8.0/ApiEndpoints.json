@@ -559,16 +559,16 @@
   },
   {
     "ContainingType": "Presentation.ProductController",
-    "Method": "MakeProductFeatured",
+    "Method": "ToggleProductFeaturedState",
     "RelativePath": "api/products/makeproductfeatured",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "id",
-        "Type": "System.Guid",
-        "IsRequired": false
+        "Name": "imageDto",
+        "Type": "Shared.Dtos.MiniProductImageDto",
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []

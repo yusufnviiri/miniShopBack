@@ -74,9 +74,13 @@ namespace Presentation
         }
 
         [HttpPost("makeproductfeatured")]
-        public ActionResult MakeProductFeatured(Guid id)
+        public async Task<ActionResult> ToggleProductFeaturedState([FromBody] MiniProductImageDto imageDto )
         {
-            _service.ProductService.MakeProductFeautured(id);
+            if(imageDto==null || imageDto.ProductId == Guid.Empty)
+            {
+                return BadRequest(new { message = "Product Id is required" });
+            }
+            await _service.ProductService.ToggleProductFeaturedState(imageDto.ProductId);
             return Ok(new { message="success" });
         }
 

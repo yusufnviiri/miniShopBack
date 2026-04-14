@@ -16,8 +16,8 @@ namespace Contracts.Service
         Task<IEnumerable<ShowProductMiniDetailsDto>> GetAllProductsByCategoryAsync( string categoryName);
         Task<ShowProductDto?> FindProductByIdAsync(bool tracking, Guid productId);
         Task<ProductDataDto?> GetProductDataAsync(Guid productId);
-        void MakeProductFeautured(Guid productId);
-        void MakeAllProductsFeautured();
+        Task ToggleProductFeaturedState(Guid productId);
+        Task MakeAllProductsFeautured();
         Task<Product> CreateProductAsync(NewProductDto product);
         Task UpdateProductAsync(NewProductDto product);
         Task DeleteProductAsync(Guid productId);

@@ -117,14 +117,23 @@ namespace Services
                 throw new ObjectBadRequestExeption($"product with id {productId} not found");
             }
         }
-        public void MakeAllProductsFeautured()
+        public async Task MakeAllProductsFeautured()
         {
             _repoManager.ProductRepo.MakeAllProductsFeautured();
-           
+            await _repoManager.SaveRepoDataAsync();
         }
-        public void MakeProductFeautured(Guid productId)
+        public async Task ToggleProductFeaturedState(Guid productId)
         {
-            _repoManager.ProductRepo.MakeProductFeautured(productId);
+            var productForUpdate = await _repoManager.ProductRepo.FindProductForUpdate(productId);
+            if (productForUpdate != null)
+            {
+                productForUpdate.IsFeatured = !productForUpdate.IsFeatured;
+                await _repoManager.SaveRepoDataAsync();
+            }
+            else
+            {
+                throw new ObjectBadRequestExeption($"product with id {productId} not found");
+            }
 
         }
 

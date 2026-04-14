@@ -28,11 +28,18 @@ namespace Repository.Repos
             var query = FindAll(false).Where(p => !p.IsFeatured).ExecuteUpdateAsync(setters => setters.SetProperty(p => p.IsFeatured, true));      
         }
 
-        public void MakeProductFeautured(Guid productId)
-        {
-            var query = FindByCondition(p => p.ProductId == productId, false).ExecuteUpdateAsync(setters => setters.SetProperty(p => p.IsFeatured, true));
+        //public void MakeProductFeautured(Guid productId)
+        //{
+        //    var product = FindByCondition(p => p.ProductId == productId, true).FirstOrDefaultAsync();
+        //    if (product != null)
+        //    {
+        //        product.Result.IsFeatured = true;
+        //        UpdateBase(product.Result);
+        //    }
 
-        }
+
+
+        //}
 
         public async Task<IEnumerable<ShowProductMiniDetailsDto>> GetAllProducts(bool tracking)
         {
