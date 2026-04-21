@@ -56,11 +56,14 @@ namespace Repository.Repos
         private readonly Lazy<IUserPreferenceRepo> _userPreferenceRepo;
         private readonly Lazy<ITradeReviewRepo> _tradeReviewRepo;
         private readonly Lazy<IProductReviewRepo> _productReviewRepo;
+        private readonly Lazy<IProductImpressionRepo> _productImpressionRepo;
+        private readonly Lazy<ITradeImpressionRepo> _tradeImpressionRepo;
         public RepositoryManager(ApplicationDbContext dbContext, IMemoryCache cache)
         {
             _dbContext = dbContext;
             _paymentRepo = new Lazy<IPaymentRepo>(()=>new PaymentRepo(dbContext));
             _homePageCardRepo = new Lazy<IHomePageCardRepo>(() => new HomePageCardRepo(dbContext));
+            _productImpressionRepo = new Lazy<IProductImpressionRepo>(()=>new ProductImpressionRepo(dbContext));
             _productReviewRepo = new Lazy<IProductReviewRepo>(()=>new ProductReviewRepo(dbContext));
             _tradeReviewRepo = new Lazy<ITradeReviewRepo>(()=>new TradeReviewRepo(dbContext));
             _wishListRepo = new Lazy<IWishListRepo>(()=>new WishListRepo(dbContext));
@@ -98,6 +101,8 @@ namespace Repository.Repos
             _tradeImageRepo= new Lazy<ITradeImageRepo>(()=>new TradeImageRepo(dbContext));
             _groupSellerRepo = new Lazy<IGroupSellerRepo>(()=>new GroupSellerRepo(dbContext));
             _userPreferenceRepo = new Lazy<IUserPreferenceRepo>(() => new UserPreferenceRepo(dbContext));
+            _productImpressionRepo = new Lazy<IProductImpressionRepo>(()=>new ProductImpressionRepo(dbContext));
+            _tradeImpressionRepo = new Lazy<ITradeImpressionRepo>(() => new TradeImpressionRepo(dbContext));
         }
         public async Task SaveRepoDataAsync()=> await _dbContext.SaveChangesAsync();
         public IPaymentRepo PaymentRepo =>_paymentRepo.Value;
@@ -139,5 +144,7 @@ namespace Repository.Repos
         public IUserPreferenceRepo UserPreferenceRepo => _userPreferenceRepo.Value;
         public ITradeReviewRepo TradeReviewRepo =>_tradeReviewRepo.Value;
         public IProductReviewRepo ProductReviewRepo =>_productReviewRepo.Value; 
+        public IProductImpressionRepo ProductImpressionRepo =>_productImpressionRepo.Value;
+        public ITradeImpressionRepo TradeImpressionRepo =>_tradeImpressionRepo.Value;
     }
 }

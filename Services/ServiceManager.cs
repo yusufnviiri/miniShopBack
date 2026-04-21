@@ -54,6 +54,8 @@ namespace Services
         private readonly Lazy<IUserPreferenceService> _userPreferenceService;
         private readonly Lazy<ITradeReviewService> _tradeReviewService;
         private readonly Lazy<IProductReviewService> _productReviewService;
+        private readonly Lazy<IProductImpressionService> _productImpressionService;
+        private readonly Lazy<ITradeImpressionService> _tradeImpressionService;
 
         public ServiceManager(ILoggerManager logger, IRepositoryManager repository, IMapper mapper, UserManager<ApplicationUser> userManager, IConfiguration configuration, SignInManager<ApplicationUser> signInManager,RoleManager<IdentityRole> roleManager, IUserClaimsPrincipalFactory<ApplicationUser> claimsFactory,ISmsSender smsSender,IHttpContextAccessor httpContextAccessor, IOptions<JwtSettings> jwtOptions, IWebHostEnvironment env, ApplicationDbContext dbContext) {
             _dbContext= dbContext;
@@ -94,6 +96,8 @@ namespace Services
             _tradeAttributeValueService = new Lazy<ITradeAttributeValueService>(()=>new TradeAttributeValueService(logger, repository));
             _tradeImageService = new Lazy<ITradeImageService>(()=>new TradeImageService(logger, repository, mapper, userManager, env));
             _groupSellerService = new Lazy<IGroupSellerService>(() => new GroupSellerService(logger, repository, mapper));
+            _productImpressionService = new Lazy<IProductImpressionService>(()=> new ProductImpressionService(logger, repository, mapper));
+            _tradeImpressionService = new Lazy<ITradeImpressionService>(()=>new TradeImpressionService( logger, repository, mapper));
         }   
         public IPaymentService PaymentService =>_paymentService.Value;
         public IWishListService WishListService =>_wishListService.Value;
@@ -132,5 +136,7 @@ namespace Services
         public IUserPreferenceService UserPreferenceService => _userPreferenceService.Value;
         public ITradeReviewService TradeReviewService => _tradeReviewService.Value;
         public IProductReviewService ProductReviewService => _productReviewService.Value;
+        public IProductImpressionService ProductImpressionService => _productImpressionService.Value;
+        public ITradeImpressionService TradeImpressionService => _tradeImpressionService.Value;
     }
 }
