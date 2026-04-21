@@ -24,8 +24,7 @@ namespace Contracts.Repo
         Task <IReadOnlyCollection<Guid>> GetSellerGroupsIds(Guid sellerProfileId);
         Task<ICollection<GroupMemberRolesDto>> GetGroupMemberRolesDtos(Guid UserProfileId);
         Task<LoggedInUserDataDto?> GetLoggedInUserDataDto(Guid UserProfileId);
-        Task<string?> GetUserContact(Guid UserProfileId);
-
+        Task<string?> GetUserContact(Guid userProfileId);
 
 
 

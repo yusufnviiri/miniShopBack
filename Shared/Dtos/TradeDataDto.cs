@@ -17,6 +17,8 @@ namespace Shared.Dtos
         public bool IsFeatured { get; set; }
         public string Contact { get; set; } = string.Empty;
         public Guid SellerUserProfileId { get; set; }
+        public string WhatsAppNumber { get; set; } = string.Empty;
+
 
 
 

@@ -56,11 +56,13 @@ namespace Repository.Repos
         private readonly Lazy<IUserPreferenceRepo> _userPreferenceRepo;
         private readonly Lazy<ITradeReviewRepo> _tradeReviewRepo;
         private readonly Lazy<IProductReviewRepo> _productReviewRepo;
+        private readonly Lazy<IGroupFeaturedProductRepo> _groupFeaturedProductRepo;
         public RepositoryManager(ApplicationDbContext dbContext, IMemoryCache cache)
         {
             _dbContext = dbContext;
             _paymentRepo = new Lazy<IPaymentRepo>(()=>new PaymentRepo(dbContext));
             _homePageCardRepo = new Lazy<IHomePageCardRepo>(() => new HomePageCardRepo(dbContext));
+            _groupFeaturedProductRepo = new Lazy<IGroupFeaturedProductRepo>(() => new GroupFeaturedProductRepo(dbContext));
             _productReviewRepo = new Lazy<IProductReviewRepo>(()=>new ProductReviewRepo(dbContext));
             _tradeReviewRepo = new Lazy<ITradeReviewRepo>(()=>new TradeReviewRepo(dbContext));
             _wishListRepo = new Lazy<IWishListRepo>(()=>new WishListRepo(dbContext));
@@ -93,7 +95,7 @@ namespace Repository.Repos
             _userDeviceRepo = new Lazy<IUserDeviceRepo>(()=>new UserDeviceRepo(dbContext));
             _refreshTokenRepo = new Lazy<IRefreshTokenRepo>(()=>new RefreshTokenRepo(dbContext));
             _generalCategoryRepo = new Lazy<IGeneralCategoryRepo> (()=> new GeneralCategoryRepo(dbContext));
-            _tradeRepo = new Lazy<ITradeRepo>(()=> new TradeRepo(dbContext));
+            _tradeRepo = new Lazy<ITradeRepo>(()=> new TradeRepo(dbContext, cache));
             _tradeAttributeValueRepo = new Lazy<ITradeAttributeValueRepo> (()=>new TradeAttributeValueRepo(dbContext));
             _tradeImageRepo= new Lazy<ITradeImageRepo>(()=>new TradeImageRepo(dbContext));
             _groupSellerRepo = new Lazy<IGroupSellerRepo>(()=>new GroupSellerRepo(dbContext));
@@ -139,5 +141,6 @@ namespace Repository.Repos
         public IUserPreferenceRepo UserPreferenceRepo => _userPreferenceRepo.Value;
         public ITradeReviewRepo TradeReviewRepo =>_tradeReviewRepo.Value;
         public IProductReviewRepo ProductReviewRepo =>_productReviewRepo.Value; 
+        public IGroupFeaturedProductRepo GroupFeaturedProductRepo => _groupFeaturedProductRepo.Value;
     }
 }

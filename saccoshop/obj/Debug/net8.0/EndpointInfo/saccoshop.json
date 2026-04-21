@@ -329,6 +329,148 @@
         }
       }
     },
+    "/api/home/groupfeaturedproducts": {
+      "get": {
+        "tags": [
+          "HomePage"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/home/groupfeaturedproductsbyusergroup/{userGroupId}": {
+      "get": {
+        "tags": [
+          "HomePage"
+        ],
+        "parameters": [
+          {
+            "name": "userGroupId",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/home/groupfeaturedproduct/{id}": {
+      "get": {
+        "tags": [
+          "HomePage"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "HomePage"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/home/groupfeaturedproduct": {
+      "post": {
+        "tags": [
+          "HomePage"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewGroupFeaturedProductDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewGroupFeaturedProductDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewGroupFeaturedProductDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "HomePage"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GroupFeaturedProduct"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GroupFeaturedProduct"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/GroupFeaturedProduct"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
     "/api/home/index": {
       "get": {
         "tags": [
@@ -2992,6 +3134,31 @@
           }
         }
       }
+    },
+    "/api/groups/groupshopdisplay/{sellerId}": {
+      "get": {
+        "tags": [
+          "UserGroup"
+        ],
+        "operationId": "groupshopdisplay",
+        "parameters": [
+          {
+            "name": "sellerId",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
     }
   },
   "components": {
@@ -3469,6 +3636,30 @@
         },
         "additionalProperties": false
       },
+      "GroupFeaturedProduct": {
+        "type": "object",
+        "properties": {
+          "groupFeaturedProductId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "productId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "product": {
+            "$ref": "#/components/schemas/Product"
+          },
+          "userGroupId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "userGroup": {
+            "$ref": "#/components/schemas/UserGroup"
+          }
+        },
+        "additionalProperties": false
+      },
       "GroupMember": {
         "type": "object",
         "properties": {
@@ -3696,6 +3887,13 @@
           "isActive": {
             "type": "boolean"
           },
+          "isRow": {
+            "type": "boolean"
+          },
+          "index": {
+            "type": "integer",
+            "format": "int32"
+          },
           "categoryLinks": {
             "type": "array",
             "items": {
@@ -3829,6 +4027,20 @@
             "format": "uuid"
           },
           "tradeId": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "additionalProperties": false
+      },
+      "NewGroupFeaturedProductDto": {
+        "type": "object",
+        "properties": {
+          "userGroupId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "productId": {
             "type": "string",
             "format": "uuid"
           }
@@ -4099,6 +4311,13 @@
           "createdAt": {
             "type": "string",
             "format": "date-time"
+          },
+          "groupFeaturedProducts": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/GroupFeaturedProduct"
+            },
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -4276,6 +4495,10 @@
             "format": "uuid"
           },
           "sellerName": {
+            "type": "string",
+            "nullable": true
+          },
+          "whatsAppNumber": {
             "type": "string",
             "nullable": true
           },
@@ -4966,6 +5189,13 @@
           },
           "buyerProfile": {
             "$ref": "#/components/schemas/BuyerProfile"
+          },
+          "groupFeaturedProducts": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/GroupFeaturedProduct"
+            },
+            "nullable": true
           }
         },
         "additionalProperties": false

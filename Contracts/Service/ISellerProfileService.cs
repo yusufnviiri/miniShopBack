@@ -17,6 +17,7 @@ namespace Contracts.Service
         Task DeleteSellerProfile(Guid sellerProfileId);
         Task<SellerShopDto?> GetSellerShopDetailsAsync(Guid sellerProfileId);
         Task<GroupShopDto?> GetGroupShopDetails(Guid sellerProfileId,bool isMember);
+        Task<GroupShopDto?> GetGroupShopDisplay(Guid sellerId);
 
 
     }

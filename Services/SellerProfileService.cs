@@ -55,7 +55,8 @@ namespace Services
                         {
                             SellerProfileId = sellerProfile.SellerProfileId,
                             UserGroupId= groupMember.UserGroupId,
-                            GroupMemberId= groupMember.GroupMemberId
+                            GroupMemberId= groupMember.GroupMemberId,
+                            
                        };
                         _repoManager.GroupSellerRepo.CreateGroupSeller(groupSeller);
 
@@ -129,11 +130,11 @@ namespace Services
             GroupShopDto groupShopDto = new();
 
             var sellerProfileId = await _repoManager.SellerProfileRepo.GetSellerProfileId(sellerId);
-            //var groupDetails = await _repoManager.SellerProfileRepo.FindMiniGroupDetailsById(sellerProfileId);
-            //if (groupDetails != null)
-            //{
-            //    groupShopDto.GroupDetails = groupDetails;
-            //}
+            var groupDetails = await _repoManager.SellerProfileRepo.FindMiniGroupDetailsById(sellerProfileId);
+            if (groupDetails != null)
+            {
+                groupShopDto.GroupDetails = groupDetails;
+            }
             //if (isMember)
             //{
             //    var groupShopDetails = await _repoManager.SellerProfileRepo.GetGroupProductsAndTradesList(sellerProfileId);
@@ -144,7 +145,7 @@ namespace Services
             if (membersellerProfileIds.Any())
             {
                 var memberProducts = await _repoManager.ProductRepo.GetGroupMembersProducts([.. membersellerProfileIds]);
-                var memberTrades = await _repoManager.TradeRepo.GetGroupMembersTrades([.. membersellerProfileIds]);
+                var memberTrades = await _repoManager.TradeRepo.GetGroupMembersTrades([.. membersellerProfileIds],sellerId);
                 groupShopDto.MemberProducts = memberProducts;
                 groupShopDto.MemberTrades = memberTrades;
 
@@ -152,6 +153,48 @@ namespace Services
             return groupShopDto;
 
         }
+
+
+
+
+
+
+        public async Task<GroupShopDto?> GetGroupShopDisplay(Guid sellerId)
+
+        {
+            GroupShopDto groupShopDto = new();
+
+            var sellerProfileId = await _repoManager.SellerProfileRepo.GetSellerProfileId(sellerId);
+            var groupDetails = await _repoManager.SellerProfileRepo.FindMiniGroupDetailsById(sellerProfileId);
+            if (groupDetails != null)
+            {
+                groupShopDto.GroupDetails = groupDetails;
+            }
+            //if (isMember)
+            //{
+            //    var groupShopDetails = await _repoManager.SellerProfileRepo.GetGroupProductsAndTradesList(sellerProfileId);
+            //    groupShopDto.GroupProducts = groupShopDetails;
+            //}
+            var memberprofileIds = await _repoManager.GroupMemberRepo.GetGroupMemberProfileIds(sellerId);
+            var membersellerProfileIds = await _repoManager.SellerProfileRepo.GetGroupMemberSellerProfileIds(memberprofileIds);
+            if (membersellerProfileIds.Any())
+            {
+                var memberProducts = await _repoManager.ProductRepo.GetGroupMembersForDisplayProducts([.. membersellerProfileIds],sellerId);
+                var memberTrades = await _repoManager.TradeRepo.GetGroupMembersTrades([.. membersellerProfileIds],sellerId);
+                groupShopDto.MemberProducts = memberProducts;
+                groupShopDto.MemberTrades = memberTrades;
+
+            }
+            return groupShopDto;
+
+        }
+
+
+
+
+
+
+
 
 
     }

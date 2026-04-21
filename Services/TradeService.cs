@@ -50,6 +50,7 @@ namespace Services
             if (trade != null)
             {
                 trade.Contact = await _repoManager.UserProfileRepo.GetUserContact(trade.SellerUserProfileId) ?? "";
+                trade.WhatsAppNumber = await _repoManager.SellerProfileRepo.GetSellerWhatsAppNumber(trade.SellerUserProfileId) ?? "";
             }
             return trade;
         }

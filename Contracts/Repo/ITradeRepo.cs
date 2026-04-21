@@ -22,7 +22,7 @@ namespace Contracts.Repo
         Guid CreateTrade(Trade trade);
         void UpdateTrade(Trade trade);
         void DeleteTrade(Trade trade);
-        Task<ICollection<SellerTradeListDto>> GetGroupMembersTrades(IList<Guid> groupMemberIds);
+        Task<ICollection<SellerTradeListDto>> GetGroupMembersTrades(IList<Guid> groupMemberIds, Guid groupId);
 
     }
 }

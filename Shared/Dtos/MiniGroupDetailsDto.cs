@@ -13,6 +13,5 @@ namespace Shared.Dtos
         public string SellerName { get; set; } = string.Empty;
         public string SellerTypeDescription { get; set; } = string.Empty;
 
-
     }
 }

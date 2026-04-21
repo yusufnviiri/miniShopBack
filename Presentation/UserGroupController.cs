@@ -86,6 +86,14 @@ namespace Presentation
             return Ok(groupshop);
         }
 
+        [HttpGet("groupshopdisplay/{sellerId:Guid}", Name = "groupshopdisplay")]
+        public async Task<ActionResult> GetGroupShopDisplay(Guid sellerId)
+        {
+            if (sellerId == Guid.Empty) { return BadRequest(new { message = "Group Id not specified" }); }
+            var groupshop = await _service.SellerProfileService.GetGroupShopDisplay(sellerId);
+            return Ok(groupshop);
+        }
+
         //[Authorize]
         //[HttpPost("{groupId}/products")]
         //public async Task<IActionResult> CreateProduct(Guid groupId, CreateProductRequest request)

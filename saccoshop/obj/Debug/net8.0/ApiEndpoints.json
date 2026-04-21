@@ -234,6 +234,23 @@
   },
   {
     "ContainingType": "Presentation.UserGroupController",
+    "Method": "GetGroupShopDisplay",
+    "RelativePath": "api/groups/groupshopdisplay/{sellerId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "sellerId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [],
+    "EndpointName": "groupshopdisplay"
+  },
+  {
+    "ContainingType": "Presentation.UserGroupController",
     "Method": "UpdateGroupMember",
     "RelativePath": "api/groups/member",
     "HttpMethod": "PUT",
@@ -318,6 +335,96 @@
       {
         "Name": "homePageCard",
         "Type": "Entities.Models.HomePageCard",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Presentation.HomePageController",
+    "Method": "CreateGroupFeaturedProduct",
+    "RelativePath": "api/home/groupfeaturedproduct",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "groupFeaturedProduct",
+        "Type": "Shared.Dtos.NewGroupFeaturedProductDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Presentation.HomePageController",
+    "Method": "UpdateGroupFeaturedProduct",
+    "RelativePath": "api/home/groupfeaturedproduct",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "groupFeaturedProduct",
+        "Type": "Entities.Models.GroupFeaturedProduct",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Presentation.HomePageController",
+    "Method": "GetGroupFeaturedProduct",
+    "RelativePath": "api/home/groupfeaturedproduct/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Presentation.HomePageController",
+    "Method": "DeleteGroupFeaturedProduct",
+    "RelativePath": "api/home/groupfeaturedproduct/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Presentation.HomePageController",
+    "Method": "GetAllGroupFeaturedProducts",
+    "RelativePath": "api/home/groupfeaturedproducts",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Presentation.HomePageController",
+    "Method": "GetGroupFeaturedProductsByUserGroupId",
+    "RelativePath": "api/home/groupfeaturedproductsbyusergroup/{userGroupId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userGroupId",
+        "Type": "System.Guid",
         "IsRequired": true
       }
     ],

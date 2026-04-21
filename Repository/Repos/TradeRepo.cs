@@ -2,6 +2,7 @@
 using Entities.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Caching.Memory;
 using Repository.context;
 using Shared.Dtos;
 using Shared.RequestFeatures;
@@ -9,21 +10,29 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace Repository.Repos
 {
     public class TradeRepo : RepositoryBase<Trade>, ITradeRepo
     {
-        public TradeRepo(ApplicationDbContext _db) : base(_db)
-        {
 
+        private readonly IMemoryCache _cache;
+        ApplicationDbContext _context;
+        public TradeRepo(ApplicationDbContext _db, IMemoryCache cache) : base(_db)
+            {
+                            _cache = cache;
+                _context = _db;
         }
 
 
         public async Task<PagedList<HomePageTradeDto>> GetHomePageTrades(ProductRequestParameters requestParameters)
         {
+            //const string cacheKey = "homepage_trades";
 
+            //if (_cache.TryGetValue(cacheKey, out ICollection<SellerProductsListDto> cached))
+            //    return cached;
             var query = FindAll(false)
                .Where(p => p.IsActive && p.IsFeatured && !p.IsDeleted && p.SellerProfile != null ? p.SellerProfile.SellerTypeId == 1 : true);
 
@@ -187,14 +196,7 @@ namespace Repository.Repos
                     SellerProfileId = p.SellerProfileId,
                     SellerName = p.SellerProfile != null ? $"{p.SellerProfile.SellerName}" : "Unkown Seller",
                     
-                    Reviews = p.TradeReviews.Count != 0 ? p.TradeReviews.Select(r => new ShowReviewDto
-                    {
-                        ReviewId = r.TradeReviewId,
-                        ReviewerName = string.Join(" ", r.Reviewer != null ? r.Reviewer.IdentityUser.FirstName : "Unknown", r.Reviewer != null ? r.Reviewer.IdentityUser.LastName : "Unknown").Trim(),
-                        Rating = r.Rating,
-                        Comment = r.Comment,
-                        CreatedAt = r.CreatedAt
-                    }).ToList() : new List<ShowReviewDto>(),
+                    Reviews =  new List<ShowReviewDto>(),
 
                     TradeImageRefs = p.Images.Select(i => new TradeImageRefDto
                     {
@@ -207,10 +209,17 @@ namespace Repository.Repos
         }
                 
 
-        public async Task<ICollection<SellerTradeListDto>> GetGroupMembersTrades(IList<Guid> groupMemberIds)
+        public async Task<ICollection<SellerTradeListDto>> GetGroupMembersTrades(IList<Guid> groupMemberIds,Guid groupId)
         {
             if (groupMemberIds == null || !groupMemberIds.Any())
                 return [];
+
+            string cacheKey = $"group_members_display_trades {groupId}";
+
+
+            if (_cache.TryGetValue(cacheKey, out ICollection<SellerTradeListDto> cached))
+                return cached;
+
 
             var trades = await FindByCondition(p => p.SellerProfileId!=Guid.Empty &&
                          groupMemberIds.Contains(p.SellerProfileId) &&
@@ -247,7 +256,12 @@ namespace Repository.Repos
                 })
                 .ToList();
 
-            return result.Count>0 ? result : [];
+            _cache.Set(cacheKey, result,
+                       new MemoryCacheEntryOptions()
+                           .SetAbsoluteExpiration(TimeSpan.FromMinutes(10))
+                           .SetSlidingExpiration(TimeSpan.FromMinutes(1)));
+
+            return result;
         }
 
         public void MakeAllTradesFeautured()

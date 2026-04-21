@@ -11,6 +11,8 @@ namespace Entities.Models
         public Guid SellerProfileId { get; set; }
         public required Guid SellerId { get; set; }
         public string SellerName { get; set; } = string.Empty;
+        public string WhatsAppNumber { get; set; } = string.Empty;
+
         public SellerType? SellerType { get; set; }
         public SellerOffering? SellerOffering { get; set; }
         public int SellerOfferingId { get; set; } = 1;

@@ -77,6 +77,8 @@ namespace Services
                     Color = card.Color,
                     IsActive = card.IsActive,
                     LinkLabel = card.LinkLabel,
+                    IsRow = card.IsRow,
+                    Index = card.Index,
 
                     Categories = categoriesQuery
                         .Where(c => card.CategoryLinks

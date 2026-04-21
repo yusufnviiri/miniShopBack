@@ -8,9 +8,9 @@ namespace Shared.Dtos
 {
     public class GroupShopDto
     {
-        //public MiniGroupDetailsDto GroupDetails { get; set; } = new MiniGroupDetailsDto();     
+        public MiniGroupDetailsDto GroupDetails { get; set; } = new MiniGroupDetailsDto();
         //public GroupProductsAndTradesList? GroupProducts { get; set; } 
-       public ICollection<SellerProductsListDto> MemberProducts { get; set; } = [];
+        public ICollection<SellerProductsListDto> MemberProducts { get; set; } = [];
         public ICollection<SellerTradeListDto> MemberTrades { get; set; } = [];
 
     }

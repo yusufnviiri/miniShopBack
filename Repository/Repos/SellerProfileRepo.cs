@@ -42,7 +42,10 @@ namespace Repository.Repos
                     SellerPolicyId = sp.SellerPolicyId,
                     SellerPolicy = sp.SellerPolicy,
                     SellerTierId = sp.SellerTierId,
-                    SellerRestrictions = sp.SellerRestrictions
+                    SellerRestrictions = sp.SellerRestrictions,
+                    SellerName = sp.SellerName,
+                    WhatsAppNumber = sp.WhatsAppNumber,
+
                 }).ToListAsync();
         }
         public async Task<SellerProfile?> FindSellerProfileById(Guid sellerProfileId, bool tracking)
@@ -76,6 +79,7 @@ namespace Repository.Repos
                 SellerProfileId = s.SellerProfileId,
                 SellerId=s.SellerId,
                 SellerName = s.SellerName,
+                WhatsAppNumber =s.WhatsAppNumber,                
                 SellerTypeDescription = s.SellerType != null ? s.SellerType.SellerTypeName : "Not Categorized",
                 Products = s.Products.Any() ? s.Products.Select(p => new SellerProductDto()
                 {
@@ -107,7 +111,7 @@ namespace Repository.Repos
                 SellerProfileId = sellerProfileId,
                 SellerId = p.SellerId,
                 SellerName = p.SellerName,
-                SellerTypeDescription=p.SellerType!=null?p.SellerType.SellerTypeName:"not categorized"
+                SellerTypeDescription = p.SellerType!=null? p.SellerType.SellerTypeName:"not categorized"
 
             }).FirstOrDefaultAsync();
             
@@ -151,6 +155,13 @@ namespace Repository.Repos
             return await FindByCondition(sp => memberIds.Contains(sp.SellerId), false)
                 .Select(sp => sp.SellerProfileId)
                 .ToListAsync();
+        }
+
+        public async Task<string?> GetSellerWhatsAppNumber(Guid userProfileId)
+        {
+            return await FindByCondition(p => p.SellerId == userProfileId, false)
+                .Select(p => p.WhatsAppNumber != null ? p.WhatsAppNumber : "")
+                .FirstOrDefaultAsync();
         }
 
 

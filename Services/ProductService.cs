@@ -10,6 +10,7 @@ using Shared.Dtos;
 using Shared.RequestFeatures;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -45,6 +46,8 @@ namespace Services
             if (product != null)
             {
                 product.Contact = await _repoManager.UserProfileRepo.GetUserContact(product.SellerUserProfileId)??"";
+                product.WhatsAppNumber = await _repoManager.SellerProfileRepo.GetSellerWhatsAppNumber(product.SellerUserProfileId) ?? "";
+
             }
             return product;
         }

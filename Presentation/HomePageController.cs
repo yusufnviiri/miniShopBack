@@ -95,6 +95,88 @@ namespace Presentation
             return Ok(new { message = "Item Deleted" });
         }
 
+        //groupfeatured products
+
+
+
+
+        [HttpGet("groupfeaturedproducts")]
+
+        public async Task<ActionResult> GetAllGroupFeaturedProducts()
+        {
+
+            var products = await _service.GroupFeaturedProductService.GetAllGroupFeaturedProductsAsync();
+            return Ok(products);
+
+        }
+
+        [HttpGet("groupfeaturedproductsbyusergroup/{userGroupId:guid}")]
+        public async Task<ActionResult> GetGroupFeaturedProductsByUserGroupId(Guid userGroupId)
+        {
+            var products = await _service.GroupFeaturedProductService.GetGroupFeaturedProductsByUserGroupIdAsync(userGroupId);
+            return Ok(products);
+
+        }
+        [Authorize]
+
+        [HttpGet("groupfeaturedproduct/{id:int}")]
+        public async Task<ActionResult> GetGroupFeaturedProduct(int id)
+        {
+            var product = await _service.GroupFeaturedProductService.FindGroupFeaturedProductByIdAsync(id, false);
+            if (product == null)
+            {
+                return NotFound(new { message = "Item Not Found" });
+            }
+            return Ok(product);
+        }
+        [Authorize]
+
+        [HttpPost("groupfeaturedproduct")]
+        public async Task<IActionResult> CreateGroupFeaturedProduct([FromBody] NewGroupFeaturedProductDto groupFeaturedProduct)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(new { message = "Item is null" });
+            }
+            else if (groupFeaturedProduct.UserGroupId==Guid.Empty|| groupFeaturedProduct.ProductId==Guid.Empty)
+            {
+                return NotFound(new { message = "Item Id not specified " });
+            }
+            else
+            {
+                await _service.GroupFeaturedProductService.CreateGroupFeaturedProductAsync(groupFeaturedProduct);
+                return Ok(new { message = "GroupFeaturedProduct created" });
+            }
+
+
+        }
+        [Authorize]
+
+        [HttpPut("groupfeaturedproduct")]
+        public async Task<ActionResult> UpdateGroupFeaturedProduct(GroupFeaturedProduct groupFeaturedProduct)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(new { message = "Item is null" });
+            }
+            else if (groupFeaturedProduct.GroupFeaturedProductId==0)
+            {
+                return NotFound(new { message = "Item Not Found" });
+            }
+            await _service.GroupFeaturedProductService.UpdateGroupFeaturedProductAsync(groupFeaturedProduct);
+            return Ok(new { message = "Update user Group Successful" });
+        }
+        [Authorize]
+
+        [HttpDelete("groupfeaturedproduct/{id}")]
+        public async Task<ActionResult> DeleteGroupFeaturedProduct([FromRoute] int id)
+        {
+            if (id == 0) { return BadRequest(new { message = "Id is zero" }); }
+            await _service.GroupFeaturedProductService.DeleteGroupFeaturedProductAsync(id);
+            return Ok(new { message = "Item Deleted" });
+        }
+
+
         [HttpGet("index")]
         public async Task<ActionResult> HomePageProducts()
         {

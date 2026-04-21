@@ -24,6 +24,7 @@ namespace Contracts.Repo
         Task<SellerShopDto?> GetSellerShopDetails(Guid sellerProfileId);
         Task<GroupProductsAndTradesList?> GetGroupProductsAndTradesList(Guid sellerProfileId);
         Task<IReadOnlyList<Guid>> GetGroupMemberSellerProfileIds(IReadOnlyList<Guid> memberIds);
+        Task<string?> GetSellerWhatsAppNumber(Guid userProfileId);
 
 
 

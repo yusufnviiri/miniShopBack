@@ -190,7 +190,7 @@ namespace Repository.Repos
                         .Select(i => i.ProductImageId)
                         .FirstOrDefault()
                 })
-                .Take(6) // optional limit
+                .Take(12) // optional limit
                 .ToListAsync();
 
             product.Product.RelatedProducts = relatedProducts;
@@ -227,14 +227,7 @@ namespace Repository.Repos
                     SellerProfileId = p.SellerProfileId,
                     SellerName = p.SellerProfile != null ? $"{p.SellerProfile.SellerName}" : "Unkown Seller",
 
-                    Reviews = p.ProductReviews.Any() ? p.ProductReviews.Select(r => new ShowReviewDto
-                    {
-                        ReviewId = r.ProductReviewId,
-                        ReviewerName = string.Join(" ", r.Reviewer != null ? r.Reviewer.IdentityUser.FirstName : "Unknown", r.Reviewer != null ? r.Reviewer.IdentityUser.LastName : "Unknown").Trim(),
-                        Rating = r.Rating,
-                        Comment = r.Comment,
-                        CreatedAt = r.CreatedAt
-                    }).ToList() : new List<ShowReviewDto>(),
+                    Reviews =  new List<ShowReviewDto>(),
 
                     ProductImageRefs = p.Images.Select(i => new ProductImageRefDto
                     {
@@ -249,6 +242,11 @@ namespace Repository.Repos
         {
             if (groupMemberIds == null || groupMemberIds.Count == 0)
                 return [];
+
+            const string cacheKey = "group_members_products";
+
+            if (_cache.TryGetValue(cacheKey, out ICollection<SellerProductsListDto> cached))
+                return cached;
 
             var products = await FindByCondition(p => p.SellerProfileId != Guid.Empty &&
                          groupMemberIds.Contains(p.SellerProfileId) &&
@@ -285,7 +283,12 @@ namespace Repository.Repos
                 })
                 .ToList();
 
-            return result.Count > 0 ? result : [];
+            _cache.Set(cacheKey, result,
+            new MemoryCacheEntryOptions()
+                .SetAbsoluteExpiration(TimeSpan.FromMinutes(10))
+                .SetSlidingExpiration(TimeSpan.FromMinutes(1)));
+
+            return result;
         }
 
 
@@ -380,38 +383,36 @@ namespace Repository.Repos
 
         public async Task<HomePageCustomProductsDto?> HomePageCustomProducts()
         {
-            var productsCount = FindAll(false).Count();
-            var cacheKey = $"homepage_custom_products {productsCount}";
+            const string cacheKey = "homepage_custom_products";
 
             if (_cache.TryGetValue(cacheKey, out HomePageCustomProductsDto cached))
-            {
                 return cached;
-            }
 
             var baseQuery = FindAll(false)
                 .Where(p => p.IsActive && !p.IsDeleted &&
-                    (p.SellerProfile != null ? p.SellerProfile.SellerTypeId == 1 : true))
+                    (p.SellerProfile == null || p.SellerProfile.SellerTypeId == 1))
                 .AsNoTracking();
 
             IQueryable<HomePageProductDto> ProjectToDto(IQueryable<Product> query) =>
-                query.Select(p => new HomePageProductDto
-                {
-                    ProductId = p.ProductId,
-                    ProductName = p.ProductName,
-                    Price = p.Price,
-                    OldPrice = p.OldPrice,
-                    SellerName = p.SellerProfile != null
-                        ? p.SellerProfile.SellerName
-                        : "Unknown",
-                    SellerProfileId = p.SellerProfileId,
-                    ProductImageId = p.Images
-                        .OrderByDescending(i => i.IsPrimary)
-                        .Select(i => i.ProductImageId)
-                        .FirstOrDefault()
-                });
+          query.Select(p => new HomePageProductDto
+          {
+              ProductId = p.ProductId,
+              ProductName = p.ProductName,
+              Price = p.Price,
+              OldPrice = p.OldPrice,
+              SellerName = p.SellerProfile != null
+                  ? p.SellerProfile.SellerName
+                  : "Unknown",
+              SellerProfileId = p.SellerProfileId,
+
+              ProductImageId = p.Images
+                  .OrderByDescending(i => i.IsPrimary) // primary first
+                  .Select(i => i.ProductImageId)
+                  .FirstOrDefault() // fallback handled automatically
+          });
 
             // =========================
-            // ⭐ FEATURED (EXECUTE FIRST)
+            // FEATURED (sequential)
             // =========================
             var featured = await ProjectToDto(
                 baseQuery.Where(p => p.IsFeatured)
@@ -420,7 +421,7 @@ namespace Repository.Repos
             ).ToListAsync();
 
             // =========================
-            // 👥 GROUP PRODUCTS (FIXED JOIN)
+            // TOP GROUP
             // =========================
             var topGroupId = await _context.GroupMembers
                 .GroupBy(g => g.UserGroupId)
@@ -428,16 +429,22 @@ namespace Repository.Repos
                 .Select(g => g.Key)
                 .FirstOrDefaultAsync();
 
+            // =========================
+            // GROUP PRODUCTS
+            // =========================
             List<HomePageProductDto> groupProducts = [];
 
             if (topGroupId != Guid.Empty)
             {
+                var sellerIds = await _context.GroupMembers
+                    .Where(g => g.UserGroupId == topGroupId)
+                    .Select(g => g.UserProfileId)
+                    .ToListAsync();
+
                 groupProducts = await ProjectToDto(
                     baseQuery.Where(p =>
                         p.SellerProfile != null &&
-                        _context.GroupMembers
-                            .Where(g => g.UserGroupId == topGroupId)
-                            .Any(g => g.UserProfileId == p.SellerProfile.SellerId)
+                        sellerIds.Contains(p.SellerProfile.SellerId)
                     )
                     .OrderByDescending(p => p.CreatedAt)
                     .Take(20)
@@ -445,7 +452,7 @@ namespace Repository.Repos
             }
 
             // =========================
-            // 📦 CARDS (SEQUENTIAL)
+            // CARDS (NO parallelism)
             // =========================
             var cards = await _context.HomePageCards
                 .Where(c => c.IsActive)
@@ -457,12 +464,16 @@ namespace Repository.Repos
 
             foreach (var card in cards)
             {
-                var categoryIds = card.CategoryLinks.Select(cl => cl.CategoryId);
+                var categoryIds = card.CategoryLinks
+                    .Select(cl => cl.CategoryId)
+                    .ToList();
+
+                var take = card.IsRow ? 15 : 4;
 
                 var products = await ProjectToDto(
                     baseQuery.Where(p => categoryIds.Contains(p.CategoryId))
                              .OrderByDescending(p => p.CreatedAt)
-                             .Take(10)
+                             .Take(take)
                 ).ToListAsync();
 
                 advertisedProducts.Add(new HomeProductCardDto
@@ -471,6 +482,8 @@ namespace Repository.Repos
                     Title = card.Title,
                     Color = card.Color,
                     LinkLabel = card.LinkLabel,
+                    Index=card.Index,
+                    IsRow=card.IsRow,
                     Products = products
                 });
             }
@@ -482,15 +495,113 @@ namespace Repository.Repos
                 AdvertisedProducts = advertisedProducts
             };
 
-            var cacheOptions = new MemoryCacheEntryOptions()
-                .SetAbsoluteExpiration(TimeSpan.FromMinutes(5))
-                .SetSlidingExpiration(TimeSpan.FromMinutes(1));
-
-            _cache.Set(cacheKey, result, cacheOptions);
+            _cache.Set(cacheKey, result,
+                new MemoryCacheEntryOptions()
+                    .SetAbsoluteExpiration(TimeSpan.FromMinutes(5))
+                    .SetSlidingExpiration(TimeSpan.FromMinutes(1)));
 
             return result;
         }
+
+
+        private sealed class ProductProjection
+        {
+            public Guid SellerId { get; set; }
+            public SellerProductDto SellerProductProjection { get; set; } = default!;
+        }
+
+
+        public async Task<ICollection<SellerProductsListDto>> GetGroupMembersForDisplayProducts(
+        IList<Guid> groupMemberIds,
+        Guid groupId)
+        {
+            if (groupMemberIds == null || groupMemberIds.Count == 0)
+                return [];
+
+            const int MAX_PRODUCTS = 50;
+             string cacheKey = $"group_members_display_products {groupId}";
+
+            if (_cache.TryGetValue(cacheKey, out ICollection<SellerProductsListDto> cached))
+                return cached;
+
+            var featuredProductIds = await _context.GroupFeaturedProducts
+                .Where(gfp => gfp.UserGroupId == groupId)
+                .Select(gfp => gfp.ProductId)
+                .Take(MAX_PRODUCTS)
+                .ToListAsync();
+
+            int remainingSlots = MAX_PRODUCTS - featuredProductIds.Count;
+
+            var baseQuery = FindByCondition(p =>
+                p.SellerProfileId != Guid.Empty &&
+                groupMemberIds.Contains(p.SellerProfileId) &&
+                !p.IsDeleted &&
+                p.IsActive,
+                false);
+
+            IQueryable<ProductProjection> Project(IQueryable<Product> query) =>
+                query.Select(t => new ProductProjection
+                {
+                    SellerId = t.SellerProfileId,
+                    SellerProductProjection = new SellerProductDto
+                    {
+                        ProductId = t.ProductId,
+                        ProductName = t.ProductName,
+                        Price = t.Price,
+                        CategoryName = t.Category != null ? t.Category.CategoryName : "Not Categorised",
+                        ReviewSummary = t.ProductReviews.Any()
+                            ? (int)t.ProductReviews.Average(r => r.Rating)
+                            : 0,
+                        ProductImageId = t.Images
+                            .OrderByDescending(i => i.IsPrimary)
+                            .Select(i => i.ProductImageId)
+                            .FirstOrDefault(),
+                        SellerName = t.SellerProfile != null
+                            ? t.SellerProfile.SellerName
+                            : "Unknown Seller"
+                    }
+                });
+
+            var featuredProducts = await Project(
+                baseQuery.Where(p => featuredProductIds.Contains(p.ProductId))
+            ).ToListAsync();
+
+            List<ProductProjection> combined;
+
+            if (remainingSlots <= 0)
+            {
+                combined = featuredProducts.Take(MAX_PRODUCTS).ToList();
+            }
+            else
+            {
+                var nonFeaturedProducts = await Project(
+                    baseQuery.Where(p => !featuredProductIds.Contains(p.ProductId))
+                )
+                .Take(remainingSlots)
+                .ToListAsync();
+
+                combined = featuredProducts
+                    .Concat(nonFeaturedProducts)
+                    .Take(MAX_PRODUCTS)
+                    .ToList();
+            }
+
+            var result = combined
+                .GroupBy(x => x.SellerId)
+                .Select(g => new SellerProductsListDto
+                {
+                    SellerProducts = g.Select(x => x.SellerProductProjection).ToList()
+                })
+                .ToList();
+
+            _cache.Set(cacheKey, result,
+                new MemoryCacheEntryOptions()
+                    .SetAbsoluteExpiration(TimeSpan.FromMinutes(10))
+                    .SetSlidingExpiration(TimeSpan.FromMinutes(1)));
+
+            return result;
+        }
+
+
     }
 }
-
-

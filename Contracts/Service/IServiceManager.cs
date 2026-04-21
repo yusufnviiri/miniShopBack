@@ -46,6 +46,7 @@ namespace Contracts.Service
         public IUserPreferenceService UserPreferenceService { get; }
         public IProductReviewService ProductReviewService { get; }
         public ITradeReviewService TradeReviewService { get; }
+        public IGroupFeaturedProductService GroupFeaturedProductService { get; }
 
 
     }

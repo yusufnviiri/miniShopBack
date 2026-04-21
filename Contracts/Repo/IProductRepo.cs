@@ -31,6 +31,7 @@ namespace Contracts.Repo
         void DeleteProduct(Product productId);
 
         Task<ICollection<SellerProductsListDto>> GetGroupMembersProducts(IList<Guid> groupMemberIds);
+        Task<ICollection<SellerProductsListDto>> GetGroupMembersForDisplayProducts(IList<Guid> groupMemberIds, Guid groupId);
 
         //Task <IEnumerable<ShowProductMiniDetailsDto>> GetAllSellerProducts(Guid sellerProfileId);
         // Task<IEnumerable<ShowProductMiniDetailsDto>> GetAllStockedSellerProducts(Guid sellerProfileId);

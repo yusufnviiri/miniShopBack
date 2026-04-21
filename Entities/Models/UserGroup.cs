@@ -26,6 +26,7 @@ namespace Entities.Models
         public Guid? SellerProfileId { get; set; }
         public SellerProfile? SellerProfile { get; set; }
         public BuyerProfile? BuyerProfile { get; set; }
+        public ICollection<GroupFeaturedProduct>? GroupFeaturedProducts { get; set; } = [];
 
     }
 }

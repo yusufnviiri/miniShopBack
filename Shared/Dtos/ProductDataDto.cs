@@ -26,6 +26,8 @@ namespace Shared.Dtos
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;      
         public string Category { get; set; } = string.Empty;
         public string? SellerName { get; set; }
+        public string WhatsAppNumber { get; set; } = string.Empty;
+
         public ICollection<ProductImageRefDto>? ProductImageRefs { get; set; }
         public string Contact { get; set; } = string.Empty;
         public decimal OldPrice { get; set; }

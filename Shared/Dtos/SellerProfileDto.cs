@@ -14,6 +14,8 @@ namespace Shared.Dtos
         public string SellerName { get; set; } = string.Empty;
         public SellerOffering? SellerOffering { get; set; }
         public int SellerOfferingId { get; set; }
+        public string WhatsAppNumber { get; set; } = string.Empty;
+
 
         public SellerType? SellerType { get; set; }
         public int SellerTypeId { get; set; }

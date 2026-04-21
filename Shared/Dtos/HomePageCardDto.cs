@@ -12,7 +12,10 @@ namespace Shared.Dtos
         public string Title { get; set; } = string.Empty;
         public string Color { get; set; } = string.Empty;
         public bool IsActive { get; set; } = true;
+        public bool IsRow { get; set; } = false;
+        public  int Index { get; set; }
         public string LinkLabel { get; set; } = string.Empty;
+
 
         public ICollection<MiniCategoryDto> Categories  { get; set; } = [];
     }

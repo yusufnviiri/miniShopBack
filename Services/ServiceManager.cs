@@ -54,12 +54,14 @@ namespace Services
         private readonly Lazy<IUserPreferenceService> _userPreferenceService;
         private readonly Lazy<ITradeReviewService> _tradeReviewService;
         private readonly Lazy<IProductReviewService> _productReviewService;
+        public readonly Lazy<IGroupFeaturedProductService> _groupFeaturedProductService;
 
         public ServiceManager(ILoggerManager logger, IRepositoryManager repository, IMapper mapper, UserManager<ApplicationUser> userManager, IConfiguration configuration, SignInManager<ApplicationUser> signInManager,RoleManager<IdentityRole> roleManager, IUserClaimsPrincipalFactory<ApplicationUser> claimsFactory,ISmsSender smsSender,IHttpContextAccessor httpContextAccessor, IOptions<JwtSettings> jwtOptions, IWebHostEnvironment env, ApplicationDbContext dbContext) {
             _dbContext= dbContext;
             _paymentService = new Lazy<IPaymentService>(() => new PaymentService(logger, repository, mapper, userManager));
             _userPreferenceService = new Lazy<IUserPreferenceService>(() => new UserPreferenceService(logger,repository, mapper));
             _homePageCardService = new Lazy<IHomePageCardService>(() => new HomePageCardService(logger, repository, mapper));
+            _groupFeaturedProductService = new Lazy<IGroupFeaturedProductService>(() => new GroupFeaturedProductService(logger, repository, mapper));
             _wishListService = new Lazy<IWishListService>(()=> new WishListService(logger, repository, mapper, userManager));
             _reviewService = new Lazy<IReviewService>(()=> new ReviewService(logger, repository, mapper, userManager));
             _tradeReviewService = new Lazy<ITradeReviewService>(()=> new TradeReviewService(logger,repository,mapper,userManager));
@@ -132,5 +134,6 @@ namespace Services
         public IUserPreferenceService UserPreferenceService => _userPreferenceService.Value;
         public ITradeReviewService TradeReviewService => _tradeReviewService.Value;
         public IProductReviewService ProductReviewService => _productReviewService.Value;
+        public IGroupFeaturedProductService GroupFeaturedProductService => _groupFeaturedProductService.Value;
     }
 }
