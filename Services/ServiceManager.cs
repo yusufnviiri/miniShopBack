@@ -56,6 +56,7 @@ namespace Services
         private readonly Lazy<IProductReviewService> _productReviewService;
         private readonly Lazy<IProductImpressionService> _productImpressionService;
         private readonly Lazy<ITradeImpressionService> _tradeImpressionService;
+        private readonly Lazy<IGroupFeaturedProductService> _groupFeaturedProductService;
 
         public ServiceManager(ILoggerManager logger, IRepositoryManager repository, IMapper mapper, UserManager<ApplicationUser> userManager, IConfiguration configuration, SignInManager<ApplicationUser> signInManager,RoleManager<IdentityRole> roleManager, IUserClaimsPrincipalFactory<ApplicationUser> claimsFactory,ISmsSender smsSender,IHttpContextAccessor httpContextAccessor, IOptions<JwtSettings> jwtOptions, IWebHostEnvironment env, ApplicationDbContext dbContext) {
             _dbContext= dbContext;
@@ -139,5 +140,6 @@ namespace Services
         public IProductReviewService ProductReviewService => _productReviewService.Value;
         public IProductImpressionService ProductImpressionService => _productImpressionService.Value;
         public ITradeImpressionService TradeImpressionService => _tradeImpressionService.Value;
+        public IGroupFeaturedProductService GroupFeaturedProductService => _groupFeaturedProductService.Value;
     }
 }

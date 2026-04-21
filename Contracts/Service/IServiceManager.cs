@@ -48,6 +48,8 @@ namespace Contracts.Service
         public ITradeReviewService TradeReviewService { get; }
         public IProductImpressionService ProductImpressionService { get; }
         public ITradeImpressionService TradeImpressionService { get; }
+        public IGroupFeaturedProductService GroupFeaturedProductService { get; }
+
 
 
     }

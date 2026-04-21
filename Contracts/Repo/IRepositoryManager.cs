@@ -51,6 +51,9 @@ namespace Contracts.Repo
         public ITradeReviewRepo TradeReviewRepo { get; }
         public IProductImpressionRepo ProductImpressionRepo { get; }    
         public ITradeImpressionRepo TradeImpressionRepo { get; }
+        public IGroupFeaturedProductRepo GroupFeaturedProductRepo { get; }
+
+
 
     }
 }

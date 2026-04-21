@@ -56,10 +56,14 @@ namespace Repository.Repos
         private readonly Lazy<IUserPreferenceRepo> _userPreferenceRepo;
         private readonly Lazy<ITradeReviewRepo> _tradeReviewRepo;
         private readonly Lazy<IProductReviewRepo> _productReviewRepo;
+        private readonly Lazy<IProductImpressionRepo> _productImpressionRepo;
+        private readonly Lazy<ITradeImpressionRepo> _tradeImpressionRepo;
+        private readonly Lazy<IGroupFeaturedProductRepo> _groupFeaturedProductRepo;
         public RepositoryManager(ApplicationDbContext dbContext, IMemoryCache cache)
         {
             _dbContext = dbContext;
             _paymentRepo = new Lazy<IPaymentRepo>(()=>new PaymentRepo(dbContext));
+            _groupFeaturedProductRepo = new Lazy<IGroupFeaturedProductRepo>(() => new GroupFeaturedProductRepo(dbContext));
             _homePageCardRepo = new Lazy<IHomePageCardRepo>(() => new HomePageCardRepo(dbContext));
             _productReviewRepo = new Lazy<IProductReviewRepo>(()=>new ProductReviewRepo(dbContext));
             _tradeReviewRepo = new Lazy<ITradeReviewRepo>(()=>new TradeReviewRepo(dbContext));
@@ -143,5 +147,6 @@ namespace Repository.Repos
         public IProductReviewRepo ProductReviewRepo =>_productReviewRepo.Value; 
         public IProductImpressionRepo ProductImpressionRepo =>_productImpressionRepo.Value;
         public ITradeImpressionRepo TradeImpressionRepo =>_tradeImpressionRepo.Value;
+        public IGroupFeaturedProductRepo GroupFeaturedProductRepo => _groupFeaturedProductRepo.Value;
     }
 }

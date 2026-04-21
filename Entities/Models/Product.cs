@@ -33,6 +33,8 @@ namespace Entities.Models
         public ICollection<ProductReview> ProductReviews  { get; set; } = [];
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
         public ICollection<ProductImpression> ProductImpressions { get; set; } = [];
- 
+        public ICollection<GroupFeaturedProduct>? GroupFeaturedProducts { get; set; } = [];
+
+
     }
 }
