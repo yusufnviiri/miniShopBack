@@ -32,7 +32,7 @@ namespace Entities.Models
         public int CommodityClassId { get; set; } = 2;
         public ICollection<ProductReview> ProductReviews  { get; set; } = [];
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
-        public ICollection<GroupFeaturedProduct>? GroupFeaturedProducts { get; set; } = [];
-
+        public ICollection<ProductImpression> ProductImpressions { get; set; } = [];
+ 
     }
 }

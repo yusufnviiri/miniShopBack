@@ -32,6 +32,7 @@ namespace Entities.Models
         public ICollection<TradeReview> TradeReviews { get; set; } = [];
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
         public ICollection<TradeBooking> TradeBookings  { get; set; } = [];
+        public ICollection<TradeImpression> TradeImpressions { get; set; } = [];
     }
 
 }

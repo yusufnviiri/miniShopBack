@@ -561,9 +561,8 @@ namespace Repository.context
         public DbSet<UserPreference> UserPreferences { get; set; }
         public DbSet<UserPreferenceCategory> UserPreferenceCategories { get; set; }
         public DbSet<UserPreferenceSellerProfile> UserPreferenceSellerProfiles { get; set; }
-        public DbSet<HomePageCard> HomePageCards { get; set; }
-        public DbSet<GroupFeaturedProduct> GroupFeaturedProducts { get; set; }
-
+        public DbSet<TradeImpression> TradeImpressions { get; set; }
+        public DbSet<ProductImpression> ProductImpressions { get; set; }
 
         #endregion
     }
