@@ -578,6 +578,22 @@
   },
   {
     "ContainingType": "Presentation.ProductController",
+    "Method": "CreateProductImpression",
+    "RelativePath": "api/products/createproductimpression",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "newImpression",
+        "Type": "Shared.Dtos.NewImpressionDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Presentation.ProductController",
     "Method": "DeleteProductImage",
     "RelativePath": "api/products/deleteimage",
     "HttpMethod": "POST",
@@ -1571,6 +1587,22 @@
       {
         "Name": "newReview",
         "Type": "Shared.Dtos.NewReviewDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Presentation.TradeController",
+    "Method": "CreateTradeImpression",
+    "RelativePath": "api/trades/createtradeimpression",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "newImpression",
+        "Type": "Shared.Dtos.NewImpressionDto",
         "IsRequired": true
       }
     ],

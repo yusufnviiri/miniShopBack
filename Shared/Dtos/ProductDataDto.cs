@@ -34,6 +34,7 @@ namespace Shared.Dtos
         public bool HasImage { get; set; }
         public bool IsFeatured { get; set; }
         public Guid ProductImageId { get; set; }
+        public int Impressions { get; set; }
 
         public ICollection<HomePageProductDto> RelatedProducts { get; set; } = [];
 

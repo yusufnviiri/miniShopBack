@@ -188,6 +188,7 @@ C:\Users\DARC\source\repos\monisaccoshopback\saccoshop\obj\Debug\net8.0\saccosho
 C:\Users\DARC\source\repos\monisaccoshopback\saccoshop\obj\Debug\net8.0\saccoshop.genruntimeconfig.cache
 C:\Users\DARC\source\repos\monisaccoshopback\saccoshop\obj\Debug\net8.0\ref\saccoshop.dll
 C:\Users\Darc\source\repos\miniShopBack\saccoshop\bin\Debug\net8.0\appsettings.Development.json
+C:\Users\Darc\source\repos\miniShopBack\saccoshop\bin\Debug\net8.0\appsettings.json
 C:\Users\Darc\source\repos\miniShopBack\saccoshop\bin\Debug\net8.0\CategoryAttributeSeedData.json
 C:\Users\Darc\source\repos\miniShopBack\saccoshop\bin\Debug\net8.0\CategoryDataSeed.json
 C:\Users\Darc\source\repos\miniShopBack\saccoshop\bin\Debug\net8.0\OldCategoryAttributeSeedData.json
@@ -197,7 +198,6 @@ C:\Users\Darc\source\repos\miniShopBack\saccoshop\bin\Debug\net8.0\ServiceCatego
 C:\Users\Darc\source\repos\miniShopBack\saccoshop\bin\Debug\net8.0\UpdateCategoryAttributeSeedData.json
 C:\Users\Darc\source\repos\miniShopBack\saccoshop\bin\Debug\net8.0\UpdatedCategoriesData.json
 C:\Users\Darc\source\repos\miniShopBack\saccoshop\bin\Debug\net8.0\saccoshop.staticwebassets.runtime.json
-C:\Users\Darc\source\repos\miniShopBack\saccoshop\bin\Debug\net8.0\appsettings.json
 C:\Users\Darc\source\repos\miniShopBack\saccoshop\bin\Debug\net8.0\saccoshop.staticwebassets.endpoints.json
 C:\Users\Darc\source\repos\miniShopBack\saccoshop\bin\Debug\net8.0\saccoshop.exe
 C:\Users\Darc\source\repos\miniShopBack\saccoshop\bin\Debug\net8.0\nlog.config.txt

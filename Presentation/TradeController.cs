@@ -220,7 +220,16 @@ namespace Presentation
         }
 
 
-
+        [HttpPost("createtradeimpression")]
+        public async Task<ActionResult> CreateTradeImpression([FromBody] NewImpressionDto newImpression)
+        {
+            if (newImpression == null || newImpression.ItemId == Guid.Empty)
+            {
+                return BadRequest(new { message = "Product Id is required" });
+            }
+            await _service.TradeImpressionService.CreateTradeImpressionAsync(newImpression);
+            return Ok(new { message = "success" });
+        }
 
     }
 }

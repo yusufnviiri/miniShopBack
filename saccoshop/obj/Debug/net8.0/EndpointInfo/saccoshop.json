@@ -1107,6 +1107,37 @@
         }
       }
     },
+    "/api/products/createproductimpression": {
+      "post": {
+        "tags": [
+          "Product"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewImpressionDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewImpressionDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewImpressionDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
     "/api/productvalues/categories": {
       "get": {
         "tags": [
@@ -2432,6 +2463,37 @@
             "application/*+json": {
               "schema": {
                 "$ref": "#/components/schemas/NewReviewDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/trades/createtradeimpression": {
+      "post": {
+        "tags": [
+          "Trade"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewImpressionDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewImpressionDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewImpressionDto"
               }
             }
           }
@@ -4047,6 +4109,21 @@
         },
         "additionalProperties": false
       },
+      "NewImpressionDto": {
+        "type": "object",
+        "properties": {
+          "userProfileId": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "itemId": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "additionalProperties": false
+      },
       "NewReviewDto": {
         "type": "object",
         "properties": {
@@ -4312,6 +4389,13 @@
             "type": "string",
             "format": "date-time"
           },
+          "productImpressions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ProductImpression"
+            },
+            "nullable": true
+          },
           "groupFeaturedProducts": {
             "type": "array",
             "items": {
@@ -4397,6 +4481,31 @@
           "createdAt": {
             "type": "string",
             "format": "date-time"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ProductImpression": {
+        "type": "object",
+        "properties": {
+          "productImpressionId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "userProfile": {
+            "$ref": "#/components/schemas/UserProfile"
+          },
+          "userProfileId": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "product": {
+            "$ref": "#/components/schemas/Product"
+          },
+          "productId": {
+            "type": "string",
+            "format": "uuid"
           }
         },
         "additionalProperties": false
@@ -4886,6 +4995,13 @@
               "$ref": "#/components/schemas/TradeBooking"
             },
             "nullable": true
+          },
+          "tradeImpressions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TradeImpression"
+            },
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -5033,6 +5149,31 @@
           "createdAt": {
             "type": "string",
             "format": "date-time"
+          }
+        },
+        "additionalProperties": false
+      },
+      "TradeImpression": {
+        "type": "object",
+        "properties": {
+          "tradeImpressionId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "userProfile": {
+            "$ref": "#/components/schemas/UserProfile"
+          },
+          "userProfileId": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "trade": {
+            "$ref": "#/components/schemas/Trade"
+          },
+          "tradeId": {
+            "type": "string",
+            "format": "uuid"
           }
         },
         "additionalProperties": false

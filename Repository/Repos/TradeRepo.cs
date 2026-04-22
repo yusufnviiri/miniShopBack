@@ -95,6 +95,11 @@ namespace Repository.Repos
 
         public async Task<TradeDataDto?> GetTradeData(Guid tradeId)
         {
+
+            string cacheKey = $"trade_data {tradeId}";
+
+            if (_cache.TryGetValue(cacheKey, out TradeDataDto cached))
+                return cached;
             var result = await FindByCondition(t => t.TradeId == tradeId, false)
                 .Select(t => new
                 {
@@ -102,6 +107,8 @@ namespace Repository.Repos
                     {
                         TradeId = t.TradeId,
                         TradeName = t.TradeName,
+                        Impressions = t.TradeImpressions.Count(),
+
                         Description = t.Description,                       
                         CreatedAt = t.CreatedAt,
                         SellerProfileId = t.SellerProfileId,
@@ -162,6 +169,10 @@ namespace Repository.Repos
                 .ToListAsync();
 
             result.Trade.RelatedTrades = relatedTrades;
+            _cache.Set(cacheKey, result.Trade,
+           new MemoryCacheEntryOptions()
+               .SetAbsoluteExpiration(TimeSpan.FromMinutes(10))
+               .SetSlidingExpiration(TimeSpan.FromMinutes(1)));
 
             return result.Trade;
         }

@@ -18,13 +18,9 @@ namespace Shared.Dtos
         public string Contact { get; set; } = string.Empty;
         public Guid SellerUserProfileId { get; set; }
         public string WhatsAppNumber { get; set; } = string.Empty;
-
-
-
-
+        public int Impressions { get; set; }
         public Guid SellerProfileId { get; set; }
         public DateTime CreatedAt { get; set; }
-
         public ICollection<TradeImageRefDto> TradeImageRefDtos  { get; set; } = [];
         public ICollection<ShowReviewDto> Reviews { get; set; } = [];
         public ICollection<HomePageTradeDto> RelatedTrades { get; set; } = [];

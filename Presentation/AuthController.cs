@@ -249,8 +249,8 @@ namespace Presentation
                 var userProfile = await _service.UserProfileService.GetLoggedInUserDataDtoAsync(profileId);
                 userProfile.IdentityRole = userRole;
                 var cacheOptions = new MemoryCacheEntryOptions()
-                           .SetAbsoluteExpiration(TimeSpan.FromMinutes(5)) // hard expiry
-                           .SetSlidingExpiration(TimeSpan.FromMinutes(2)); // refresh if used
+                           .SetAbsoluteExpiration(TimeSpan.FromMinutes(50)) // hard expiry
+                           .SetSlidingExpiration(TimeSpan.FromMinutes(10)); // refresh if used
 
                 _cache.Set(cacheKey, userProfile, cacheOptions);
                 loggedInUser = userProfile;

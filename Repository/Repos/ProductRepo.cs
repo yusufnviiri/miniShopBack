@@ -6,6 +6,7 @@ using Microsoft.Extensions.Caching.Memory;
 using Repository.context;
 using Shared.Dtos;
 using Shared.RequestFeatures;
+using System.Text.RegularExpressions;
 
 
 namespace Repository.Repos
@@ -132,6 +133,12 @@ namespace Repository.Repos
 
         public async Task<ProductDataDto?> GetProductData(Guid productId)
         {
+
+            string cacheKey = $"product_data {productId}";
+
+            if (_cache.TryGetValue(cacheKey, out ProductDataDto cached))
+                return cached;
+
             var product = await FindByCondition(p => p.ProductId == productId, false)
      .Select(p => new
      {
@@ -139,6 +146,7 @@ namespace Repository.Repos
          {
              ProductId = p.ProductId,
              Price = p.Price,
+             Impressions = p.ProductImpressions.Count(),
              OldPrice = p.OldPrice,
              ProductName = p.ProductName,
              Category = p.Category != null ? p.Category.CategoryName : "Not Categorised",
@@ -194,6 +202,10 @@ namespace Repository.Repos
                 .ToListAsync();
 
             product.Product.RelatedProducts = relatedProducts;
+            _cache.Set(cacheKey, product.Product,
+              new MemoryCacheEntryOptions()
+                  .SetAbsoluteExpiration(TimeSpan.FromMinutes(10))
+                  .SetSlidingExpiration(TimeSpan.FromMinutes(1)));
 
             return product.Product;
         }

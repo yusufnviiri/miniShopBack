@@ -332,7 +332,18 @@ namespace Presentation
 
         }
 
+        [HttpPost("createproductimpression")]
+        public async Task<ActionResult> CreateProductImpression([FromBody] NewImpressionDto newImpression )
+        {
+            if (newImpression == null || newImpression.ItemId == Guid.Empty)
+            {
+                return BadRequest(new { message = "Product Id is required" });
+            }
+            await _service.ProductImpressionService.CreateProductImpressionAsync(newImpression);
+            return Ok(new { message = "success" });
         }
+
+    }
     }
 
 
