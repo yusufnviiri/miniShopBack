@@ -22,6 +22,8 @@ namespace Entities.Models
         public ICollection<GroupMember> Members { get; set; } = new List<GroupMember>();
         public string Contact { get; set; } = string.Empty;
         public string Email { get; set; } = string.Empty;
+        public int MaximumSellers { get; set; } = 50;
+
         public int AddressId { get; set; }
         public Guid? SellerProfileId { get; set; }
         public SellerProfile? SellerProfile { get; set; }

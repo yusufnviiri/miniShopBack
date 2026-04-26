@@ -5,6 +5,7 @@ using Contracts.Service;
 using Entities.Exceptions;
 using Entities.Models;
 using Microsoft.AspNetCore.Identity;
+using Services.BusinessRules;
 using Shared.Dtos;
 using System;
 using System.Collections.Generic;
@@ -38,6 +39,8 @@ namespace Services
             var IsExist = await _repoManager.SellerProfileRepo.CheckifUserIsSeller(sellerProfile.SellerId);
             if (!IsExist)
             {
+
+                var itemNumber =  SellerRules.SetSellerMaximumAllowedItems(sellerProfile.gr);
                 _repoManager.SellerProfileRepo.CreateSellerProfile(sellerProfile);
                 await _repoManager.SaveRepoDataAsync();
                 var user = await _repoManager.UserProfileRepo.FindUserProfileById(sellerProfile.SellerId,true);

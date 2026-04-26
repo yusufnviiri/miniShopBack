@@ -12,11 +12,11 @@ namespace Entities.Models
         public required Guid SellerId { get; set; }
         public string SellerName { get; set; } = string.Empty;
         public string WhatsAppNumber { get; set; } = string.Empty;
-
         public SellerType? SellerType { get; set; }
         public SellerOffering? SellerOffering { get; set; }
         public int SellerOfferingId { get; set; } = 1;
         public int SellerTypeId { get; set; } = 1;
+        public int MaximumAllowedItems { get; set; } = 10;
         public int SellerPolicyId { get; set; }=2; //default policy
         public SellerPolicy? SellerPolicy { get; set; }
         public int SellerTierId { get; set; }=1; //default tier

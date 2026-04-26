@@ -33,5 +33,22 @@ namespace Services.BusinessRules
             return (commodityClassId,sellerProfile.SellerProfileId);
 
         }
+
+
+
+        public static int SetSellerMaximumAllowedItems(int groupCategoryId)
+        {
+            int maximumAllowedItems = 0;
+             maximumAllowedItems = groupCategoryId switch
+            {
+                1 => 10,
+                2 => 20,
+                3 => 50,
+                _ => 10,
+            };
+            return maximumAllowedItems;
+
+        }
+
     }
 }
