@@ -40,7 +40,7 @@ namespace Services
             if (!IsExist)
             {
 
-                var itemNumber =  SellerRules.SetSellerMaximumAllowedItems(sellerProfile.gr);
+                //var itemNumber =  SellerRules.SetSellerMaximumAllowedItems(sellerProfile.gr);
                 _repoManager.SellerProfileRepo.CreateSellerProfile(sellerProfile);
                 await _repoManager.SaveRepoDataAsync();
                 var user = await _repoManager.UserProfileRepo.FindUserProfileById(sellerProfile.SellerId,true);

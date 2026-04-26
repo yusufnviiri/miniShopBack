@@ -13,8 +13,8 @@ namespace Contracts.Repo
         Task<IEnumerable<ShowAllCategoriesDto>> GetAllCategories();
         IQueryable<Category> CategoriesQueryData();
         Task<IEnumerable<CategorySeedDto?>> GetCategorySeedData();
-        Task<IEnumerable<CategoryRefDto>> TradeCategories();
-        Task<IEnumerable<CategoryRefDto>> ProductCategories();
+        Task<IEnumerable<CategoryTreeDto>> TradeCategories();
+        Task<IEnumerable<CategoryTreeDto>> ProductCategories();
         Task<IEnumerable<CategoryRefDto>> GetAllTradeCategories();
         Task<IEnumerable<MiniCategoryDto>> GetAllCategoriesInDb();
         Task<IEnumerable<CategoryRefDto>> GetAllCategoryReferences();

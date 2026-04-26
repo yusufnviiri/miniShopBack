@@ -18,26 +18,71 @@ namespace Repository.Repos
 
         }
 
-        public async Task<IEnumerable<CategoryRefDto>> TradeCategories()
+        public async Task<IEnumerable<CategoryTreeDto>> TradeCategories()
         {
-            return await FindByCondition(k => k.Type != null && EF.Functions.Like(k.Type, "%trade%"), false).Select(c => new CategoryRefDto()
-            {
-                CategoryName = c.CategoryName,
-                CategoryId = c.CategoryId,
+            return await FindByCondition(k => k.Type != null && EF.Functions.Like(k.Type, "%trade%"), false)
 
-            }).OrderBy(p => p.CategoryName).ToListAsync();
+                .Select(c => new CategoryTreeDto
+                {
+                    CategoryId = c.CategoryId,
+                    CategoryName = c.CategoryName,
+
+                    SubCategories = c.SubCategories
+                        .Select(sc => new SubCategoryTreeDto
+                        {
+                            SubCategoryId = sc.SubCategoryId,
+                            SubCategoryName = sc.SubCategoryName,
+
+                            SubCategoryCategories = sc.SubCategoryCategories
+                                .Select(scc => new SubCategoryCategoryRefDto
+                                {
+                                    SubCategoryCategoryId = scc.SubCategoryCategoryId,
+                                    SubCategoryId = scc.SubCategoryId,
+                                    SubCategoryCategoryName = scc.SubCategoryCategoryName
+                                })
+                                .OrderBy(scc => scc.SubCategoryCategoryName)
+                                .ToList()
+                        })
+                        .OrderBy(sc => sc.SubCategoryName)
+                        .ToList()
+                })
+                .OrderBy(c => c.CategoryName)
+                .ToListAsync();
         }
         public IQueryable<Category> CategoriesQueryData()=>FindAll(false);
 
-        public async Task<IEnumerable<CategoryRefDto>> ProductCategories()
+        public async Task<IEnumerable<CategoryTreeDto>> ProductCategories()
         {
-            return await FindByCondition(k => k.Type != null && EF.Functions.Like(k.Type, "%product%"), false).Select(c => new CategoryRefDto()
-            {
-                CategoryName = c.CategoryName,
-                CategoryId=c.CategoryId,                
+            return await FindByCondition(c => c.Type != null && EF.Functions.Like(c.Type, "%product%"), false)
 
-            }).OrderBy(p => p.CategoryName).ToListAsync();
+                .Select(c => new CategoryTreeDto
+                {
+                    CategoryId = c.CategoryId,
+                    CategoryName = c.CategoryName,
+
+                    SubCategories = c.SubCategories
+                        .Select(sc => new SubCategoryTreeDto
+                        {
+                            SubCategoryId = sc.SubCategoryId,
+                            SubCategoryName = sc.SubCategoryName,
+
+                            SubCategoryCategories = sc.SubCategoryCategories
+                                .Select(scc => new SubCategoryCategoryRefDto
+                                {
+                                    SubCategoryCategoryId = scc.SubCategoryCategoryId,
+                                    SubCategoryId = scc.SubCategoryId,
+                                    SubCategoryCategoryName = scc.SubCategoryCategoryName
+                                })
+                                .OrderBy(scc => scc.SubCategoryCategoryName)
+                                .ToList()
+                        })
+                        .OrderBy(sc => sc.SubCategoryName)
+                        .ToList()
+                })
+                .OrderBy(c => c.CategoryName)
+                .ToListAsync();
         }
+       
         public async  Task<IEnumerable<CategoryDto>> GetAllCategoriesWithSubCategories (bool tracking)
         {
             var query =  await FindAll(tracking).AsSplitQuery().Select(c => new CategoryDto
