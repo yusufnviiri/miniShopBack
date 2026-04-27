@@ -22,6 +22,8 @@ namespace Shared.Dtos
         public Guid SellerProfileId { get; set; }
         public Guid SellerUserProfileId { get; set; }
         public int CommodityClassId { get; set; } = 2;
+        public string Condition { get; set; } = string.Empty;
+
         public ICollection<ShowReviewDto> Reviews { get; set; } = [];
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;      
         public string Category { get; set; } = string.Empty;

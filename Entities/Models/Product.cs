@@ -24,6 +24,7 @@ namespace Entities.Models
         public bool IsFeatured { get; set; }
         public bool HasImage { get; set; }
         public string Description { get; set; } = string.Empty;
+        public string Condition { get; set; } = string.Empty;
 
         // Ownership (DOMAIN, not Identity)
         public SellerProfile? SellerProfile { get; set; }

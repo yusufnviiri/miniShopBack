@@ -4360,6 +4360,10 @@
             "type": "string",
             "nullable": true
           },
+          "condition": {
+            "type": "string",
+            "nullable": true
+          },
           "sellerProfile": {
             "$ref": "#/components/schemas/SellerProfile"
           },

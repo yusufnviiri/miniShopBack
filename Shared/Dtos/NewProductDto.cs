@@ -22,7 +22,9 @@ namespace Shared.Dtos
         public bool IsDeleted { get; set; }
         public bool IsModified { get; set; }
         public bool HasImage { get; set; }
-       
+        public string Condition { get; set; } = string.Empty;
+
+
         // Ownership (DOMAIN, not Identity)
         public Guid SellerId { get; set; }
         public ICollection<ProductImage> Images { get; set; } = [];

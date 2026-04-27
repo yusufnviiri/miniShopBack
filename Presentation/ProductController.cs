@@ -175,6 +175,7 @@ namespace Presentation
             {
                 ProductName = jsonNode["productName"]?.Value<string>() ?? string.Empty,
                 Description = jsonNode["description"]?.Value<string>() ?? string.Empty,
+                Condition = jsonNode["condition"]?.Value<string>() ?? string.Empty,
 
                 Price = jsonNode["price"]?.Value<decimal>() ?? 0,
                 CategoryId = jsonNode["categoryId"]?.Value<int>() ?? 0,

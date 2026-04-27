@@ -12,9 +12,8 @@ namespace Contracts.Service
     {
         Task<IEnumerable<ShowAllCategoriesDto>> GetAllCategoriesAsync();
         Task<IEnumerable<CategoryRefDto>> GetAllTradeCategoriesAsync();
-        Task<IEnumerable<CategoryRefDto>> TradeCategoriesAsync();
-        Task<IEnumerable<CategoryRefDto>> ProductCategoriesAsync();
-
+        Task<IEnumerable<CategoryTreeDto>> TradeCategoriesAsync();
+        Task<IEnumerable<CategoryTreeDto>> ProductCategoriesAsync();
         Task<CategoryDto?> FindCategoryWithSubCategoriesAsync(int categoryId);
         Task<IEnumerable<CategoryDto>> GetAllCategoriesWithSubCategoriesAsync();
         Task CreateCategoryAsync(CategoryDto category);

@@ -56,10 +56,11 @@ namespace Services
             var categoryEntity = await _repoManager.CategoryRepo.FindCategoryById(category.CategoryId, true);
             if (categoryEntity == null)
             {
-                _logger.LogError($"Category with id: {category.RefId} not found.");
+                _logger.LogError($"Category with id: {category.CategoryId} not found.");
                 throw new KeyNotFoundException("Category not found");
             }
-            _mapper.Map(category, categoryEntity);
+
+            categoryEntity.CategoryName = category.CategoryName;
             await _repoManager.SaveRepoDataAsync();
         }
         public async Task DeleteCategoryAsync(int categoryId)
@@ -92,8 +93,8 @@ namespace Services
 
         }
 
-    public async  Task<IEnumerable<CategoryRefDto>> TradeCategoriesAsync()=>await _repoManager.CategoryRepo.TradeCategories();
-    public async Task<IEnumerable<CategoryRefDto>> ProductCategoriesAsync() => await _repoManager.CategoryRepo.ProductCategories();
+    public async  Task<IEnumerable<CategoryTreeDto>> TradeCategoriesAsync()=>await _repoManager.CategoryRepo.TradeCategories();
+    public async Task<IEnumerable<CategoryTreeDto>> ProductCategoriesAsync() => await _repoManager.CategoryRepo.ProductCategories();
 
         public async Task<CategoriesSubCategoryCategoryDto> GetAllCategorySeedDataAsync()
         {

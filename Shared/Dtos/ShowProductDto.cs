@@ -21,6 +21,8 @@ namespace Shared.Dtos
         public bool IsModified { get; set; }
         public bool IsFeatured { get; set; }
         public string Description { get; set; } = default!;
+        public string Condition { get; set; } = string.Empty;
+
 
 
         // Ownership (DOMAIN, not Identity)

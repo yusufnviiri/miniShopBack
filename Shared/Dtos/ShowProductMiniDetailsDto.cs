@@ -18,6 +18,9 @@ namespace Shared.Dtos
         public bool IsDeleted { get; set; }
         public bool IsModified { get; set; }
         public bool IsFeatured { get; set; }
+        public string Condition { get; set; } = string.Empty;
+
+
         // Ownership (DOMAIN, not Identity)
         public Guid SellerProfileId { get; set; }
         public int CommodityClassId { get; set; } = 2;

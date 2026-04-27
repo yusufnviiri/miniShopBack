@@ -52,6 +52,8 @@ namespace Repository.Repos
            ProductId = x.ProductId,
            ProductName = x.ProductName,
            Price = x.Price,
+           Condition = x.Condition,
+
            CategoryName = x.Category != null ? x.Category.CategoryName : "General",
            SellerProfileId = x.SellerProfileId,
            SellerName = x.SellerProfile != null ? $"{x.SellerProfile.SellerName}" : "Unkown Seller",
@@ -77,6 +79,8 @@ namespace Repository.Repos
            ProductId = x.ProductId,
            ProductName = x.ProductName,
            Price = x.Price,
+           Condition = x.Condition,
+
            CategoryName = x.Category != null ? x.Category.CategoryName : "General",
         
            ProductImageRefs = x.Images.Any() ? x.Images.Select(i => new ProductImageRefDto
@@ -103,6 +107,8 @@ namespace Repository.Repos
                     ProductId = p.ProductId,
                     Price = p.Price,
                     OldPrice = p.OldPrice,
+                    Condition = p.Condition,
+
                     SellerUserProfileId = p.SellerProfile != null ? p.SellerProfile.SellerId : Guid.Empty,
 
                     ProductName = p.ProductName,
@@ -148,6 +154,8 @@ namespace Repository.Repos
              Price = p.Price,
              Impressions = p.ProductImpressions.Count(),
              OldPrice = p.OldPrice,
+             Condition = p.Condition,
+
              ProductName = p.ProductName,
              Category = p.Category != null ? p.Category.CategoryName : "Not Categorised",
              CreatedAt = p.CreatedAt,
@@ -273,6 +281,8 @@ namespace Repository.Repos
                         ProductId = t.ProductId,
                         ProductName = t.ProductName,
                         Price = t.Price,
+                        Condition = t.Condition,
+
                         CategoryName = t.Category != null ? t.Category.CategoryName : "Not Categorised",
                         ReviewSummary = t.ProductReviews.Any() ? (int)t.ProductReviews.Average(r => r.Rating) : 0,
                         ProductImageId = t.Images

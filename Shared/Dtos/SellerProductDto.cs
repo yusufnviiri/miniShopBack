@@ -17,6 +17,8 @@ namespace Shared.Dtos
         public int ReviewSummary { get; set; }       
         public Guid  ProductImageId { get; set; }
         public string SellerName { get; set; } = string.Empty;
+        public string Condition { get; set; } = string.Empty;
+
 
     }
 }
