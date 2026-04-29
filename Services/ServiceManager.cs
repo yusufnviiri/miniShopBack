@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;
 using Repository.context;
+using Services.BusinessRules;
 
 
 namespace Services
@@ -16,6 +17,8 @@ namespace Services
     public sealed class ServiceManager:IServiceManager
     {
         private readonly ApplicationDbContext _dbContext;
+        //private readonly SlugService _slugService;
+
 
         private readonly Lazy<IPaymentService> _paymentService;
         private readonly Lazy<IWishListService> _wishListService;
@@ -58,7 +61,7 @@ namespace Services
         private readonly Lazy<ITradeImpressionService> _tradeImpressionService;
         private readonly Lazy<IGroupFeaturedProductService> _groupFeaturedProductService;
 
-        public ServiceManager(ILoggerManager logger, IRepositoryManager repository, IMapper mapper, UserManager<ApplicationUser> userManager, IConfiguration configuration, SignInManager<ApplicationUser> signInManager,RoleManager<IdentityRole> roleManager, IUserClaimsPrincipalFactory<ApplicationUser> claimsFactory,ISmsSender smsSender,IHttpContextAccessor httpContextAccessor, IOptions<JwtSettings> jwtOptions, IWebHostEnvironment env, ApplicationDbContext dbContext) {
+        public ServiceManager(ILoggerManager logger, IRepositoryManager repository, IMapper mapper, UserManager<ApplicationUser> userManager, IConfiguration configuration, SignInManager<ApplicationUser> signInManager,RoleManager<IdentityRole> roleManager, IUserClaimsPrincipalFactory<ApplicationUser> claimsFactory,ISmsSender smsSender,IHttpContextAccessor httpContextAccessor, IOptions<JwtSettings> jwtOptions, IWebHostEnvironment env, ApplicationDbContext dbContext, SlugService slugService) {
             _dbContext= dbContext;
             _paymentService = new Lazy<IPaymentService>(() => new PaymentService(logger, repository, mapper, userManager));
             _userPreferenceService = new Lazy<IUserPreferenceService>(() => new UserPreferenceService(logger,repository, mapper));
@@ -72,7 +75,7 @@ namespace Services
             _cartItemService = new Lazy<ICartItemService>(()=> new CartItemService(logger, repository, mapper, userManager));
             _orderItemService = new Lazy<IOrderItemService>(()=> new OrderItemService(logger, repository, mapper, userManager));
             _orderService = new Lazy<IOrderService>(()=> new OrderService(logger, repository, mapper, userManager));
-            _productService = new Lazy<IProductService>(()=>new ProductService(logger, repository, mapper, userManager));
+            _productService = new Lazy<IProductService>(()=>new ProductService(logger, repository, mapper, userManager,slugService));
             _productImageService = new Lazy<IProductImageService>(()=>new ProductImageService(logger, repository, mapper, userManager,env));
             _userGroupService = new Lazy<IUserGroupService>(()=> new UserGroupService(logger, repository, mapper, userManager));
             _userService = new Lazy<IApplicationUserService>(()=> new ApplicationUserService(logger, repository, mapper, userManager,configuration,signInManager));  

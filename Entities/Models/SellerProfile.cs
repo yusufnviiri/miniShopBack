@@ -16,6 +16,8 @@ namespace Entities.Models
         public SellerOffering? SellerOffering { get; set; }
         public int SellerOfferingId { get; set; } = 1;
         public int SellerTypeId { get; set; } = 1;
+        public string Slug { get; set; } = string.Empty;
+
         public int MaximumAllowedItems { get; set; } = 10;
         public int SellerPolicyId { get; set; }=2; //default policy
         public SellerPolicy? SellerPolicy { get; set; }

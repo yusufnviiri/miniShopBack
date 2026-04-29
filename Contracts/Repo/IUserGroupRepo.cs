@@ -26,5 +26,6 @@ namespace Contracts.Repo
         Guid CreateUserGroup(UserGroup userGroup );
         void UpdateUserGroup(UserGroup userGroup);
         void DeleteUserGroup(UserGroup userGroup);
+        Task<int> NumberOfUserGroups();
     }
 }

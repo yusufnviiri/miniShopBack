@@ -285,7 +285,9 @@ namespace Repository.Repos
             var query = FindByCondition(p => p.TradeId == tradeId, false).ExecuteUpdateAsync(setters => setters.SetProperty(p => p.IsFeatured, true));
 
         }
-      
+        public Task<int> NumberOfTrades() => FindAll(false).CountAsync();
+
+
     }
 }
 

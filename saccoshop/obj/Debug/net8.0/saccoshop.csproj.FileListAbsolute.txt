@@ -376,3 +376,4 @@ C:\Users\Darc\source\repos\miniShopBack\saccoshop\obj\Debug\net8.0\refint\saccos
 C:\Users\Darc\source\repos\miniShopBack\saccoshop\obj\Debug\net8.0\saccoshop.pdb
 C:\Users\Darc\source\repos\miniShopBack\saccoshop\obj\Debug\net8.0\saccoshop.genruntimeconfig.cache
 C:\Users\Darc\source\repos\miniShopBack\saccoshop\obj\Debug\net8.0\ref\saccoshop.dll
+C:\Users\Darc\source\repos\miniShopBack\saccoshop\bin\Debug\net8.0\Slugify.dll

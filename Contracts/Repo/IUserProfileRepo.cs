@@ -25,6 +25,8 @@ namespace Contracts.Repo
         Task<ICollection<GroupMemberRolesDto>> GetGroupMemberRolesDtos(Guid UserProfileId);
         Task<LoggedInUserDataDto?> GetLoggedInUserDataDto(Guid UserProfileId);
         Task<string?> GetUserContact(Guid userProfileId);
+        Task<int> NumberOfUserProfiles();
+
 
 
 

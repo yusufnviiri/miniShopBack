@@ -12,6 +12,7 @@ using Repository.context;
 using Repository.Repos;
 using saccoshop.ContextFactory;
 using Services;
+using Services.BusinessRules;
 using System.Text;
 
 namespace saccoshop.Extensions
@@ -83,37 +84,44 @@ namespace saccoshop.Extensions
             .AddEntityFrameworkStores<ApplicationDbContext>().AddDefaultTokenProviders();
         }
 
+        public static void ConfigureSlugService(this IServiceCollection services)
+        { 
+        
+        
+        services.AddSingleton<SlugService>();
+        }
+
         //public static void ConfigureJWT(this IServiceCollection services, IConfiguration configuration)
         //{
         //    var jwtSettings = configuration.GetSection("JwtSettings");
 
-        //    var secretKey = configuration["JwtSettings:SecretKey"];
-        //    if (string.IsNullOrWhiteSpace(secretKey))
-        //    {
+            //    var secretKey = configuration["JwtSettings:SecretKey"];
+            //    if (string.IsNullOrWhiteSpace(secretKey))
+            //    {
 
-        //        throw new InvalidOperationException("JWT Secret Key is not configured.");
-        //    }
+            //        throw new InvalidOperationException("JWT Secret Key is not configured.");
+            //    }
 
-        //    var keyBytes = Encoding.UTF8.GetBytes(secretKey);
+            //    var keyBytes = Encoding.UTF8.GetBytes(secretKey);
 
-        //    services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-        //        .AddJwtBearer(options =>
-        //        {
-        //            options.RequireHttpsMetadata = true;
-        //            options.SaveToken = true;
-        //            options.TokenValidationParameters = new TokenValidationParameters
-        //            {
-        //                ValidateIssuer = true,
-        //                ValidateAudience = true,
-        //                ValidateLifetime = true,
-        //                ValidateIssuerSigningKey = true,
-        //                ValidIssuer = jwtSettings["validIssuer"],
-        //                ValidAudience = jwtSettings["validAudience"],
-        //                ClockSkew = TimeSpan.FromSeconds(30),
-        //                IssuerSigningKey = new SymmetricSecurityKey(keyBytes)
-        //            };
-        //        });
-        //}
+            //    services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+            //        .AddJwtBearer(options =>
+            //        {
+            //            options.RequireHttpsMetadata = true;
+            //            options.SaveToken = true;
+            //            options.TokenValidationParameters = new TokenValidationParameters
+            //            {
+            //                ValidateIssuer = true,
+            //                ValidateAudience = true,
+            //                ValidateLifetime = true,
+            //                ValidateIssuerSigningKey = true,
+            //                ValidIssuer = jwtSettings["validIssuer"],
+            //                ValidAudience = jwtSettings["validAudience"],
+            //                ClockSkew = TimeSpan.FromSeconds(30),
+            //                IssuerSigningKey = new SymmetricSecurityKey(keyBytes)
+            //            };
+            //        });
+            //}
 
 
 

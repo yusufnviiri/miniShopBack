@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "wexNt/fNc7M=",
+  "dgSpecHash": "TMypPUiQOPQ=",
   "success": true,
   "projectFilePath": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\saccoshop\\saccoshop.csproj",
   "expectedPackageFiles": [
@@ -115,6 +115,7 @@
     "C:\\Users\\Darc\\.nuget\\packages\\runtime.ubuntu.16.04-x64.runtime.native.system.security.cryptography.openssl\\4.3.2\\runtime.ubuntu.16.04-x64.runtime.native.system.security.cryptography.openssl.4.3.2.nupkg.sha512",
     "C:\\Users\\Darc\\.nuget\\packages\\runtime.ubuntu.16.10-x64.runtime.native.system.security.cryptography.openssl\\4.3.2\\runtime.ubuntu.16.10-x64.runtime.native.system.security.cryptography.openssl.4.3.2.nupkg.sha512",
     "C:\\Users\\Darc\\.nuget\\packages\\sixlabors.imagesharp\\3.1.12\\sixlabors.imagesharp.3.1.12.nupkg.sha512",
+    "C:\\Users\\Darc\\.nuget\\packages\\slugify\\0.1.0.20570\\slugify.0.1.0.20570.nupkg.sha512",
     "C:\\Users\\Darc\\.nuget\\packages\\stackexchange.redis\\2.6.122\\stackexchange.redis.2.6.122.nupkg.sha512",
     "C:\\Users\\Darc\\.nuget\\packages\\swashbuckle.aspnetcore\\6.4.0\\swashbuckle.aspnetcore.6.4.0.nupkg.sha512",
     "C:\\Users\\Darc\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.4.0\\swashbuckle.aspnetcore.swagger.6.4.0.nupkg.sha512",
@@ -203,5 +204,18 @@
     "C:\\Users\\Darc\\.nuget\\packages\\system.xml.readerwriter\\4.3.0\\system.xml.readerwriter.4.3.0.nupkg.sha512",
     "C:\\Users\\Darc\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "message": "Package 'Slugify 0.1.0.20570' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net8.0'. This package may not be fully compatible with your project.",
+      "projectPath": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\saccoshop\\saccoshop.csproj",
+      "warningLevel": 1,
+      "filePath": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\saccoshop\\saccoshop.csproj",
+      "libraryId": "Slugify",
+      "targetGraphs": [
+        "net8.0"
+      ]
+    }
+  ]
 }

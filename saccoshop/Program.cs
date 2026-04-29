@@ -34,6 +34,7 @@ builder.Services.Configure<ApiBehaviorOptions>(options =>{options.SuppressModelS
 builder.Services.AddControllers();
 builder.Services.AddAuthentication();
 builder.Services.ConfigureIdentity();
+builder.Services.ConfigureSlugService();
 builder.Services.AddMemoryCache();
 
 //if (builder.Environment.IsDevelopment())

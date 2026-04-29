@@ -126,7 +126,9 @@ namespace Repository.Repos
 
         public void UpdateUserGroup(UserGroup userGroup)=>UpdateBase(userGroup);
         public void DeleteUserGroup(UserGroup userGroup)=>DeleteBase(userGroup);
-      
+        public Task<int> NumberOfUserGroups() => FindAll(false).CountAsync();
+
+
 
     }
 }

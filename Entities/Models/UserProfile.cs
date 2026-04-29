@@ -19,6 +19,7 @@ namespace Entities.Models
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
         public int UserStatusId { get; set; } = 1;
         public UserStatus? UserStatus { get; set; }
+        public string Slug { get; set; } = string.Empty;
         public BuyerProfile? BuyerProfile { get; set; }
         public Guid? BuyerProfileId { get; set; }
         public Guid? SellerProfileId { get; set; }

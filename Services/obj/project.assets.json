@@ -1554,6 +1554,15 @@
           "build/SixLabors.ImageSharp.props": {}
         }
       },
+      "Slugify/0.1.0.20570": {
+        "type": "package",
+        "compile": {
+          "lib/net40/Slugify.dll": {}
+        },
+        "runtime": {
+          "lib/net40/Slugify.dll": {}
+        }
+      },
       "StackExchange.Redis/2.6.122": {
         "type": "package",
         "dependencies": {
@@ -4945,6 +4954,18 @@
         "sixlabors.imagesharp.128.png",
         "sixlabors.imagesharp.3.1.12.nupkg.sha512",
         "sixlabors.imagesharp.nuspec"
+      ]
+    },
+    "Slugify/0.1.0.20570": {
+      "sha512": "tqyhPOQ92esIYh96dPDu2qH9wtmhW8iAHq3WBViCVIkcFZNeHVCs/Q6H65KVLmIXqxgzMhOlyZGRhdp1OGDD+g==",
+      "type": "package",
+      "path": "slugify/0.1.0.20570",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net40/Slugify.dll",
+        "slugify.0.1.0.20570.nupkg.sha512",
+        "slugify.nuspec"
       ]
     },
     "StackExchange.Redis/2.6.122": {
@@ -8665,7 +8686,8 @@
       "Microsoft.Extensions.Caching.StackExchangeRedis >= 8.0.0",
       "Repository >= 1.0.0",
       "Shared >= 1.0.0",
-      "SixLabors.ImageSharp >= 3.1.12"
+      "SixLabors.ImageSharp >= 3.1.12",
+      "Slugify >= 0.1.0.20570"
     ]
   },
   "packageFolders": {
@@ -8755,6 +8777,10 @@
           "SixLabors.ImageSharp": {
             "target": "Package",
             "version": "[3.1.12, )"
+          },
+          "Slugify": {
+            "target": "Package",
+            "version": "[0.1.0.20570, )"
           }
         },
         "imports": [
@@ -8776,5 +8802,17 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.311/PortableRuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'Slugify 0.1.0.20570' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net8.0'. This package may not be fully compatible with your project.",
+      "libraryId": "Slugify",
+      "targetGraphs": [
+        "net8.0"
+      ]
+    }
+  ]
 }

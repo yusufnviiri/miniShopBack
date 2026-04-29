@@ -17,6 +17,8 @@ namespace Contracts.Repo
         Task<ShowTradeDataDto?> FindSellerTrade(Guid TradeId);
         void MakeTradeFeautured(Guid tradeId);
         void MakeAllTradesFeautured();
+        Task<int> NumberOfTrades();
+
 
         Task<Trade?> FindTradeForUpdate(Guid tradeId);
         Guid CreateTrade(Trade trade);

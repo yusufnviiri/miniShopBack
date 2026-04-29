@@ -14,7 +14,9 @@ namespace Entities.Models
         public Guid ProductImageId { get; set; }
         public Product? Product { get; set; }
         public Guid? ProductId { get; set; }
-        public bool IsPrimary { get; set; }      
+        public bool IsPrimary { get; set; }
+        public string Slug { get; set; } = string.Empty;
+
         // File metadata
         public string Folder { get; set; } = null!;   // e.g. images/products/{guid}
         public string FileName { get; set; } = null!; // base name, not size-specific

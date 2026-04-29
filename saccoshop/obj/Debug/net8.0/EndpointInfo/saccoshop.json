@@ -4364,6 +4364,10 @@
             "type": "string",
             "nullable": true
           },
+          "slug": {
+            "type": "string",
+            "nullable": true
+          },
           "sellerProfile": {
             "$ref": "#/components/schemas/SellerProfile"
           },
@@ -4470,6 +4474,10 @@
           },
           "isPrimary": {
             "type": "boolean"
+          },
+          "slug": {
+            "type": "string",
+            "nullable": true
           },
           "folder": {
             "type": "string",
@@ -4628,6 +4636,10 @@
           "sellerTypeId": {
             "type": "integer",
             "format": "int32"
+          },
+          "slug": {
+            "type": "string",
+            "nullable": true
           },
           "maximumAllowedItems": {
             "type": "integer",
@@ -5010,6 +5022,10 @@
               "$ref": "#/components/schemas/TradeImpression"
             },
             "nullable": true
+          },
+          "slug": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -5328,6 +5344,10 @@
             "type": "integer",
             "format": "int32"
           },
+          "slug": {
+            "type": "string",
+            "nullable": true
+          },
           "addressId": {
             "type": "integer",
             "format": "int32"
@@ -5467,6 +5487,10 @@
           },
           "userStatus": {
             "$ref": "#/components/schemas/UserStatus"
+          },
+          "slug": {
+            "type": "string",
+            "nullable": true
           },
           "buyerProfile": {
             "$ref": "#/components/schemas/BuyerProfile"

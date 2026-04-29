@@ -24,18 +24,26 @@ namespace Services
         private readonly IMapper _mapper;
         private ApplicationUser? _user = new();
         private readonly UserManager<ApplicationUser> _userManager;
- 
+        private readonly SlugService _slugService;
 
-        public ProductService(ILoggerManager logger, IRepositoryManager repository, IMapper mapper, UserManager<ApplicationUser> userManager)
+
+
+        public ProductService(ILoggerManager logger, IRepositoryManager repository, IMapper mapper, UserManager<ApplicationUser> userManager,SlugService slugService)
         {
             _userManager = userManager;
             _logger = logger;
             _repoManager = repository;
             _mapper = mapper;
+            _slugService = slugService;
+
         }
 
+        private  string CreateSlug(string name)
+        {
+            return _slugService.Generate(name);
+        }
 
-       public async Task<IEnumerable<ShowProductMiniDetailsDto>> GetAllProductsAsync()=>await _repoManager.ProductRepo.GetAllProducts(tracking: false);
+        public async Task<IEnumerable<ShowProductMiniDetailsDto>> GetAllProductsAsync()=>await _repoManager.ProductRepo.GetAllProducts(tracking: false);
         public async Task<IEnumerable<ShowProductMiniDetailsDto>> GetAllProductsByCategoryAsync(string categoryName)=>await _repoManager.ProductRepo.GetAllProductsByCategory(tracking: false, categoryName);
         public async Task<ShowProductDto?> FindProductByIdAsync(bool tracking, Guid productId)=>await _repoManager.ProductRepo.FindProductById(tracking, productId);
 
@@ -55,7 +63,10 @@ namespace Services
         public async Task<Product> CreateProductAsync(NewProductDto product)
         {
            
+           
             var productEntity = _mapper.Map<Product>(product);
+            var numberOfProducts = await _repoManager.ProductRepo.NumberOfProducts();
+            productEntity.Slug = $"{CreateSlug(product.ProductName)}-{numberOfProducts + 1}";
             var (commodityClass, sellerProfileId) = await SellerRules.CommodityClassToSellerRef(product.SellerId, _repoManager);
 
 

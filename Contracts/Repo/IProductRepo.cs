@@ -29,6 +29,7 @@ namespace Contracts.Repo
         Guid CreateProduct(Product product);
         void UpdateProduct(Product product);
         void DeleteProduct(Product productId);
+        Task<int> NumberOfProducts();
 
         Task<ICollection<SellerProductsListDto>> GetGroupMembersProducts(IList<Guid> groupMemberIds);
         Task<ICollection<SellerProductsListDto>> GetGroupMembersForDisplayProducts(IList<Guid> groupMemberIds, Guid groupId);

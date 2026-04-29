@@ -623,7 +623,7 @@ namespace Repository.Repos
 
             return result;
         }
-
+        public Task<int> NumberOfProducts() => FindAll(false).CountAsync();
 
     }
 }

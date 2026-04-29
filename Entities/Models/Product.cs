@@ -25,7 +25,7 @@ namespace Entities.Models
         public bool HasImage { get; set; }
         public string Description { get; set; } = string.Empty;
         public string Condition { get; set; } = string.Empty;
-
+        public string Slug { get; set; }= string.Empty;
         // Ownership (DOMAIN, not Identity)
         public SellerProfile? SellerProfile { get; set; }
         public  Guid SellerProfileId { get; set; }

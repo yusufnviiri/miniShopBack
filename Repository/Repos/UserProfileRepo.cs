@@ -197,6 +197,9 @@ namespace Repository.Repos
                 .FirstOrDefaultAsync();
         }
 
+        public Task<int> NumberOfUserProfiles() => FindAll(false).CountAsync();
+
+
 
     }
 }
