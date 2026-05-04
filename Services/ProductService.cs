@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Contracts;
+using Contracts.Lucene;
 using Contracts.Repo;
 using Contracts.Service;
 using Entities.Exceptions;
@@ -23,18 +24,21 @@ namespace Services
         private readonly IRepositoryManager _repoManager;
         private readonly IMapper _mapper;
         private ApplicationUser? _user = new();
+        private readonly IProductIndexer _indexer;
+
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SlugService _slugService;
 
 
 
-        public ProductService(ILoggerManager logger, IRepositoryManager repository, IMapper mapper, UserManager<ApplicationUser> userManager,SlugService slugService)
+        public ProductService(ILoggerManager logger, IRepositoryManager repository, IMapper mapper, UserManager<ApplicationUser> userManager,SlugService slugService, IProductIndexer productIndexer)
         {
             _userManager = userManager;
             _logger = logger;
             _repoManager = repository;
             _mapper = mapper;
             _slugService = slugService;
+            _indexer = productIndexer;
 
         }
 
@@ -88,6 +92,8 @@ namespace Services
             productEntity.SellerProfileId=sellerProfileId;
             _repoManager.ProductRepo.CreateProduct(productEntity);
             await _repoManager.SaveRepoDataAsync();
+            await _indexer.QueueIndexAsync(product.ProductId);
+
             return productEntity;
         }
         public async Task UpdateProductAsync(NewProductDto product)
@@ -95,6 +101,8 @@ namespace Services
             var productEntity = _mapper.Map<Product>(product);
             _repoManager.ProductRepo.UpdateProduct(productEntity);
             await _repoManager.SaveRepoDataAsync();
+            await _indexer.QueueIndexAsync(product.ProductId);
+
         }
         public async Task DeleteProductAsync(Guid productId)
         {
@@ -105,11 +113,13 @@ namespace Services
                 throw new ArgumentNullException(nameof(productId), "Product not found.");
             }
             _repoManager.ProductRepo.DeleteProduct(productEntity);
-            await _repoManager.SaveRepoDataAsync(); 
+            await _repoManager.SaveRepoDataAsync();
+            await _indexer.QueueRemoveAsync(productId);
+
         }
 
-     
-     
+
+
 
         public async Task<(ICollection<HomePageProductDto> productsData, MetaData MetaData) >GetHomePageProductsAsync(
         ProductRequestParameters requestParameters) {

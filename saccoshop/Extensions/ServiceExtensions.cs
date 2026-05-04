@@ -1,4 +1,5 @@
 ﻿using Contracts;
+using Contracts.Lucene;
 using Contracts.Repo;
 using Contracts.Service;
 using Entities.Models;
@@ -9,10 +10,13 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using Repository.context;
+using Repository.lucene;
 using Repository.Repos;
+using saccoshop.backgroundservices;
 using saccoshop.ContextFactory;
 using Services;
 using Services.BusinessRules;
+using Services.Lucene;
 using System.Text;
 
 namespace saccoshop.Extensions
@@ -176,6 +180,39 @@ namespace saccoshop.Extensions
         }
         //public static void ConfigureSqlContext(this IServiceCollection services, IConfiguration configuration) =>services.AddDbContext<ApplicationDbContext>(opts =>opts.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
         //public static void ConfigureSqlContext1(this IServiceCollection services,  IConfiguration configuration) => services.AddSqlServer<ApplicationDbContext>((configuration.GetConnectionString("DefaultConnection")));
+
+
+        public static IServiceCollection AddProductSearch(
+       this IServiceCollection services,
+       IConfiguration configuration)
+        {
+            // Bind options.
+            services.Configure<LuceneOptions>(
+                configuration.GetSection(LuceneOptions.SectionName));
+
+            // The registry is the singleton that owns all index contexts.
+            // Disposed automatically by DI on app shutdown.
+            services.AddSingleton<ILuceneIndexRegistry, LuceneIndexRegistry>();
+            services.AddSingleton<ProductDocumentMapper>();
+            // Per-request work
+            services.AddScoped<IProductSearchRepository, ProductSearchRepository>();
+            services.AddScoped<IProductIndexer, ProductIndexer>();
+
+            // Hosted background worker
+
+        
+            services.AddSingleton<IndexingQueue>();
+
+            // Stateless helper
+
+            services.AddScoped<IProductSearchService, ProductSearchService>();
+
+            // Hosted background workers
+            services.AddHostedService<IndexingBackgroundService>();
+            services.AddHostedService<SearcherRefreshService>();
+
+            return services;
+        }
 
     }
 }

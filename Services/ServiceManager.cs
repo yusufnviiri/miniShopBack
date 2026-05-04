@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Contracts;
+using Contracts.Lucene;
 using Contracts.Repo;
 using Contracts.Service;
 using Entities.Models;
@@ -19,7 +20,7 @@ namespace Services
         private readonly ApplicationDbContext _dbContext;
         //private readonly SlugService _slugService;
 
-
+        private readonly IProductIndexer _productIndexer;
         private readonly Lazy<IPaymentService> _paymentService;
         private readonly Lazy<IWishListService> _wishListService;
         private readonly Lazy<IReviewService> _reviewService;
@@ -61,8 +62,9 @@ namespace Services
         private readonly Lazy<ITradeImpressionService> _tradeImpressionService;
         private readonly Lazy<IGroupFeaturedProductService> _groupFeaturedProductService;
 
-        public ServiceManager(ILoggerManager logger, IRepositoryManager repository, IMapper mapper, UserManager<ApplicationUser> userManager, IConfiguration configuration, SignInManager<ApplicationUser> signInManager,RoleManager<IdentityRole> roleManager, IUserClaimsPrincipalFactory<ApplicationUser> claimsFactory,ISmsSender smsSender,IHttpContextAccessor httpContextAccessor, IOptions<JwtSettings> jwtOptions, IWebHostEnvironment env, ApplicationDbContext dbContext, SlugService slugService) {
+        public ServiceManager(ILoggerManager logger, IRepositoryManager repository, IMapper mapper, UserManager<ApplicationUser> userManager, IConfiguration configuration, SignInManager<ApplicationUser> signInManager,RoleManager<IdentityRole> roleManager, IUserClaimsPrincipalFactory<ApplicationUser> claimsFactory,ISmsSender smsSender,IHttpContextAccessor httpContextAccessor, IOptions<JwtSettings> jwtOptions, IWebHostEnvironment env, ApplicationDbContext dbContext, SlugService slugService,IProductIndexer productIndexer) {
             _dbContext= dbContext;
+            _productIndexer= productIndexer;
             _paymentService = new Lazy<IPaymentService>(() => new PaymentService(logger, repository, mapper, userManager));
             _userPreferenceService = new Lazy<IUserPreferenceService>(() => new UserPreferenceService(logger,repository, mapper));
             _homePageCardService = new Lazy<IHomePageCardService>(() => new HomePageCardService(logger, repository, mapper));
@@ -75,9 +77,9 @@ namespace Services
             _cartItemService = new Lazy<ICartItemService>(()=> new CartItemService(logger, repository, mapper, userManager));
             _orderItemService = new Lazy<IOrderItemService>(()=> new OrderItemService(logger, repository, mapper, userManager));
             _orderService = new Lazy<IOrderService>(()=> new OrderService(logger, repository, mapper, userManager));
-            _productService = new Lazy<IProductService>(()=>new ProductService(logger, repository, mapper, userManager,slugService));
+            _productService = new Lazy<IProductService>(()=>new ProductService(logger, repository, mapper, userManager,slugService,productIndexer));
             _productImageService = new Lazy<IProductImageService>(()=>new ProductImageService(logger, repository, mapper, userManager,env));
-            _userGroupService = new Lazy<IUserGroupService>(()=> new UserGroupService(logger, repository, mapper, userManager, slugService));
+            _userGroupService = new Lazy<IUserGroupService>(()=> new UserGroupService(logger, repository, mapper, userManager, slugService, productIndexer));
             _userService = new Lazy<IApplicationUserService>(()=> new ApplicationUserService(logger, repository, mapper, userManager,configuration,signInManager));  
             _categoryService = new Lazy<ICategoryService>(()=>new CategoryService(logger, repository, mapper,userManager));
             _subCategoryService = new Lazy<ISubCategoryService>(()=> new SubCategoryService(logger, repository, mapper, userManager));
@@ -88,7 +90,7 @@ namespace Services
             _authService = new Lazy<IAuthService>(() => new AuthService(logger,   userManager, configuration, signInManager, repository,claimsFactory, smsSender, httpContextAccessor, jwtOptions,roleManager));          
             _sellerRestrictionService = new Lazy<ISellerRestrictionService>(() => new SellerRestrictionService(logger, repository, mapper, userManager));
             _buyerProfileService = new Lazy<IBuyerProfileService>(() => new BuyerProfileService(logger, repository, mapper, userManager));
-            _sellerProfileService = new Lazy<ISellerProfileService>(() => new SellerProfileService(logger, repository, mapper, userManager, slugService));
+            _sellerProfileService = new Lazy<ISellerProfileService>(() => new SellerProfileService(logger, repository, mapper, userManager, slugService, productIndexer));
             _sellerViolationService = new Lazy<ISellerViolationService>(() => new SellerViolationService(logger, repository, mapper, userManager));
             _userGroupSellerService = new Lazy<IUserGroupSellerService>(() => new UserGroupSellerService(logger, repository, mapper, userManager));
             _userGroupNotificationService = new Lazy<IUserGroupNotificationService>(() => new UserGroupNotificationService(logger, repository, mapper, userManager));

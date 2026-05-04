@@ -1,11 +1,13 @@
 ﻿using AutoMapper;
 using Contracts;
+using Contracts.Lucene;
 using Contracts.Repo;
 using Contracts.Service;
 using Entities.Exceptions;
 using Entities.Models;
 using Microsoft.AspNetCore.Identity;
 using Services.BusinessRules;
+using Services.Lucene;
 using Shared.Dtos;
 using System;
 using System.Collections.Generic;
@@ -25,15 +27,19 @@ namespace Services
         private ApplicationUser? _user = new();
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SlugService _slugService;
+        private readonly IProductIndexer _indexer;
 
 
-        public SellerProfileService(ILoggerManager logger, IRepositoryManager repository, IMapper mapper, UserManager<ApplicationUser> userManager, SlugService slugService)
+
+        public SellerProfileService(ILoggerManager logger, IRepositoryManager repository, IMapper mapper, UserManager<ApplicationUser> userManager, SlugService slugService, IProductIndexer productIndexer)
         {
             _userManager = userManager;
             _logger = logger;
             _repoManager = repository;
             _mapper = mapper;
             _slugService = slugService;
+            _indexer = productIndexer;
+
 
         }
 
@@ -77,9 +83,11 @@ namespace Services
 
                     }
                     await _repoManager.SaveRepoDataAsync();
-                }
+                    await _indexer.QueueReindexBySellerAsync(sellerProfile.SellerProfileId);
 
                 }
+
+            }
             else
             {
                 

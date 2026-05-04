@@ -1,5 +1,4 @@
 using Contracts;
-using Contracts.Lucene;
 using Contracts.Service;
 using Entities.Models;
 using Microsoft.AspNetCore.HttpOverrides;
@@ -14,7 +13,6 @@ using saccoshop.ContextFactory;
 using saccoshop.Extensions;
 using Services;
 using Services.Hubs;
-using Services.Lucene;
 using Services.Redis;
 var builder = WebApplication.CreateBuilder(args);
 LogManager.LoadConfiguration(string.Concat(Directory.GetCurrentDirectory(),
@@ -38,9 +36,8 @@ builder.Services.AddAuthentication();
 builder.Services.ConfigureIdentity();
 builder.Services.ConfigureSlugService();
 builder.Services.AddMemoryCache();
-builder.Services.AddSingleton<IProductIndexSearch, ProductIndexSearch>();
-builder.Services.AddSingleton<ILuceneSearchService, LuceneSearchService>();
-builder.Services.AddHostedService<IndexRebuildService>();
+builder.Services.AddProductSearch(builder.Configuration);
+
 
 
 

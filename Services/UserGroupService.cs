@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Contracts;
+using Contracts.Lucene;
 using Contracts.Repo;
 using Contracts.Service;
 using Entities.Exceptions;
@@ -28,14 +29,18 @@ namespace Services
         private ApplicationUser? _user = new();
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SlugService _slugService;
+        private readonly IProductIndexer _indexer;
 
-        public UserGroupService(ILoggerManager logger, IRepositoryManager repository, IMapper mapper, UserManager<ApplicationUser> userManager, SlugService slugService)
+
+        public UserGroupService(ILoggerManager logger, IRepositoryManager repository, IMapper mapper, UserManager<ApplicationUser> userManager, SlugService slugService, IProductIndexer productIndexer)
         {
             _userManager = userManager;
             _logger = logger;
             _repoManager = repository;
             _mapper = mapper;
             _slugService = slugService;
+            _indexer = productIndexer;
+
 
         }
 
@@ -117,6 +122,8 @@ namespace Services
                 sellerProfile.Slug = $"seller={CreateUserGroupSlug(sellerProfile.SellerName)}-{numberOfSellers + 1}";
                 _repoManager.SellerProfileRepo.CreateSellerProfile(sellerProfile);
                 await _repoManager.SaveRepoDataAsync();
+                await _indexer.QueueReindexBySellerAsync(sellerProfile.SellerProfileId);
+
             }
         }
     public async Task UpdateUserGroupAsync(NewUserGroupDto userGroup)
