@@ -14,6 +14,8 @@ namespace Contracts.Service
         Task<ShowUserGroupDto> GetUserGroupByIdAsync(Guid userGroupId);
 
         Task<ShowuserGroupWithMembersDto?> GetUserGroupWithMembersAsync(Guid userGroupId);
+        Task<ShowuserGroupWithMembersDto?> GetUserGroupWithMembersWithSlugAsync(string slug );
+
         Task<UserGroup?> FindUserGroupByIdAsync(Guid userGroupId, bool tracking);
         Task CreateUserGroupAsync(NewUserGroupDto userGroup);
         Task UpdateUserGroupAsync(NewUserGroupDto userGroup);

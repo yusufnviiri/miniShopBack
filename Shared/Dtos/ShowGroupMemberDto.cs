@@ -25,6 +25,8 @@ namespace Shared.Dtos
         public int GroupRoleId { get; set; }
         public int MemberStatusId { get; set; }
         public bool IsSeller { get; set; }
+        public string SlugName { get; set; } = string.Empty;
+
 
 
     }

@@ -24,13 +24,22 @@ namespace Services
         private readonly IMapper _mapper;
         private ApplicationUser? _user = new();
         private readonly UserManager<ApplicationUser> _userManager;
+        private readonly SlugService _slugService;
 
-        public SellerProfileService(ILoggerManager logger, IRepositoryManager repository, IMapper mapper, UserManager<ApplicationUser> userManager)
+
+        public SellerProfileService(ILoggerManager logger, IRepositoryManager repository, IMapper mapper, UserManager<ApplicationUser> userManager, SlugService slugService)
         {
             _userManager = userManager;
             _logger = logger;
             _repoManager = repository;
             _mapper = mapper;
+            _slugService = slugService;
+
+        }
+
+        private string CreateSellerProfileSlug(string name)
+        {
+            return _slugService.Generate(name);
         }
         public async  Task<IEnumerable<SellerProfileDto>> GetAllSellerProfiles()=>await _repoManager.SellerProfileRepo.GetAllSellerProfiles();
         public async Task<SellerProfile?> FindSellerProfileById(Guid sellerProfileId, bool tracking)=>await _repoManager.SellerProfileRepo.FindSellerProfileById(sellerProfileId,tracking);
@@ -40,7 +49,10 @@ namespace Services
             if (!IsExist)
             {
 
-                //var itemNumber =  SellerRules.SetSellerMaximumAllowedItems(sellerProfile.gr);
+                var numberOfSellers = await _repoManager.SellerProfileRepo.NumberOfSellers();
+                sellerProfile.Slug = $"seller={CreateSellerProfileSlug(sellerProfile.SellerName)}-{numberOfSellers + 1}";
+                
+                
                 _repoManager.SellerProfileRepo.CreateSellerProfile(sellerProfile);
                 await _repoManager.SaveRepoDataAsync();
                 var user = await _repoManager.UserProfileRepo.FindUserProfileById(sellerProfile.SellerId,true);
@@ -113,7 +125,8 @@ namespace Services
                     SellerGroupDto groupDto = new SellerGroupDto()
                     {
                         GroupName = await _repoManager.UserGroupRepo.GetGroupGroupName(item) ?? "",
-                        GroupId = item
+                        GroupId = item,
+                        SellerSlugName= await _repoManager.UserGroupRepo.GetGroupGroupSlugName(item) ?? ""
                     };
                     sellerShopDto.Groups.Add(groupDto);
                 }
@@ -192,6 +205,94 @@ namespace Services
 
         }
 
+        public async Task<GroupShopDto?> GetGroupShopDisplayBySlugAsync(string slug)
+
+        {
+            GroupShopDto groupShopDto = new();
+
+            var sellerId = await _repoManager.UserGroupRepo.GetUserGroupIdBySlugName(slug);
+            var sellerProfileId = await _repoManager.SellerProfileRepo.GetSellerProfileId(sellerId);
+            var groupDetails = await _repoManager.SellerProfileRepo.FindMiniGroupDetailsById(sellerProfileId);
+            if (groupDetails != null)
+            {
+                groupShopDto.GroupDetails = groupDetails;
+            }
+            //if (isMember)
+            //{
+            //    var groupShopDetails = await _repoManager.SellerProfileRepo.GetGroupProductsAndTradesList(sellerProfileId);
+            //    groupShopDto.GroupProducts = groupShopDetails;
+            //}
+            var memberprofileIds = await _repoManager.GroupMemberRepo.GetGroupMemberProfileIds(sellerId);
+            var membersellerProfileIds = await _repoManager.SellerProfileRepo.GetGroupMemberSellerProfileIds(memberprofileIds);
+            if (membersellerProfileIds.Any())
+            {
+                var memberProducts = await _repoManager.ProductRepo.GetGroupMembersForDisplayProducts([.. membersellerProfileIds], sellerId);
+                var memberTrades = await _repoManager.TradeRepo.GetGroupMembersTrades([.. membersellerProfileIds], sellerId);
+                groupShopDto.MemberProducts = memberProducts;
+                groupShopDto.MemberTrades = memberTrades;
+                groupShopDto.SellerSlug = slug;
+
+            }
+            return groupShopDto;
+
+        }
+
+
+
+
+        public async Task<SellerShopDto?> GetSellerShopDetailsBySlugAsync(string slug)
+        {
+
+   var sellerProfileId = await _repoManager.SellerProfileRepo.GetSellerProfileIdBySlugName(slug);
+            if (sellerProfileId != Guid.Empty)
+            {
+                return await GetSellerShopDetailsAsync(sellerProfileId);
+            }
+            else
+            {
+                _logger.LogError($"Seller Profile with slug: {slug} not found.");
+                throw new ObjectBadRequestExeption($"object with slug {slug} not found");
+            }
+        }
+
+
+
+
+
+  
+
+
+
+        public async Task<GroupShopDto?> GetGroupShopDetailsBySlugAsync(string slug, bool isMember)
+
+        {
+            GroupShopDto groupShopDto = new();
+            var sellerId = await _repoManager.UserGroupRepo.GetUserGroupIdBySlugName(slug);
+
+            var sellerProfileId = await _repoManager.SellerProfileRepo.GetSellerProfileId(sellerId);
+            var groupDetails = await _repoManager.SellerProfileRepo.FindMiniGroupDetailsById(sellerProfileId);
+            if (groupDetails != null)
+            {
+                groupShopDto.GroupDetails = groupDetails;
+            }
+            //if (isMember)
+            //{
+            //    var groupShopDetails = await _repoManager.SellerProfileRepo.GetGroupProductsAndTradesList(sellerProfileId);
+            //    groupShopDto.GroupProducts = groupShopDetails;
+            //}
+            var memberprofileIds = await _repoManager.GroupMemberRepo.GetGroupMemberProfileIds(sellerId);
+            var membersellerProfileIds = await _repoManager.SellerProfileRepo.GetGroupMemberSellerProfileIds(memberprofileIds);
+            if (membersellerProfileIds.Any())
+            {
+                var memberProducts = await _repoManager.ProductRepo.GetGroupMembersProducts([.. membersellerProfileIds]);
+                var memberTrades = await _repoManager.TradeRepo.GetGroupMembersTrades([.. membersellerProfileIds], sellerId);
+                groupShopDto.MemberProducts = memberProducts;
+                groupShopDto.MemberTrades = memberTrades;
+
+            }
+            return groupShopDto;
+
+        }
 
 
 

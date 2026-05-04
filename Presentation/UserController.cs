@@ -52,6 +52,19 @@ namespace Presentation
                 return Ok(userProfile);
         }
 
+        [HttpGet("slug/{slug}", Name = "userProfileBySlug")]
+        public async Task<ActionResult> GetUserProfileBySlug(string slug)
+        {
+            if (string.IsNullOrWhiteSpace(slug))
+            {
+                return BadRequest("user id is null");
+
+            }
+            var userProfile = await _service.UserProfileService.ShowUserProfileBySlugAsync(slug);
+
+            return Ok(userProfile);
+        }
+
         [Authorize]
 
         [HttpPost]

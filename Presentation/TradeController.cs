@@ -68,12 +68,27 @@ namespace Presentation
             return Ok(trade);
         }
 
+        [HttpGet("{slug}", Name = "TradeBySlug")]
+        public async Task<ActionResult> GetTradeDataBySlug(string slug)
+        {
+            var trade = await _service.TradeService.GetTradeDataUsingSlugNameAsync(slug);
+            return Ok(trade);
+        }
+
         [HttpGet("sellertrade/{id:Guid}", Name = "SellerTradeById")]
         public async Task<ActionResult> GetsellerTrade(Guid id)
         {
             var trade = await _service.TradeService.FindSellerTradeAsync(id);
             return Ok(trade);
         }
+
+        [HttpGet("sellertradebyslug/{slug}", Name = "SellerTradeBySlug")]
+        public async Task<ActionResult> GetsellerTradeBySlug(string slug)
+        {
+            var trade = await _service.TradeService.FindSellerTradeUsingSlugNameAsync(false,slug);
+            return Ok(trade);
+        }
+
         [HttpPost]
         public async Task<IActionResult> CreateTrade([FromForm] string payload, [FromForm] List<IFormFile> images)
         {

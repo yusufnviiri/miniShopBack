@@ -33,6 +33,7 @@ namespace Repository.Repos
                     Country = g.Address.Country,
                     Company = g.Address.Company,
                     AboutGroup=g.AboutGroup,
+                    UserGroupSlugName=g.Slug,
                     
                     MemberCount = g.Members.Count()
                 }).ToListAsync();
@@ -53,6 +54,8 @@ namespace Repository.Repos
                 Company = g.Address.Company,
                 GroupTypeId=g.GroupTypeId,
                 AddressId = g.AddressId,
+                UserGroupSlugName = g.Slug,
+
                 AboutGroup = g.AboutGroup,
                 
 
@@ -68,14 +71,15 @@ namespace Repository.Repos
                     UserGroupId = g.UserGroupId,
                     UserGroupName = g.UserGroupName,
                     AboutGroup = g.AboutGroup,
-
-                    City = g.Address.City,
-                    Region = g.Address.Region,
-                    Country = g.Address.Country,
-                    Company = g.Address.Company,
+                    UserGroupSlugName = g.Slug,
+                    City = g.Address!=null?g.Address.City:"unkown",
+                    Region = g.Address != null ? g.Address.Region:"unkown",
+                    Country = g.Address != null ? g.Address.Country : "unkown"  ,
+                    Company = g.Address != null ? g.Address.Company : "unkown",
+                    
 
                     Contact = g.Contact,
-                    GroupType = g.GroupType.Description,
+                    GroupType =g.GroupType!=null? g.GroupType.Description:"No description",
 
                     MemberCount = g.Members.Count(),
 
@@ -85,6 +89,7 @@ namespace Repository.Repos
                         LastName = m.UserProfile.IdentityUser.LastName,
                         Email = m.UserProfile.IdentityUser.Email,
                         PhoneNumber = m.UserProfile.IdentityUser.PhoneNumber,
+                        SlugName=m.UserProfile.Slug,
 
                         GroupRole = m.GroupRole != null
                             ? m.GroupRole.Description
@@ -122,11 +127,15 @@ namespace Repository.Repos
             return isMember;
         }
         public Task<string?>  GetGroupGroupName(Guid userGroupId)=> FindByCondition(p=>p.UserGroupId==userGroupId, false).Select(g=>g.UserGroupName).FirstOrDefaultAsync();
+        public Task<string?> GetGroupGroupSlugName(Guid userGroupId) => FindByCondition(p => p.UserGroupId == userGroupId, false).Select(g => g.Slug).FirstOrDefaultAsync();
+        
 
 
         public void UpdateUserGroup(UserGroup userGroup)=>UpdateBase(userGroup);
         public void DeleteUserGroup(UserGroup userGroup)=>DeleteBase(userGroup);
         public Task<int> NumberOfUserGroups() => FindAll(false).CountAsync();
+
+        public Task<Guid> GetUserGroupIdBySlugName(string slug) => FindByCondition(p => p.Slug == slug, false).Select(k => k.UserGroupId).FirstOrDefaultAsync();
 
 
 

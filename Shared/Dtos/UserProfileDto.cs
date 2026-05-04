@@ -19,6 +19,8 @@ namespace Shared.Dtos
         public IEnumerable<UserPreferenceDto> UserPreferences { get; set; } = [];
         public IEnumerable<UserFollowerDto> Following { get; set; } = [];
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+        public string SlugName { get; set; } = string.Empty;
+
 
     }
 }

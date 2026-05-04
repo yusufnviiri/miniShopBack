@@ -7,7 +7,9 @@ using Entities.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.AspNetCore.Server.Kestrel.Transport.NamedPipes;
+using Services.BusinessRules;
 using Shared.Dtos;
+using StackExchange.Redis;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.Metrics;
@@ -25,19 +27,43 @@ namespace Services
         private readonly IMapper _mapper;
         private ApplicationUser? _user = new();
         private readonly UserManager<ApplicationUser> _userManager;
+        private readonly SlugService _slugService;
 
-        public UserGroupService(ILoggerManager logger, IRepositoryManager repository, IMapper mapper, UserManager<ApplicationUser> userManager)
+        public UserGroupService(ILoggerManager logger, IRepositoryManager repository, IMapper mapper, UserManager<ApplicationUser> userManager, SlugService slugService)
         {
             _userManager = userManager;
             _logger = logger;
             _repoManager = repository;
             _mapper = mapper;
+            _slugService = slugService;
+
+        }
+
+        private string CreateUserGroupSlug(string name)
+        {
+            return _slugService.Generate(name);
         }
 
 
-     public async  Task<IEnumerable<ShowUserGroupDto>> GetUserGroupsAsync()=>await _repoManager.UserGroupRepo.GetUserGroups();
+        public async  Task<IEnumerable<ShowUserGroupDto>> GetUserGroupsAsync()=>await _repoManager.UserGroupRepo.GetUserGroups();
      public async Task<ShowuserGroupWithMembersDto?> GetUserGroupWithMembersAsync(Guid userGroupId)=>await _repoManager.UserGroupRepo.GetUserGroupWithMembers(userGroupId);
-     public async Task<UserGroup?> FindUserGroupByIdAsync(Guid userGroupId, bool tracking) => await _repoManager.UserGroupRepo.FindUserGroupById(userGroupId,tracking);
+
+        public async Task<ShowuserGroupWithMembersDto?> GetUserGroupWithMembersWithSlugAsync(string slug){
+            var usergroupId = await _repoManager.UserGroupRepo.GetUserGroupIdBySlugName(slug);
+            if (usergroupId == Guid.Empty)
+            {
+                throw new ObjectBadRequestExeption("User group data is null");
+            }
+            else
+            {
+
+
+                var group = await _repoManager.UserGroupRepo.GetUserGroupWithMembers(usergroupId);
+                return group;
+            }
+        }
+
+        public async Task<UserGroup?> FindUserGroupByIdAsync(Guid userGroupId, bool tracking) => await _repoManager.UserGroupRepo.FindUserGroupById(userGroupId,tracking);
     public async Task CreateUserGroupAsync(NewUserGroupDto userGroup)
         {
             if (userGroup == null)
@@ -55,6 +81,9 @@ namespace Services
     
         var userGroupEntity = _mapper.Map<UserGroup>(userGroup);
             await _repoManager.SaveRepoDataAsync();
+            var numberOfUserGroups = await _repoManager.UserGroupRepo.NumberOfUserGroups();
+
+            userGroupEntity.Slug = $"groups={CreateUserGroupSlug(userGroup.UserGroupName)}-{numberOfUserGroups + 1}";
 
             userGroupEntity.AddressId=addressEntity.AddressId;
             _repoManager.UserGroupRepo.CreateUserGroup(userGroupEntity);
@@ -84,7 +113,8 @@ namespace Services
                     3 => 3,
                     _ => 2,
                 };
-
+                var numberOfSellers = await _repoManager.SellerProfileRepo.NumberOfSellers();
+                sellerProfile.Slug = $"seller={CreateUserGroupSlug(sellerProfile.SellerName)}-{numberOfSellers + 1}";
                 _repoManager.SellerProfileRepo.CreateSellerProfile(sellerProfile);
                 await _repoManager.SaveRepoDataAsync();
             }

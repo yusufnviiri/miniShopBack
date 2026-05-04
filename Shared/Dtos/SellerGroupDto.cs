@@ -10,5 +10,7 @@ namespace Shared.Dtos
     {
         public Guid GroupId { get; set; }
         public string GroupName { get; set; }=string.Empty;
+        public string? SellerSlugName { get; set; } = string.Empty;
+
     }
 }

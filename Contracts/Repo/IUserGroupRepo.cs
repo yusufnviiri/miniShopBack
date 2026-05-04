@@ -16,6 +16,8 @@ namespace Contracts.Repo
 
         Task<int> GetGroupAddress(Guid userGroupId);
        Task< string?> GetGroupGroupName(Guid userGroupId);
+        Task<string?> GetGroupGroupSlugName(Guid userGroupId);
+
 
 
         Task<bool> IsGroupMember(Guid userProfileId, Guid userGroupId);
@@ -27,5 +29,7 @@ namespace Contracts.Repo
         void UpdateUserGroup(UserGroup userGroup);
         void DeleteUserGroup(UserGroup userGroup);
         Task<int> NumberOfUserGroups();
+        Task<Guid> GetUserGroupIdBySlugName(string slug);
+ 
     }
 }

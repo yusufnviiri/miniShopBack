@@ -60,6 +60,20 @@ namespace Services
             return product;
         }
 
+
+        public async Task<ProductDataDto?> GetProductDataBySlugNameAsync(string slugName)
+        {
+            var product = await _repoManager.ProductRepo.GetProductDataUsingSlugName(slugName);
+
+            if (product != null)
+            {
+                product.Contact = await _repoManager.UserProfileRepo.GetUserContact(product.SellerUserProfileId) ?? "";
+                product.WhatsAppNumber = await _repoManager.SellerProfileRepo.GetSellerWhatsAppNumber(product.SellerUserProfileId) ?? "";
+
+            }
+            return product;
+        }
+
         public async Task<Product> CreateProductAsync(NewProductDto product)
         {
            
@@ -104,6 +118,7 @@ namespace Services
 
         }
         public async Task<ShowProductDto?> FindSellerProductAsync(Guid productId)=>await _repoManager.ProductRepo.FindSellerProduct(productId);
+        public async Task<ShowProductDto?> FindSellerProductBySlugAsync(string slug)=>await _repoManager.ProductRepo.FindProductBySlugName(false,slug);
 
         public async Task UpdateProductPriceAsync(Guid productId, decimal newPrice)
         {

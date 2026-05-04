@@ -17,7 +17,6 @@ namespace Entities.Models
         public int SellerOfferingId { get; set; } = 1;
         public int SellerTypeId { get; set; } = 1;
         public string Slug { get; set; } = string.Empty;
-
         public int MaximumAllowedItems { get; set; } = 10;
         public int SellerPolicyId { get; set; }=2; //default policy
         public SellerPolicy? SellerPolicy { get; set; }
@@ -26,6 +25,7 @@ namespace Entities.Models
         public ICollection<Product> Products { get; set; } = [];
         public ICollection<Trade> Trades { get; set; } = [];
         public ICollection<UserPreferenceSellerProfile> UserPreferenceSellerProfiles { get; set; } = [];
+        public bool IsVerified { get; set; }=true;
 
 
 

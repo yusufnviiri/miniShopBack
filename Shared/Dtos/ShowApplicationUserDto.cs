@@ -17,7 +17,10 @@ namespace Shared.Dtos
         public string? City { get; set; }
         public string? Country { get; set; }
         public string? Company { get; set; }
+        public string SlugName { get; set; } = string.Empty;
+
         public Guid? SellerId {  get; set; }
+
 
 
         public int AddressId { get; set; }

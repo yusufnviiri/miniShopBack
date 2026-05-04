@@ -11,6 +11,10 @@ namespace Shared.Dtos
     {
         public Guid UserProfileId { get; set; }
         public Guid SellerProfileId { get; set; }
+        public string SellerSlugName { get; set; } = string.Empty;
+        public string UserProfileSlugName { get; set; } = string.Empty;
+
+
 
     }
 }

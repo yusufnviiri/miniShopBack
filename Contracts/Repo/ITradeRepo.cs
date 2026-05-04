@@ -25,6 +25,43 @@ namespace Contracts.Repo
         void UpdateTrade(Trade trade);
         void DeleteTrade(Trade trade);
         Task<ICollection<SellerTradeListDto>> GetGroupMembersTrades(IList<Guid> groupMemberIds, Guid groupId);
+        Task<Guid> GetTradeIdBySlugName(string slug);
+
+
+
+
+
+
+
+
+
+
+
+
+        Task<ShowTradeDataDto?> FindTradeBySlugName(bool tracking, string slugName);
+
+        Task<TradeDataDto?> GetTradeDataUsingSlugName(string slugName);
+        Task<ShowTradeDataDto?> FindSellerTradeUsingSlugName(bool tracking, string slugName);
+      
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     }
 }

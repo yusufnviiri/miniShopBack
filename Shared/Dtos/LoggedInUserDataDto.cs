@@ -11,6 +11,7 @@ namespace Shared.Dtos
         public Guid UserProfileId { get; set; } = Guid.Empty;
         public Guid SellerprofileId { get; set; } = Guid.Empty;
         public string UserName { get; set; } = string.Empty;
+        public string SlugName { get; set; } = string.Empty;
         public bool IsAccountConfirmed { get; set; }
         public string IdentityRole { get; set; } = string.Empty;
         public ICollection<GroupMemberRolesDto>? UserGroupData { get; set; }

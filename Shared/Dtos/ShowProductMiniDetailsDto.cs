@@ -31,6 +31,10 @@ namespace Shared.Dtos
         public string? SellerName { get; set; }
         public bool HasImage { get; set; }
         public Guid ProductImageId { get; set; }
+        public string SlugName { get; set; } = string.Empty;
+        public string SellerSlugName { get; set; } = string.Empty;
+
+
 
 
 

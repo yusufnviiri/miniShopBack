@@ -23,6 +23,10 @@ namespace Shared.Dtos
         public Guid SellerUserProfileId { get; set; }
         public int CommodityClassId { get; set; } = 2;
         public string Condition { get; set; } = string.Empty;
+        public string SlugName { get; set; } = string.Empty;
+        public string SellerSlugName { get; set; } = string.Empty;
+
+
 
         public ICollection<ShowReviewDto> Reviews { get; set; } = [];
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;      

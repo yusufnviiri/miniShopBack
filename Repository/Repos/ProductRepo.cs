@@ -53,6 +53,9 @@ namespace Repository.Repos
            ProductName = x.ProductName,
            Price = x.Price,
            Condition = x.Condition,
+           SlugName = x.Slug,
+           SellerSlugName = x.SellerProfile != null ? $"{x.SellerProfile.Slug}" : "Unkown Seller",
+
 
            CategoryName = x.Category != null ? x.Category.CategoryName : "General",
            SellerProfileId = x.SellerProfileId,
@@ -80,6 +83,7 @@ namespace Repository.Repos
            ProductName = x.ProductName,
            Price = x.Price,
            Condition = x.Condition,
+           SellerSlugName = x.SellerProfile != null ? $"{x.SellerProfile.Slug}" : "Unkown Seller",
 
            CategoryName = x.Category != null ? x.Category.CategoryName : "General",
         
@@ -94,6 +98,47 @@ namespace Repository.Repos
            SellerName = x.SellerProfile != null ? $"{x.SellerProfile.SellerName}" : "Unkown Seller",
        })
        .ToListAsync();
+        }
+        public async Task<ShowProductDto?> FindProductBySlugName(bool tracking, string slugName)
+        {
+            var productQ = FindByCondition(p => p.Slug == slugName, tracking);
+
+            return await productQ
+                .Select(p => new ShowProductDto
+                {
+                    ProductId = p.ProductId,
+                    Price = p.Price,
+                    OldPrice = p.OldPrice,
+                    Condition = p.Condition,
+                    SlugName=p.Slug,
+                    SellerSlugName = p.SellerProfile != null ? $"{p.SellerProfile.Slug}" : "Unkown Seller",
+
+                    SellerUserProfileId = p.SellerProfile != null ? p.SellerProfile.SellerId : Guid.Empty,
+
+                    ProductName = p.ProductName,
+                    Category = p.Category != null ? p.Category.CategoryName : "Not Categorised",
+                    CreatedAt = p.CreatedAt,
+                    SellerProfileId = p.SellerProfileId,
+
+                    SellerName = p.SellerProfile != null ? $"{p.SellerProfile.SellerName}" : "Unkown Seller",
+
+                    Reviews = p.ProductReviews.Any() ? p.ProductReviews.Select(r => new ShowReviewDto
+                    {
+                        ReviewId = r.ProductReviewId,
+                        ReviewerName = string.Join(" ", r.Reviewer != null ? r.Reviewer.IdentityUser.FirstName : "Unknown", r.Reviewer != null ? r.Reviewer.IdentityUser.LastName : "Unknown").Trim(),
+                        Rating = r.Rating,
+                        Comment = r.Comment,
+                        CreatedAt = r.CreatedAt
+                    }).ToList() : new List<ShowReviewDto>(),
+
+                    ProductImageRefs = p.Images.Select(i => new ProductImageRefDto
+                    {
+                        ProductImageId = i.ProductImageId,
+                        IsPrimary = i.IsPrimary,
+                        IsProcessed = i.IsProcessed,
+                    }).ToList()
+                })
+                .FirstOrDefaultAsync();
         }
 
 
@@ -137,15 +182,15 @@ namespace Repository.Repos
                 .FirstOrDefaultAsync();
         }
 
-        public async Task<ProductDataDto?> GetProductData(Guid productId)
+        public async Task<ProductDataDto?> GetProductDataUsingSlugName(string slugName)
         {
 
-            string cacheKey = $"product_data {productId}";
+            string cacheKey = $"product_data_by_slug_{slugName}";
 
             if (_cache.TryGetValue(cacheKey, out ProductDataDto cached))
                 return cached;
 
-            var product = await FindByCondition(p => p.ProductId == productId, false)
+            var product = await FindByCondition(p => p.Slug == slugName, false)
      .Select(p => new
      {
          Product = new ProductDataDto
@@ -155,6 +200,9 @@ namespace Repository.Repos
              Impressions = p.ProductImpressions.Count(),
              OldPrice = p.OldPrice,
              Condition = p.Condition,
+             SlugName = p.Slug,
+             SellerSlugName = p.SellerProfile != null ? $"{p.SellerProfile.Slug}" : "Unkown Seller",
+
 
              ProductName = p.ProductName,
              Category = p.Category != null ? p.Category.CategoryName : "Not Categorised",
@@ -197,6 +245,94 @@ namespace Repository.Repos
                     OldPrice = p.OldPrice,
                     ProductName = p.ProductName,
                     Price = p.Price,
+                    SlugName = p.Slug,
+
+                    SellerName = p.SellerProfile != null
+                        ? p.SellerProfile.SellerName
+                        : "Unknown",
+                    SellerProfileId = p.SellerProfileId,
+                    ProductImageId = p.Images
+                        .OrderByDescending(i => i.IsPrimary)
+                        .Select(i => i.ProductImageId)
+                        .FirstOrDefault()
+                })
+                .Take(12) // optional limit
+                .ToListAsync();
+
+            product.Product.RelatedProducts = relatedProducts;
+            _cache.Set(cacheKey, product.Product,
+              new MemoryCacheEntryOptions()
+                  .SetAbsoluteExpiration(TimeSpan.FromMinutes(10))
+                  .SetSlidingExpiration(TimeSpan.FromMinutes(1)));
+
+            return product.Product;
+        }
+
+
+        public async Task<ProductDataDto?> GetProductData(Guid productId)
+        {
+
+            string cacheKey = $"product_data {productId}";
+
+            if (_cache.TryGetValue(cacheKey, out ProductDataDto cached))
+                return cached;
+
+            var product = await FindByCondition(p => p.ProductId == productId, false)
+     .Select(p => new
+     {
+         Product = new ProductDataDto
+         {
+             ProductId = p.ProductId,
+             Price = p.Price,
+             Impressions = p.ProductImpressions.Count(),
+             OldPrice = p.OldPrice,
+             Condition = p.Condition,
+             SlugName = p.Slug,
+
+
+             ProductName = p.ProductName,
+             Category = p.Category != null ? p.Category.CategoryName : "Not Categorised",
+             CreatedAt = p.CreatedAt,
+             SellerProfileId = p.SellerProfileId,
+             SellerName = p.SellerProfile != null ? p.SellerProfile.SellerName : "Unknown Seller",
+             SellerUserProfileId = p.SellerProfile != null ? p.SellerProfile.SellerId : Guid.Empty,
+
+
+             Reviews = p.ProductReviews.Any() ? p.ProductReviews.Select(r => new ShowReviewDto
+             {
+                 ReviewId = r.ProductReviewId,
+                 ReviewerName = string.Join(" ", r.Reviewer != null ? r.Reviewer.IdentityUser.FirstName : "Unknown", r.Reviewer != null ? r.Reviewer.IdentityUser.LastName : "Unknown").Trim(),
+                 Rating = r.Rating,
+                 Comment = r.Comment,
+                 CreatedAt = r.CreatedAt
+             }).ToList() : new List<ShowReviewDto>(),
+
+
+             ProductImageRefs = p.Images.Select(i => new ProductImageRefDto
+             {
+                 ProductImageId = i.ProductImageId,
+                 IsPrimary = i.IsPrimary,
+                 IsProcessed = i.IsProcessed
+             }).ToList()
+         },
+         p.CategoryId
+     })
+     .FirstOrDefaultAsync();
+
+            if (product == null)
+                return null;
+
+            var relatedProducts = await FindByCondition(
+                    rp => rp.CategoryId == product.CategoryId && rp.ProductId != product.Product.ProductId,
+                    false)
+                .Select(p => new HomePageProductDto
+                {
+                    ProductId = p.ProductId,
+                    OldPrice = p.OldPrice,
+                    ProductName = p.ProductName,
+                    Price = p.Price,
+                    SlugName = p.Slug,
+
                     SellerName = p.SellerProfile != null
                         ? p.SellerProfile.SellerName
                         : "Unknown",
@@ -230,6 +366,41 @@ namespace Repository.Repos
         }
         public void UpdateProduct(Product product) => UpdateBase(product);
         public void DeleteProduct(Product product) => DeleteBase(product);
+
+
+        public async Task<ShowProductDto?> FindSellerProductUsingSlugName(bool tracking, string slugName)
+        {
+            var productQ = FindByCondition(p => p.Slug == slugName, tracking);
+
+            return await productQ
+                .Select(p => new ShowProductDto
+                {
+                    ProductId = p.ProductId,
+                    Price = p.Price,
+                    OldPrice = p.OldPrice,
+                    ProductName = p.ProductName,
+                    Category = p.Category != null ? p.Category.CategoryName : "Not Categorised",
+                    CreatedAt = p.CreatedAt,
+                    HasImage = p.HasImage,
+                    SellerProfileId = p.SellerProfileId,
+                    SlugName = p.Slug,
+                    SellerSlugName = p.SellerProfile != null ? $"{p.SellerProfile.Slug}" : "Unkown Seller",
+
+                    SellerName = p.SellerProfile != null ? $"{p.SellerProfile.SellerName}" : "Unkown Seller",
+
+                    Reviews = new List<ShowReviewDto>(),
+
+                    ProductImageRefs = p.Images.Select(i => new ProductImageRefDto
+                    {
+                        ProductImageId = i.ProductImageId,
+                        IsPrimary = i.IsPrimary,
+                        IsProcessed = i.IsProcessed,
+                    }).ToList()
+                })
+                .FirstOrDefaultAsync();
+        }
+
+
         public async Task<ShowProductDto?> FindSellerProduct(Guid productId)
         {
             var productQ = FindByCondition(p => p.ProductId == productId, false);
@@ -245,6 +416,8 @@ namespace Repository.Repos
                     CreatedAt = p.CreatedAt,
                     HasImage = p.HasImage,
                     SellerProfileId = p.SellerProfileId,
+                    SlugName = p.Slug,
+
                     SellerName = p.SellerProfile != null ? $"{p.SellerProfile.SellerName}" : "Unkown Seller",
 
                     Reviews =  new List<ShowReviewDto>(),
@@ -282,6 +455,10 @@ namespace Repository.Repos
                         ProductName = t.ProductName,
                         Price = t.Price,
                         Condition = t.Condition,
+                        SlugName = t.Slug,
+                        SellerSlugName = t.SellerProfile != null ? $"{t.SellerProfile.Slug}" : "Unkown Seller",
+
+
 
                         CategoryName = t.Category != null ? t.Category.CategoryName : "Not Categorised",
                         ReviewSummary = t.ProductReviews.Any() ? (int)t.ProductReviews.Average(r => r.Rating) : 0,
@@ -377,6 +554,9 @@ namespace Repository.Repos
                     ProductId = p.ProductId,
                     OldPrice = p.OldPrice,
                     ProductName = p.ProductName,
+                    SlugName = p.Slug,
+                    SellerSlugName = p.SellerProfile != null ? $"{p.SellerProfile.Slug}" : "Unkown Seller",
+
                     Price = p.Price,
                     SellerName = p.SellerProfile != null
                         ? p.SellerProfile.SellerName
@@ -420,12 +600,14 @@ namespace Repository.Repos
           {
               ProductId = p.ProductId,
               ProductName = p.ProductName,
+              SlugName=p.Slug,
               Price = p.Price,
               OldPrice = p.OldPrice,
               SellerName = p.SellerProfile != null
                   ? p.SellerProfile.SellerName
                   : "Unknown",
               SellerProfileId = p.SellerProfileId,
+              SellerSlugName = p.SellerProfile != null ? $"{p.SellerProfile.Slug}" : "Unkown Seller",
 
               ProductImageId = p.Images
                   .OrderByDescending(i => i.IsPrimary) // primary first
@@ -570,6 +752,8 @@ namespace Repository.Repos
                         ProductId = t.ProductId,
                         ProductName = t.ProductName,
                         Price = t.Price,
+                        SlugName = t.Slug,
+                        SellerSlugName = t.SellerProfile != null ? $"{t.SellerProfile.Slug}" : "Unkown Seller",
                         CategoryName = t.Category != null ? t.Category.CategoryName : "Not Categorised",
                         ReviewSummary = t.ProductReviews.Any()
                             ? (int)t.ProductReviews.Average(r => r.Rating)
@@ -624,6 +808,8 @@ namespace Repository.Repos
             return result;
         }
         public Task<int> NumberOfProducts() => FindAll(false).CountAsync();
+        public Task<Guid> GetProductIdBySlugName(string slug)=>FindByCondition(p=>p.Slug==slug,false).Select(k=>k.ProductId).FirstOrDefaultAsync();
+
 
     }
 }

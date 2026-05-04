@@ -24,5 +24,7 @@ namespace Shared.Dtos
         public string Country { get; set; } = string.Empty;
         public string Company { get; set; } = string.Empty;
         public int MemberCount { get; set; }
+        public string UserGroupSlugName { get; set; } = string.Empty;
+
     }
 }

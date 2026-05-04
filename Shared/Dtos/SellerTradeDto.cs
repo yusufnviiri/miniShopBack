@@ -17,6 +17,10 @@ namespace Shared.Dtos
         public bool IsFeatured { get; set; }    
         public string CategoryName { get; set; } = string.Empty;
         public string SellerName { get; set; } = string.Empty;
+        public string SellerSlugName { get; set; } = string.Empty;
+        public string TradeSlugName { get; set; } = string.Empty;
+
+
 
 
     }

@@ -8,6 +8,7 @@ using Entities.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Services.BusinessRules;
 using Shared.Dtos;
 
 
@@ -23,11 +24,12 @@ namespace Services
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly ISmsSender _smsSender;
         private readonly IHttpContextAccessor _httpContextAccessor;
+        private readonly SlugService _slugService;
 
 
 
 
-        public UserProfileService(ILoggerManager logger, IRepositoryManager repository, IMapper mapper, UserManager<ApplicationUser> userManager,RoleManager<IdentityRole> roleManager,ISmsSender smsSender, IHttpContextAccessor httpContextAccessor)
+        public UserProfileService(ILoggerManager logger, IRepositoryManager repository, IMapper mapper, UserManager<ApplicationUser> userManager,RoleManager<IdentityRole> roleManager,ISmsSender smsSender, IHttpContextAccessor httpContextAccessor, SlugService slugService)
         {
             _userManager = userManager;
             _logger = logger;
@@ -36,6 +38,13 @@ namespace Services
             _roleManager = roleManager;
             _smsSender = smsSender;
             _httpContextAccessor = httpContextAccessor;
+            _slugService = slugService;
+
+        }
+
+        private string CreateUserProfileSlug(string name)
+        {
+            return _slugService.Generate(name);
         }
 
         public async Task<IEnumerable<UserProfileDto>> GetAllUserProfilesAsync() => await _repoManager.UserProfileRepo.GetAllUserProfiles();
@@ -85,6 +94,29 @@ namespace Services
             return profile;
 
         }
+
+        public async Task<UserProfileDto?> ShowUserProfileBySlugAsync(string slug)
+        {
+            var userProfileId = await _repoManager.UserProfileRepo.GetUserProfileIdBySlugName(slug);
+            if (userProfileId == Guid.Empty)
+            {
+                throw new ObjectBadRequestExeption("user with specified id not found");
+            }
+            else
+            {
+
+                var profile = await _repoManager.UserProfileRepo.ShowUserProfile(userProfileId);
+                var userFollowing = await _repoManager.UserPreferenceRepo.GetUserFollowing(userProfileId);
+                if (profile != null)
+                {
+                    profile.Following = userFollowing;
+                }
+                return profile;
+            }
+
+        }
+
+
 
         public async Task DeleteUserProfileAsync(Guid userProfile)
         {
@@ -194,13 +226,16 @@ namespace Services
 
             return user;
         }
-        private async Task<Guid> CreateDomainUserProfileAsync(string identityUserId, int addressId)
+        private async Task<Guid> CreateDomainUserProfileAsync(string identityUserId, int addressId,string username)
         {
             var profile = new UserProfile
             {
                 IdentityUserId = identityUserId,
                 AddressId = addressId
             };
+            var numberOfUsers = await _repoManager.UserProfileRepo.NumberOfUserProfiles();
+
+            profile.Slug = $"user={CreateUserProfileSlug(username)}-{numberOfUsers + 1}";
 
             _repoManager.UserProfileRepo.CreateUserProfile(profile);
             await _repoManager.SaveRepoDataAsync();
@@ -278,7 +313,7 @@ namespace Services
             {                
                 var addressId = await ResolveOrCreateAddressAsync(dto);
                 var user = await CreateIdentityUserAsync(dto);
-             return await CreateDomainUserProfileAsync(user.Id, addressId);
+             return await CreateDomainUserProfileAsync(user.Id, addressId, $"{dto.FirstName} {dto.LastName}");
 
             }
             catch

@@ -14,5 +14,7 @@ namespace Shared.Dtos
         public SellerProfile? SellerProfile { get; set; }
         public Guid UserGroupId { get; set; }
         public UserGroup? UserGroup { get; set; }
+        public string SellerSlugName { get; set; } = string.Empty;
+        public string UserGroupSlugName { get; set; } = string.Empty;
     }
 }

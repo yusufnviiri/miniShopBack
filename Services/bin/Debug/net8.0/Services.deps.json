@@ -13,6 +13,10 @@
           "BCrypt.Net-Next": "4.0.3",
           "Contracts": "1.0.0",
           "LoggerService": "1.0.0",
+          "Lucene.Net": "4.8.0-beta00016",
+          "Lucene.Net.Analysis.Common": "4.8.0-beta00016",
+          "Lucene.Net.Facet": "4.8.0-beta00016",
+          "Lucene.Net.QueryParser": "4.8.0-beta00016",
           "Microsoft.AspNetCore.SignalR": "1.2.9",
           "Microsoft.Extensions.Caching.StackExchangeRedis": "8.0.0",
           "Repository": "1.0.0",
@@ -104,6 +108,14 @@
           }
         }
       },
+      "J2N/2.0.0": {
+        "runtime": {
+          "lib/net6.0/J2N.dll": {
+            "assemblyVersion": "2.0.0.0",
+            "fileVersion": "2.0.0.0"
+          }
+        }
+      },
       "libphonenumber-csharp/8.13.10": {
         "dependencies": {
           "System.Collections.Immutable": "7.0.0",
@@ -113,6 +125,99 @@
           "lib/net7.0/PhoneNumbers.dll": {
             "assemblyVersion": "8.13.10.0",
             "fileVersion": "8.13.10.0"
+          }
+        }
+      },
+      "Lucene.Net/4.8.0-beta00016": {
+        "dependencies": {
+          "J2N": "2.0.0",
+          "Microsoft.Extensions.Configuration.Abstractions": "8.0.0"
+        },
+        "runtime": {
+          "lib/net6.0/Lucene.Net.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.8.0.0"
+          }
+        }
+      },
+      "Lucene.Net.Analysis.Common/4.8.0-beta00016": {
+        "dependencies": {
+          "Lucene.Net": "4.8.0-beta00016"
+        },
+        "runtime": {
+          "lib/net6.0/Lucene.Net.Analysis.Common.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.8.0.0"
+          }
+        }
+      },
+      "Lucene.Net.Facet/4.8.0-beta00016": {
+        "dependencies": {
+          "Lucene.Net.Join": "4.8.0-beta00016",
+          "Lucene.Net.Queries": "4.8.0-beta00016"
+        },
+        "runtime": {
+          "lib/net6.0/Lucene.Net.Facet.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.8.0.0"
+          }
+        }
+      },
+      "Lucene.Net.Grouping/4.8.0-beta00016": {
+        "dependencies": {
+          "Lucene.Net": "4.8.0-beta00016",
+          "Lucene.Net.Queries": "4.8.0-beta00016"
+        },
+        "runtime": {
+          "lib/net6.0/Lucene.Net.Grouping.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.8.0.0"
+          }
+        }
+      },
+      "Lucene.Net.Join/4.8.0-beta00016": {
+        "dependencies": {
+          "Lucene.Net.Grouping": "4.8.0-beta00016"
+        },
+        "runtime": {
+          "lib/net6.0/Lucene.Net.Join.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.8.0.0"
+          }
+        }
+      },
+      "Lucene.Net.Queries/4.8.0-beta00016": {
+        "dependencies": {
+          "Lucene.Net": "4.8.0-beta00016"
+        },
+        "runtime": {
+          "lib/net6.0/Lucene.Net.Queries.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.8.0.0"
+          }
+        }
+      },
+      "Lucene.Net.QueryParser/4.8.0-beta00016": {
+        "dependencies": {
+          "Lucene.Net.Analysis.Common": "4.8.0-beta00016",
+          "Lucene.Net.Queries": "4.8.0-beta00016",
+          "Lucene.Net.Sandbox": "4.8.0-beta00016"
+        },
+        "runtime": {
+          "lib/net6.0/Lucene.Net.QueryParser.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.8.0.0"
+          }
+        }
+      },
+      "Lucene.Net.Sandbox/4.8.0-beta00016": {
+        "dependencies": {
+          "Lucene.Net": "4.8.0-beta00016"
+        },
+        "runtime": {
+          "lib/net6.0/Lucene.Net.Sandbox.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "4.8.0.0"
           }
         }
       },
@@ -1644,12 +1749,75 @@
       "path": "bcrypt.net-next/4.0.3",
       "hashPath": "bcrypt.net-next.4.0.3.nupkg.sha512"
     },
+    "J2N/2.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-M5bwDajAARZiyqupU+rHQJnsVLxNBOHJ8vKYHd8LcLIb1FgLfzzcJvc31Qo5Xz/GEHFjDF9ScjKL/ks/zRTXuA==",
+      "path": "j2n/2.0.0",
+      "hashPath": "j2n.2.0.0.nupkg.sha512"
+    },
     "libphonenumber-csharp/8.13.10": {
       "type": "package",
       "serviceable": true,
       "sha512": "sha512-kRN0+z9lSqQjOhggj4uFUpMh9aIMtOEEUu1cuiKnZG5foct0cTrlAxbTL+EKSV+YSHP4KydsGChjqALzPDha0w==",
       "path": "libphonenumber-csharp/8.13.10",
       "hashPath": "libphonenumber-csharp.8.13.10.nupkg.sha512"
+    },
+    "Lucene.Net/4.8.0-beta00016": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-DCtUbE/NIrisNI7hRwU+UKS3Cr6S2vH1XB9wvEHHI3anu5OUpX1Fkr/PDC7oFCaol/QCvzVLbLZVizAT1aTLpA==",
+      "path": "lucene.net/4.8.0-beta00016",
+      "hashPath": "lucene.net.4.8.0-beta00016.nupkg.sha512"
+    },
+    "Lucene.Net.Analysis.Common/4.8.0-beta00016": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-7pjEAIliWdih6E3I0hCE8hKcKKRx1LLzeQBslF1fhvzE1Sal4NyHd8RFJHV1Z+yHlBw4gCyyVIDZADiIoyqwxg==",
+      "path": "lucene.net.analysis.common/4.8.0-beta00016",
+      "hashPath": "lucene.net.analysis.common.4.8.0-beta00016.nupkg.sha512"
+    },
+    "Lucene.Net.Facet/4.8.0-beta00016": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-O1MrRfhb9BMfRQHooyEFrkgNwYbTEbK/AkKhz26sy+xO+zAldJ8YKS/IsydHsE+frklIAWT0jyv0c3Dh9qBXSA==",
+      "path": "lucene.net.facet/4.8.0-beta00016",
+      "hashPath": "lucene.net.facet.4.8.0-beta00016.nupkg.sha512"
+    },
+    "Lucene.Net.Grouping/4.8.0-beta00016": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-y7QSEYfSnz7gEJS30xHsf8P0oMIreGGO08qC+UzKre29IAoUXdLLE2+vUfByGkcPuoGMIpZVBP51P6O647grBg==",
+      "path": "lucene.net.grouping/4.8.0-beta00016",
+      "hashPath": "lucene.net.grouping.4.8.0-beta00016.nupkg.sha512"
+    },
+    "Lucene.Net.Join/4.8.0-beta00016": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-trUiWhV3QPgW4TNPrEP29AsTXE29ACR5+Vz22xjbPtFTwyXMozl95NELVG5aUVMTqdwyMhJ9Lj82QeoHDnN0jw==",
+      "path": "lucene.net.join/4.8.0-beta00016",
+      "hashPath": "lucene.net.join.4.8.0-beta00016.nupkg.sha512"
+    },
+    "Lucene.Net.Queries/4.8.0-beta00016": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-XBzdMDlan68V2ZlhAlP8Fd+Xx2Le8ec7cEN1kFF45Sipa3Q8L/tilJfwS9VHvMTvGkwPM/yj62eGbfGBgIMR8Q==",
+      "path": "lucene.net.queries/4.8.0-beta00016",
+      "hashPath": "lucene.net.queries.4.8.0-beta00016.nupkg.sha512"
+    },
+    "Lucene.Net.QueryParser/4.8.0-beta00016": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-5dVvjXmzPaK8GD/eblJopTJMQmO6c6fvVPfBIOw46+jyZR+yESkUnWF1LtLoLXZQNrl4Dx8LKdes5G1QAM7eGA==",
+      "path": "lucene.net.queryparser/4.8.0-beta00016",
+      "hashPath": "lucene.net.queryparser.4.8.0-beta00016.nupkg.sha512"
+    },
+    "Lucene.Net.Sandbox/4.8.0-beta00016": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-wMsRZtbNx0wvX3mtNjpOwQmKx3Ij4UGHWIYHbvnzMWlPUTgtOpYSj02REL4hOxI71WBZylpGB5EWfQ2eEld63g==",
+      "path": "lucene.net.sandbox/4.8.0-beta00016",
+      "hashPath": "lucene.net.sandbox.4.8.0-beta00016.nupkg.sha512"
     },
     "Microsoft.AspNet.WebApi.Client/5.2.9": {
       "type": "package",

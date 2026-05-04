@@ -16,12 +16,15 @@ namespace Contracts.Service
         Task<IEnumerable<ShowProductMiniDetailsDto>> GetAllProductsByCategoryAsync( string categoryName);
         Task<ShowProductDto?> FindProductByIdAsync(bool tracking, Guid productId);
         Task<ProductDataDto?> GetProductDataAsync(Guid productId);
+        Task<ProductDataDto?> GetProductDataBySlugNameAsync(string slugName);
         Task ToggleProductFeaturedState(Guid productId);
         Task MakeAllProductsFeautured();
         Task<Product> CreateProductAsync(NewProductDto product);
         Task UpdateProductAsync(NewProductDto product);
         Task DeleteProductAsync(Guid productId);
         Task<ShowProductDto?> FindSellerProductAsync(Guid productId);
+        Task<ShowProductDto?> FindSellerProductBySlugAsync(string slug);
+
         Task SetProductOldPriceAsync(Guid productId,decimal oldPrice);
         Task UpdateProductPriceAsync(Guid productId, decimal newPrice);
         Task UpdateProductDescription(SharedUpdatesDto sharedUpdates);

@@ -21,15 +21,18 @@ namespace Contracts.Repo
 
         Task<IEnumerable<ShowProductMiniDetailsDto>> GetAllProductsByCategory(bool tracking,string categoryName);
         Task<ShowProductDto?> FindProductById(bool tracking, Guid productId);
+        Task<ShowProductDto?> FindProductBySlugName(bool tracking, string slugName);
+
         Task<ProductDataDto?> GetProductData( Guid productId);
-
+        Task<ProductDataDto?> GetProductDataUsingSlugName(string slugName);
         Task<ShowProductDto?> FindSellerProduct( Guid productId);
-
+        Task<ShowProductDto?> FindSellerProductUsingSlugName(bool tracking, string slugName);
         Task<Product?> FindProductForUpdate( Guid productId);
         Guid CreateProduct(Product product);
         void UpdateProduct(Product product);
         void DeleteProduct(Product productId);
         Task<int> NumberOfProducts();
+        Task<Guid> GetProductIdBySlugName(string slug);
 
         Task<ICollection<SellerProductsListDto>> GetGroupMembersProducts(IList<Guid> groupMemberIds);
         Task<ICollection<SellerProductsListDto>> GetGroupMembersForDisplayProducts(IList<Guid> groupMemberIds, Guid groupId);

@@ -13,6 +13,8 @@ namespace Shared.Dtos
         public Guid SellerId { get; set; }
         public string SellerName { get; set; }= string.Empty;
         public string WhatsAppNumber { get; set; } = string.Empty;
+        public string SellerSlugName { get; set; } = string.Empty;
+
         public string SellerTypeDescription { get; set; }= string.Empty;
         public ICollection<SellerGroupDto> Groups { get; set; } = [];
         public ICollection<SellerProductDto> Products { get; set; } = [];

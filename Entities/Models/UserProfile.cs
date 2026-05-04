@@ -14,8 +14,7 @@ namespace Entities.Models
         public int AddressId { get; set; }
         public Guid? ActiveGroupId { get; set; }  //nullable
         public Address? Address { get; set; }
-        public ICollection<GroupMember> GroupMemberships { get; set; }
-            = [];
+        public ICollection<GroupMember> GroupMemberships { get; set; } = [];
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
         public int UserStatusId { get; set; } = 1;
         public UserStatus? UserStatus { get; set; }

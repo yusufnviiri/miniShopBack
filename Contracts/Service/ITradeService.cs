@@ -23,5 +23,11 @@ namespace Contracts.Service
         void MakeTradeFeautured(Guid tradeId);
         Task UpdateTradeDescription(SharedUpdatesDto sharedUpdates);
         void MakeAllTradesFeautured();
+
+
+        Task<ShowTradeDataDto?> FindTradeBySlugNameAsync(bool tracking, string slugName);
+
+        Task<TradeDataDto?> GetTradeDataUsingSlugNameAsync(string slugName);
+        Task<ShowTradeDataDto?> FindSellerTradeUsingSlugNameAsync(bool tracking, string slugName);
     }
 }

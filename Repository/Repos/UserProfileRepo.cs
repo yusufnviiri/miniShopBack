@@ -29,7 +29,8 @@ namespace Repository.Repos
                     {
                         IdentityUserId = p.IdentityUserId,
                         FirstName = p.IdentityUser.FirstName,
-                        LastName = p.IdentityUser.LastName
+                        LastName = p.IdentityUser.LastName,
+                        SlugName=p.Slug
                     },
 
                     CreatedAt = p.CreatedAt
@@ -55,6 +56,9 @@ namespace Repository.Repos
                         Country = p.Address != null ? p.Address.Country : "Not Specified",
                         Company =p.SellerProfile!=null?p.SellerProfile.SellerName : "Not Specified",
                         SellerId=p.SellerProfileId,
+                        SlugName = p.Slug
+
+
                     },
 
                     CreatedAt = p.CreatedAt
@@ -70,6 +74,7 @@ namespace Repository.Repos
                 .Select(p => new UserProfileDto
                 {
                     UserProfileId = p.UserProfileId,
+                    SlugName=p.Slug,
                     IsSeller = p.SellerProfileId != Guid.Empty && p.SellerProfileId != null ? true : false,
 
 
@@ -81,7 +86,9 @@ namespace Repository.Repos
                             City = g.Group.Address.City,
                             Region = g.Group.Address.Region,
                             Country = g.Group.Address.Country,
-                            Company = g.Group.Address.Company
+                            Company = g.Group.Address.Company,
+                            UserGroupSlugName=g.Group.Slug
+                            
                         }).ToList()
                         : new List<ShowUserGroupDto>(),
 
@@ -89,7 +96,8 @@ namespace Repository.Repos
                     {
                         IdentityUserId = p.IdentityUserId,
                         FirstName = p.IdentityUser.FirstName,
-                        LastName = p.IdentityUser.LastName
+                        LastName = p.IdentityUser.LastName,
+                        SlugName=p.Slug
                     },
 
                     CreatedAt = p.CreatedAt
@@ -102,6 +110,7 @@ namespace Repository.Repos
             return await FindByCondition(p => p.UserProfileId == UserProfileId, false).Select(p => new UserProfileDto
             {
                 UserProfileId = p.UserProfileId,
+                SlugName=p.Slug,
                 IsSeller = p.SellerProfileId != Guid.Empty && p.SellerProfileId != null ? true : false,
 
                 UserGroups = p.GroupMemberships.Any()
@@ -109,6 +118,7 @@ namespace Repository.Repos
                           {
                               UserGroupId = g.Group.UserGroupId,
                               UserGroupName = g.Group.UserGroupName,
+                              UserGroupSlugName=g.Group.Slug
 
                           }).ToList()
                           : new List<ShowUserGroupDto>(),
@@ -119,7 +129,8 @@ namespace Repository.Repos
                     FirstName = p.IdentityUser.FirstName,
                     LastName = p.IdentityUser.LastName,
                     PhoneNumber = p.IdentityUser.PhoneNumber,
-                    Email = p.IdentityUser.Email
+                    Email = p.IdentityUser.Email,
+                    SlugName=p.Slug
                 },
                 AddressId = p.AddressId,
                 CreatedAt = p.CreatedAt,
@@ -174,6 +185,7 @@ namespace Repository.Repos
                 .Select(p => new LoggedInUserDataDto
                 {
                     UserProfileId = p.UserProfileId,
+                    SlugName=p.Slug,
                     SellerprofileId = p.SellerProfileId != null ? p.SellerProfileId.Value : Guid.Empty,
                     UserName = p.IdentityUser != null ? $"{p.IdentityUser.FirstName} {p.IdentityUser.LastName}" : "No Name",
                     IsAccountConfirmed = p.IdentityUser != null && p.IdentityUser.AccountConfirmed,
@@ -199,7 +211,7 @@ namespace Repository.Repos
 
         public Task<int> NumberOfUserProfiles() => FindAll(false).CountAsync();
 
-
+        public Task<Guid> GetUserProfileIdBySlugName(string slug) => FindByCondition(p => p.Slug == slug, false).Select(k => k.UserProfileId).FirstOrDefaultAsync();
 
     }
 }

@@ -31,6 +31,10 @@ namespace Shared.Dtos
         public ICollection<TradeImageRefDto>? TradeImageRefs { get; set; }
         public string Contact { get; set; } = string.Empty;
         public ICollection<TradeBooking> TradeBookings { get; set; } = [];
+        public string? TradeSlugName { get; set; } = string.Empty;
+        public string? SellerSlugName { get; set; } = string.Empty;
+
+
 
     }
 }

@@ -201,6 +201,22 @@
   },
   {
     "ContainingType": "Presentation.UserGroupController",
+    "Method": "GetUserGroupMembersWithSlug",
+    "RelativePath": "api/groups/{slug}/memberswithslug",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "slug",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Presentation.UserGroupController",
     "Method": "UpdateUserGroup",
     "RelativePath": "api/groups/edit",
     "HttpMethod": "PUT",
@@ -234,6 +250,23 @@
   },
   {
     "ContainingType": "Presentation.UserGroupController",
+    "Method": "GetGroupShopBySlug",
+    "RelativePath": "api/groups/groupshopBySlug/{slug}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "slug",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [],
+    "EndpointName": "groupshopBySlug"
+  },
+  {
+    "ContainingType": "Presentation.UserGroupController",
     "Method": "GetGroupShopDisplay",
     "RelativePath": "api/groups/groupshopdisplay/{sellerId}",
     "HttpMethod": "GET",
@@ -248,6 +281,23 @@
     ],
     "ReturnTypes": [],
     "EndpointName": "groupshopdisplay"
+  },
+  {
+    "ContainingType": "Presentation.UserGroupController",
+    "Method": "GetGroupShopDisplayBySlug",
+    "RelativePath": "api/groups/groupshopdisplayBySlug/{slug}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "slug",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [],
+    "EndpointName": "groupshopdisplayBySlug"
   },
   {
     "ContainingType": "Presentation.UserGroupController",
@@ -562,6 +612,23 @@
   },
   {
     "ContainingType": "Presentation.ProductController",
+    "Method": "GetProductDataBySlugName",
+    "RelativePath": "api/products/{slugName}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "slugName",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [],
+    "EndpointName": "ProductBySlugName"
+  },
+  {
+    "ContainingType": "Presentation.ProductController",
     "Method": "CreateProductReview",
     "RelativePath": "api/products/addreview",
     "HttpMethod": "POST",
@@ -724,6 +791,22 @@
   },
   {
     "ContainingType": "Presentation.ProductController",
+    "Method": "Search",
+    "RelativePath": "api/products/searchproducts",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "query",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Presentation.ProductController",
     "Method": "GetsellerProduct",
     "RelativePath": "api/products/sellerproduct/{id}",
     "HttpMethod": "GET",
@@ -741,6 +824,23 @@
   },
   {
     "ContainingType": "Presentation.ProductController",
+    "Method": "GetsellerProductBySlug",
+    "RelativePath": "api/products/sellerproductBySlug/{slug}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "slug",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [],
+    "EndpointName": "SellerProductBySlug"
+  },
+  {
+    "ContainingType": "Presentation.ProductController",
     "Method": "GetSellerShop",
     "RelativePath": "api/products/sellershop/{sellerId}",
     "HttpMethod": "GET",
@@ -755,6 +855,23 @@
     ],
     "ReturnTypes": [],
     "EndpointName": "SellerShop"
+  },
+  {
+    "ContainingType": "Presentation.ProductController",
+    "Method": "GetSellerShopBySlug",
+    "RelativePath": "api/products/sellershopBySlug/{sellerslug}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "sellerslug",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [],
+    "EndpointName": "SellerShopBySlug"
   },
   {
     "ContainingType": "Presentation.ProductController",
@@ -1457,6 +1574,64 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "Presentation.SearchController",
+    "Method": "IndexProduct",
+    "RelativePath": "api/search/index/product/{id}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Presentation.SearchController",
+    "Method": "RemoveProduct",
+    "RelativePath": "api/search/index/product/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Presentation.SearchController",
+    "Method": "RebuildIndex",
+    "RelativePath": "api/search/index/rebuild",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Presentation.SearchController",
+    "Method": "SearchProducts",
+    "RelativePath": "api/search/products",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "query",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "Presentation.TradeImageController",
     "Method": "Get",
     "RelativePath": "api/trade/images/{tradeId}/{fileName}/{size}",
@@ -1578,6 +1753,23 @@
   },
   {
     "ContainingType": "Presentation.TradeController",
+    "Method": "GetTradeDataBySlug",
+    "RelativePath": "api/trades/{slug}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "slug",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [],
+    "EndpointName": "TradeBySlug"
+  },
+  {
+    "ContainingType": "Presentation.TradeController",
     "Method": "CreateTradeReview",
     "RelativePath": "api/trades/addreview",
     "HttpMethod": "POST",
@@ -1682,6 +1874,23 @@
     ],
     "ReturnTypes": [],
     "EndpointName": "SellerTradeById"
+  },
+  {
+    "ContainingType": "Presentation.TradeController",
+    "Method": "GetsellerTradeBySlug",
+    "RelativePath": "api/trades/sellertradebyslug/{slug}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "slug",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [],
+    "EndpointName": "SellerTradeBySlug"
   },
   {
     "ContainingType": "Presentation.TradeController",
@@ -1895,6 +2104,23 @@
     "Order": 0,
     "Parameters": [],
     "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Presentation.UserController",
+    "Method": "GetUserProfileBySlug",
+    "RelativePath": "api/users/slug/{slug}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "slug",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [],
+    "EndpointName": "userProfileBySlug"
   },
   {
     "ContainingType": "Presentation.UserController",

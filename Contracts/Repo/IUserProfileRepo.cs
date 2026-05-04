@@ -26,6 +26,8 @@ namespace Contracts.Repo
         Task<LoggedInUserDataDto?> GetLoggedInUserDataDto(Guid UserProfileId);
         Task<string?> GetUserContact(Guid userProfileId);
         Task<int> NumberOfUserProfiles();
+        Task<Guid> GetUserProfileIdBySlugName(string slug);
+       
 
 
 

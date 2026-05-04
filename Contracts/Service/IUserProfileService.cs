@@ -14,6 +14,8 @@ namespace Contracts.Service
         Task<IEnumerable<UserProfileDto>> GetAllUserProfilesWithoutGroupsAsync();
         Task<UserProfile?> FindUserProfileByIdAsync(Guid UserProfileId, bool tracking);
         Task<UserProfileDto?> ShowUserProfileAsync(Guid UserProfileId);
+        Task<UserProfileDto?> ShowUserProfileBySlugAsync(string slug);
+
         Task<Guid> CreateUserProfileAsync(NewUserDataDto userProfile);
         Task CreateUserProfileWithMemberAsync(GroupMemberJoinNewUserProfileDataDto dataDto);
         Task UpdateUserProfileAsync(NewUserDataDto userProfile);

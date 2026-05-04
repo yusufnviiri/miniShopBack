@@ -79,13 +79,16 @@ namespace Repository.Repos
                 SellerProfileId = s.SellerProfileId,
                 SellerId=s.SellerId,
                 SellerName = s.SellerName,
-                WhatsAppNumber =s.WhatsAppNumber,                
+                WhatsAppNumber =s.WhatsAppNumber,   
+                SellerSlugName=s.Slug,
                 SellerTypeDescription = s.SellerType != null ? s.SellerType.SellerTypeName : "Not Categorized",
                 Products = s.Products.Any() ? s.Products.Select(p => new SellerProductDto()
                 {
                     ProductId = p.ProductId,
                     Price = p.Price,
+                    SlugName=p.Slug,
                     ProductName = p.ProductName,
+                    SellerSlugName = p.SellerProfile != null ? $"{p.SellerProfile.Slug}" : "Unkown Seller",
                     CategoryName = p.Category != null ? p.Category.CategoryName : "Not Categorized",
                     ReviewSummary = p.ProductReviews.Count != 0 ? (int) p.ProductReviews.Average(r => r.Rating) : 0,
                     ProductImageId = p.Images.OrderByDescending(i => i.IsPrimary).Select(i => i.ProductImageId).FirstOrDefault(),
@@ -93,10 +96,12 @@ namespace Repository.Repos
                 Trades= s.Trades.Any() ? s.Trades.Select(p => new SellerTradeDto()
                 {
                     TradeId = p.TradeId,
+                    TradeSlugName=p.Slug,
                
                     TradeName = p.TradeName,
                     Description = p.Description,
-                     TradeImageId = p.Images.OrderByDescending(i => i.IsPrimary).Select(i => i.TradeImageId).FirstOrDefault(),
+                        SellerSlugName = p.SellerProfile != null ? $"{p.SellerProfile.Slug}" : "Unkown Seller",
+                    TradeImageId = p.Images.OrderByDescending(i => i.IsPrimary).Select(i => i.TradeImageId).FirstOrDefault(),
                         CategoryName = p.Category != null ? p.Category.CategoryName : "Not Categorized",
                         ReviewSummary = p.TradeReviews.Count != 0 ? (int)p.TradeReviews.Average(r => r.Rating) : 0,
                         }).ToList() : new List<SellerTradeDto>(),     
@@ -111,6 +116,7 @@ namespace Repository.Repos
                 SellerProfileId = sellerProfileId,
                 SellerId = p.SellerId,
                 SellerName = p.SellerName,
+                SlugName=p.Slug,
                 SellerTypeDescription = p.SellerType!=null? p.SellerType.SellerTypeName:"not categorized"
 
             }).FirstOrDefaultAsync();
@@ -128,6 +134,7 @@ namespace Repository.Repos
                 {
                     ProductId = p.ProductId,
                     Price = p.Price,
+                    SlugName=p.Slug,
                     ProductName = p.ProductName,
                     CategoryName = p.Category != null ? p.Category.CategoryName : "Not Categorized",
                     ReviewSummary = p.ProductReviews.Count != 0 ? (int)p.ProductReviews.Average(r => r.Rating) : 0,
@@ -139,6 +146,7 @@ namespace Repository.Repos
                 
                     TradeName = p.TradeName,
                     Description = p.Description,
+                    TradeSlugName=p.Slug,
                     TradeImageId = p.Images.OrderByDescending(i => i.IsPrimary).Select(i => i.TradeImageId).FirstOrDefault(),
                     CategoryName = p.Category != null ? p.Category.CategoryName : "Not Categorized",
                     ReviewSummary = p.TradeReviews.Count != 0 ? (int)p.TradeReviews.Average(r => r.Rating) : 0,
@@ -163,6 +171,126 @@ namespace Repository.Repos
                 .Select(p => p.WhatsAppNumber != null ? p.WhatsAppNumber : "")
                 .FirstOrDefaultAsync();
         }
+
+        public Task<int> NumberOfSellers() => FindAll(false).CountAsync();
+
+
+
+
+        public async Task<SellerShopDto?> GetSellerShopDetailsBySellerSlug(string slug)
+        {
+            return await FindByCondition(p => p.Slug == slug, false).Select(s => new SellerShopDto()
+            {
+                SellerProfileId = s.SellerProfileId,
+                SellerId = s.SellerId,
+                SellerName = s.SellerName,
+                SellerSlugName = s.Slug,
+                
+
+                WhatsAppNumber = s.WhatsAppNumber,
+                SellerTypeDescription = s.SellerType != null ? s.SellerType.SellerTypeName : "Not Categorized",
+                Products = s.Products.Any() ? s.Products.Select(p => new SellerProductDto()
+                {
+                    ProductId = p.ProductId,
+                    Price = p.Price,
+                    ProductName = p.ProductName,
+                    SlugName = p.Slug,
+                    SellerSlugName = s.Slug,
+                    CategoryName = p.Category != null ? p.Category.CategoryName : "Not Categorized",
+                    ReviewSummary = p.ProductReviews.Count != 0 ? (int)p.ProductReviews.Average(r => r.Rating) : 0,
+                    ProductImageId = p.Images.OrderByDescending(i => i.IsPrimary).Select(i => i.ProductImageId).FirstOrDefault(),
+                }).ToList() : new List<SellerProductDto>(),
+                Trades = s.Trades.Any() ? s.Trades.Select(p => new SellerTradeDto()
+                {
+                    TradeId = p.TradeId,
+                    SellerSlugName = s.Slug,
+                    TradeSlugName = p.Slug,
+                    TradeName = p.TradeName,
+                    Description = p.Description,
+                    TradeImageId = p.Images.OrderByDescending(i => i.IsPrimary).Select(i => i.TradeImageId).FirstOrDefault(),
+                    CategoryName = p.Category != null ? p.Category.CategoryName : "Not Categorized",
+                    ReviewSummary = p.TradeReviews.Count != 0 ? (int)p.TradeReviews.Average(r => r.Rating) : 0,
+                }).ToList() : new List<SellerTradeDto>(),
+            }).FirstOrDefaultAsync();
+        }
+
+
+        public async Task<GroupProductsAndTradesList?> GetGroupProductsAndTradesListBySellerSlug(string slug)
+        {
+
+            return await FindByCondition(p => p.Slug == slug, false).Select(s => new GroupProductsAndTradesList()
+            {
+
+                GroupProducts = s.Products.Any() ? s.Products.Select(p => new SellerProductDto()
+                {
+                    ProductId = p.ProductId,
+                    Price = p.Price,
+                        SlugName = p.Slug,
+                        SellerSlugName = s.Slug,
+                    ProductName = p.ProductName,
+                    CategoryName = p.Category != null ? p.Category.CategoryName : "Not Categorized",
+                    ReviewSummary = p.ProductReviews.Count != 0 ? (int)p.ProductReviews.Average(r => r.Rating) : 0,
+                    ProductImageId = p.Images.OrderByDescending(i => i.IsPrimary).Select(i => i.ProductImageId).FirstOrDefault(),
+                }).ToList() : new List<SellerProductDto>(),
+                GroupTrades = s.Trades.Any() ? s.Trades.Select(p => new SellerTradeDto()
+                {
+                    TradeId = p.TradeId,
+                    SellerSlugName = s.Slug,
+                    TradeSlugName = p.Slug,
+
+                    TradeName = p.TradeName,
+                    Description = p.Description,
+                    TradeImageId = p.Images.OrderByDescending(i => i.IsPrimary).Select(i => i.TradeImageId).FirstOrDefault(),
+                    CategoryName = p.Category != null ? p.Category.CategoryName : "Not Categorized",
+                    ReviewSummary = p.TradeReviews.Count != 0 ? (int)p.TradeReviews.Average(r => r.Rating) : 0,
+                }).ToList() : new List<SellerTradeDto>(),
+            }).FirstOrDefaultAsync();
+        }
+
+
+        public async Task<SellerProfile?> FindSellerProfileBySlugName(string slugName, bool tracking)
+        {
+            return await FindByCondition(sp => sp.Slug == slugName, tracking)
+                .FirstOrDefaultAsync();
+        }
+        public async Task<MiniGroupDetailsDto?> FindMiniGroupDetailsBySlugName(string slugName)
+        {
+            return await FindByCondition(p => p.Slug == slugName, false).Select(p => new MiniGroupDetailsDto()
+            {
+                SellerProfileId = p.SellerProfileId,
+                SlugName = p.Slug,
+                SellerId = p.SellerId,
+                SellerName = p.SellerName,
+                SellerTypeDescription = p.SellerType != null ? p.SellerType.SellerTypeName : "not categorized"
+
+            }).FirstOrDefaultAsync();
+
+
+        }
+
+        public async Task<SellerProfile?> FindSellerProfileBySellerSlug(string slug)
+        {
+            return await FindByCondition(sp => sp.Slug == slug, false)
+                .FirstOrDefaultAsync();
+        }
+        public Task<Guid> GetSellerProfileIdBySlugName(string slug) => FindByCondition(p => p.Slug == slug, false).Select(k => k.SellerProfileId).FirstOrDefaultAsync();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

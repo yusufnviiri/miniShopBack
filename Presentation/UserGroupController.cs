@@ -62,6 +62,17 @@ namespace Presentation
             return Ok(groupData);
         }
 
+
+        [HttpGet("{slug}/memberswithslug")]
+        public async Task<ActionResult> GetUserGroupMembersWithSlug([FromRoute] string slug )
+        {
+            if (string.IsNullOrWhiteSpace(slug)) { return BadRequest("Id is zero"); }
+            var groupData = await _service.UserGroupService.GetUserGroupWithMembersWithSlugAsync(slug);
+
+            return Ok(groupData);
+        }
+        
+
         [HttpGet("{groupId}/members/{userProfileId}")]
         public async Task<ActionResult> GetUserGroupMember([FromRoute] Guid groupId, [FromRoute] Guid userProfileId)
         {
@@ -86,6 +97,15 @@ namespace Presentation
             return Ok(groupshop);
         }
 
+
+        [HttpGet("groupshopBySlug/{slug}", Name = "groupshopBySlug")]
+        public async Task<ActionResult> GetGroupShopBySlug(string slug)
+        {
+            if (string.IsNullOrWhiteSpace(slug)) { return BadRequest(new { message = "Group slug not specified" }); }
+            var groupshop = await _service.SellerProfileService.GetGroupShopDetailsBySlugAsync(slug, true);
+            return Ok(groupshop);
+        }
+
         [HttpGet("groupshopdisplay/{sellerId:Guid}", Name = "groupshopdisplay")]
         public async Task<ActionResult> GetGroupShopDisplay(Guid sellerId)
         {
@@ -93,7 +113,13 @@ namespace Presentation
             var groupshop = await _service.SellerProfileService.GetGroupShopDisplay(sellerId);
             return Ok(groupshop);
         }
-
+        [HttpGet("groupshopdisplayBySlug/{slug}", Name = "groupshopdisplayBySlug")]
+        public async Task<ActionResult> GetGroupShopDisplayBySlug(string slug)
+        {
+            if (string.IsNullOrWhiteSpace(slug)) { return BadRequest(new { message = "Group slug not specified" }); }
+            var groupshop = await _service.SellerProfileService.GetGroupShopDisplayBySlugAsync(slug);
+            return Ok(groupshop);
+        }
         //[Authorize]
         //[HttpPost("{groupId}/products")]
         //public async Task<IActionResult> CreateProduct(Guid groupId, CreateProductRequest request)

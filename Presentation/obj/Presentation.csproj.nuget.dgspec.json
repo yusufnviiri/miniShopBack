@@ -487,6 +487,22 @@
               "target": "Package",
               "version": "[4.0.3, )"
             },
+            "Lucene.Net": {
+              "target": "Package",
+              "version": "[4.8.0-beta00016, )"
+            },
+            "Lucene.Net.Analysis.Common": {
+              "target": "Package",
+              "version": "[4.8.0-beta00016, )"
+            },
+            "Lucene.Net.Facet": {
+              "target": "Package",
+              "version": "[4.8.0-beta00016, )"
+            },
+            "Lucene.Net.QueryParser": {
+              "target": "Package",
+              "version": "[4.8.0-beta00016, )"
+            },
             "Microsoft.AspNetCore.SignalR": {
               "target": "Package",
               "version": "[1.2.9, )"

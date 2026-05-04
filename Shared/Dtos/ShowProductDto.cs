@@ -22,7 +22,8 @@ namespace Shared.Dtos
         public bool IsFeatured { get; set; }
         public string Description { get; set; } = default!;
         public string Condition { get; set; } = string.Empty;
-
+        public string SlugName { get; set; } = string.Empty;
+        public string SellerSlugName { get; set; } = string.Empty;
 
 
         // Ownership (DOMAIN, not Identity)
@@ -32,8 +33,7 @@ namespace Shared.Dtos
         public ICollection<ProductImage> Images { get; set; } = [];
         public int CommodityClassId { get; set; } = 2;
         public ICollection<ShowReviewDto> Reviews { get; set; } = [];
-        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
-       
+        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;       
         public string Category { get; set; } = string.Empty;
         public string? SellerName { get; set; }
         public ICollection<ProductImageRefDto>? ProductImageRefs  { get; set; }

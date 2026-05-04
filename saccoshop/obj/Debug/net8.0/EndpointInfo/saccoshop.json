@@ -525,6 +525,28 @@
         }
       }
     },
+    "/api/products/searchproducts": {
+      "get": {
+        "tags": [
+          "Product"
+        ],
+        "parameters": [
+          {
+            "name": "query",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
     "/api/products": {
       "get": {
         "tags": [
@@ -773,6 +795,30 @@
         }
       }
     },
+    "/api/products/{slugName}": {
+      "get": {
+        "tags": [
+          "Product"
+        ],
+        "operationId": "ProductBySlugName",
+        "parameters": [
+          {
+            "name": "slugName",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
     "/api/products/makeproductfeatured": {
       "post": {
         "tags": [
@@ -831,6 +877,30 @@
             "schema": {
               "type": "string",
               "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/products/sellerproductBySlug/{slug}": {
+      "get": {
+        "tags": [
+          "Product"
+        ],
+        "operationId": "SellerProductBySlug",
+        "parameters": [
+          {
+            "name": "slug",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string"
             }
           }
         ],
@@ -1011,6 +1081,30 @@
             "schema": {
               "type": "string",
               "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/products/sellershopBySlug/{sellerslug}": {
+      "get": {
+        "tags": [
+          "Product"
+        ],
+        "operationId": "SellerShopBySlug",
+        "parameters": [
+          {
+            "name": "sellerslug",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string"
             }
           }
         ],
@@ -2134,6 +2228,86 @@
         }
       }
     },
+    "/api/search/products": {
+      "get": {
+        "tags": [
+          "Search"
+        ],
+        "parameters": [
+          {
+            "name": "query",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/search/index/product/{id}": {
+      "post": {
+        "tags": [
+          "Search"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Search"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/search/index/rebuild": {
+      "post": {
+        "tags": [
+          "Search"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
     "/api/trades": {
       "get": {
         "tags": [
@@ -2325,6 +2499,30 @@
         }
       }
     },
+    "/api/trades/{slug}": {
+      "get": {
+        "tags": [
+          "Trade"
+        ],
+        "operationId": "TradeBySlug",
+        "parameters": [
+          {
+            "name": "slug",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
     "/api/trades/sellertrade/{id}": {
       "get": {
         "tags": [
@@ -2340,6 +2538,30 @@
             "schema": {
               "type": "string",
               "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/trades/sellertradebyslug/{slug}": {
+      "get": {
+        "tags": [
+          "Trade"
+        ],
+        "operationId": "SellerTradeBySlug",
+        "parameters": [
+          {
+            "name": "slug",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string"
             }
           }
         ],
@@ -2627,6 +2849,30 @@
             "schema": {
               "type": "string",
               "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/users/slug/{slug}": {
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "operationId": "userProfileBySlug",
+        "parameters": [
+          {
+            "name": "slug",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string"
             }
           }
         ],
@@ -3107,6 +3353,29 @@
         }
       }
     },
+    "/api/groups/{slug}/memberswithslug": {
+      "get": {
+        "tags": [
+          "UserGroup"
+        ],
+        "parameters": [
+          {
+            "name": "slug",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
     "/api/groups/{groupId}/members/{userProfileId}": {
       "get": {
         "tags": [
@@ -3197,6 +3466,30 @@
         }
       }
     },
+    "/api/groups/groupshopBySlug/{slug}": {
+      "get": {
+        "tags": [
+          "UserGroup"
+        ],
+        "operationId": "groupshopBySlug",
+        "parameters": [
+          {
+            "name": "slug",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
     "/api/groups/groupshopdisplay/{sellerId}": {
       "get": {
         "tags": [
@@ -3212,6 +3505,30 @@
             "schema": {
               "type": "string",
               "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/groups/groupshopdisplayBySlug/{slug}": {
+      "get": {
+        "tags": [
+          "UserGroup"
+        ],
+        "operationId": "groupshopdisplayBySlug",
+        "parameters": [
+          {
+            "name": "slug",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string"
             }
           }
         ],
@@ -4809,6 +5126,10 @@
           },
           "isSeller": {
             "type": "boolean"
+          },
+          "slugName": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -5535,6 +5856,14 @@
           "sellerProfileId": {
             "type": "string",
             "format": "uuid"
+          },
+          "sellerSlugName": {
+            "type": "string",
+            "nullable": true
+          },
+          "userProfileSlugName": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false

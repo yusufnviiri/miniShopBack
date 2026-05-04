@@ -24,5 +24,9 @@ namespace Shared.Dtos
         public ICollection<TradeImageRefDto> TradeImageRefDtos  { get; set; } = [];
         public ICollection<ShowReviewDto> Reviews { get; set; } = [];
         public ICollection<HomePageTradeDto> RelatedTrades { get; set; } = [];
+        public string TradeSlugName { get; set; } = string.Empty;
+        public string SellerSlugName { get; set; } = string.Empty;
+
+
     }
 }

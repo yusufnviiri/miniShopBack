@@ -1,4 +1,5 @@
 ﻿using Contracts.Service;
+
 using Entities.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
@@ -8,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Caching.Memory;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using Services;
 using Services.Redis;
 using Shared.Dtos;
 using Shared.RequestFeatures;
@@ -27,19 +29,31 @@ namespace Presentation
         private readonly IMemoryCache _cache;
 
 
+
+
+
+
         //private readonly IActiveUserContext _context;
 
-        public ProductController(IMemoryCache cache, IServiceManager service, IBackgroundJobQueue jobQueue, IWebHostEnvironment env)
+        public ProductController( IMemoryCache cache, IServiceManager service, IBackgroundJobQueue jobQueue, IWebHostEnvironment env)
         {
             _service = service;
             _jobQueue = jobQueue;
             _env = env;
             _cache = cache;
+       
 
             //_context = context;
         }
-       
-        
+
+      
+        [HttpGet("searchproducts")]
+        public async Task<IActionResult> Search([FromQuery] string query)
+        {
+            //var results = await _searchService.Search(query);
+            //return Ok(results);
+            return Ok(new { message = "Search endpoint is under development" });
+        }
 
         [HttpGet]
         public async Task<ActionResult> GetAllProducts([FromQuery]ProductRequestParameters parameters)
@@ -73,6 +87,13 @@ namespace Presentation
             return Ok(product);
         }
 
+        [HttpGet("{slugName}", Name = "ProductBySlugName")]
+        public async Task<ActionResult> GetProductDataBySlugName(string slugName)
+        {
+            var product = await _service.ProductService.GetProductDataBySlugNameAsync(slugName);
+            return Ok(product);
+        }
+
         [HttpPost("makeproductfeatured")]
         public async Task<ActionResult> ToggleProductFeaturedState([FromBody] MiniProductImageDto imageDto )
         {
@@ -97,8 +118,14 @@ namespace Presentation
             var product = await _service.ProductService.FindSellerProductAsync(id);
             return Ok(product);
         }
+        [HttpGet("sellerproductBySlug/{slug}", Name = "SellerProductBySlug")]
+        public async Task<ActionResult> GetsellerProductBySlug(string slug)
+        {
+            var product = await _service.ProductService.FindSellerProductBySlugAsync(slug);
+            return Ok(product);
+        }
 
-
+        
 
         [HttpPost("updateproductprice")]
         public async Task<ActionResult> UpdateProductPrice([FromBody] MiniProductUpdateDto updateDto)
@@ -287,6 +314,19 @@ namespace Presentation
             return Ok(sellerShop);
         }
 
+
+        [HttpGet("sellershopBySlug/{sellerslug}", Name = "SellerShopBySlug")]
+
+        public async Task<IActionResult> GetSellerShopBySlug([FromRoute] string sellerslug)
+        {
+            if (string.IsNullOrWhiteSpace(sellerslug))
+            {
+                return BadRequest(new { message = "Seller name not specified" });
+            }
+            var sellerShop = await _service.SellerProfileService.GetSellerShopDetailsBySlugAsync(sellerslug);
+            return Ok(sellerShop);
+        }
+        
 
 
 

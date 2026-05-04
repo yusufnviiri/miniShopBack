@@ -81,6 +81,11 @@ namespace Repository.Repos
                         ? p.SellerProfile.SellerName
                         : "Unknown",
                     SellerProfileId = p.SellerProfileId,
+                    SellerSlugName = p.SellerProfile != null
+                        ? p.SellerProfile.Slug
+                        : "unknown",
+                    TradeSlugName = p.Slug,
+
                     TradeImageId = p.Images
                         .OrderByDescending(i => i.IsPrimary)
                         .Select(i => i.TradeImageId)
@@ -108,6 +113,8 @@ namespace Repository.Repos
                         TradeId = t.TradeId,
                         TradeName = t.TradeName,
                         Impressions = t.TradeImpressions.Count(),
+                        TradeSlugName=t.Slug,
+                        SellerSlugName = t.SellerProfile != null ? t.SellerProfile.Slug : "unknown",
 
                         Description = t.Description,                       
                         CreatedAt = t.CreatedAt,
@@ -160,6 +167,8 @@ namespace Repository.Repos
                         ? t.SellerProfile.SellerName
                         : "Unknown",
                     SellerProfileId = t.SellerProfileId,
+                    TradeSlugName = t.Slug,
+                    SellerSlugName = t.SellerProfile != null ? t.SellerProfile.Slug : "unknown",
                     TradeImageId = t.Images
                         .OrderByDescending(i => i.IsPrimary)
                         .Select(i => i.TradeImageId)
@@ -206,7 +215,9 @@ namespace Repository.Repos
                     HasImage = p.HasImage,
                     SellerProfileId = p.SellerProfileId,
                     SellerName = p.SellerProfile != null ? $"{p.SellerProfile.SellerName}" : "Unkown Seller",
-                    
+                    TradeSlugName = p.Slug,
+                    SellerSlugName = p.SellerProfile != null ? p.SellerProfile.Slug : "unknown",
+
                     Reviews =  new List<ShowReviewDto>(),
 
                     TradeImageRefs = p.Images.Select(i => new TradeImageRefDto
@@ -245,6 +256,8 @@ namespace Repository.Repos
                         TradeId = t.TradeId,
                         TradeName = t.TradeName,
                         Description = t.Description,
+                        TradeSlugName = t.Slug,
+                        SellerSlugName = t.SellerProfile != null ? t.SellerProfile.Slug : "unknown",
                         Category = t.Category != null ? t.Category.CategoryName : "Not Categorised",
                         CategoryName = t.Category != null ? t.Category.CategoryName : "Not Categorised",
                         ReviewSummary = t.TradeReviews.Any() ? (int)t.TradeReviews.Average(r => r.Rating) : 0,
@@ -286,8 +299,159 @@ namespace Repository.Repos
 
         }
         public Task<int> NumberOfTrades() => FindAll(false).CountAsync();
+        public Task<Guid> GetTradeIdBySlugName(string slug) => FindByCondition(p => p.Slug == slug, false).Select(k => k.TradeId).FirstOrDefaultAsync();
 
 
+        public async Task<TradeDataDto?> GetTradeDataUsingSlugName(string slugName)
+        {
+
+            string cacheKey = $"trade_data {slugName}";
+
+            if (_cache.TryGetValue(cacheKey, out TradeDataDto cached))
+                return cached;
+            var result = await FindByCondition(t => t.Slug == slugName, false)
+                .Select(t => new
+                {
+                    Trade = new TradeDataDto
+                    {
+                        TradeId = t.TradeId,
+                        TradeName = t.TradeName,
+                        Impressions = t.TradeImpressions.Count(),
+                        TradeSlugName = t.Slug,
+                        SellerSlugName = t.SellerProfile != null ? t.SellerProfile.Slug : "unknown",
+
+                        Description = t.Description,
+                        CreatedAt = t.CreatedAt,
+                        SellerProfileId = t.SellerProfileId,
+                        SellerUserProfileId = t.SellerProfile != null ? t.SellerProfile.SellerId : Guid.Empty,
+
+                        SellerName = t.SellerProfile != null
+                            ? t.SellerProfile.SellerName
+                            : "Unknown Seller",
+                        Category = t.Category != null
+                            ? t.Category.CategoryName
+                            : "Not Categorised",
+                        Reviews = t.TradeReviews
+                            .Select(r => new ShowReviewDto
+                            {
+                                ReviewId = r.TradeReviewId,
+                                ReviewerName = r.Reviewer != null
+                                    ? r.Reviewer.IdentityUser.FirstName + " " + r.Reviewer.IdentityUser.LastName
+                                    : "Unknown",
+                                Rating = r.Rating,
+                                Comment = r.Comment,
+                                CreatedAt = r.CreatedAt
+                            })
+                            .ToList(),
+
+                        TradeImageRefDtos = t.Images
+                            .Select(i => new TradeImageRefDto
+                            {
+                                TradeImageId = i.TradeImageId,
+                                IsPrimary = i.IsPrimary,
+                                IsProcessed = i.IsProcessed
+                            })
+                            .ToList()
+                    },
+                    t.CategoryId
+                })
+                .FirstOrDefaultAsync();
+
+            if (result == null)
+                return null;
+
+            var relatedTrades = await FindByCondition(
+                    t => t.CategoryId == result.CategoryId && t.Slug != slugName,
+                    false)
+                .Select(t => new HomePageTradeDto
+                {
+                    TradeId = t.TradeId,
+                    TradeName = t.TradeName,
+                    SellerName = t.SellerProfile != null
+                        ? t.SellerProfile.SellerName
+                        : "Unknown",
+                    SellerProfileId = t.SellerProfileId,
+                    TradeSlugName = t.Slug,
+                    SellerSlugName = t.SellerProfile != null ? t.SellerProfile.Slug : "unknown",
+                    TradeImageId = t.Images
+                        .OrderByDescending(i => i.IsPrimary)
+                        .Select(i => i.TradeImageId)
+                        .FirstOrDefault()
+                })
+                .Take(6)
+                .ToListAsync();
+
+            result.Trade.RelatedTrades = relatedTrades;
+            _cache.Set(cacheKey, result.Trade,
+           new MemoryCacheEntryOptions()
+               .SetAbsoluteExpiration(TimeSpan.FromMinutes(10))
+               .SetSlidingExpiration(TimeSpan.FromMinutes(1)));
+
+            return result.Trade;
+        }
+
+
+        public async Task<ShowTradeDataDto?> FindSellerTradeUsingSlugName(bool tracking, string slugName)
+        {
+            var tradeQ = FindByCondition(p => p.Slug == slugName, tracking);
+
+            return await tradeQ
+                .Select(p => new ShowTradeDataDto
+                {
+                    TradeId = p.TradeId,
+                    TradeName = p.TradeName,
+                    TradeBookings = p.TradeBookings,
+                    Category = p.Category != null ? p.Category.CategoryName : "Not Categorised",
+                    CreatedAt = p.CreatedAt,
+                    HasImage = p.HasImage,
+                    SellerProfileId = p.SellerProfileId,
+                    SellerName = p.SellerProfile != null ? $"{p.SellerProfile.SellerName}" : "Unkown Seller",
+                    TradeSlugName = p.Slug,
+                    SellerSlugName = p.SellerProfile != null ? p.SellerProfile.Slug : "unknown",
+
+                    Reviews = new List<ShowReviewDto>(),
+
+                    TradeImageRefs = p.Images.Select(i => new TradeImageRefDto
+                    {
+                        TradeImageId = i.TradeImageId,
+                        IsPrimary = i.IsPrimary,
+                        IsProcessed = i.IsProcessed,
+                    }).ToList()
+                })
+                .FirstOrDefaultAsync();
+        }
+
+
+        public async Task<ShowTradeDataDto?> FindTradeBySlugName(bool tracking, string slugName)
+        {
+            var tradeQ = FindByCondition(p => p.Slug == slugName, tracking);
+
+            return await tradeQ
+                .Select(p => new ShowTradeDataDto
+                {
+                    TradeId = p.TradeId,
+                    TradeName = p.TradeName,
+                    TradeBookings = p.TradeBookings,
+                    Category = p.Category != null ? p.Category.CategoryName : "Not Categorised",
+                    CreatedAt = p.CreatedAt,
+                    HasImage = p.HasImage,
+                    SellerProfileId = p.SellerProfileId,
+                    SellerName = p.SellerProfile != null ? $"{p.SellerProfile.SellerName}" : "Unkown Seller",
+                    TradeSlugName = p.Slug,
+                    SellerSlugName = p.SellerProfile != null ? p.SellerProfile.Slug : "unknown",
+
+                    Reviews = new List<ShowReviewDto>(),
+
+                    TradeImageRefs = p.Images.Select(i => new TradeImageRefDto
+                    {
+                        TradeImageId = i.TradeImageId,
+                        IsPrimary = i.IsPrimary,
+                        IsProcessed = i.IsProcessed,
+                    }).ToList()
+                })
+                .FirstOrDefaultAsync();
+        }
+    
     }
 }
 

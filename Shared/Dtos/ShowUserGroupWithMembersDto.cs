@@ -10,6 +10,8 @@ namespace Shared.Dtos
     {
         public Guid UserGroupId { get; set; }
         public string UserGroupName { get; set; } = string.Empty;
+        public string UserGroupSlugName { get; set; } = string.Empty;
+
         public string AboutGroup { get; set; } = string.Empty;
 
         public string? City { get; set; } = string.Empty;

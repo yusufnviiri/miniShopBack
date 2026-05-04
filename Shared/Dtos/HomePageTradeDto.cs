@@ -16,6 +16,8 @@ namespace Shared.Dtos
         public Guid SellerProfileId { get; set; }   
         public Guid TradeImageId { get; set; }
         public string SellerName { get; set; } = string.Empty;
+        public string TradeSlugName { get; set; } = string.Empty;
+        public string SellerSlugName { get; set; } = string.Empty;
 
     }
 }

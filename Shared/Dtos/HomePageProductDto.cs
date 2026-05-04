@@ -16,6 +16,9 @@ namespace Shared.Dtos
         public decimal OldPrice { get; set; }
         public string SellerName { get; set; } = string.Empty;
         public bool IsFeatured { get; set; }
+        public string SlugName { get; set; } = string.Empty;
+        public string SellerSlugName { get; set; } = string.Empty;
+
 
 
 

@@ -27,18 +27,25 @@ namespace Services
         private ApplicationUser? _user = new();
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly ApplicationDbContext _dbContext;
+        private readonly SlugService _slugService;
 
 
-        public TradeService(ILoggerManager logger, IRepositoryManager repository, IMapper mapper, UserManager<ApplicationUser> userManager, ApplicationDbContext dbContext)
+
+        public TradeService(ILoggerManager logger, IRepositoryManager repository, IMapper mapper, UserManager<ApplicationUser> userManager, ApplicationDbContext dbContext, SlugService slugService)
         {
             _userManager = userManager;
             _logger = logger;
             _repoManager = repository;
             _mapper = mapper;
             _dbContext = dbContext;
+            _slugService = slugService;
+
         }
 
-
+        private string CreateTradeSlug(string name)
+        {
+            return _slugService.Generate(name);
+        }
         public async Task<(ICollection<HomePageTradeDto> tradersData, MetaData MetaData)> GetHomePageTradesAsync(ProductRequestParameters requestParameters)
         {
             var tradesPagedList = await _repoManager.TradeRepo.GetHomePageTrades(requestParameters);
@@ -70,6 +77,9 @@ namespace Services
 
             tradeEntity.CommodityClassId = commodityClass;
             tradeEntity.SellerProfileId = sellerProfileId;
+
+            var numberOfTrades = await _repoManager.TradeRepo.NumberOfTrades();
+            tradeEntity.Slug =  $"{CreateTradeSlug(tradeDto.TradeName)}-{numberOfTrades + 1}";
             _repoManager.TradeRepo.CreateTrade(tradeEntity);
 
             try
@@ -145,6 +155,18 @@ namespace Services
             }
 
         }
+
+
+
+
+
+
+      public async   Task<ShowTradeDataDto?> FindTradeBySlugNameAsync(bool tracking, string slugName)=> await _repoManager.TradeRepo.FindTradeBySlugName(tracking,slugName);
+
+        public async Task<TradeDataDto?> GetTradeDataUsingSlugNameAsync(string slugName)=> await _repoManager.TradeRepo.GetTradeDataUsingSlugName(slugName);
+        public async Task<ShowTradeDataDto?> FindSellerTradeUsingSlugNameAsync(bool tracking, string slugName)=> await _repoManager.TradeRepo.FindSellerTradeUsingSlugName(tracking,slugName);
+
+
     }
 
 

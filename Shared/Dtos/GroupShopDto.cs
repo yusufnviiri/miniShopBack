@@ -12,6 +12,7 @@ namespace Shared.Dtos
         //public GroupProductsAndTradesList? GroupProducts { get; set; } 
         public ICollection<SellerProductsListDto> MemberProducts { get; set; } = [];
         public ICollection<SellerTradeListDto> MemberTrades { get; set; } = [];
+        public string SellerSlug { get; set; } = string.Empty;
 
     }
 }

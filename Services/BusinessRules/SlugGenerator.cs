@@ -28,7 +28,7 @@ namespace Services.BusinessRules
             _slugHelper = new SlugHelper(config);
         }
 
-        public string Generate(string name)
+        public  string Generate(string name)
         {
             return _slugHelper.GenerateSlug(name);
         }
