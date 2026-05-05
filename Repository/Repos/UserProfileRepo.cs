@@ -41,7 +41,7 @@ namespace Repository.Repos
 
         public async Task<IEnumerable<UserProfileDto>> GetSellerUserProfiles()
         {
-            return await FindByCondition(p => p.SellerProfileId !=Guid.Empty && p.SellerProfile!=null&&p.ActiveGroupId==null, false)
+            return await FindByCondition(p => p.SellerProfileId != Guid.Empty && p.SellerProfile != null && p.ActiveGroupId == null, false)
                 .Select(p => new UserProfileDto
                 {
                     UserProfileId = p.UserProfileId,
@@ -52,14 +52,16 @@ namespace Repository.Repos
                         FirstName = p.IdentityUser.FirstName,
                         LastName = p.IdentityUser.LastName,
                         PhoneNumber = p.IdentityUser.PhoneNumber,
-                        City=p.Address!=null?p.Address.City:"Not Specified",
+                        City = p.Address != null ? p.Address.City : "Not Specified",
                         Country = p.Address != null ? p.Address.Country : "Not Specified",
-                        Company =p.SellerProfile!=null?p.SellerProfile.SellerName : "Not Specified",
-                        SellerId=p.SellerProfileId,
+                        Company = p.SellerProfile != null ? p.SellerProfile.SellerName : "Not Specified",
+                        SellerId = p.SellerProfileId,
                         SlugName = p.Slug
 
 
                     },
+                    SlugName = p.Slug,
+                    SellerSlugName= p.SellerProfileId != Guid.Empty && p.SellerProfile != null ? p.SellerProfile.Slug : "Not Specified",
 
                     CreatedAt = p.CreatedAt
                 })

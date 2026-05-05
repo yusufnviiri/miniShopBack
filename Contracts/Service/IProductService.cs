@@ -19,9 +19,9 @@ namespace Contracts.Service
         Task<ProductDataDto?> GetProductDataBySlugNameAsync(string slugName);
         Task ToggleProductFeaturedState(Guid productId);
         Task MakeAllProductsFeautured();
-        Task<Product> CreateProductAsync(NewProductDto product);
-        Task UpdateProductAsync(NewProductDto product);
-        Task DeleteProductAsync(Guid productId);
+        Task<Product> CreateProductAsync(NewProductDto product, CancellationToken ct = default);
+        Task UpdateProductAsync(NewProductDto product, CancellationToken ct = default);
+        Task DeleteProductAsync(Guid productId, CancellationToken ct = default);
         Task<ShowProductDto?> FindSellerProductAsync(Guid productId);
         Task<ShowProductDto?> FindSellerProductBySlugAsync(string slug);
 

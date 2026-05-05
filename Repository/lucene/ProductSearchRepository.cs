@@ -156,10 +156,10 @@ namespace Repository.lucene
             // field so a single query like "red running shoes nakimuli" can
             // match across name + description + seller + categories without us
             // building a 6-clause BooleanQuery on every search.
-            var catchAll = string.Join(" ",
-                d.ProductName, d.Description, d.SellerName,
-                d.CategoryName, d.SubCategoryName, d.SubCategoryCategoryName);
-            doc.Add(new TextField(ProductIndexFields.CatchAll, catchAll, Field.Store.NO));
+            //var catchAll = string.Join(" ",
+            //    d.ProductName, d.Description, d.SellerName,
+            //    d.CategoryName, d.SubCategoryName, d.SubCategoryCategoryName);
+            //doc.Add(new TextField(ProductIndexFields.CatchAll, catchAll, Field.Store.NO));
 
             return doc;
         }
@@ -177,7 +177,7 @@ namespace Repository.lucene
                 : Math.Min(request.PageSize, maxPageSize);
 
             // ── Build the query ────────────────────────────────────────
-            var (query, sort) = ProductQueryBuilder.Build(request);
+            var (query, sort) = ProductQueryBuilder.Build(request, _ctx.Analyzer);
 
             // We only need the hits for THIS page, but Lucene's TopDocs API
             // wants `numHits = page * size` (it returns the top N, then we skip).

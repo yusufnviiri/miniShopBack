@@ -49,7 +49,7 @@ namespace Services
         }
         public async  Task<IEnumerable<SellerProfileDto>> GetAllSellerProfiles()=>await _repoManager.SellerProfileRepo.GetAllSellerProfiles();
         public async Task<SellerProfile?> FindSellerProfileById(Guid sellerProfileId, bool tracking)=>await _repoManager.SellerProfileRepo.FindSellerProfileById(sellerProfileId,tracking);
-        public async Task CreateSellerProfile(SellerProfile sellerProfile)
+        public async Task CreateSellerProfile(SellerProfile sellerProfile, CancellationToken ct = default)
         {
             var IsExist = await _repoManager.SellerProfileRepo.CheckifUserIsSeller(sellerProfile.SellerId);
             if (!IsExist)
@@ -83,7 +83,7 @@ namespace Services
 
                     }
                     await _repoManager.SaveRepoDataAsync();
-                    await _indexer.QueueReindexBySellerAsync(sellerProfile.SellerProfileId);
+                    await _indexer.QueueReindexBySellerAsync(sellerProfile.SellerProfileId,ct);
 
                 }
 
@@ -94,7 +94,7 @@ namespace Services
                 throw new ObjectBadRequestExeption($"Seller Profile for user with id: {sellerProfile.SellerId} already exists");
             }
         }
-        public async Task UpdateSellerProfile(SellerProfileDto sellerProfile)
+        public async Task UpdateSellerProfile(SellerProfileDto sellerProfile, CancellationToken ct = default)
         {
             var existingSellerProfile = await _repoManager.SellerProfileRepo.FindSellerProfileById(sellerProfile.SellerProfileId, true);
             if (existingSellerProfile == null)
@@ -109,9 +109,10 @@ namespace Services
 
         _repoManager.SellerProfileRepo.UpdateSellerProfile(existingSellerProfile);
             await _repoManager.SaveRepoDataAsync();
+            await _indexer.QueueReindexBySellerAsync(sellerProfile.SellerProfileId, ct);
 
         }
-        public async Task DeleteSellerProfile(Guid sellerProfileId)
+        public async Task DeleteSellerProfile(Guid sellerProfileId, CancellationToken ct = default)
         {
             var existingBuyerProfile = await _repoManager.SellerProfileRepo.FindSellerProfileById(sellerProfileId, tracking: true);
             if (existingBuyerProfile is null)
@@ -119,7 +120,12 @@ namespace Services
                 _logger.LogError($"Seller Profile with id: {sellerProfileId} not found.");
                 throw new ObjectBadRequestExeption($"object with id {sellerProfileId} not found");
             }
-        }
+            else
+            {
+                _repoManager.SellerProfileRepo.DeleteSellerProfile(existingBuyerProfile);
+                await _repoManager.SaveRepoDataAsync();
+                await _indexer.QueueReindexBySellerAsync(sellerProfileId, ct);
+            } }
 
         public async Task<SellerShopDto?> GetSellerShopDetailsAsync(Guid sellerProfileId)
         {

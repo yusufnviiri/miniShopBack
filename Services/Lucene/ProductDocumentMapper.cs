@@ -28,9 +28,25 @@ namespace Services.Lucene
                     $"Product {product.ProductId} has no SellerProfile loaded — " +
                     "ensure .Include(p => p.SellerProfile) is in the query.");
 
-            var primaryImage = product.Images?.FirstOrDefault(); // or your "primary" rule
-            var productImageId = primaryImage?.ProductImageId ?? new Guid();
+            var primaryImageId = product.Images?
+     .Where(i => i.IsPrimary)
+     .OrderByDescending(i => i.IsProcessed)   // prefer processed if multiple are flagged
+     .ThenBy(i => i.CreatedAt)                // stable tiebreak: oldest wins
+     .Select(i => i.ProductImageId)
+     .FirstOrDefault();
+
+            // Fallback: no IsPrimary set yet → take the first processed image, then any image.
+            if (primaryImageId == Guid.Empty)
+            {
+                primaryImageId = product.Images?
+                    .OrderByDescending(i => i.IsProcessed)
+                    .ThenBy(i => i.CreatedAt)
+                    .Select(i => i.ProductImageId)
+                    .FirstOrDefault() ?? Guid.Empty;
+            }
             // ↑ adjust to your ProductImage shape — I don't know its exact properties
+
+
 
             return new ProductIndexDocument
             {
@@ -59,8 +75,8 @@ namespace Services.Lucene
 
                 CreatedAtTicks = product.CreatedAt.Ticks,
 
-                ProductImageId = productImageId,
-
+           
+                ProductImageId = primaryImageId??Guid.Empty,
                 SellerProfileId = product.SellerProfile.SellerProfileId,
                 SellerId = product.SellerProfile.SellerId,
                 SellerName = product.SellerProfile.SellerName,

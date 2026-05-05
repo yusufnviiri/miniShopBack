@@ -14,7 +14,12 @@ namespace Services.Lucene
         public ProductIndexer(IndexingQueue queue) => _queue = queue;
 
         public ValueTask QueueIndexAsync(Guid productId, CancellationToken ct = default)
-            => _queue.EnqueueAsync(new IndexingJob(IndexingJobType.IndexProduct, productId), ct);
+        {
+            if (productId == Guid.Empty)
+                throw new ArgumentException("ProductId cannot be empty.", nameof(productId));
+
+            return _queue.EnqueueAsync(new IndexingJob(IndexingJobType.IndexProduct, productId), ct);
+        }
 
         public ValueTask QueueRemoveAsync(Guid productId, CancellationToken ct = default)
             => _queue.EnqueueAsync(new IndexingJob(IndexingJobType.RemoveProduct, productId), ct);

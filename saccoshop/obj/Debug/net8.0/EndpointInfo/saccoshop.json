@@ -2388,6 +2388,54 @@
         }
       }
     },
+    "/api/search/count": {
+      "get": {
+        "tags": [
+          "Search"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/search/debug-index/{productId}": {
+      "post": {
+        "tags": [
+          "Search"
+        ],
+        "parameters": [
+          {
+            "name": "productId",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/search/rebuild": {
+      "post": {
+        "tags": [
+          "Search"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
     "/api/trades": {
       "get": {
         "tags": [
@@ -4861,11 +4909,11 @@
             "type": "string",
             "format": "uuid"
           },
-          "slug": {
+          "productName": {
             "type": "string",
             "nullable": true
           },
-          "productName": {
+          "slugName": {
             "type": "string",
             "nullable": true
           },
@@ -4888,9 +4936,9 @@
             "type": "number",
             "format": "double"
           },
-          "primaryImageUrl": {
+          "productImageId": {
             "type": "string",
-            "nullable": true
+            "format": "uuid"
           },
           "categoryName": {
             "type": "string",
@@ -4916,7 +4964,7 @@
             "type": "string",
             "nullable": true
           },
-          "sellerSlug": {
+          "sellerSlugName": {
             "type": "string",
             "nullable": true
           },

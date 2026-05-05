@@ -1575,6 +1575,32 @@
   },
   {
     "ContainingType": "Presentation.SearchController",
+    "Method": "Count",
+    "RelativePath": "api/search/count",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Presentation.SearchController",
+    "Method": "DebugIndex",
+    "RelativePath": "api/search/debug-index/{productId}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "productId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Presentation.SearchController",
     "Method": "Search",
     "RelativePath": "api/search/products",
     "HttpMethod": "GET",
@@ -1668,6 +1694,16 @@
         "StatusCode": 200
       }
     ]
+  },
+  {
+    "ContainingType": "Presentation.SearchController",
+    "Method": "Rebuild",
+    "RelativePath": "api/search/rebuild",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
   },
   {
     "ContainingType": "Presentation.TradeImageController",

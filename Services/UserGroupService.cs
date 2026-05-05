@@ -69,7 +69,7 @@ namespace Services
         }
 
         public async Task<UserGroup?> FindUserGroupByIdAsync(Guid userGroupId, bool tracking) => await _repoManager.UserGroupRepo.FindUserGroupById(userGroupId,tracking);
-    public async Task CreateUserGroupAsync(NewUserGroupDto userGroup)
+    public async Task CreateUserGroupAsync(NewUserGroupDto userGroup, CancellationToken ct = default)
         {
             if (userGroup == null)
             {
@@ -122,7 +122,7 @@ namespace Services
                 sellerProfile.Slug = $"seller={CreateUserGroupSlug(sellerProfile.SellerName)}-{numberOfSellers + 1}";
                 _repoManager.SellerProfileRepo.CreateSellerProfile(sellerProfile);
                 await _repoManager.SaveRepoDataAsync();
-                await _indexer.QueueReindexBySellerAsync(sellerProfile.SellerProfileId);
+                await _indexer.QueueReindexBySellerAsync(sellerProfile.SellerProfileId,ct);
 
             }
         }

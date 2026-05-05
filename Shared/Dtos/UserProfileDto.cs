@@ -20,6 +20,8 @@ namespace Shared.Dtos
         public IEnumerable<UserFollowerDto> Following { get; set; } = [];
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
         public string SlugName { get; set; } = string.Empty;
+        public string SellerSlugName { get; set; } = string.Empty;
+
 
 
     }

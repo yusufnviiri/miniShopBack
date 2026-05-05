@@ -12,9 +12,9 @@ namespace Contracts.Service
     {
         Task<IEnumerable<SellerProfileDto>> GetAllSellerProfiles();
         Task<SellerProfile?> FindSellerProfileById(Guid sellerProfileId, bool tracking);
-        Task CreateSellerProfile(SellerProfile sellerProfile);
-        Task UpdateSellerProfile(SellerProfileDto sellerProfile);
-        Task DeleteSellerProfile(Guid sellerProfileId);
+        Task CreateSellerProfile(SellerProfile sellerProfile, CancellationToken ct = default);
+        Task UpdateSellerProfile(SellerProfileDto sellerProfile, CancellationToken ct = default);
+        Task DeleteSellerProfile(Guid sellerProfileId, CancellationToken ct = default);
         Task<SellerShopDto?> GetSellerShopDetailsAsync(Guid sellerProfileId);
         Task<SellerShopDto?> GetSellerShopDetailsBySlugAsync(string slug);
 

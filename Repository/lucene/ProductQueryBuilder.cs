@@ -1,4 +1,6 @@
-﻿using Lucene.Net.Index;
+﻿using Lucene.Net.Analysis;
+using Lucene.Net.Analysis.TokenAttributes;
+using Lucene.Net.Index;
 using Lucene.Net.Search;
 using Shared.Dtos;
 using System;
@@ -11,7 +13,21 @@ namespace Repository.lucene
 {
     internal static class ProductQueryBuilder
     {
-        public static (Query Query, Sort? Sort) Build(ProductSearchRequest req)
+        // Field weights — tuned for product search.
+        // Hits in the product name matter ~5x more than hits in description.
+        // Tweak as you observe real query patterns.
+        private const float BoostProductName = 5.0f;
+        private const float BoostCategory = 3.0f;
+        private const float BoostSubCategory = 2.5f;
+        private const float BoostSeller = 2.0f;
+        private const float BoostDescription = 1.0f;
+
+        // Prefix-match boost — lower than exact match, so "watch" still beats "watching".
+        private const float BoostPrefix = 0.3f;
+
+        public static (Query Query, Sort? Sort) Build(
+            ProductSearchRequest req,
+            Analyzer analyzer)
         {
             var bq = new BooleanQuery();
             var hasAnyClause = false;
@@ -19,45 +35,24 @@ namespace Repository.lucene
             // ── Free-text search ────────────────────────────────────────
             if (!string.IsNullOrWhiteSpace(req.Query))
             {
-                // Tokenize the user input on whitespace. For each token we add
-                // a SHOULD clause across the catch-all field. Multiple tokens
-                // boost relevance for products matching more of them.
-                var tokens = req.Query
-                    .ToLowerInvariant()
-                    .Split(' ', StringSplitOptions.RemoveEmptyEntries
-                              | StringSplitOptions.TrimEntries);
-
-                if (tokens.Length > 0)
+                var textQuery = BuildTextQuery(req.Query, analyzer);
+                if (textQuery is not null)
                 {
-                    var textQuery = new BooleanQuery();
-                    foreach (var token in tokens)
-                    {
-                        // TermQuery = exact term match. Cheap and fast.
-                        textQuery.Add(
-                            new TermQuery(new Term(ProductIndexFields.CatchAll, token)),
-                            Occur.SHOULD);
-                    }
-                    // The text query as a whole MUST match (at least one token).
-                    textQuery.MinimumNumberShouldMatch = 1;
                     bq.Add(textQuery, Occur.MUST);
                     hasAnyClause = true;
                 }
             }
 
-            // ── Category filters ────────────────────────────────────────
+            // ── Filters (unchanged from before) ─────────────────────────
             if (req.CategoryId is int catId)
                 AddIntFilter(bq, ProductIndexFields.CategoryId, catId, ref hasAnyClause);
-
             if (req.SubCategoryId is int subId)
                 AddIntFilter(bq, ProductIndexFields.SubCategoryId, subId, ref hasAnyClause);
-
             if (req.SubCategoryCategoryId is int sscId)
                 AddIntFilter(bq, ProductIndexFields.SubCategoryCategoryId, sscId, ref hasAnyClause);
-
             if (req.CommodityClassId is int ccId)
                 AddIntFilter(bq, ProductIndexFields.CommodityClassId, ccId, ref hasAnyClause);
 
-            // ── Condition (exact text) ──────────────────────────────────
             if (!string.IsNullOrWhiteSpace(req.Condition))
             {
                 bq.Add(new TermQuery(new Term(ProductIndexFields.Condition, req.Condition)),
@@ -65,21 +60,14 @@ namespace Repository.lucene
                 hasAnyClause = true;
             }
 
-            // ── Price range ─────────────────────────────────────────────
             if (req.MinPrice is not null || req.MaxPrice is not null)
             {
-                bq.Add(
-                    NumericRangeQuery.NewInt64Range(
-                        field: ProductIndexFields.PriceMinor,
-                        min: req.MinPrice,
-                        max: req.MaxPrice,
-                        minInclusive: true,
-                        maxInclusive: true),
+                bq.Add(NumericRangeQuery.NewInt64Range(
+                    ProductIndexFields.PriceMinor, req.MinPrice, req.MaxPrice, true, true),
                     Occur.MUST);
                 hasAnyClause = true;
             }
 
-            // ── Seller filter ───────────────────────────────────────────
             if (req.SellerProfileId is Guid sellerId)
             {
                 bq.Add(new TermQuery(new Term(
@@ -88,38 +76,110 @@ namespace Repository.lucene
                 hasAnyClause = true;
             }
 
-            // ── Boolean flag filters ────────────────────────────────────
             if (req.IsFeatured == true)
                 AddBoolFilter(bq, ProductIndexFields.IsFeatured, true, ref hasAnyClause);
-
             if (req.VerifiedSellerOnly == true)
                 AddBoolFilter(bq, ProductIndexFields.IsVerified, true, ref hasAnyClause);
-
             if (req.WithImageOnly == true)
                 AddBoolFilter(bq, ProductIndexFields.HasImage, true, ref hasAnyClause);
 
-            // If no clauses were added (empty request), match everything.
-            // This is what powers "browse all products" via the search endpoint.
             Query finalQuery = hasAnyClause ? bq : new MatchAllDocsQuery();
 
-            // ── Sort ────────────────────────────────────────────────────
+            // ── Sort (unchanged) ────────────────────────────────────────
             Sort? sort = req.Sort switch
             {
-                ProductSortMode.Relevance => null, // null = sort by score
+                ProductSortMode.Relevance => null,
                 ProductSortMode.NewestFirst =>
-                    new Sort(new SortField(ProductIndexFields.CreatedAtTicks, SortFieldType.INT64, reverse: true)),
+                    new Sort(new SortField(ProductIndexFields.CreatedAtTicks, SortFieldType.INT64, true)),
                 ProductSortMode.PriceLowToHigh =>
-                    new Sort(new SortField(ProductIndexFields.PriceMinor, SortFieldType.INT64, reverse: false)),
+                    new Sort(new SortField(ProductIndexFields.PriceMinor, SortFieldType.INT64, false)),
                 ProductSortMode.PriceHighToLow =>
-                    new Sort(new SortField(ProductIndexFields.PriceMinor, SortFieldType.INT64, reverse: true)),
+                    new Sort(new SortField(ProductIndexFields.PriceMinor, SortFieldType.INT64, true)),
                 ProductSortMode.HighestRated =>
                     new Sort(
-                        new SortField(ProductIndexFields.AverageRating, SortFieldType.SINGLE, reverse: true),
-                        new SortField(ProductIndexFields.ReviewCount, SortFieldType.INT32, reverse: true)),
+                        new SortField(ProductIndexFields.AverageRating, SortFieldType.SINGLE, true),
+                        new SortField(ProductIndexFields.ReviewCount, SortFieldType.INT32, true)),
                 _ => null,
             };
 
             return (finalQuery, sort);
+        }
+
+        /// <summary>
+        /// Builds the free-text portion of the query.
+        /// For each user-typed token, builds a SHOULD clause that matches the token
+        /// against multiple fields with different boosts, plus a low-boost prefix
+        /// match for partial typing.
+        /// </summary>
+        private static Query? BuildTextQuery(string userInput, Analyzer analyzer)
+        {
+            // Run the user's input through the SAME analyzer used at index time.
+            // This is critical — it applies stemming, lowercasing, stop-word removal
+            // so "Running Shoes" becomes ["run", "shoe"] and matches indexed forms.
+            var tokens = AnalyzeToTokens(analyzer, ProductIndexFields.ProductName, userInput);
+            if (tokens.Count == 0) return null;
+
+            var outer = new BooleanQuery();
+
+            foreach (var token in tokens)
+            {
+                // For each token, build a per-field disjunction (this token in ANY field).
+                var perToken = new BooleanQuery();
+
+                AddBoosted(perToken, ProductIndexFields.ProductName, token, BoostProductName);
+                AddBoosted(perToken, ProductIndexFields.CategoryName, token, BoostCategory);
+                AddBoosted(perToken, ProductIndexFields.SubCategoryName, token, BoostSubCategory);
+                AddBoosted(perToken, ProductIndexFields.SubCategoryCategoryName, token, BoostSubCategory);
+                AddBoosted(perToken, ProductIndexFields.SellerName, token, BoostSeller);
+                AddBoosted(perToken, ProductIndexFields.Description, token, BoostDescription);
+
+                // Prefix fallback against ProductName only — handles "wat" → "watch"
+                // while the user is still typing. Low boost so it doesn't dominate.
+                var prefix = new PrefixQuery(new Term(ProductIndexFields.ProductName, token))
+                {
+                    Boost = BoostPrefix
+                };
+                perToken.Add(prefix, Occur.SHOULD);
+
+                // The token must be matched somewhere — at least one of the SHOULDs above.
+                perToken.MinimumNumberShouldMatch = 1;
+
+                // Multi-token queries require all tokens (each token MUST be matched somewhere).
+                // For "running shoes" → product needs to match both "run" and "shoe" (in any field).
+                outer.Add(perToken, Occur.MUST);
+            }
+
+            return outer;
+        }
+
+        private static void AddBoosted(BooleanQuery bq, string field, string token, float boost)
+        {
+            var tq = new TermQuery(new Term(field, token)) { Boost = boost };
+            bq.Add(tq, Occur.SHOULD);
+        }
+
+        /// <summary>
+        /// Pushes user input through the configured analyzer and collects the tokens.
+        /// This applies the same stemming, lowercasing, and stop-word removal that
+        /// happened at index time, so query tokens align with stored tokens.
+        /// </summary>
+        private static List<string> AnalyzeToTokens(Analyzer analyzer, string field, string text)
+        {
+            var tokens = new List<string>();
+
+            using var reader = new System.IO.StringReader(text);
+            using var stream = analyzer.GetTokenStream(field, reader);
+            var termAttr = stream.AddAttribute<ICharTermAttribute>();
+
+            stream.Reset();
+            while (stream.IncrementToken())
+            {
+                var token = termAttr.ToString();
+                if (!string.IsNullOrEmpty(token)) tokens.Add(token);
+            }
+            stream.End();
+
+            return tokens;
         }
 
         private static void AddIntFilter(BooleanQuery bq, string field, int value, ref bool hasAny)

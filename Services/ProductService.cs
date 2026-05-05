@@ -78,33 +78,34 @@ namespace Services
             return product;
         }
 
-        public async Task<Product> CreateProductAsync(NewProductDto product)
+        public async Task<Product> CreateProductAsync(NewProductDto product, CancellationToken ct = default)
         {
-           
-           
             var productEntity = _mapper.Map<Product>(product);
             var numberOfProducts = await _repoManager.ProductRepo.NumberOfProducts();
             productEntity.Slug = $"{CreateSlug(product.ProductName)}-{numberOfProducts + 1}";
-            var (commodityClass, sellerProfileId) = await SellerRules.CommodityClassToSellerRef(product.SellerId, _repoManager);
 
+            var (commodityClass, sellerProfileId) =
+                await SellerRules.CommodityClassToSellerRef(product.SellerId, _repoManager);
+            productEntity.CommodityClassId = commodityClass;
+            productEntity.SellerProfileId = sellerProfileId;
 
-            productEntity.CommodityClassId=commodityClass;
-            productEntity.SellerProfileId=sellerProfileId;
             _repoManager.ProductRepo.CreateProduct(productEntity);
             await _repoManager.SaveRepoDataAsync();
-            await _indexer.QueueIndexAsync(product.ProductId);
+
+            // ✅ use the saved entity's ID, not the DTO's
+            await _indexer.QueueIndexAsync(productEntity.ProductId, ct);
 
             return productEntity;
         }
-        public async Task UpdateProductAsync(NewProductDto product)
+        public async Task UpdateProductAsync(NewProductDto product, CancellationToken ct = default)
         {
             var productEntity = _mapper.Map<Product>(product);
             _repoManager.ProductRepo.UpdateProduct(productEntity);
             await _repoManager.SaveRepoDataAsync();
-            await _indexer.QueueIndexAsync(product.ProductId);
+            await _indexer.QueueIndexAsync(product.ProductId,ct);
 
         }
-        public async Task DeleteProductAsync(Guid productId)
+        public async Task DeleteProductAsync(Guid productId, CancellationToken ct = default)
         {
             var productEntity = await _repoManager.ProductRepo.FindProductForUpdate( productId);
             if (productEntity == null)
@@ -114,7 +115,7 @@ namespace Services
             }
             _repoManager.ProductRepo.DeleteProduct(productEntity);
             await _repoManager.SaveRepoDataAsync();
-            await _indexer.QueueRemoveAsync(productId);
+            await _indexer.QueueRemoveAsync(productId,ct);
 
         }
 

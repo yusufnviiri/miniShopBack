@@ -27,9 +27,6 @@ C:\Users\Darc\source\repos\miniShopBack\saccoshop\bin\Debug\net8.0\J2N.dll
 C:\Users\Darc\source\repos\miniShopBack\saccoshop\bin\Debug\net8.0\PhoneNumbers.dll
 C:\Users\Darc\source\repos\miniShopBack\saccoshop\bin\Debug\net8.0\Lucene.Net.dll
 C:\Users\Darc\source\repos\miniShopBack\saccoshop\bin\Debug\net8.0\Lucene.Net.Analysis.Common.dll
-C:\Users\Darc\source\repos\miniShopBack\saccoshop\bin\Debug\net8.0\Lucene.Net.Facet.dll
-C:\Users\Darc\source\repos\miniShopBack\saccoshop\bin\Debug\net8.0\Lucene.Net.Grouping.dll
-C:\Users\Darc\source\repos\miniShopBack\saccoshop\bin\Debug\net8.0\Lucene.Net.Join.dll
 C:\Users\Darc\source\repos\miniShopBack\saccoshop\bin\Debug\net8.0\Lucene.Net.Queries.dll
 C:\Users\Darc\source\repos\miniShopBack\saccoshop\bin\Debug\net8.0\Lucene.Net.QueryParser.dll
 C:\Users\Darc\source\repos\miniShopBack\saccoshop\bin\Debug\net8.0\Lucene.Net.Sandbox.dll

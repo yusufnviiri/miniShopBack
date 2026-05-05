@@ -14,31 +14,35 @@ namespace Repository.lucene
         {
             return new ProductCardDto
             {
+                // Product
                 ProductId = ParseGuidN(doc.Get(ProductIndexFields.ProductId)),
-                Slug = doc.Get(ProductIndexFields.Slug) ?? string.Empty,
-
                 ProductName = doc.Get(ProductIndexFields.ProductName) ?? string.Empty,
+                SlugName = doc.Get(ProductIndexFields.Slug) ?? string.Empty,
                 Description = doc.Get(ProductIndexFields.Description) ?? string.Empty,
                 Condition = doc.Get(ProductIndexFields.Condition) ?? string.Empty,
                 IsFeatured = doc.Get(ProductIndexFields.IsFeatured) == "1",
 
                 Price = doc.GetField(ProductIndexFields.PriceMinor)?.GetInt64Value() ?? 0,
                 OldPrice = doc.GetField(ProductIndexFields.OldPriceMinor)?.GetInt64Value() ?? 0,
-                PrimaryImageUrl = doc.Get(ProductIndexFields.ProductImageId) ?? string.Empty,
 
+                ProductImageId = ParseGuidN(doc.Get(ProductIndexFields.ProductImageId)),
+
+                // Categories
                 CategoryName = doc.Get(ProductIndexFields.CategoryName) ?? string.Empty,
                 SubCategoryName = doc.Get(ProductIndexFields.SubCategoryName) ?? string.Empty,
                 SubCategoryCategoryName = doc.Get(ProductIndexFields.SubCategoryCategoryName) ?? string.Empty,
 
+                // Seller
                 SellerProfileId = ParseGuidN(doc.Get(ProductIndexFields.SellerProfileId)),
                 SellerId = ParseGuidN(doc.Get(ProductIndexFields.SellerId)),
                 SellerName = doc.Get(ProductIndexFields.SellerName) ?? string.Empty,
-                SellerSlug = doc.Get(ProductIndexFields.SellerSlug) ?? string.Empty,
+                SellerSlugName = doc.Get(ProductIndexFields.SellerSlug) ?? string.Empty,
                 WhatsAppNumber = doc.Get(ProductIndexFields.WhatsAppNumber) ?? string.Empty,
                 SellerTypeId = doc.GetField(ProductIndexFields.SellerTypeId)?.GetInt32Value() ?? 0,
                 SellerTierId = doc.GetField(ProductIndexFields.SellerTierId)?.GetInt32Value() ?? 0,
                 IsVerified = doc.Get(ProductIndexFields.IsVerified) == "1",
 
+                // Aggregates
                 ReviewCount = doc.GetField(ProductIndexFields.ReviewCount)?.GetInt32Value() ?? 0,
                 AverageRating = doc.GetField(ProductIndexFields.AverageRating)?.GetSingleValue() ?? 0f,
 

@@ -269,7 +269,7 @@ namespace Presentation
                   await _service.ProductImageService.CreateProductImageListAsync(productImages);
             }
 
-            return Ok(product.ProductId);
+            return Ok(new { data = product.Slug });
 
             //return Ok(new { message = "Product Added" });
         }

@@ -32,8 +32,7 @@ namespace Repository.lucene
 
         public const string CreatedAtTicks = "CreatedAtTicks";
 
-        public const string ProductImageId = "PrimaryImageUrl";
-
+        public const string ProductImageId = "ProductImageId";
         public const string SellerProfileId = "SellerProfileId";
         public const string SellerId = "SellerId";
         public const string SellerName = "SellerName";

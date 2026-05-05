@@ -10,6 +10,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Directory = System.IO.Directory;
+using Lucene.Net.Analysis.En;
+
 
 namespace Repository.lucene
 {
@@ -44,7 +46,8 @@ public sealed class LuceneIndexContext : IDisposable
 
             // StandardAnalyzer: lowercases, splits on whitespace/punctuation,
             // removes common English stop words. Good default for product text.
-            Analyzer = new StandardAnalyzer(Version);
+            //Analyzer = new StandardAnalyzer(Version);
+            Analyzer = new EnglishAnalyzer(Version);
 
             var config = new IndexWriterConfig(Version, Analyzer)
             {
