@@ -238,6 +238,21 @@ namespace saccoshop.Extensions
 
             return services;
         }
+
+
+        public static IServiceCollection AddUserSearch(this IServiceCollection services)
+        {
+            services.AddSingleton<UserIndexingQueue>();
+            services.AddSingleton<UserDocumentMapper>();
+
+            services.AddScoped<IUserSearchRepository, UserSearchRepository>();
+            services.AddScoped<IUserIndexer, UserIndexer>();
+            services.AddScoped<IUserSearchService, UserSearchService>();
+
+            services.AddHostedService<UserIndexingBackgroundService>();
+
+            return services;
+        }
     }
 
 }

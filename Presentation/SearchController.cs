@@ -1,6 +1,7 @@
 ﻿using Contracts.Lucene;
 using Contracts.Service;
 using Entities.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -27,17 +28,20 @@ namespace Presentation
         
         private readonly IProductSearchService _search;
         private readonly ITradeSearchService _tradeSearch;
+        private readonly IUserSearchService _userSearchService;
 
 
 
 
 
 
-        public SearchController(IServiceManager service, IProductSearchService search, ITradeSearchService tradeSearch)
+
+        public SearchController(IServiceManager service, IProductSearchService search, ITradeSearchService tradeSearch, IUserSearchService userSearchService)
         {
             _service = service;
             _search = search;
             _tradeSearch = tradeSearch;
+            _userSearchService = userSearchService;
             //_roleManager = roleManager;
         }
 
@@ -255,7 +259,78 @@ namespace Presentation
             return Ok(new { indexed });
         }
 
+        [HttpGet("users")]
+        public async Task<ActionResult<UserSearchResult>> Search(
+       [FromQuery] UserSearchRequest request,
+       CancellationToken ct)
+        {
+            var result = await _userSearchService.SearchAsync(request, ct);
+            return Ok(result);
+        }
 
+        /// <summary>
+        /// Walks all user profiles and re-indexes them.
+        /// Heavy operation — gate behind admin role in production.
+        /// </summary>
+        [HttpPost("users/rebuild")]
+        //[Authorize(Roles = "Admin")]    // tighten for rebuild
+        public async Task<IActionResult> Rebuild(
+            [FromServices] ApplicationDbContext db,
+            [FromServices] UserDocumentMapper mapper,
+            [FromServices] IUserSearchRepository repo,
+            [FromServices] ILuceneIndexRegistry registry,
+            CancellationToken ct)
+        {
+            var ids = await db.UserProfiles
+                .AsNoTracking()
+                .Select(p => p.UserProfileId)
+                .ToListAsync(ct);
+
+            var indexed = 0;
+
+            foreach (var id in ids)
+            {
+                var profile = await db.UserProfiles
+                    .AsNoTracking()
+                    .Include(p => p.IdentityUser)
+                    .Include(p => p.Address)
+                    .Include(p => p.SellerProfile)
+                    .FirstOrDefaultAsync(p => p.UserProfileId == id, ct);
+
+                if (profile is null) continue;
+
+                var groupNames = await db.GroupMembers
+                    .AsNoTracking()
+                    .Where(gm => gm.UserProfileId == id)
+                    .Select(gm => gm.Group.UserGroupName)
+                    .ToListAsync(ct);
+
+                var productCount = profile.SellerProfileId.HasValue
+                    ? await db.Products.AsNoTracking().CountAsync(
+                        p => p.SellerProfileId == profile.SellerProfileId.Value
+                          && p.IsActive && !p.IsDeleted, ct)
+                    : 0;
+
+                var tradeCount = profile.SellerProfileId.HasValue
+                    ? await db.Trades.AsNoTracking().CountAsync(
+                        t => t.SellerProfileId == profile.SellerProfileId.Value
+                          && t.IsActive && !t.IsDeleted, ct)
+                    : 0;
+
+                var dto = mapper.Map(profile, groupNames,
+                    groupNames.Count, productCount, tradeCount);
+
+                repo.AddOrUpdate(dto);
+                indexed++;
+
+                if (indexed % 200 == 0) repo.Commit();
+            }
+
+            repo.Commit();
+            registry.Get(SearchIndexNames.Users).MaybeRefresh();
+
+            return Ok(new { indexed });
+        }
 
     }
 }
