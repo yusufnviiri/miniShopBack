@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Contracts;
+using Contracts.Lucene;
 using Contracts.Repo;
 using Contracts.Service;
 using Entities.Exceptions;
@@ -28,10 +29,9 @@ namespace Services
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly ApplicationDbContext _dbContext;
         private readonly SlugService _slugService;
+        private readonly ITradeIndexer _indexer;
 
-
-
-        public TradeService(ILoggerManager logger, IRepositoryManager repository, IMapper mapper, UserManager<ApplicationUser> userManager, ApplicationDbContext dbContext, SlugService slugService)
+        public TradeService(ILoggerManager logger, IRepositoryManager repository, IMapper mapper, UserManager<ApplicationUser> userManager, ApplicationDbContext dbContext, SlugService slugService, ITradeIndexer tradeIndexer )
         {
             _userManager = userManager;
             _logger = logger;
@@ -39,6 +39,7 @@ namespace Services
             _mapper = mapper;
             _dbContext = dbContext;
             _slugService = slugService;
+            _indexer = tradeIndexer;
 
         }
 
@@ -63,7 +64,7 @@ namespace Services
         }
         public async Task<ShowTradeDataDto?> FindSellerTradeAsync(Guid tradeId) => await _repoManager.TradeRepo.FindSellerTrade(tradeId);
         public async Task<Trade?> FindTradeForUpdateAsync(Guid tradeId) => await _repoManager.TradeRepo.FindTradeForUpdate(tradeId);
-        public async Task<Trade> CreateTradeAsync(NewTradeDto tradeDto)
+        public async Task<Trade> CreateTradeAsync(NewTradeDto tradeDto, CancellationToken ct = default)
 
         {
             if (tradeDto.MinimumPrice < 0 || tradeDto.MinimumPrice > 1000000000)
@@ -85,6 +86,8 @@ namespace Services
             try
             {
                 await _repoManager.SaveRepoDataAsync();
+                await _indexer.QueueIndexAsync(tradeEntity.TradeId, ct);
+
             }
             catch (DbUpdateException ex)
             {
@@ -106,31 +109,30 @@ namespace Services
 
                 throw;
             }
-
-
-
-
-
-
-
+            
             return tradeEntity;
         }
 
 
 
 
-        public async Task UpdateTradeAsync(Trade trade)
+        public async Task UpdateTradeAsync(Trade trade, CancellationToken ct = default)
         {
             _repoManager.TradeRepo.UpdateTrade(trade);
             await _repoManager.SaveRepoDataAsync();
+            await _indexer.QueueIndexAsync(trade.TradeId, ct);
+
         }
-        public async Task DeleteTradeAsync(Guid tradeId)
+        public async Task DeleteTradeAsync(Guid tradeId, CancellationToken ct = default)
         {
             var existingTrade = await _repoManager.TradeRepo.FindTradeForUpdate(tradeId);
             if (existingTrade != null)
             {
                 _repoManager.TradeRepo.DeleteTrade(existingTrade);
                 await _repoManager.SaveRepoDataAsync();
+                await _indexer.QueueRemoveAsync(tradeId, ct);
+
+
             }
             else
             {
@@ -141,13 +143,15 @@ namespace Services
         public void MakeTradeFeautured(Guid tradeId) => _repoManager.TradeRepo.MakeTradeFeautured(tradeId);
         public void MakeAllTradesFeautured() => _repoManager.TradeRepo.MakeAllTradesFeautured();
 
-        public async Task UpdateTradeDescription(SharedUpdatesDto sharedUpdates)
+        public async Task UpdateTradeDescription(SharedUpdatesDto sharedUpdates, CancellationToken ct = default)
         {
             var trade = await _repoManager.TradeRepo.FindTradeForUpdate(sharedUpdates.ItemId);
             if (trade != null)
             {
                 trade.Description = sharedUpdates.ItemDescription;
                 await _repoManager.SaveRepoDataAsync();
+                await _indexer.QueueIndexAsync(trade.TradeId, ct);
+
             }
             else
             {

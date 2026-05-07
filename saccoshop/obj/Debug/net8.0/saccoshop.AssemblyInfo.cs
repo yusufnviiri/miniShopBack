@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("saccoshop")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d394c4f85fe3f2bae305949460aa89ff16a407e4")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+14d8af880d684c56728ac1c3a5acbc7f9c224723")]
 [assembly: System.Reflection.AssemblyProductAttribute("saccoshop")]
 [assembly: System.Reflection.AssemblyTitleAttribute("saccoshop")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

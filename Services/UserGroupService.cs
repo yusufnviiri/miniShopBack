@@ -30,14 +30,16 @@ namespace Services
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SlugService _slugService;
         private readonly IProductIndexer _indexer;
+        private readonly ITradeIndexer _tradeIndexer;
 
 
-        public UserGroupService(ILoggerManager logger, IRepositoryManager repository, IMapper mapper, UserManager<ApplicationUser> userManager, SlugService slugService, IProductIndexer productIndexer)
+        public UserGroupService(ILoggerManager logger, IRepositoryManager repository, IMapper mapper, UserManager<ApplicationUser> userManager, SlugService slugService, IProductIndexer productIndexer, ITradeIndexer tradeIndexer)
         {
             _userManager = userManager;
             _logger = logger;
             _repoManager = repository;
             _mapper = mapper;
+            _tradeIndexer = tradeIndexer;
             _slugService = slugService;
             _indexer = productIndexer;
 
@@ -123,6 +125,7 @@ namespace Services
                 _repoManager.SellerProfileRepo.CreateSellerProfile(sellerProfile);
                 await _repoManager.SaveRepoDataAsync();
                 await _indexer.QueueReindexBySellerAsync(sellerProfile.SellerProfileId,ct);
+                await _tradeIndexer.QueueReindexBySellerAsync(sellerProfile.SellerProfileId, ct);
 
             }
         }

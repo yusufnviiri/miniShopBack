@@ -10,5 +10,8 @@ namespace Contracts.Lucene
     {
         public const string Products = "products";
         // public const string Users = "users";  ← future
+
+        public const string Trades = "trades";
+
     }
 }

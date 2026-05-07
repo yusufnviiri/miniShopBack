@@ -52,6 +52,19 @@ namespace Repository.lucene
 
         public void Commit() => _ctx.Writer.Commit();
 
+        private static IEnumerable<string> TokenizeForPrefix(string text)
+        {
+            if (string.IsNullOrWhiteSpace(text)) yield break;
+
+            foreach (var raw in text.Split(
+                new[] { ' ', '\t', '\n', '\r', '-', '_', ',', '.', '/', '\\' },
+                StringSplitOptions.RemoveEmptyEntries))
+            {
+                var lower = raw.ToLowerInvariant();
+                if (lower.Length > 0) yield return lower;
+            }
+        }
+
         private static Document BuildDocument(ProductIndexDocument d)
         {
             var doc = new Document();
@@ -67,8 +80,13 @@ namespace Repository.lucene
 
             // ─── Searchable text ──────────────────────────────────────────
             // TextField = indexed AND analyzed (tokenized, lowercased, stop-worded).
-            doc.Add(new TextField(ProductIndexFields.ProductName,
-                d.ProductName, Field.Store.YES));
+            doc.Add(new TextField(ProductIndexFields.ProductName, d.ProductName, Field.Store.YES));
+
+            // New unstemmed prefix field — add this block right after
+            foreach (var token in TokenizeForPrefix(d.ProductName))
+            {
+                doc.Add(new StringField(ProductIndexFields.ProductNamePrefix, token, Field.Store.NO));
+            }
             doc.Add(new TextField(ProductIndexFields.Description,
                 Truncate(d.Description, 1000), Field.Store.YES));
 

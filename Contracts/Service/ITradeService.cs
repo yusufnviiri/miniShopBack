@@ -17,11 +17,11 @@ namespace Contracts.Service
         Task<TradeDataDto?> GetTradeDataAsync(Guid tradeId);
         Task<ShowTradeDataDto?> FindSellerTradeAsync(Guid TradeId);
         Task<Trade?> FindTradeForUpdateAsync(Guid tradeId);
-        Task<Trade> CreateTradeAsync(NewTradeDto tradeDto);
-        Task UpdateTradeAsync(Trade trade);
-        Task DeleteTradeAsync(Guid tradeId);
+        Task<Trade> CreateTradeAsync(NewTradeDto tradeDto, CancellationToken ct = default);
+        Task UpdateTradeAsync(Trade trade, CancellationToken ct = default);
+        Task DeleteTradeAsync(Guid tradeId, CancellationToken ct = default);
         void MakeTradeFeautured(Guid tradeId);
-        Task UpdateTradeDescription(SharedUpdatesDto sharedUpdates);
+        Task UpdateTradeDescription(SharedUpdatesDto sharedUpdates, CancellationToken ct = default);
         void MakeAllTradesFeautured();
 
 

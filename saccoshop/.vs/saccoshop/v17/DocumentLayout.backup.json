@@ -3,16 +3,138 @@
   "WorkspaceRootPath": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\saccoshop\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{0262AC5E-9978-4191-93EA-7C87D60B83F8}|..\\Repository\\Repository.csproj|c:\\users\\darc\\source\\repos\\minishopback\\repository\\lucene\\tradesearchrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0262AC5E-9978-4191-93EA-7C87D60B83F8}|..\\Repository\\Repository.csproj|c:\\users\\darc\\source\\repos\\minishopback\\repository\\lucene\\tradequerybuilder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0262AC5E-9978-4191-93EA-7C87D60B83F8}|..\\Repository\\Repository.csproj|c:\\users\\darc\\source\\repos\\minishopback\\repository\\lucene\\tradeindexfields.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7E37078D-26E4-48B6-8F3D-8841A03D4B58}|..\\Presentation\\Presentation.csproj|c:\\users\\darc\\source\\repos\\minishopback\\presentation\\searchcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8B631997-5DF7-4FA8-9908-73EBAB0D1360}|..\\Services\\Services.csproj|c:\\users\\darc\\source\\repos\\minishopback\\services\\usergroupservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7D31D870-C024-497F-A5C8-C0C91D76DF02}|..\\Shared\\Shared.csproj|c:\\users\\darc\\source\\repos\\minishopback\\shared\\dtos\\newproductdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8B631997-5DF7-4FA8-9908-73EBAB0D1360}|..\\Services\\Services.csproj|c:\\users\\darc\\source\\repos\\minishopback\\services\\productservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1CED077F-4043-49AB-801B-B4191EC78E98}|..\\Entities\\Entities.csproj|c:\\users\\darc\\source\\repos\\minishopback\\entities\\models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8B631997-5DF7-4FA8-9908-73EBAB0D1360}|..\\Services\\Services.csproj|c:\\users\\darc\\source\\repos\\minishopback\\services\\servicemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8B631997-5DF7-4FA8-9908-73EBAB0D1360}|..\\Services\\Services.csproj|c:\\users\\darc\\source\\repos\\minishopback\\services\\sellerprofileservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7E37078D-26E4-48B6-8F3D-8841A03D4B58}|..\\Presentation\\Presentation.csproj|c:\\users\\darc\\source\\repos\\minishopback\\presentation\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DD9C04E6-593F-42AD-8DBE-B47BE69DDBF0}|..\\Contracts\\Contracts.csproj|c:\\users\\darc\\source\\repos\\minishopback\\contracts\\service\\iproductservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8B631997-5DF7-4FA8-9908-73EBAB0D1360}|..\\Services\\Services.csproj|c:\\users\\darc\\source\\repos\\minishopback\\services\\tradeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DD9C04E6-593F-42AD-8DBE-B47BE69DDBF0}|..\\Contracts\\Contracts.csproj|c:\\users\\darc\\source\\repos\\minishopback\\contracts\\service\\itradeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8B631997-5DF7-4FA8-9908-73EBAB0D1360}|..\\Services\\Services.csproj|c:\\users\\darc\\source\\repos\\minishopback\\services\\lucene\\tradeindexer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7E37078D-26E4-48B6-8F3D-8841A03D4B58}|..\\Presentation\\Presentation.csproj|c:\\users\\darc\\source\\repos\\minishopback\\presentation\\tradecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C1494A3A-3588-4154-93B4-90B43525B2C8}|saccoshop.csproj|c:\\users\\darc\\source\\repos\\minishopback\\saccoshop\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C1494A3A-3588-4154-93B4-90B43525B2C8}|saccoshop.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C1494A3A-3588-4154-93B4-90B43525B2C8}|saccoshop.csproj|c:\\users\\darc\\source\\repos\\minishopback\\saccoshop\\extensions\\serviceextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C1494A3A-3588-4154-93B4-90B43525B2C8}|saccoshop.csproj|solutionrelative:extensions\\serviceextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8B631997-5DF7-4FA8-9908-73EBAB0D1360}|..\\Services\\Services.csproj|c:\\users\\darc\\source\\repos\\minishopback\\services\\lucene\\tradesearchservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DD9C04E6-593F-42AD-8DBE-B47BE69DDBF0}|..\\Contracts\\Contracts.csproj|c:\\users\\darc\\source\\repos\\minishopback\\contracts\\lucene\\itradesearchservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C1494A3A-3588-4154-93B4-90B43525B2C8}|saccoshop.csproj|c:\\users\\darc\\source\\repos\\minishopback\\saccoshop\\backgroundservices\\tradeindexingbackgroundservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C1494A3A-3588-4154-93B4-90B43525B2C8}|saccoshop.csproj|solutionrelative:backgroundservices\\tradeindexingbackgroundservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C1494A3A-3588-4154-93B4-90B43525B2C8}|saccoshop.csproj|c:\\users\\darc\\source\\repos\\minishopback\\saccoshop\\backgroundservices\\indexingbackgroundservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C1494A3A-3588-4154-93B4-90B43525B2C8}|saccoshop.csproj|solutionrelative:backgroundservices\\indexingbackgroundservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8B631997-5DF7-4FA8-9908-73EBAB0D1360}|..\\Services\\Services.csproj|c:\\users\\darc\\source\\repos\\minishopback\\services\\backgroundjobqueue.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8B631997-5DF7-4FA8-9908-73EBAB0D1360}|..\\Services\\Services.csproj|c:\\users\\darc\\source\\repos\\minishopback\\services\\lucene\\tradeindexingqueue.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1CED077F-4043-49AB-801B-B4191EC78E98}|..\\Entities\\Entities.csproj|c:\\users\\darc\\source\\repos\\minishopback\\entities\\models\\trade.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8B631997-5DF7-4FA8-9908-73EBAB0D1360}|..\\Services\\Services.csproj|c:\\users\\darc\\source\\repos\\minishopback\\services\\lucene\\tradedocumentmapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DD9C04E6-593F-42AD-8DBE-B47BE69DDBF0}|..\\Contracts\\Contracts.csproj|c:\\users\\darc\\source\\repos\\minishopback\\contracts\\lucene\\itradesearchrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{0262AC5E-9978-4191-93EA-7C87D60B83F8}|..\\Repository\\Repository.csproj|c:\\users\\darc\\source\\repos\\minishopback\\repository\\lucene\\productsearchrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0262AC5E-9978-4191-93EA-7C87D60B83F8}|..\\Repository\\Repository.csproj|c:\\users\\darc\\source\\repos\\minishopback\\repository\\lucene\\luceneoptions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0262AC5E-9978-4191-93EA-7C87D60B83F8}|..\\Repository\\Repository.csproj|c:\\users\\darc\\source\\repos\\minishopback\\repository\\lucene\\luceneindexregistry.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0262AC5E-9978-4191-93EA-7C87D60B83F8}|..\\Repository\\Repository.csproj|c:\\users\\darc\\source\\repos\\minishopback\\repository\\lucene\\tradecardprojector.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0262AC5E-9978-4191-93EA-7C87D60B83F8}|..\\Repository\\Repository.csproj|c:\\users\\darc\\source\\repos\\minishopback\\repository\\lucene\\iluceneindexregistry.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DD9C04E6-593F-42AD-8DBE-B47BE69DDBF0}|..\\Contracts\\Contracts.csproj|c:\\users\\darc\\source\\repos\\minishopback\\contracts\\lucene\\searchindexnames.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7D31D870-C024-497F-A5C8-C0C91D76DF02}|..\\Shared\\Shared.csproj|c:\\users\\darc\\source\\repos\\minishopback\\shared\\lucene\\tradesearchresult.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7D31D870-C024-497F-A5C8-C0C91D76DF02}|..\\Shared\\Shared.csproj|c:\\users\\darc\\source\\repos\\minishopback\\shared\\lucene\\tradesearchrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7D31D870-C024-497F-A5C8-C0C91D76DF02}|..\\Shared\\Shared.csproj|c:\\users\\darc\\source\\repos\\minishopback\\shared\\dtos\\tradecarddto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DD9C04E6-593F-42AD-8DBE-B47BE69DDBF0}|..\\Contracts\\Contracts.csproj|c:\\users\\darc\\source\\repos\\minishopback\\contracts\\lucene\\tradeindexdocument.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DD9C04E6-593F-42AD-8DBE-B47BE69DDBF0}|..\\Contracts\\Contracts.csproj|c:\\users\\darc\\source\\repos\\minishopback\\contracts\\lucene\\productindexdocument.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DD9C04E6-593F-42AD-8DBE-B47BE69DDBF0}|..\\Contracts\\Contracts.csproj|c:\\users\\darc\\source\\repos\\minishopback\\contracts\\lucene\\itradeindexer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C1494A3A-3588-4154-93B4-90B43525B2C8}|saccoshop.csproj|c:\\users\\darc\\source\\repos\\minishopback\\saccoshop\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{C1494A3A-3588-4154-93B4-90B43525B2C8}|saccoshop.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7D31D870-C024-497F-A5C8-C0C91D76DF02}|..\\Shared\\Shared.csproj|c:\\users\\darc\\source\\repos\\minishopback\\shared\\dtos\\productcarddto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{0262AC5E-9978-4191-93EA-7C87D60B83F8}|..\\Repository\\Repository.csproj|c:\\users\\darc\\source\\repos\\minishopback\\repository\\lucene\\productquerybuilder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{0262AC5E-9978-4191-93EA-7C87D60B83F8}|..\\Repository\\Repository.csproj|c:\\users\\darc\\source\\repos\\minishopback\\repository\\lucene\\luceneindexcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7E37078D-26E4-48B6-8F3D-8841A03D4B58}|..\\Presentation\\Presentation.csproj|c:\\users\\darc\\source\\repos\\minishopback\\presentation\\searchcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{8B631997-5DF7-4FA8-9908-73EBAB0D1360}|..\\Services\\Services.csproj|c:\\users\\darc\\source\\repos\\minishopback\\services\\lucene\\productsearchservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
@@ -51,13 +173,7 @@
       "AbsoluteMoniker": "D:0:0:{0262AC5E-9978-4191-93EA-7C87D60B83F8}|..\\Repository\\Repository.csproj|c:\\users\\darc\\source\\repos\\minishopback\\repository\\lucene\\productindexfields.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DD9C04E6-593F-42AD-8DBE-B47BE69DDBF0}|..\\Contracts\\Contracts.csproj|c:\\users\\darc\\source\\repos\\minishopback\\contracts\\lucene\\productindexdocument.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Darc\\AppData\\Local\\SourceServer\\1fa61f6248ccd3dba47db7ec3d06cadad545ce9f9af6fb91df25cf9dad95a6a8\\Repository\\lucene\\ProductCardProjector.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7D31D870-C024-497F-A5C8-C0C91D76DF02}|..\\Shared\\Shared.csproj|c:\\users\\darc\\source\\repos\\minishopback\\shared\\dtos\\productcarddto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{8B631997-5DF7-4FA8-9908-73EBAB0D1360}|..\\Services\\Services.csproj|c:\\users\\darc\\source\\repos\\minishopback\\services\\lucene\\productindexer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
@@ -66,22 +182,10 @@
       "AbsoluteMoniker": "D:0:0:{7D31D870-C024-497F-A5C8-C0C91D76DF02}|..\\Shared\\Shared.csproj|c:\\users\\darc\\source\\repos\\minishopback\\shared\\dtos\\homepagecustomproductsdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DD9C04E6-593F-42AD-8DBE-B47BE69DDBF0}|..\\Contracts\\Contracts.csproj|c:\\users\\darc\\source\\repos\\minishopback\\contracts\\service\\iproductservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{7E37078D-26E4-48B6-8F3D-8841A03D4B58}|..\\Presentation\\Presentation.csproj|c:\\users\\darc\\source\\repos\\minishopback\\presentation\\homepagecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8B631997-5DF7-4FA8-9908-73EBAB0D1360}|..\\Services\\Services.csproj|c:\\users\\darc\\source\\repos\\minishopback\\services\\productservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8B631997-5DF7-4FA8-9908-73EBAB0D1360}|..\\Services\\Services.csproj|c:\\users\\darc\\source\\repos\\minishopback\\services\\usergroupservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{DD9C04E6-593F-42AD-8DBE-B47BE69DDBF0}|..\\Contracts\\Contracts.csproj|c:\\users\\darc\\source\\repos\\minishopback\\contracts\\service\\iusergroupservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8B631997-5DF7-4FA8-9908-73EBAB0D1360}|..\\Services\\Services.csproj|c:\\users\\darc\\source\\repos\\minishopback\\services\\sellerprofileservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{DD9C04E6-593F-42AD-8DBE-B47BE69DDBF0}|..\\Contracts\\Contracts.csproj|c:\\users\\darc\\source\\repos\\minishopback\\contracts\\service\\isellerprofileservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
@@ -95,17 +199,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{C1494A3A-3588-4154-93B4-90B43525B2C8}|saccoshop.csproj|c:\\users\\darc\\source\\repos\\minishopback\\saccoshop\\nlog.config.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
       "RelativeMoniker": "D:0:0:{C1494A3A-3588-4154-93B4-90B43525B2C8}|saccoshop.csproj|solutionrelative:nlog.config.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C1494A3A-3588-4154-93B4-90B43525B2C8}|saccoshop.csproj|c:\\users\\darc\\source\\repos\\minishopback\\saccoshop\\extensions\\serviceextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C1494A3A-3588-4154-93B4-90B43525B2C8}|saccoshop.csproj|solutionrelative:extensions\\serviceextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C1494A3A-3588-4154-93B4-90B43525B2C8}|saccoshop.csproj|c:\\users\\darc\\source\\repos\\minishopback\\saccoshop\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C1494A3A-3588-4154-93B4-90B43525B2C8}|saccoshop.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7E37078D-26E4-48B6-8F3D-8841A03D4B58}|..\\Presentation\\Presentation.csproj|c:\\users\\darc\\source\\repos\\minishopback\\presentation\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{0262AC5E-9978-4191-93EA-7C87D60B83F8}|..\\Repository\\Repository.csproj|c:\\users\\darc\\source\\repos\\minishopback\\repository\\repos\\userprofilerepo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
@@ -132,20 +225,10 @@
       "AbsoluteMoniker": "D:0:0:{7D31D870-C024-497F-A5C8-C0C91D76DF02}|..\\Shared\\Shared.csproj|c:\\users\\darc\\source\\repos\\minishopback\\shared\\dtos\\loggedinuserdatadto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C1494A3A-3588-4154-93B4-90B43525B2C8}|saccoshop.csproj|c:\\users\\darc\\source\\repos\\minishopback\\saccoshop\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{C1494A3A-3588-4154-93B4-90B43525B2C8}|saccoshop.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0262AC5E-9978-4191-93EA-7C87D60B83F8}|..\\Repository\\Repository.csproj|c:\\users\\darc\\source\\repos\\minishopback\\repository\\lucene\\luceneoptions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{1CED077F-4043-49AB-801B-B4191EC78E98}|..\\Entities\\Entities.csproj|c:\\users\\darc\\source\\repos\\minishopback\\entities\\models\\subcategory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{1CED077F-4043-49AB-801B-B4191EC78E98}|..\\Entities\\Entities.csproj|c:\\users\\darc\\source\\repos\\minishopback\\entities\\models\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1CED077F-4043-49AB-801B-B4191EC78E98}|..\\Entities\\Entities.csproj|c:\\users\\darc\\source\\repos\\minishopback\\entities\\models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{1CED077F-4043-49AB-801B-B4191EC78E98}|..\\Entities\\Entities.csproj|c:\\users\\darc\\source\\repos\\minishopback\\entities\\models\\sellerprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
@@ -170,25 +253,13 @@
       "AbsoluteMoniker": "D:0:0:{8B631997-5DF7-4FA8-9908-73EBAB0D1360}|..\\Services\\Services.csproj|c:\\users\\darc\\source\\repos\\minishopback\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8B631997-5DF7-4FA8-9908-73EBAB0D1360}|..\\Services\\Services.csproj|c:\\users\\darc\\source\\repos\\minishopback\\services\\servicemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{1CED077F-4043-49AB-801B-B4191EC78E98}|..\\Entities\\Entities.csproj|c:\\users\\darc\\source\\repos\\minishopback\\entities\\models\\userprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{1CED077F-4043-49AB-801B-B4191EC78E98}|..\\Entities\\Entities.csproj|c:\\users\\darc\\source\\repos\\minishopback\\entities\\models\\productimpression.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7E37078D-26E4-48B6-8F3D-8841A03D4B58}|..\\Presentation\\Presentation.csproj|c:\\users\\darc\\source\\repos\\minishopback\\presentation\\tradecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{0262AC5E-9978-4191-93EA-7C87D60B83F8}|..\\Repository\\Repository.csproj|c:\\users\\darc\\source\\repos\\minishopback\\repository\\repos\\traderepo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8B631997-5DF7-4FA8-9908-73EBAB0D1360}|..\\Services\\Services.csproj|c:\\users\\darc\\source\\repos\\minishopback\\services\\tradeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DD9C04E6-593F-42AD-8DBE-B47BE69DDBF0}|..\\Contracts\\Contracts.csproj|c:\\users\\darc\\source\\repos\\minishopback\\contracts\\service\\itradeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{DD9C04E6-593F-42AD-8DBE-B47BE69DDBF0}|..\\Contracts\\Contracts.csproj|c:\\users\\darc\\source\\repos\\minishopback\\contracts\\repo\\itraderepo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
@@ -302,9 +373,6 @@
       "AbsoluteMoniker": "D:0:0:{8B631997-5DF7-4FA8-9908-73EBAB0D1360}|..\\Services\\Services.csproj|c:\\users\\darc\\source\\repos\\minishopback\\services\\businessrules\\sluggenerator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1CED077F-4043-49AB-801B-B4191EC78E98}|..\\Entities\\Entities.csproj|c:\\users\\darc\\source\\repos\\minishopback\\entities\\models\\trade.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{8B631997-5DF7-4FA8-9908-73EBAB0D1360}|..\\Services\\Services.csproj|c:\\users\\darc\\source\\repos\\minishopback\\services\\httpcontextextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -318,9 +386,6 @@
     },
     {
       "AbsoluteMoniker": "D:0:0:{1CED077F-4043-49AB-801B-B4191EC78E98}|..\\Entities\\Entities.csproj|c:\\users\\darc\\source\\repos\\minishopback\\entities\\models\\productreview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7D31D870-C024-497F-A5C8-C0C91D76DF02}|..\\Shared\\Shared.csproj|c:\\users\\darc\\source\\repos\\minishopback\\shared\\dtos\\newproductdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{8B631997-5DF7-4FA8-9908-73EBAB0D1360}|..\\Services\\Services.csproj|c:\\users\\darc\\source\\repos\\minishopback\\services\\groupfeaturedproductservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
@@ -438,11 +503,284 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 9,
           "Children": [
             {
               "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "TradeSearchService.cs",
+              "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Services\\Lucene\\TradeSearchService.cs",
+              "RelativeDocumentMoniker": "..\\Services\\Lucene\\TradeSearchService.cs",
+              "ToolTip": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Services\\Lucene\\TradeSearchService.cs",
+              "RelativeToolTip": "..\\Services\\Lucene\\TradeSearchService.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAQwBYAAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-06T23:26:59.895Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "TradeIndexingBackgroundService.cs",
+              "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\saccoshop\\backgroundservices\\TradeIndexingBackgroundService.cs",
+              "RelativeDocumentMoniker": "backgroundservices\\TradeIndexingBackgroundService.cs",
+              "ToolTip": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\saccoshop\\backgroundservices\\TradeIndexingBackgroundService.cs",
+              "RelativeToolTip": "backgroundservices\\TradeIndexingBackgroundService.cs",
+              "ViewState": "AgIAABsAAAAAAAAAAAAtwH4AAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-06T23:24:56.84Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "IndexingBackgroundService.cs",
+              "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\saccoshop\\backgroundservices\\IndexingBackgroundService.cs",
+              "RelativeDocumentMoniker": "backgroundservices\\IndexingBackgroundService.cs",
+              "ToolTip": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\saccoshop\\backgroundservices\\IndexingBackgroundService.cs",
+              "RelativeToolTip": "backgroundservices\\IndexingBackgroundService.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-06T23:24:29.252Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "BackgroundJobQueue.cs",
+              "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Services\\BackgroundJobQueue.cs",
+              "RelativeDocumentMoniker": "..\\Services\\BackgroundJobQueue.cs",
+              "ToolTip": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Services\\BackgroundJobQueue.cs",
+              "RelativeToolTip": "..\\Services\\BackgroundJobQueue.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-06T23:23:56.609Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "TradeIndexer.cs",
+              "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Services\\Lucene\\TradeIndexer.cs",
+              "RelativeDocumentMoniker": "..\\Services\\Lucene\\TradeIndexer.cs",
+              "ToolTip": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Services\\Lucene\\TradeIndexer.cs",
+              "RelativeToolTip": "..\\Services\\Lucene\\TradeIndexer.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAAAuwCQAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-06T23:23:34.12Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "TradeIndexingQueue.cs",
+              "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Services\\Lucene\\TradeIndexingQueue.cs",
+              "RelativeDocumentMoniker": "..\\Services\\Lucene\\TradeIndexingQueue.cs",
+              "ToolTip": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Services\\Lucene\\TradeIndexingQueue.cs",
+              "RelativeToolTip": "..\\Services\\Lucene\\TradeIndexingQueue.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAuwCAAAABOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-06T23:22:57.159Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "TradeDocumentMapper.cs",
+              "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Services\\Lucene\\TradeDocumentMapper.cs",
+              "RelativeDocumentMoniker": "..\\Services\\Lucene\\TradeDocumentMapper.cs",
+              "ToolTip": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Services\\Lucene\\TradeDocumentMapper.cs",
+              "RelativeToolTip": "..\\Services\\Lucene\\TradeDocumentMapper.cs",
+              "ViewState": "AgIAADAAAAAAAAAAAAAAwD4AAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-06T23:20:37.694Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "TradeCardProjector.cs",
+              "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Repository\\lucene\\TradeCardProjector.cs",
+              "RelativeDocumentMoniker": "..\\Repository\\lucene\\TradeCardProjector.cs",
+              "ToolTip": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Repository\\lucene\\TradeCardProjector.cs",
+              "RelativeToolTip": "..\\Repository\\lucene\\TradeCardProjector.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAC4AAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-06T23:16:10.844Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "TradeQueryBuilder.cs",
+              "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Repository\\lucene\\TradeQueryBuilder.cs",
+              "RelativeDocumentMoniker": "..\\Repository\\lucene\\TradeQueryBuilder.cs",
+              "ToolTip": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Repository\\lucene\\TradeQueryBuilder.cs",
+              "RelativeToolTip": "..\\Repository\\lucene\\TradeQueryBuilder.cs",
+              "ViewState": "AgIAAKcAAAAAAAAAAAAIwKkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-06T23:15:32.832Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "TradeSearchRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Repository\\lucene\\TradeSearchRepository.cs",
+              "RelativeDocumentMoniker": "..\\Repository\\lucene\\TradeSearchRepository.cs",
+              "ToolTip": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Repository\\lucene\\TradeSearchRepository.cs",
+              "RelativeToolTip": "..\\Repository\\lucene\\TradeSearchRepository.cs",
+              "ViewState": "AgIAAGgAAAAAAAAAAAAuwFgAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-06T23:14:45.538Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "LuceneIndexRegistry.cs",
+              "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Repository\\lucene\\LuceneIndexRegistry.cs",
+              "RelativeDocumentMoniker": "..\\Repository\\lucene\\LuceneIndexRegistry.cs",
+              "ToolTip": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Repository\\lucene\\LuceneIndexRegistry.cs",
+              "RelativeToolTip": "..\\Repository\\lucene\\LuceneIndexRegistry.cs",
+              "ViewState": "AgIAACAAAAAAAAAAAAAAwC0AAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-06T23:12:33.23Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "ILuceneIndexRegistry.cs",
+              "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Repository\\lucene\\ILuceneIndexRegistry.cs",
+              "RelativeDocumentMoniker": "..\\Repository\\lucene\\ILuceneIndexRegistry.cs",
+              "ToolTip": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Repository\\lucene\\ILuceneIndexRegistry.cs",
+              "RelativeToolTip": "..\\Repository\\lucene\\ILuceneIndexRegistry.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-06T23:12:21.871Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "TradeIndexFields.cs",
+              "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Repository\\lucene\\TradeIndexFields.cs",
+              "RelativeDocumentMoniker": "..\\Repository\\lucene\\TradeIndexFields.cs",
+              "ToolTip": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Repository\\lucene\\TradeIndexFields.cs",
+              "RelativeToolTip": "..\\Repository\\lucene\\TradeIndexFields.cs",
+              "ViewState": "AgIAABoAAAAAAAAAAAAAwCAAAAA6AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-06T23:11:38.548Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 32,
+              "Title": "SearchIndexNames.cs",
+              "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Contracts\\Lucene\\SearchIndexNames.cs",
+              "RelativeDocumentMoniker": "..\\Contracts\\Lucene\\SearchIndexNames.cs",
+              "ToolTip": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Contracts\\Lucene\\SearchIndexNames.cs",
+              "RelativeToolTip": "..\\Contracts\\Lucene\\SearchIndexNames.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-06T23:10:54.616Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 33,
+              "Title": "TradeSearchResult.cs",
+              "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Shared\\Lucene\\TradeSearchResult.cs",
+              "RelativeDocumentMoniker": "..\\Shared\\Lucene\\TradeSearchResult.cs",
+              "ToolTip": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Shared\\Lucene\\TradeSearchResult.cs",
+              "RelativeToolTip": "..\\Shared\\Lucene\\TradeSearchResult.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-06T23:10:19.968Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 34,
+              "Title": "TradeSearchRequest.cs",
+              "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Shared\\Lucene\\TradeSearchRequest.cs",
+              "RelativeDocumentMoniker": "..\\Shared\\Lucene\\TradeSearchRequest.cs",
+              "ToolTip": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Shared\\Lucene\\TradeSearchRequest.cs",
+              "RelativeToolTip": "..\\Shared\\Lucene\\TradeSearchRequest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACIAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-06T23:08:34.904Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 35,
+              "Title": "TradeCardDto.cs",
+              "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Shared\\Dtos\\TradeCardDto.cs",
+              "RelativeDocumentMoniker": "..\\Shared\\Dtos\\TradeCardDto.cs",
+              "ToolTip": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Shared\\Dtos\\TradeCardDto.cs",
+              "RelativeToolTip": "..\\Shared\\Dtos\\TradeCardDto.cs",
+              "ViewState": "AgIAABMAAAAAAAAAAAAuwCoAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-06T23:05:24.859Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 36,
+              "Title": "TradeIndexDocument.cs",
+              "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Contracts\\Lucene\\TradeIndexDocument.cs",
+              "RelativeDocumentMoniker": "..\\Contracts\\Lucene\\TradeIndexDocument.cs",
+              "ToolTip": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Contracts\\Lucene\\TradeIndexDocument.cs",
+              "RelativeToolTip": "..\\Contracts\\Lucene\\TradeIndexDocument.cs",
+              "ViewState": "AgIAACwAAAAAAAAAAAA1wDcAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-06T23:03:26.529Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "ITradeSearchService.cs",
+              "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Contracts\\Lucene\\ITradeSearchService.cs",
+              "RelativeDocumentMoniker": "..\\Contracts\\Lucene\\ITradeSearchService.cs",
+              "ToolTip": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Contracts\\Lucene\\ITradeSearchService.cs",
+              "RelativeToolTip": "..\\Contracts\\Lucene\\ITradeSearchService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAkAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-06T23:02:12.622Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "ITradeSearchRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Contracts\\Lucene\\ITradeSearchRepository.cs",
+              "RelativeDocumentMoniker": "..\\Contracts\\Lucene\\ITradeSearchRepository.cs",
+              "ToolTip": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Contracts\\Lucene\\ITradeSearchRepository.cs",
+              "RelativeToolTip": "..\\Contracts\\Lucene\\ITradeSearchRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAkAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-06T23:01:33.871Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 38,
+              "Title": "ITradeIndexer.cs",
+              "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Contracts\\Lucene\\ITradeIndexer.cs",
+              "RelativeDocumentMoniker": "..\\Contracts\\Lucene\\ITradeIndexer.cs",
+              "ToolTip": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Contracts\\Lucene\\ITradeIndexer.cs",
+              "RelativeToolTip": "..\\Contracts\\Lucene\\ITradeIndexer.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-06T23:00:53.662Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 41,
               "Title": "ProductQueryBuilder.cs",
               "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Repository\\lucene\\ProductQueryBuilder.cs",
               "RelativeDocumentMoniker": "..\\Repository\\lucene\\ProductQueryBuilder.cs",
@@ -450,12 +788,11 @@
               "RelativeToolTip": "..\\Repository\\lucene\\ProductQueryBuilder.cs",
               "ViewState": "AgIAAL4AAAAAAAAAAAAYwMQAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-05T09:56:14.991Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-05T09:56:14.991Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 42,
               "Title": "LuceneIndexContext.cs",
               "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Repository\\lucene\\LuceneIndexContext.cs",
               "RelativeDocumentMoniker": "..\\Repository\\lucene\\LuceneIndexContext.cs",
@@ -463,12 +800,11 @@
               "RelativeToolTip": "..\\Repository\\lucene\\LuceneIndexContext.cs",
               "ViewState": "AgIAACQAAAAAAAAAAAAcwDEAAAA0AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-05T09:55:06.298Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-05T09:55:06.298Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 46,
               "Title": "IProductSearchService.cs",
               "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Contracts\\Lucene\\IProductSearchService.cs",
               "RelativeDocumentMoniker": "..\\Contracts\\Lucene\\IProductSearchService.cs",
@@ -476,12 +812,11 @@
               "RelativeToolTip": "..\\Contracts\\Lucene\\IProductSearchService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAiAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-05T09:25:19.335Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-05T09:25:19.335Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 43,
               "Title": "ProductSearchService.cs",
               "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Services\\Lucene\\ProductSearchService.cs",
               "RelativeDocumentMoniker": "..\\Services\\Lucene\\ProductSearchService.cs",
@@ -489,12 +824,11 @@
               "RelativeToolTip": "..\\Services\\Lucene\\ProductSearchService.cs",
               "ViewState": "AgIAABAAAAAAAAAAAAAkwBoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-05T09:25:11.638Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-05T09:25:11.638Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 47,
               "Title": "IProductSearchRepository.cs",
               "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Contracts\\Lucene\\IProductSearchRepository.cs",
               "RelativeDocumentMoniker": "..\\Contracts\\Lucene\\IProductSearchRepository.cs",
@@ -502,25 +836,24 @@
               "RelativeToolTip": "..\\Contracts\\Lucene\\IProductSearchRepository.cs",
               "ViewState": "AgIAAA0AAAAAAAAAAAAswBsAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-05T09:25:06.209Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-05T09:25:06.209Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 27,
               "Title": "ProductSearchRepository.cs",
               "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Repository\\lucene\\ProductSearchRepository.cs",
               "RelativeDocumentMoniker": "..\\Repository\\lucene\\ProductSearchRepository.cs",
               "ToolTip": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Repository\\lucene\\ProductSearchRepository.cs",
               "RelativeToolTip": "..\\Repository\\lucene\\ProductSearchRepository.cs",
-              "ViewState": "AgIAAJgAAAAAAAAAAAAkwKEAAABcAAAAAAAAAA==",
+              "ViewState": "AgIAABMAAAAAAAAAAAAIwLEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-05-05T08:45:21.21Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 44,
               "Title": "ProductSearchResult.cs",
               "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Shared\\Dtos\\ProductSearchResult.cs",
               "RelativeDocumentMoniker": "..\\Shared\\Dtos\\ProductSearchResult.cs",
@@ -528,12 +861,11 @@
               "RelativeToolTip": "..\\Shared\\Dtos\\ProductSearchResult.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAyAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-05T08:44:39.917Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-05T08:44:39.917Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 48,
               "Title": "ProductDocumentMapper.cs",
               "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Services\\Lucene\\ProductDocumentMapper.cs",
               "RelativeDocumentMoniker": "..\\Services\\Lucene\\ProductDocumentMapper.cs",
@@ -541,12 +873,11 @@
               "RelativeToolTip": "..\\Services\\Lucene\\ProductDocumentMapper.cs",
               "ViewState": "AgIAAEMAAAAAAAAAAAAAwE4AAAA7AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-05T08:12:50.342Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-05T08:12:50.342Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 54,
               "Title": "ProductIndexFields.cs",
               "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Repository\\lucene\\ProductIndexFields.cs",
               "RelativeDocumentMoniker": "..\\Repository\\lucene\\ProductIndexFields.cs",
@@ -554,12 +885,11 @@
               "RelativeToolTip": "..\\Repository\\lucene\\ProductIndexFields.cs",
               "ViewState": "AgIAABoAAAAAAAAAAAAQwCIAAAA+AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-05T08:07:46.262Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-05T08:07:46.262Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 37,
               "Title": "ProductIndexDocument.cs",
               "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Contracts\\Lucene\\ProductIndexDocument.cs",
               "RelativeDocumentMoniker": "..\\Contracts\\Lucene\\ProductIndexDocument.cs",
@@ -572,7 +902,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 55,
               "Title": "ProductCardProjector.cs",
               "DocumentMoniker": "C:\\Users\\Darc\\AppData\\Local\\SourceServer\\1fa61f6248ccd3dba47db7ec3d06cadad545ce9f9af6fb91df25cf9dad95a6a8\\Repository\\lucene\\ProductCardProjector.cs",
               "RelativeDocumentMoniker": "..\\..\\..\\..\\AppData\\Local\\SourceServer\\1fa61f6248ccd3dba47db7ec3d06cadad545ce9f9af6fb91df25cf9dad95a6a8\\Repository\\lucene\\ProductCardProjector.cs",
@@ -580,12 +910,11 @@
               "RelativeToolTip": "..\\..\\..\\..\\AppData\\Local\\SourceServer\\1fa61f6248ccd3dba47db7ec3d06cadad545ce9f9af6fb91df25cf9dad95a6a8\\Repository\\lucene\\ProductCardProjector.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-05T08:08:27.44Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-05T08:08:27.44Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 53,
               "Title": "ProductCardProjector.cs",
               "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Repository\\lucene\\ProductCardProjector.cs",
               "RelativeDocumentMoniker": "..\\Repository\\lucene\\ProductCardProjector.cs",
@@ -593,25 +922,23 @@
               "RelativeToolTip": "..\\Repository\\lucene\\ProductCardProjector.cs",
               "ViewState": "AgIAAA0AAAAAAAAAAAAgwDcAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-05T08:07:09.743Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-05T08:07:09.743Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 40,
               "Title": "ProductCardDto.cs",
               "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Shared\\Dtos\\ProductCardDto.cs",
               "RelativeDocumentMoniker": "..\\Shared\\Dtos\\ProductCardDto.cs",
               "ToolTip": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Shared\\Dtos\\ProductCardDto.cs",
               "RelativeToolTip": "..\\Shared\\Dtos\\ProductCardDto.cs",
-              "ViewState": "AgIAACoAAAAAAAAAAAAkwDUAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAmwC0AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-05T08:05:50.067Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-05T08:05:50.067Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 56,
               "Title": "ProductIndexer.cs",
               "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Services\\Lucene\\ProductIndexer.cs",
               "RelativeDocumentMoniker": "..\\Services\\Lucene\\ProductIndexer.cs",
@@ -619,12 +946,11 @@
               "RelativeToolTip": "..\\Services\\Lucene\\ProductIndexer.cs",
               "ViewState": "AgIAAAIAAAAAAAAAAAAhwB4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-05T07:53:36.29Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-05T07:53:36.29Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 30,
+              "DocumentIndex": 63,
               "Title": "nlog.config.txt",
               "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\saccoshop\\nlog.config.txt",
               "RelativeDocumentMoniker": "nlog.config.txt",
@@ -632,38 +958,37 @@
               "RelativeToolTip": "nlog.config.txt",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
-              "WhenOpened": "2026-05-05T06:55:32.558Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-05T06:55:32.558Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 33,
+              "DocumentIndex": 10,
               "Title": "ProductController.cs",
               "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Presentation\\ProductController.cs",
               "RelativeDocumentMoniker": "..\\Presentation\\ProductController.cs",
               "ToolTip": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Presentation\\ProductController.cs",
               "RelativeToolTip": "..\\Presentation\\ProductController.cs",
-              "ViewState": "AgIAAAoBAAAAAAAAAAAIwBIBAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAABQAAAAAAAAAAAAmwOcAAABEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-04-04T09:58:52.364Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 43,
+              "DocumentIndex": 28,
               "Title": "LuceneOptions.cs",
               "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Repository\\lucene\\LuceneOptions.cs",
               "RelativeDocumentMoniker": "..\\Repository\\lucene\\LuceneOptions.cs",
               "ToolTip": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Repository\\lucene\\LuceneOptions.cs",
               "RelativeToolTip": "..\\Repository\\lucene\\LuceneOptions.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAxwBUAAAAWAAAAAAAAAA==",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAABUAAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-05-04T11:04:38.437Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 50,
+              "DocumentIndex": 77,
               "Title": "Services.csproj",
               "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Services\\Services.csproj",
               "RelativeDocumentMoniker": "..\\Services\\Services.csproj",
@@ -675,7 +1000,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 51,
+              "DocumentIndex": 78,
               "Title": "saccoshop.csproj",
               "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\saccoshop\\saccoshop.csproj",
               "RelativeDocumentMoniker": "saccoshop.csproj",
@@ -693,14 +1018,14 @@
               "RelativeDocumentMoniker": "..\\Presentation\\SearchController.cs",
               "ToolTip": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Presentation\\SearchController.cs",
               "RelativeToolTip": "..\\Presentation\\SearchController.cs",
-              "ViewState": "AgIAADMAAAAAAAAAAAAswDoAAABEAAAAAAAAAA==",
+              "ViewState": "AgIAAIcAAAAAAAAAAAAmwMUAAAAeAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-05-03T11:09:26.365Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 45,
               "Title": "ProductSearchResponse.cs",
               "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Shared\\Lucene\\ProductSearchResponse.cs",
               "RelativeDocumentMoniker": "..\\Shared\\Lucene\\ProductSearchResponse.cs",
@@ -708,12 +1033,11 @@
               "RelativeToolTip": "..\\Shared\\Lucene\\ProductSearchResponse.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAA7AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-03T10:51:39.395Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-03T10:51:39.395Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 52,
+              "DocumentIndex": 79,
               "Title": "ProductSeachFields.cs",
               "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Shared\\Lucene\\ProductSeachFields.cs",
               "RelativeDocumentMoniker": "..\\Shared\\Lucene\\ProductSeachFields.cs",
@@ -725,19 +1049,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 60,
+              "DocumentIndex": 13,
               "Title": "ITradeService.cs",
               "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Contracts\\Service\\ITradeService.cs",
               "RelativeDocumentMoniker": "..\\Contracts\\Service\\ITradeService.cs",
               "ToolTip": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Contracts\\Service\\ITradeService.cs",
               "RelativeToolTip": "..\\Contracts\\Service\\ITradeService.cs",
-              "ViewState": "AgIAABUAAAAAAAAAAAA4wBsAAAADAAAAAAAAAA==",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAqwBcAAABiAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-01T16:38:12.636Z"
+              "WhenOpened": "2026-05-01T16:38:12.636Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 63,
+              "DocumentIndex": 86,
               "Title": "HomePageTradeDto.cs",
               "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Shared\\Dtos\\HomePageTradeDto.cs",
               "RelativeDocumentMoniker": "..\\Shared\\Dtos\\HomePageTradeDto.cs",
@@ -749,7 +1074,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 59,
               "Title": "IUserGroupService.cs",
               "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Contracts\\Service\\IUserGroupService.cs",
               "RelativeDocumentMoniker": "..\\Contracts\\Service\\IUserGroupService.cs",
@@ -757,12 +1082,11 @@
               "RelativeToolTip": "..\\Contracts\\Service\\IUserGroupService.cs",
               "ViewState": "AgIAAAYAAAAAAAAAAAAAABMAAABbAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-01T14:25:57.741Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-01T14:25:57.741Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 41,
+              "DocumentIndex": 71,
               "Title": "LoggedInUserDataDto.cs",
               "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Shared\\Dtos\\LoggedInUserDataDto.cs",
               "RelativeDocumentMoniker": "..\\Shared\\Dtos\\LoggedInUserDataDto.cs",
@@ -770,12 +1094,11 @@
               "RelativeToolTip": "..\\Shared\\Dtos\\LoggedInUserDataDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-01T14:02:10.301Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-01T14:02:10.301Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 67,
+              "DocumentIndex": 90,
               "Title": "ShowApplicationUserDto.cs",
               "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Shared\\Dtos\\ShowApplicationUserDto.cs",
               "RelativeDocumentMoniker": "..\\Shared\\Dtos\\ShowApplicationUserDto.cs",
@@ -787,7 +1110,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 79,
+              "DocumentIndex": 102,
               "Title": "UserGroupSellerDto.cs",
               "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Shared\\Dtos\\UserGroupSellerDto.cs",
               "RelativeDocumentMoniker": "..\\Shared\\Dtos\\UserGroupSellerDto.cs",
@@ -799,7 +1122,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 80,
+              "DocumentIndex": 103,
               "Title": "ShowTradeDataDto.cs",
               "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Shared\\Dtos\\ShowTradeDataDto.cs",
               "RelativeDocumentMoniker": "..\\Shared\\Dtos\\ShowTradeDataDto.cs",
@@ -811,7 +1134,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 83,
+              "DocumentIndex": 106,
               "Title": "MiniUserDataDto.cs",
               "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Shared\\Dtos\\MiniUserDataDto.cs",
               "RelativeDocumentMoniker": "..\\Shared\\Dtos\\MiniUserDataDto.cs",
@@ -823,7 +1146,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 84,
+              "DocumentIndex": 107,
               "Title": "MiniProductImageDto.cs",
               "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Shared\\Dtos\\MiniProductImageDto.cs",
               "RelativeDocumentMoniker": "..\\Shared\\Dtos\\MiniProductImageDto.cs",
@@ -835,7 +1158,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 85,
+              "DocumentIndex": 108,
               "Title": "MiniGroupMemberDto.cs",
               "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Shared\\Dtos\\MiniGroupMemberDto.cs",
               "RelativeDocumentMoniker": "..\\Shared\\Dtos\\MiniGroupMemberDto.cs",
@@ -847,7 +1170,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 86,
+              "DocumentIndex": 109,
               "Title": "SharedUpdatesDto.cs",
               "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Shared\\Dtos\\SharedUpdatesDto.cs",
               "RelativeDocumentMoniker": "..\\Shared\\Dtos\\SharedUpdatesDto.cs",
@@ -859,7 +1182,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 88,
+              "DocumentIndex": 111,
               "Title": "SellerProfileDto.cs",
               "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Shared\\Dtos\\SellerProfileDto.cs",
               "RelativeDocumentMoniker": "..\\Shared\\Dtos\\SellerProfileDto.cs",
@@ -871,7 +1194,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 73,
+              "DocumentIndex": 96,
               "Title": "SellerProductsListDto.cs",
               "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Shared\\Dtos\\SellerProductsListDto.cs",
               "RelativeDocumentMoniker": "..\\Shared\\Dtos\\SellerProductsListDto.cs",
@@ -883,7 +1206,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 89,
+              "DocumentIndex": 112,
               "Title": "SellerGroupDto.cs",
               "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Shared\\Dtos\\SellerGroupDto.cs",
               "RelativeDocumentMoniker": "..\\Shared\\Dtos\\SellerGroupDto.cs",
@@ -895,7 +1218,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 87,
+              "DocumentIndex": 110,
               "Title": "SellerTradeListDto.cs",
               "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Shared\\Dtos\\SellerTradeListDto.cs",
               "RelativeDocumentMoniker": "..\\Shared\\Dtos\\SellerTradeListDto.cs",
@@ -907,7 +1230,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 77,
+              "DocumentIndex": 100,
               "Title": "SellerTradeDto.cs",
               "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Shared\\Dtos\\SellerTradeDto.cs",
               "RelativeDocumentMoniker": "..\\Shared\\Dtos\\SellerTradeDto.cs",
@@ -919,7 +1242,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 76,
+              "DocumentIndex": 99,
               "Title": "SellerShopDto.cs",
               "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Shared\\Dtos\\SellerShopDto.cs",
               "RelativeDocumentMoniker": "..\\Shared\\Dtos\\SellerShopDto.cs",
@@ -931,7 +1254,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 68,
+              "DocumentIndex": 91,
               "Title": "ShowGroupMemberDto.cs",
               "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Shared\\Dtos\\ShowGroupMemberDto.cs",
               "RelativeDocumentMoniker": "..\\Shared\\Dtos\\ShowGroupMemberDto.cs",
@@ -943,7 +1266,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 69,
+              "DocumentIndex": 92,
               "Title": "ShowUserGroupWithMembersDto.cs",
               "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Shared\\Dtos\\ShowUserGroupWithMembersDto.cs",
               "RelativeDocumentMoniker": "..\\Shared\\Dtos\\ShowUserGroupWithMembersDto.cs",
@@ -955,7 +1278,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 65,
+              "DocumentIndex": 88,
               "Title": "ShowUserGroupDto.cs",
               "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Shared\\Dtos\\ShowUserGroupDto.cs",
               "RelativeDocumentMoniker": "..\\Shared\\Dtos\\ShowUserGroupDto.cs",
@@ -967,7 +1290,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 50,
               "Title": "HomePageProductDto.cs",
               "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Shared\\Dtos\\HomePageProductDto.cs",
               "RelativeDocumentMoniker": "..\\Shared\\Dtos\\HomePageProductDto.cs",
@@ -975,25 +1298,24 @@
               "RelativeToolTip": "..\\Shared\\Dtos\\HomePageProductDto.cs",
               "ViewState": "AgIAAAYAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-30T20:08:52.819Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-30T20:08:52.819Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 4,
               "Title": "UserGroupService.cs",
               "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Services\\UserGroupService.cs",
               "RelativeDocumentMoniker": "..\\Services\\UserGroupService.cs",
               "ToolTip": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Services\\UserGroupService.cs",
               "RelativeToolTip": "..\\Services\\UserGroupService.cs",
-              "ViewState": "AgIAAA4AAAAAAAAAAAAiwBcAAAA0AAAAAAAAAA==",
+              "ViewState": "AgIAAEQAAAAAAAAAAAAowEgAAAA2AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-04-30T18:47:39.306Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 99,
+              "DocumentIndex": 121,
               "Title": "HttpContextExtensions.cs",
               "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Services\\HttpContextExtensions.cs",
               "RelativeDocumentMoniker": "..\\Services\\HttpContextExtensions.cs",
@@ -1005,7 +1327,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 35,
+              "DocumentIndex": 65,
               "Title": "UserGroupRepo.cs",
               "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Repository\\Repos\\UserGroupRepo.cs",
               "RelativeDocumentMoniker": "..\\Repository\\Repos\\UserGroupRepo.cs",
@@ -1013,12 +1335,11 @@
               "RelativeToolTip": "..\\Repository\\Repos\\UserGroupRepo.cs",
               "ViewState": "AgIAABEAAAAAAAAAAAAtwBsAAAAoAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-29T11:08:17.755Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-29T11:08:17.755Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 71,
+              "DocumentIndex": 94,
               "Title": "IUserGroupRepo.cs",
               "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Contracts\\Repo\\IUserGroupRepo.cs",
               "RelativeDocumentMoniker": "..\\Contracts\\Repo\\IUserGroupRepo.cs",
@@ -1030,20 +1351,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 32,
+              "DocumentIndex": 16,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\saccoshop\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
               "ToolTip": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\saccoshop\\Program.cs",
               "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAABcAAAAAAAAAAAAAACwAAAADAAAAAAAAAA==",
+              "ViewState": "AgIAACEAAAAAAAAAAAAAADIAAAADAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-04-29T10:32:05.71Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 49,
               "Title": "ProductImage.cs",
               "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Entities\\Models\\ProductImage.cs",
               "RelativeDocumentMoniker": "..\\Entities\\Models\\ProductImage.cs",
@@ -1051,12 +1372,11 @@
               "RelativeToolTip": "..\\Entities\\Models\\ProductImage.cs",
               "ViewState": "AgIAAAkAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-29T09:07:12.711Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-29T09:07:12.711Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 102,
+              "DocumentIndex": 124,
               "Title": "ApplicationUser.cs",
               "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Entities\\Models\\ApplicationUser.cs",
               "RelativeDocumentMoniker": "..\\Entities\\Models\\ApplicationUser.cs",
@@ -1068,7 +1388,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 97,
+              "DocumentIndex": 120,
               "Title": "SlugGenerator.cs",
               "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Services\\BusinessRules\\SlugGenerator.cs",
               "RelativeDocumentMoniker": "..\\Services\\BusinessRules\\SlugGenerator.cs",
@@ -1080,7 +1400,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 72,
+              "DocumentIndex": 95,
               "Title": "SellerProductDto.cs",
               "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Shared\\Dtos\\SellerProductDto.cs",
               "RelativeDocumentMoniker": "..\\Shared\\Dtos\\SellerProductDto.cs",
@@ -1092,7 +1412,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 81,
+              "DocumentIndex": 104,
               "Title": "ShowProductMiniDetailsDto.cs",
               "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Shared\\Dtos\\ShowProductMiniDetailsDto.cs",
               "RelativeDocumentMoniker": "..\\Shared\\Dtos\\ShowProductMiniDetailsDto.cs",
@@ -1104,7 +1424,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 90,
+              "DocumentIndex": 113,
               "Title": "ShowProductDto.cs",
               "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Shared\\Dtos\\ShowProductDto.cs",
               "RelativeDocumentMoniker": "..\\Shared\\Dtos\\ShowProductDto.cs",
@@ -1116,19 +1436,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 104,
+              "DocumentIndex": 5,
               "Title": "NewProductDto.cs",
               "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Shared\\Dtos\\NewProductDto.cs",
               "RelativeDocumentMoniker": "..\\Shared\\Dtos\\NewProductDto.cs",
               "ToolTip": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Shared\\Dtos\\NewProductDto.cs",
               "RelativeToolTip": "..\\Shared\\Dtos\\NewProductDto.cs",
-              "ViewState": "AgIAAA8AAAAAAAAAAAA5wBsAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAAAkAAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-26T22:19:12.396Z"
+              "WhenOpened": "2026-04-26T22:19:12.396Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 108,
+              "DocumentIndex": 129,
               "Title": "ICategoryService.cs",
               "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Contracts\\Service\\ICategoryService.cs",
               "RelativeDocumentMoniker": "..\\Contracts\\Service\\ICategoryService.cs",
@@ -1140,7 +1461,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 106,
+              "DocumentIndex": 127,
               "Title": "CategoryService.cs",
               "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Services\\CategoryService.cs",
               "RelativeDocumentMoniker": "..\\Services\\CategoryService.cs",
@@ -1152,7 +1473,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 109,
+              "DocumentIndex": 130,
               "Title": "ICategoryRepo.cs",
               "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Contracts\\Repo\\ICategoryRepo.cs",
               "RelativeDocumentMoniker": "..\\Contracts\\Repo\\ICategoryRepo.cs",
@@ -1164,7 +1485,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 112,
+              "DocumentIndex": 133,
               "Title": "SubCategoryTreeDto.cs",
               "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Shared\\Dtos\\SubCategoryTreeDto.cs",
               "RelativeDocumentMoniker": "..\\Shared\\Dtos\\SubCategoryTreeDto.cs",
@@ -1176,7 +1497,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 111,
+              "DocumentIndex": 132,
               "Title": "CategoryTreeDto.cs",
               "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Shared\\Dtos\\CategoryTreeDto.cs",
               "RelativeDocumentMoniker": "..\\Shared\\Dtos\\CategoryTreeDto.cs",
@@ -1188,7 +1509,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 44,
+              "DocumentIndex": 72,
               "Title": "SubCategory.cs",
               "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Entities\\Models\\SubCategory.cs",
               "RelativeDocumentMoniker": "..\\Entities\\Models\\SubCategory.cs",
@@ -1200,7 +1521,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 91,
+              "DocumentIndex": 114,
               "Title": "ProductCategoryData.cs",
               "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Shared\\Dtos\\ProductCategoryData.cs",
               "RelativeDocumentMoniker": "..\\Shared\\Dtos\\ProductCategoryData.cs",
@@ -1212,7 +1533,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 114,
+              "DocumentIndex": 135,
               "Title": "SubCategoryCategoryRepo.cs",
               "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Repository\\Repos\\SubCategoryCategoryRepo.cs",
               "RelativeDocumentMoniker": "..\\Repository\\Repos\\SubCategoryCategoryRepo.cs",
@@ -1224,7 +1545,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 115,
+              "DocumentIndex": 136,
               "Title": "SubCategoryRepo.cs",
               "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Repository\\Repos\\SubCategoryRepo.cs",
               "RelativeDocumentMoniker": "..\\Repository\\Repos\\SubCategoryRepo.cs",
@@ -1236,7 +1557,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 110,
+              "DocumentIndex": 131,
               "Title": "CategoryRepo.cs",
               "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Repository\\Repos\\CategoryRepo.cs",
               "RelativeDocumentMoniker": "..\\Repository\\Repos\\CategoryRepo.cs",
@@ -1248,7 +1569,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 100,
+              "DocumentIndex": 122,
               "Title": "SellerRules.cs",
               "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Services\\BusinessRules\\SellerRules.cs",
               "RelativeDocumentMoniker": "..\\Services\\BusinessRules\\SellerRules.cs",
@@ -1260,7 +1581,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 116,
+              "DocumentIndex": 137,
               "Title": "GroupCategorySeedData.cs",
               "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Repository\\context\\GroupCategorySeedData.cs",
               "RelativeDocumentMoniker": "..\\Repository\\context\\GroupCategorySeedData.cs",
@@ -1272,7 +1593,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 56,
+              "DocumentIndex": 82,
               "Title": "ProductImpression.cs",
               "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Entities\\Models\\ProductImpression.cs",
               "RelativeDocumentMoniker": "..\\Entities\\Models\\ProductImpression.cs",
@@ -1284,7 +1605,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 40,
+              "DocumentIndex": 70,
               "Title": "AuthController.cs",
               "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Presentation\\AuthController.cs",
               "RelativeDocumentMoniker": "..\\Presentation\\AuthController.cs",
@@ -1292,12 +1613,11 @@
               "RelativeToolTip": "..\\Presentation\\AuthController.cs",
               "ViewState": "AgIAAPEAAAAAAAAAAAAAAPgAAABFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-21T22:45:19.19Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-21T22:45:19.19Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 70,
+              "DocumentIndex": 93,
               "Title": "ISellerProfileRepo.cs",
               "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Contracts\\Repo\\ISellerProfileRepo.cs",
               "RelativeDocumentMoniker": "..\\Contracts\\Repo\\ISellerProfileRepo.cs",
@@ -1309,7 +1629,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 64,
+              "DocumentIndex": 87,
               "Title": "TradeDataDto.cs",
               "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Shared\\Dtos\\TradeDataDto.cs",
               "RelativeDocumentMoniker": "..\\Shared\\Dtos\\TradeDataDto.cs",
@@ -1321,7 +1641,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 82,
+              "DocumentIndex": 105,
               "Title": "ProductDataDto.cs",
               "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Shared\\Dtos\\ProductDataDto.cs",
               "RelativeDocumentMoniker": "..\\Shared\\Dtos\\ProductDataDto.cs",
@@ -1333,7 +1653,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 92,
+              "DocumentIndex": 115,
               "Title": "MiniGroupDetailsDto.cs",
               "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Shared\\Dtos\\MiniGroupDetailsDto.cs",
               "RelativeDocumentMoniker": "..\\Shared\\Dtos\\MiniGroupDetailsDto.cs",
@@ -1345,7 +1665,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 74,
+              "DocumentIndex": 97,
               "Title": "GroupShopDto.cs",
               "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Shared\\Dtos\\GroupShopDto.cs",
               "RelativeDocumentMoniker": "..\\Shared\\Dtos\\GroupShopDto.cs",
@@ -1357,7 +1677,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 123,
+              "DocumentIndex": 144,
               "Title": "GroupFeaturedProductDto.cs",
               "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Shared\\Dtos\\GroupFeaturedProductDto.cs",
               "RelativeDocumentMoniker": "..\\Shared\\Dtos\\GroupFeaturedProductDto.cs",
@@ -1369,7 +1689,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 124,
+              "DocumentIndex": 145,
               "Title": "NewGroupFeaturedProductDto.cs",
               "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Shared\\Dtos\\NewGroupFeaturedProductDto.cs",
               "RelativeDocumentMoniker": "..\\Shared\\Dtos\\NewGroupFeaturedProductDto.cs",
@@ -1381,7 +1701,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 105,
+              "DocumentIndex": 126,
               "Title": "GroupFeaturedProductService.cs",
               "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Services\\GroupFeaturedProductService.cs",
               "RelativeDocumentMoniker": "..\\Services\\GroupFeaturedProductService.cs",
@@ -1393,7 +1713,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 121,
+              "DocumentIndex": 142,
               "Title": "GroupFeaturedProductRepo.cs",
               "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Repository\\Repos\\GroupFeaturedProductRepo.cs",
               "RelativeDocumentMoniker": "..\\Repository\\Repos\\GroupFeaturedProductRepo.cs",
@@ -1405,7 +1725,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 107,
+              "DocumentIndex": 128,
               "Title": "IGroupFeaturedProductService.cs",
               "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Contracts\\Service\\IGroupFeaturedProductService.cs",
               "RelativeDocumentMoniker": "..\\Contracts\\Service\\IGroupFeaturedProductService.cs",
@@ -1417,7 +1737,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 122,
+              "DocumentIndex": 143,
               "Title": "IGroupFeaturedProductRepo.cs",
               "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Contracts\\Repo\\IGroupFeaturedProductRepo.cs",
               "RelativeDocumentMoniker": "..\\Contracts\\Repo\\IGroupFeaturedProductRepo.cs",
@@ -1429,7 +1749,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 101,
+              "DocumentIndex": 123,
               "Title": "UserGroup.cs",
               "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Entities\\Models\\UserGroup.cs",
               "RelativeDocumentMoniker": "..\\Entities\\Models\\UserGroup.cs",
@@ -1441,7 +1761,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 128,
+              "DocumentIndex": 149,
               "Title": "GroupFeaturedProduct.cs",
               "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Entities\\Models\\GroupFeaturedProduct.cs",
               "RelativeDocumentMoniker": "..\\Entities\\Models\\GroupFeaturedProduct.cs",
@@ -1453,7 +1773,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 117,
+              "DocumentIndex": 138,
               "Title": "GroupTypeDataSeed.cs",
               "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Repository\\context\\GroupTypeDataSeed.cs",
               "RelativeDocumentMoniker": "..\\Repository\\context\\GroupTypeDataSeed.cs",
@@ -1465,7 +1785,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 52,
               "Title": "HomeProductCardDto.cs",
               "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Shared\\Dtos\\HomeProductCardDto.cs",
               "RelativeDocumentMoniker": "..\\Shared\\Dtos\\HomeProductCardDto.cs",
@@ -1473,12 +1793,11 @@
               "RelativeToolTip": "..\\Shared\\Dtos\\HomeProductCardDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAiAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-18T14:02:45.34Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-18T14:02:45.34Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 60,
               "Title": "ISellerProfileService.cs",
               "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Contracts\\Service\\ISellerProfileService.cs",
               "RelativeDocumentMoniker": "..\\Contracts\\Service\\ISellerProfileService.cs",
@@ -1486,12 +1805,11 @@
               "RelativeToolTip": "..\\Contracts\\Service\\ISellerProfileService.cs",
               "ViewState": "AgIAAAoAAAAAAAAAAAAcwA8AAABfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-18T09:00:01.246Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-18T09:00:01.246Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 51,
               "Title": "HomePageCardDto.cs",
               "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Shared\\Dtos\\HomePageCardDto.cs",
               "RelativeDocumentMoniker": "..\\Shared\\Dtos\\HomePageCardDto.cs",
@@ -1499,12 +1817,11 @@
               "RelativeToolTip": "..\\Shared\\Dtos\\HomePageCardDto.cs",
               "ViewState": "AgIAAAMAAAAAAAAAAAAAAA4AAAAwAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-17T21:20:02.67Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-17T21:20:02.67Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 57,
               "Title": "HomePageCustomProductsDto.cs",
               "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Shared\\Dtos\\HomePageCustomProductsDto.cs",
               "RelativeDocumentMoniker": "..\\Shared\\Dtos\\HomePageCustomProductsDto.cs",
@@ -1512,12 +1829,11 @@
               "RelativeToolTip": "..\\Shared\\Dtos\\HomePageCustomProductsDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-17T20:38:12.464Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-17T20:38:12.464Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 53,
+              "DocumentIndex": 80,
               "Title": "AuthService.cs",
               "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Services\\AuthService.cs",
               "RelativeDocumentMoniker": "..\\Services\\AuthService.cs",
@@ -1529,7 +1845,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 118,
+              "DocumentIndex": 139,
               "Title": "IServiceManager.cs",
               "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Contracts\\Service\\IServiceManager.cs",
               "RelativeDocumentMoniker": "..\\Contracts\\Service\\IServiceManager.cs",
@@ -1541,7 +1857,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 113,
+              "DocumentIndex": 134,
               "Title": "NewReviewDto.cs",
               "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Shared\\Dtos\\NewReviewDto.cs",
               "RelativeDocumentMoniker": "..\\Shared\\Dtos\\NewReviewDto.cs",
@@ -1553,7 +1869,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 95,
+              "DocumentIndex": 118,
               "Title": "ReviewService.cs",
               "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Services\\ReviewService.cs",
               "RelativeDocumentMoniker": "..\\Services\\ReviewService.cs",
@@ -1565,7 +1881,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 134,
+              "DocumentIndex": 155,
               "Title": "IReviewRepo.cs",
               "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Contracts\\Repo\\IReviewRepo.cs",
               "RelativeDocumentMoniker": "..\\Contracts\\Repo\\IReviewRepo.cs",
@@ -1577,7 +1893,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 132,
+              "DocumentIndex": 153,
               "Title": "TradeReview.cs",
               "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Entities\\Models\\TradeReview.cs",
               "RelativeDocumentMoniker": "..\\Entities\\Models\\TradeReview.cs",
@@ -1589,7 +1905,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 103,
+              "DocumentIndex": 125,
               "Title": "ProductReview.cs",
               "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Entities\\Models\\ProductReview.cs",
               "RelativeDocumentMoniker": "..\\Entities\\Models\\ProductReview.cs",
@@ -1601,20 +1917,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 9,
               "Title": "SellerProfileService.cs",
               "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Services\\SellerProfileService.cs",
               "RelativeDocumentMoniker": "..\\Services\\SellerProfileService.cs",
               "ToolTip": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Services\\SellerProfileService.cs",
               "RelativeToolTip": "..\\Services\\SellerProfileService.cs",
-              "ViewState": "AgIAAG0AAAAAAAAAAAAmwHIAAABEAAAAAAAAAA==",
+              "ViewState": "AgIAAPMAAAAAAAAAAAAswAEBAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-04-11T12:47:57.005Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 29,
+              "DocumentIndex": 62,
               "Title": "UserProfileService.cs",
               "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Services\\UserProfileService.cs",
               "RelativeDocumentMoniker": "..\\Services\\UserProfileService.cs",
@@ -1622,12 +1938,11 @@
               "RelativeToolTip": "..\\Services\\UserProfileService.cs",
               "ViewState": "AgIAABEAAAAAAAAAAAAQwHwBAAB+AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-11T11:30:25.642Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-11T11:30:25.642Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 36,
+              "DocumentIndex": 66,
               "Title": "UserProfileDto.cs",
               "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Shared\\Dtos\\UserProfileDto.cs",
               "RelativeDocumentMoniker": "..\\Shared\\Dtos\\UserProfileDto.cs",
@@ -1635,12 +1950,11 @@
               "RelativeToolTip": "..\\Shared\\Dtos\\UserProfileDto.cs",
               "ViewState": "AgIAAAMAAAAAAAAAAAAAABYAAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-11T11:16:01.712Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-11T11:16:01.712Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 38,
+              "DocumentIndex": 68,
               "Title": "IUserProfileService.cs",
               "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Contracts\\Service\\IUserProfileService.cs",
               "RelativeDocumentMoniker": "..\\Contracts\\Service\\IUserProfileService.cs",
@@ -1648,12 +1962,11 @@
               "RelativeToolTip": "..\\Contracts\\Service\\IUserProfileService.cs",
               "ViewState": "AgIAABUAAAAAAAAAAAD4vx4AAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-11T11:15:55.066Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-11T11:15:55.066Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 137,
+              "DocumentIndex": 158,
               "Title": "UserPreferenceDto.cs",
               "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Shared\\Dtos\\UserPreferenceDto.cs",
               "RelativeDocumentMoniker": "..\\Shared\\Dtos\\UserPreferenceDto.cs",
@@ -1665,7 +1978,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 37,
+              "DocumentIndex": 67,
               "Title": "IUserProfileRepo.cs",
               "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Contracts\\Repo\\IUserProfileRepo.cs",
               "RelativeDocumentMoniker": "..\\Contracts\\Repo\\IUserProfileRepo.cs",
@@ -1673,12 +1986,11 @@
               "RelativeToolTip": "..\\Contracts\\Repo\\IUserProfileRepo.cs",
               "ViewState": "AgIAAAYAAAAAAAAAAAArwA4AAAAqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-10T23:21:36.533Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-10T23:21:36.533Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 34,
+              "DocumentIndex": 64,
               "Title": "UserProfileRepo.cs",
               "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Repository\\Repos\\UserProfileRepo.cs",
               "RelativeDocumentMoniker": "..\\Repository\\Repos\\UserProfileRepo.cs",
@@ -1686,12 +1998,11 @@
               "RelativeToolTip": "..\\Repository\\Repos\\UserProfileRepo.cs",
               "ViewState": "AgIAAAwAAAAAAAAAAAAAABcAAAAvAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-10T23:21:16.912Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-10T23:21:16.912Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 45,
+              "DocumentIndex": 73,
               "Title": "Category.cs",
               "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Entities\\Models\\Category.cs",
               "RelativeDocumentMoniker": "..\\Entities\\Models\\Category.cs",
@@ -1703,7 +2014,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 136,
+              "DocumentIndex": 157,
               "Title": "UserPreferenceSellerProfile.cs",
               "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Entities\\Models\\UserPreferenceSellerProfile.cs",
               "RelativeDocumentMoniker": "..\\Entities\\Models\\UserPreferenceSellerProfile.cs",
@@ -1715,7 +2026,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 138,
+              "DocumentIndex": 159,
               "Title": "UserPreferenceCategory.cs",
               "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Entities\\Models\\UserPreferenceCategory.cs",
               "RelativeDocumentMoniker": "..\\Entities\\Models\\UserPreferenceCategory.cs",
@@ -1727,7 +2038,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 140,
+              "DocumentIndex": 161,
               "Title": "Order.cs",
               "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Entities\\Models\\Order.cs",
               "RelativeDocumentMoniker": "..\\Entities\\Models\\Order.cs",
@@ -1739,7 +2050,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 135,
+              "DocumentIndex": 156,
               "Title": "Review.cs",
               "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Entities\\Models\\Review.cs",
               "RelativeDocumentMoniker": "..\\Entities\\Models\\Review.cs",
@@ -1751,7 +2062,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 78,
+              "DocumentIndex": 101,
               "Title": "UserProfileJoinSellerDto.cs",
               "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Shared\\Dtos\\UserProfileJoinSellerDto.cs",
               "RelativeDocumentMoniker": "..\\Shared\\Dtos\\UserProfileJoinSellerDto.cs",
@@ -1763,7 +2074,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 139,
+              "DocumentIndex": 160,
               "Title": "UserPreference.cs",
               "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Entities\\Models\\UserPreference.cs",
               "RelativeDocumentMoniker": "..\\Entities\\Models\\UserPreference.cs",
@@ -1775,7 +2086,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 55,
+              "DocumentIndex": 81,
               "Title": "UserProfile.cs",
               "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Entities\\Models\\UserProfile.cs",
               "RelativeDocumentMoniker": "..\\Entities\\Models\\UserProfile.cs",
@@ -1787,7 +2098,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 119,
+              "DocumentIndex": 140,
               "Title": "IRepositoryManager.cs",
               "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Contracts\\Repo\\IRepositoryManager.cs",
               "RelativeDocumentMoniker": "..\\Contracts\\Repo\\IRepositoryManager.cs",
@@ -1799,7 +2110,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 75,
+              "DocumentIndex": 98,
               "Title": "IUserPreferenceRepo.cs",
               "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Contracts\\Repo\\IUserPreferenceRepo.cs",
               "RelativeDocumentMoniker": "..\\Contracts\\Repo\\IUserPreferenceRepo.cs",
@@ -1811,7 +2122,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 133,
+              "DocumentIndex": 154,
               "Title": "IUserPreferenceService.cs",
               "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Contracts\\Service\\IUserPreferenceService.cs",
               "RelativeDocumentMoniker": "..\\Contracts\\Service\\IUserPreferenceService.cs",
@@ -1823,7 +2134,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 94,
+              "DocumentIndex": 117,
               "Title": "UserPreferenceService.cs",
               "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Services\\UserPreferenceService.cs",
               "RelativeDocumentMoniker": "..\\Services\\UserPreferenceService.cs",
@@ -1835,7 +2146,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 47,
+              "DocumentIndex": 74,
               "Title": "SellerProfile.cs",
               "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Entities\\Models\\SellerProfile.cs",
               "RelativeDocumentMoniker": "..\\Entities\\Models\\SellerProfile.cs",
@@ -1847,7 +2158,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 120,
+              "DocumentIndex": 141,
               "Title": "GroupMember.cs",
               "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Entities\\Models\\GroupMember.cs",
               "RelativeDocumentMoniker": "..\\Entities\\Models\\GroupMember.cs",
@@ -1859,7 +2170,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 130,
+              "DocumentIndex": 151,
               "Title": "HomePageCardCategory.cs",
               "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Entities\\Models\\HomePageCardCategory.cs",
               "RelativeDocumentMoniker": "..\\Entities\\Models\\HomePageCardCategory.cs",
@@ -1871,7 +2182,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 49,
+              "DocumentIndex": 76,
               "Title": "ProductValuesController.cs",
               "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Presentation\\ProductValuesController.cs",
               "RelativeDocumentMoniker": "..\\Presentation\\ProductValuesController.cs",
@@ -1883,7 +2194,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 48,
+              "DocumentIndex": 75,
               "Title": "UserGroupController.cs",
               "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Presentation\\UserGroupController.cs",
               "RelativeDocumentMoniker": "..\\Presentation\\UserGroupController.cs",
@@ -1895,7 +2206,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 58,
               "Title": "HomePageController.cs",
               "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Presentation\\HomePageController.cs",
               "RelativeDocumentMoniker": "..\\Presentation\\HomePageController.cs",
@@ -1903,12 +2214,11 @@
               "RelativeToolTip": "..\\Presentation\\HomePageController.cs",
               "ViewState": "AgIAAKsAAAAAAAAAAAA7wLYAAABAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-05T20:06:08.014Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-05T20:06:08.014Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 39,
+              "DocumentIndex": 69,
               "Title": "UserController.cs",
               "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Presentation\\UserController.cs",
               "RelativeDocumentMoniker": "..\\Presentation\\UserController.cs",
@@ -1916,12 +2226,11 @@
               "RelativeToolTip": "..\\Presentation\\UserController.cs",
               "ViewState": "AgIAABwAAAAAAAAAAAAgwCMAAABCAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-05T20:05:07.331Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-05T20:05:07.331Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 93,
+              "DocumentIndex": 116,
               "Title": "RepositoryManager.cs",
               "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Repository\\Repos\\RepositoryManager.cs",
               "RelativeDocumentMoniker": "..\\Repository\\Repos\\RepositoryManager.cs",
@@ -1933,19 +2242,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 54,
+              "DocumentIndex": 8,
               "Title": "ServiceManager.cs",
               "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Services\\ServiceManager.cs",
               "RelativeDocumentMoniker": "..\\Services\\ServiceManager.cs",
               "ToolTip": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Services\\ServiceManager.cs",
               "RelativeToolTip": "..\\Services\\ServiceManager.cs",
-              "ViewState": "AgIAAGIAAAAAAAAAAAAgwGMAAAB+AAAAAAAAAA==",
+              "ViewState": "AgIAAGgAAAAAAAAAAAAgwF4AAAC1AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-05T19:40:40.964Z"
+              "WhenOpened": "2026-04-05T19:40:40.964Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 126,
+              "DocumentIndex": 147,
               "Title": "HomePageCardService.cs",
               "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Services\\HomePageCardService.cs",
               "RelativeDocumentMoniker": "..\\Services\\HomePageCardService.cs",
@@ -1957,7 +2267,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 125,
+              "DocumentIndex": 146,
               "Title": "HomePageCardRepo.cs",
               "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Repository\\Repos\\HomePageCardRepo.cs",
               "RelativeDocumentMoniker": "..\\Repository\\Repos\\HomePageCardRepo.cs",
@@ -1969,7 +2279,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 131,
+              "DocumentIndex": 152,
               "Title": "IHomePageCardService.cs",
               "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Contracts\\Service\\IHomePageCardService.cs",
               "RelativeDocumentMoniker": "..\\Contracts\\Service\\IHomePageCardService.cs",
@@ -1981,7 +2291,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 127,
+              "DocumentIndex": 148,
               "Title": "IHomePageCardRepo.cs",
               "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Contracts\\Repo\\IHomePageCardRepo.cs",
               "RelativeDocumentMoniker": "..\\Contracts\\Repo\\IHomePageCardRepo.cs",
@@ -1993,7 +2303,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 129,
+              "DocumentIndex": 150,
               "Title": "HomePageCard.cs",
               "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Entities\\Models\\HomePageCard.cs",
               "RelativeDocumentMoniker": "..\\Entities\\Models\\HomePageCard.cs",
@@ -2005,7 +2315,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
+              "DocumentIndex": 61,
               "Title": "SellerProfileRepo.cs",
               "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Repository\\Repos\\SellerProfileRepo.cs",
               "RelativeDocumentMoniker": "..\\Repository\\Repos\\SellerProfileRepo.cs",
@@ -2013,25 +2323,24 @@
               "RelativeToolTip": "..\\Repository\\Repos\\SellerProfileRepo.cs",
               "ViewState": "AgIAAIoAAAAAAAAAAAAvwFEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-04T12:05:20.714Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-04T12:05:20.714Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 31,
+              "DocumentIndex": 17,
               "Title": "ServiceExtensions.cs",
               "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\saccoshop\\Extensions\\ServiceExtensions.cs",
               "RelativeDocumentMoniker": "Extensions\\ServiceExtensions.cs",
               "ToolTip": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\saccoshop\\Extensions\\ServiceExtensions.cs",
               "RelativeToolTip": "Extensions\\ServiceExtensions.cs",
-              "ViewState": "AgIAAL4AAAAAAAAAAAAAANIAAAAvAAAAAAAAAA==",
+              "ViewState": "AgIAANUAAAAAAAAAAAAuwOIAAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-04-05T09:54:29.578Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 96,
+              "DocumentIndex": 119,
               "Title": "ApplicationDbContext.cs",
               "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Repository\\context\\ApplicationDbContext.cs",
               "RelativeDocumentMoniker": "..\\Repository\\context\\ApplicationDbContext.cs",
@@ -2043,57 +2352,59 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 42,
+              "DocumentIndex": 39,
               "Title": "appsettings.json",
               "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\saccoshop\\appsettings.json",
               "RelativeDocumentMoniker": "appsettings.json",
               "ToolTip": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\saccoshop\\appsettings.json",
               "RelativeToolTip": "appsettings.json",
-              "ViewState": "AgIAABgAAAAAAAAAAAAAABsAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAABgAAAAAAAAAAAAAACUAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
               "WhenOpened": "2026-04-04T12:00:05.329Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 57,
+              "DocumentIndex": 15,
               "Title": "TradeController.cs",
               "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Presentation\\TradeController.cs",
               "RelativeDocumentMoniker": "..\\Presentation\\TradeController.cs",
               "ToolTip": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Presentation\\TradeController.cs",
               "RelativeToolTip": "..\\Presentation\\TradeController.cs",
-              "ViewState": "AgIAAEkAAAAAAAAAAAAAwFMAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAHgAAAAAAAAAAAAswIsAAAA8AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-04T09:54:54.186Z"
+              "WhenOpened": "2026-04-04T09:54:54.186Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 59,
+              "DocumentIndex": 12,
               "Title": "TradeService.cs",
               "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Services\\TradeService.cs",
               "RelativeDocumentMoniker": "..\\Services\\TradeService.cs",
               "ToolTip": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Services\\TradeService.cs",
               "RelativeToolTip": "..\\Services\\TradeService.cs",
-              "ViewState": "AgIAAJ8AAAAAAAAAAAAUwKYAAAC+AAAAAAAAAA==",
+              "ViewState": "AgIAAIUAAAAAAAAAAAAQwJIAAAAHAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-04T09:54:30.952Z"
+              "WhenOpened": "2026-04-04T09:54:30.952Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 6,
               "Title": "ProductService.cs",
               "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Services\\ProductService.cs",
               "RelativeDocumentMoniker": "..\\Services\\ProductService.cs",
               "ToolTip": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Services\\ProductService.cs",
               "RelativeToolTip": "..\\Services\\ProductService.cs",
-              "ViewState": "AgIAAFMAAAAAAAAAAAAEwF8AAAAhAAAAAAAAAA==",
+              "ViewState": "AgIAAEUAAAAAAAAAAAAswFAAAAA7AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-04-04T09:52:48.165Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 58,
+              "DocumentIndex": 83,
               "Title": "TradeRepo.cs",
               "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Repository\\Repos\\TradeRepo.cs",
               "RelativeDocumentMoniker": "..\\Repository\\Repos\\TradeRepo.cs",
@@ -2105,7 +2416,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 66,
+              "DocumentIndex": 89,
               "Title": "ProductRepo.cs",
               "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Repository\\Repos\\ProductRepo.cs",
               "RelativeDocumentMoniker": "..\\Repository\\Repos\\ProductRepo.cs",
@@ -2117,7 +2428,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 61,
+              "DocumentIndex": 84,
               "Title": "ITradeRepo.cs",
               "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Contracts\\Repo\\ITradeRepo.cs",
               "RelativeDocumentMoniker": "..\\Contracts\\Repo\\ITradeRepo.cs",
@@ -2129,20 +2440,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 11,
               "Title": "IProductService.cs",
               "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Contracts\\Service\\IProductService.cs",
               "RelativeDocumentMoniker": "..\\Contracts\\Service\\IProductService.cs",
               "ToolTip": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Contracts\\Service\\IProductService.cs",
               "RelativeToolTip": "..\\Contracts\\Service\\IProductService.cs",
-              "ViewState": "AgIAABcAAAAAAAAAAAAYwB4AAAAaAAAAAAAAAA==",
+              "ViewState": "AgIAABIAAAAAAAAAAIA7wBUAAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-04-04T09:28:05.286Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 62,
+              "DocumentIndex": 85,
               "Title": "IProductRepo.cs",
               "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Contracts\\Repo\\IProductRepo.cs",
               "RelativeDocumentMoniker": "..\\Contracts\\Repo\\IProductRepo.cs",
@@ -2154,27 +2465,29 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 98,
+              "DocumentIndex": 24,
               "Title": "Trade.cs",
               "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Entities\\Models\\Trade.cs",
               "RelativeDocumentMoniker": "..\\Entities\\Models\\Trade.cs",
               "ToolTip": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Entities\\Models\\Trade.cs",
               "RelativeToolTip": "..\\Entities\\Models\\Trade.cs",
-              "ViewState": "AgIAABMAAAAAAAAAAAAcwCQAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAABYAAAAAAAAAAAAswB0AAAAhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-04T09:12:09.627Z"
+              "WhenOpened": "2026-04-04T09:12:09.627Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 46,
+              "DocumentIndex": 7,
               "Title": "Product.cs",
               "DocumentMoniker": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Entities\\Models\\Product.cs",
               "RelativeDocumentMoniker": "..\\Entities\\Models\\Product.cs",
               "ToolTip": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Entities\\Models\\Product.cs",
               "RelativeToolTip": "..\\Entities\\Models\\Product.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAxwBAAAAAUAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAArAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-04T03:47:48.813Z"
+              "WhenOpened": "2026-04-04T03:47:48.813Z",
+              "EditorCaption": ""
             }
           ]
         }

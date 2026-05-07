@@ -45,6 +45,7 @@ namespace Repository.lucene
         public const string ReviewCount = "ReviewCount";
         public const string AverageRating = "AverageRating";
         public const string SellerLocation = "SellerLocation";
+        public const string ProductNamePrefix = "ProductName_prefix";
 
 
         // Catch-all field for free-text search ("red shoes" should match across

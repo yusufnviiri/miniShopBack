@@ -37,6 +37,8 @@ builder.Services.ConfigureIdentity();
 builder.Services.ConfigureSlugService();
 builder.Services.AddMemoryCache();
 builder.Services.AddProductSearch(builder.Configuration);
+builder.Services.AddTradeSearch();
+
 
 
 

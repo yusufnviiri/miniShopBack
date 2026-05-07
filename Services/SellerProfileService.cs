@@ -28,10 +28,11 @@ namespace Services
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SlugService _slugService;
         private readonly IProductIndexer _indexer;
+        private readonly ITradeIndexer _tradeIndexer;
 
 
 
-        public SellerProfileService(ILoggerManager logger, IRepositoryManager repository, IMapper mapper, UserManager<ApplicationUser> userManager, SlugService slugService, IProductIndexer productIndexer)
+        public SellerProfileService(ILoggerManager logger, IRepositoryManager repository, IMapper mapper, UserManager<ApplicationUser> userManager, SlugService slugService, IProductIndexer productIndexer, ITradeIndexer tradeIndexer)
         {
             _userManager = userManager;
             _logger = logger;
@@ -39,6 +40,7 @@ namespace Services
             _mapper = mapper;
             _slugService = slugService;
             _indexer = productIndexer;
+            _tradeIndexer = tradeIndexer;
 
 
         }
@@ -84,6 +86,7 @@ namespace Services
                     }
                     await _repoManager.SaveRepoDataAsync();
                     await _indexer.QueueReindexBySellerAsync(sellerProfile.SellerProfileId,ct);
+                    await _tradeIndexer.QueueReindexBySellerAsync(sellerProfile.SellerProfileId, ct);
 
                 }
 
@@ -110,6 +113,7 @@ namespace Services
         _repoManager.SellerProfileRepo.UpdateSellerProfile(existingSellerProfile);
             await _repoManager.SaveRepoDataAsync();
             await _indexer.QueueReindexBySellerAsync(sellerProfile.SellerProfileId, ct);
+            await _tradeIndexer.QueueReindexBySellerAsync(sellerProfile.SellerProfileId, ct);
 
         }
         public async Task DeleteSellerProfile(Guid sellerProfileId, CancellationToken ct = default)
@@ -125,6 +129,7 @@ namespace Services
                 _repoManager.SellerProfileRepo.DeleteSellerProfile(existingBuyerProfile);
                 await _repoManager.SaveRepoDataAsync();
                 await _indexer.QueueReindexBySellerAsync(sellerProfileId, ct);
+                await _tradeIndexer.QueueReindexBySellerAsync(sellerProfileId, ct);
             } }
 
         public async Task<SellerShopDto?> GetSellerShopDetailsAsync(Guid sellerProfileId)
@@ -251,9 +256,6 @@ namespace Services
 
         }
 
-
-
-
         public async Task<SellerShopDto?> GetSellerShopDetailsBySlugAsync(string slug)
         {
 
@@ -268,13 +270,6 @@ namespace Services
                 throw new ObjectBadRequestExeption($"object with slug {slug} not found");
             }
         }
-
-
-
-
-
-  
-
 
 
         public async Task<GroupShopDto?> GetGroupShopDetailsBySlugAsync(string slug, bool isMember)
@@ -307,13 +302,6 @@ namespace Services
             return groupShopDto;
 
         }
-
-
-
-
-
-
-
 
     }
 }

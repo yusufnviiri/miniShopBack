@@ -21,13 +21,28 @@ namespace Repository.lucene
 
             // Register the indexes the app cares about.
             // To add a new searchable entity later (e.g., users), add one line here.
+            //_contexts = new Dictionary<string, LuceneIndexContext>(StringComparer.OrdinalIgnoreCase)
+            //{
+            //    ["products"] = new LuceneIndexContext(
+            //        name: "products",
+            //        indexPath: Path.Combine(opts.RootPath, "products"),
+            //        ramBufferMb: opts.RamBufferSizeMb),
+            //    // ["users"] = new LuceneIndexContext(... )  ← future
+            //};
+
+
+
             _contexts = new Dictionary<string, LuceneIndexContext>(StringComparer.OrdinalIgnoreCase)
             {
                 ["products"] = new LuceneIndexContext(
-                    name: "products",
-                    indexPath: Path.Combine(opts.RootPath, "products"),
-                    ramBufferMb: opts.RamBufferSizeMb),
-                // ["users"] = new LuceneIndexContext(... )  ← future
+        name: "products",
+        indexPath: Path.Combine(opts.RootPath, "products"),
+        ramBufferMb: opts.RamBufferSizeMb),
+
+                ["trades"] = new LuceneIndexContext(
+        name: "trades",
+        indexPath: Path.Combine(opts.RootPath, "trades"),
+        ramBufferMb: opts.RamBufferSizeMb),
             };
         }
 

@@ -211,8 +211,33 @@ namespace saccoshop.Extensions
             services.AddHostedService<IndexingBackgroundService>();
             services.AddHostedService<SearcherRefreshService>();
 
+
+
             return services;
         }
 
+
+        public static IServiceCollection AddTradeSearch(this IServiceCollection services)
+        {
+            // No options call here — LuceneOptions was bound by AddProductSearch.
+            // Calling Configure twice on the same options is harmless, but
+            // unnecessary. Just consume the existing binding.
+
+            services.AddSingleton<TradeIndexingQueue>();
+            services.AddSingleton<TradeDocumentMapper>();
+
+            services.AddScoped<ITradeSearchRepository, TradeSearchRepository>();
+            services.AddScoped<ITradeIndexer, TradeIndexer>();
+            services.AddScoped<ITradeSearchService, TradeSearchService>();
+
+            services.AddHostedService<TradeIndexingBackgroundService>();
+
+            // SearcherRefreshService is shared — it iterates ALL registered
+            // indexes via ILuceneIndexRegistry.All. Already registered by
+            // AddProductSearch. No action needed here.
+
+            return services;
+        }
     }
+
 }

@@ -113,45 +113,47 @@ namespace Repository.lucene
         /// </summary>
         private static Query? BuildTextQuery(string userInput, Analyzer analyzer)
         {
-            // Run the user's input through the SAME analyzer used at index time.
-            // This is critical — it applies stemming, lowercasing, stop-word removal
-            // so "Running Shoes" becomes ["run", "shoe"] and matches indexed forms.
-            var tokens = AnalyzeToTokens(analyzer, ProductIndexFields.ProductName, userInput);
-            if (tokens.Count == 0) return null;
+            var stemmedTokens = AnalyzeToTokens(analyzer, ProductIndexFields.ProductName, userInput);
+            if (stemmedTokens.Count == 0) return null;
+
+            var rawTokens = userInput
+                .ToLowerInvariant()
+                .Split(new[] { ' ', '\t' },
+                    StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries)
+                .Where(t => t.Length > 0)
+                .ToList();
 
             var outer = new BooleanQuery();
 
-            foreach (var token in tokens)
+            for (var i = 0; i < stemmedTokens.Count; i++)
             {
-                // For each token, build a per-field disjunction (this token in ANY field).
+                var stemmed = stemmedTokens[i];
+                var raw = i < rawTokens.Count ? rawTokens[i] : null;
+
                 var perToken = new BooleanQuery();
 
-                AddBoosted(perToken, ProductIndexFields.ProductName, token, BoostProductName);
-                AddBoosted(perToken, ProductIndexFields.CategoryName, token, BoostCategory);
-                AddBoosted(perToken, ProductIndexFields.SubCategoryName, token, BoostSubCategory);
-                AddBoosted(perToken, ProductIndexFields.SubCategoryCategoryName, token, BoostSubCategory);
-                AddBoosted(perToken, ProductIndexFields.SellerName, token, BoostSeller);
-                AddBoosted(perToken, ProductIndexFields.Description, token, BoostDescription);
+                AddBoosted(perToken, ProductIndexFields.ProductName, stemmed, BoostProductName);
+                AddBoosted(perToken, ProductIndexFields.CategoryName, stemmed, BoostCategory);
+                AddBoosted(perToken, ProductIndexFields.SubCategoryName, stemmed, BoostSubCategory);
+                AddBoosted(perToken, ProductIndexFields.SubCategoryCategoryName, stemmed, BoostSubCategory);
+                AddBoosted(perToken, ProductIndexFields.SellerName, stemmed, BoostSeller);
+                AddBoosted(perToken, ProductIndexFields.Description, stemmed, BoostDescription);
 
-                // Prefix fallback against ProductName only — handles "wat" → "watch"
-                // while the user is still typing. Low boost so it doesn't dominate.
-                var prefix = new PrefixQuery(new Term(ProductIndexFields.ProductName, token))
+                if (!string.IsNullOrEmpty(raw))
                 {
-                    Boost = BoostPrefix
-                };
-                perToken.Add(prefix, Occur.SHOULD);
+                    var prefix = new PrefixQuery(new Term(ProductIndexFields.ProductNamePrefix, raw))
+                    {
+                        Boost = BoostPrefix
+                    };
+                    perToken.Add(prefix, Occur.SHOULD);
+                }
 
-                // The token must be matched somewhere — at least one of the SHOULDs above.
                 perToken.MinimumNumberShouldMatch = 1;
-
-                // Multi-token queries require all tokens (each token MUST be matched somewhere).
-                // For "running shoes" → product needs to match both "run" and "shoe" (in any field).
                 outer.Add(perToken, Occur.MUST);
             }
 
             return outer;
         }
-
         private static void AddBoosted(BooleanQuery bq, string field, string token, float boost)
         {
             var tq = new TermQuery(new Term(field, token)) { Boost = boost };

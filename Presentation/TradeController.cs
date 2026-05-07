@@ -178,7 +178,9 @@ namespace Presentation
                 if (tradeImages.Count > 0)
                     await _service.TradeImageService.CreateTradeImageListAsync(tradeImages);
             }
-            return Ok(trade.TradeId);
+
+            return Ok(new { data = trade.Slug });
+
 
             //return Ok(new { message = "Product Added" });
         }
