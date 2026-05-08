@@ -11,14 +11,14 @@ namespace Contracts.Service
     public interface IUserGroupService
     {
         Task<IEnumerable<ShowUserGroupDto>> GetUserGroupsAsync();
-        Task<ShowUserGroupDto> GetUserGroupByIdAsync(Guid userGroupId);
+        Task<ShowUserGroupDto?> GetUserGroupByIdAsync(Guid userGroupId);
 
         Task<ShowuserGroupWithMembersDto?> GetUserGroupWithMembersAsync(Guid userGroupId);
         Task<ShowuserGroupWithMembersDto?> GetUserGroupWithMembersWithSlugAsync(string slug );
 
         Task<UserGroup?> FindUserGroupByIdAsync(Guid userGroupId, bool tracking);
         Task CreateUserGroupAsync(NewUserGroupDto userGroup, CancellationToken ct = default);
-        Task UpdateUserGroupAsync(NewUserGroupDto userGroup);
+        Task UpdateUserGroupAsync(NewUserGroupDto userGroup, CancellationToken ct = default);
         Task DeleteUserGroupAsync(Guid userGroupId);
     }
 }

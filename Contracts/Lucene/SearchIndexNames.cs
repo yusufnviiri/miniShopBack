@@ -13,6 +13,8 @@ namespace Contracts.Lucene
 
         public const string Trades = "trades";
         public const string Users = "users";
+        public const string UserGroups = "usergroups";
+
 
 
     }

@@ -21,27 +21,14 @@ namespace Repository.lucene
 
             // Register the indexes the app cares about.
             // To add a new searchable entity later (e.g., users), add one line here.
-            //_contexts = new Dictionary<string, LuceneIndexContext>(StringComparer.OrdinalIgnoreCase)
-            //{
-            //    ["products"] = new LuceneIndexContext(
-            //        name: "products",
-            //        indexPath: Path.Combine(opts.RootPath, "products"),
-            //        ramBufferMb: opts.RamBufferSizeMb),
-            //    // ["users"] = new LuceneIndexContext(... )  ← future
-            //};
-
-
+          
 
             _contexts = new Dictionary<string, LuceneIndexContext>(StringComparer.OrdinalIgnoreCase)
             {
-                ["products"] = new LuceneIndexContext("products",
-           Path.Combine(opts.RootPath, "products"), opts.RamBufferSizeMb),
-
-                ["trades"] = new LuceneIndexContext("trades",
-           Path.Combine(opts.RootPath, "trades"), opts.RamBufferSizeMb),
-
-                ["users"] = new LuceneIndexContext("users",
-           Path.Combine(opts.RootPath, "users"), opts.RamBufferSizeMb),
+                ["products"] = new LuceneIndexContext("products", Path.Combine(opts.RootPath, "products"), opts.RamBufferSizeMb),
+                ["trades"] = new LuceneIndexContext("trades", Path.Combine(opts.RootPath, "trades"), opts.RamBufferSizeMb),
+                ["users"] = new LuceneIndexContext("users", Path.Combine(opts.RootPath, "users"), opts.RamBufferSizeMb),
+                ["usergroups"] = new LuceneIndexContext("usergroups", Path.Combine(opts.RootPath, "usergroups"), opts.RamBufferSizeMb),
             };
         }
 

@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Azure.Core;
 using Contracts;
+using Contracts.Lucene;
 using Contracts.Repo;
 using Contracts.Service;
 using Entities.Exceptions;
@@ -10,6 +11,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Services.BusinessRules;
 using Shared.Dtos;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 
 namespace Services
@@ -25,11 +27,12 @@ namespace Services
         private readonly ISmsSender _smsSender;
         private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly SlugService _slugService;
+        private readonly IUserIndexer _userIndexer;
 
 
 
 
-        public UserProfileService(ILoggerManager logger, IRepositoryManager repository, IMapper mapper, UserManager<ApplicationUser> userManager,RoleManager<IdentityRole> roleManager,ISmsSender smsSender, IHttpContextAccessor httpContextAccessor, SlugService slugService)
+        public UserProfileService(ILoggerManager logger, IRepositoryManager repository, IMapper mapper, UserManager<ApplicationUser> userManager,RoleManager<IdentityRole> roleManager,ISmsSender smsSender, IHttpContextAccessor httpContextAccessor, SlugService slugService,IUserIndexer userIndexer)
         {
             _userManager = userManager;
             _logger = logger;
@@ -39,6 +42,7 @@ namespace Services
             _smsSender = smsSender;
             _httpContextAccessor = httpContextAccessor;
             _slugService = slugService;
+            _userIndexer = userIndexer;
 
         }
 
@@ -49,7 +53,7 @@ namespace Services
 
         public async Task<IEnumerable<UserProfileDto>> GetAllUserProfilesAsync() => await _repoManager.UserProfileRepo.GetAllUserProfiles();
         public  Task<UserProfile?> FindUserProfileByIdAsync(Guid UserProfileId, bool tracking)=>_repoManager.UserProfileRepo.FindUserProfileById(UserProfileId, tracking);
-     public async Task UpdateUserProfileAsync(NewUserDataDto userProfile)
+     public async Task UpdateUserProfileAsync(NewUserDataDto userProfile, CancellationToken ct = default)
         {
 
             var address = await _repoManager.AddressRepo.FindAddressForUpdate(userProfile.AddressId);
@@ -62,6 +66,7 @@ namespace Services
             await _repoManager.SaveRepoDataAsync();
 
 
+
             var user =await _userManager.FindByIdAsync(userProfile.IdentityUserId);
             if (user != null) {
                 user.FirstName = userProfile.FirstName;
@@ -70,6 +75,8 @@ namespace Services
                 user.Email = userProfile.Email;
                 user.UserName = userProfile.PhoneNumber;
                 var result = await _userManager.UpdateAsync(user);
+                await _userIndexer.QueueIndexAsync(userProfile.UserProfileId, ct);
+
                 if (!result.Succeeded)
                 {
                     var errors = string.Join(
@@ -118,7 +125,7 @@ namespace Services
 
 
 
-        public async Task DeleteUserProfileAsync(Guid userProfile)
+        public async Task DeleteUserProfileAsync(Guid userProfile, CancellationToken ct = default)
         {
             var existingProfile = await _repoManager.UserProfileRepo.FindUserProfileById(userProfile, tracking: true);
             if (existingProfile != null)
@@ -126,6 +133,8 @@ namespace Services
                 _repoManager.UserProfileRepo.DeleteUserProfile(existingProfile);
 
                 await _repoManager.SaveRepoDataAsync();
+                await _userIndexer.QueueRemoveAsync(userProfile, ct);
+
             }
         }
         private async Task<int> ResolveOrCreateAddressAsync(NewUserDataDto dto)
@@ -226,7 +235,7 @@ namespace Services
 
             return user;
         }
-        private async Task<Guid> CreateDomainUserProfileAsync(string identityUserId, int addressId,string username)
+        private async Task<Guid> CreateDomainUserProfileAsync(string identityUserId, int addressId,string username, CancellationToken ct = default)
         {
             var profile = new UserProfile
             {
@@ -239,6 +248,8 @@ namespace Services
 
             _repoManager.UserProfileRepo.CreateUserProfile(profile);
             await _repoManager.SaveRepoDataAsync();
+            await _userIndexer.QueueIndexAsync(profile.UserProfileId, ct);
+
             return profile.UserProfileId;
         }
 

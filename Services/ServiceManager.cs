@@ -63,7 +63,7 @@ namespace Services
         private readonly Lazy<ITradeImpressionService> _tradeImpressionService;
         private readonly Lazy<IGroupFeaturedProductService> _groupFeaturedProductService;
 
-        public ServiceManager(ILoggerManager logger, IRepositoryManager repository, IMapper mapper, UserManager<ApplicationUser> userManager, IConfiguration configuration, SignInManager<ApplicationUser> signInManager,RoleManager<IdentityRole> roleManager, IUserClaimsPrincipalFactory<ApplicationUser> claimsFactory,ISmsSender smsSender,IHttpContextAccessor httpContextAccessor, IOptions<JwtSettings> jwtOptions, IWebHostEnvironment env, ApplicationDbContext dbContext, SlugService slugService,IProductIndexer productIndexer, ITradeIndexer tradeIndexer) {
+        public ServiceManager(ILoggerManager logger, IRepositoryManager repository, IMapper mapper, UserManager<ApplicationUser> userManager, IConfiguration configuration, SignInManager<ApplicationUser> signInManager,RoleManager<IdentityRole> roleManager, IUserClaimsPrincipalFactory<ApplicationUser> claimsFactory,ISmsSender smsSender,IHttpContextAccessor httpContextAccessor, IOptions<JwtSettings> jwtOptions, IWebHostEnvironment env, ApplicationDbContext dbContext, SlugService slugService,IProductIndexer productIndexer, ITradeIndexer tradeIndexer,IUserIndexer userIndexer,IUserGroupIndexer userGroupIndexer) {
             _dbContext= dbContext;
             _productIndexer= productIndexer;
             _tradeIndexer= tradeIndexer;
@@ -81,18 +81,18 @@ namespace Services
             _orderService = new Lazy<IOrderService>(()=> new OrderService(logger, repository, mapper, userManager));
             _productService = new Lazy<IProductService>(()=>new ProductService(logger, repository, mapper, userManager,slugService,productIndexer));
             _productImageService = new Lazy<IProductImageService>(()=>new ProductImageService(logger, repository, mapper, userManager,env));
-            _userGroupService = new Lazy<IUserGroupService>(()=> new UserGroupService(logger, repository, mapper, userManager, slugService, productIndexer, tradeIndexer));
+            _userGroupService = new Lazy<IUserGroupService>(()=> new UserGroupService(logger, repository, mapper, userManager, slugService, productIndexer, tradeIndexer,userGroupIndexer));
             _userService = new Lazy<IApplicationUserService>(()=> new ApplicationUserService(logger, repository, mapper, userManager,configuration,signInManager));  
             _categoryService = new Lazy<ICategoryService>(()=>new CategoryService(logger, repository, mapper,userManager));
             _subCategoryService = new Lazy<ISubCategoryService>(()=> new SubCategoryService(logger, repository, mapper, userManager));
             _subCategoryCategoryService = new Lazy<ISubCategoryCategoryService>(()=>new SubCategoryCategoryService(logger, repository, mapper, userManager));
             _addressService = new Lazy<IAddressService>(()=> new AddressService(logger, repository, mapper, userManager));
-            _userProfileService = new Lazy<IUserProfileService>(()=>new UserProfileService(logger, repository, mapper, userManager, roleManager,smsSender, httpContextAccessor, slugService));
-            _groupMemberService = new Lazy<IGroupMemberService>(()=> new GroupMemberService(logger, repository, mapper, userManager,roleManager));
+            _userProfileService = new Lazy<IUserProfileService>(()=>new UserProfileService(logger, repository, mapper, userManager, roleManager,smsSender, httpContextAccessor, slugService,userIndexer));
+            _groupMemberService = new Lazy<IGroupMemberService>(()=> new GroupMemberService(logger, repository, mapper, userManager,roleManager,userIndexer));
             _authService = new Lazy<IAuthService>(() => new AuthService(logger,   userManager, configuration, signInManager, repository,claimsFactory, smsSender, httpContextAccessor, jwtOptions,roleManager));          
             _sellerRestrictionService = new Lazy<ISellerRestrictionService>(() => new SellerRestrictionService(logger, repository, mapper, userManager));
             _buyerProfileService = new Lazy<IBuyerProfileService>(() => new BuyerProfileService(logger, repository, mapper, userManager));
-            _sellerProfileService = new Lazy<ISellerProfileService>(() => new SellerProfileService(logger, repository, mapper, userManager, slugService, productIndexer, tradeIndexer));
+            _sellerProfileService = new Lazy<ISellerProfileService>(() => new SellerProfileService(logger, repository, mapper, userManager, slugService, productIndexer, tradeIndexer,userIndexer));
             _sellerViolationService = new Lazy<ISellerViolationService>(() => new SellerViolationService(logger, repository, mapper, userManager));
             _userGroupSellerService = new Lazy<IUserGroupSellerService>(() => new UserGroupSellerService(logger, repository, mapper, userManager));
             _userGroupNotificationService = new Lazy<IUserGroupNotificationService>(() => new UserGroupNotificationService(logger, repository, mapper, userManager));

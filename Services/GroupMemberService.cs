@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using AutoMapper.Execution;
 using Contracts;
+using Contracts.Lucene;
 using Contracts.Repo;
 using Contracts.Service;
 using Entities.Models;
@@ -11,6 +12,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Services
 {
@@ -24,20 +26,23 @@ namespace Services
         private ApplicationUser? _user = new();
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly RoleManager<IdentityRole> _roleManager;
+        private readonly IUserIndexer _userIndexer;
 
-        public GroupMemberService(ILoggerManager logger, IRepositoryManager repository, IMapper mapper, UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager)
+
+        public GroupMemberService(ILoggerManager logger, IRepositoryManager repository, IMapper mapper, UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager, IUserIndexer userIndexer)
         {
             _userManager = userManager;
             _logger = logger;
             _repoManager = repository;
             _mapper = mapper;
             _roleManager = roleManager;
+            _userIndexer= userIndexer;
         }
         public async Task<GroupMember?> FindGroupMemberByUserProfileIdAsync(Guid userProfileId)=> await _repoManager.GroupMemberRepo.FindGroupMemberByUserProfileId(userProfileId);
 
         public async Task<IEnumerable<ShowGroupMemberDto>> GetAllGroupMembersAsync() => await _repoManager.GroupMemberRepo.GetAllGroupMembers();
         public async Task<GroupMember?> FindGroupMemberByIdAsync(Guid memberID, bool tracking) => await _repoManager.GroupMemberRepo.FindGroupMemberById(memberID, tracking);
-        public async Task CreateGroupMemberAsync(GroupMemberDto groupMember)
+        public async Task CreateGroupMemberAsync(GroupMemberDto groupMember, CancellationToken ct = default)
         {
 
             if (groupMember == null  ) return;
@@ -51,6 +56,9 @@ namespace Services
             user.ActiveGroupId = groupMember.UserGroupId;
             _repoManager.UserProfileRepo.UpdateUserProfile(user);
             await _repoManager.SaveRepoDataAsync();
+
+            await _userIndexer.QueueIndexAsync(user.UserProfileId, ct);
+
 
         }
         public async Task UpdateGroupMemberAsync(GroupMemberDto member)

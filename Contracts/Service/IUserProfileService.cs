@@ -18,8 +18,8 @@ namespace Contracts.Service
 
         Task<Guid> CreateUserProfileAsync(NewUserDataDto userProfile);
         Task CreateUserProfileWithMemberAsync(GroupMemberJoinNewUserProfileDataDto dataDto);
-        Task UpdateUserProfileAsync(NewUserDataDto userProfile);
-        Task DeleteUserProfileAsync(Guid userProfile);
+        Task UpdateUserProfileAsync(NewUserDataDto userProfile, CancellationToken ct = default);
+        Task DeleteUserProfileAsync(Guid userProfile, CancellationToken ct = default);
         Task VerifyPhoneAsync(VerifyOtpRequest request);
         Task CreateUserDevice(LoginRequestDto loginRequest, ApplicationUser user);
         Task<LoggedInUserDataDto?> GetLoggedInUserDataDtoAsync(Guid UserProfileId);

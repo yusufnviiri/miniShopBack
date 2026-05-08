@@ -39,6 +39,7 @@ builder.Services.AddMemoryCache();
 builder.Services.AddProductSearch(builder.Configuration);
 builder.Services.AddTradeSearch();
 builder.Services.AddUserSearch();
+builder.Services.AddUserGroupSearch();
 
 
 

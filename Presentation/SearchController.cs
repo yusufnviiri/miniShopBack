@@ -28,7 +28,10 @@ namespace Presentation
         
         private readonly IProductSearchService _search;
         private readonly ITradeSearchService _tradeSearch;
-        private readonly IUserSearchService _userSearchService;
+        private readonly IUserSearchService _userSearchService; 
+        private readonly IUserGroupSearchService _userGroupSearchService ;
+
+        
 
 
 
@@ -36,27 +39,18 @@ namespace Presentation
 
 
 
-        public SearchController(IServiceManager service, IProductSearchService search, ITradeSearchService tradeSearch, IUserSearchService userSearchService)
+        public SearchController(IServiceManager service, IProductSearchService search, ITradeSearchService tradeSearch, IUserSearchService userSearchService,IUserGroupSearchService userGroupSearchService )
         {
             _service = service;
             _search = search;
             _tradeSearch = tradeSearch;
             _userSearchService = userSearchService;
+            _userGroupSearchService = userGroupSearchService;
             //_roleManager = roleManager;
         }
 
 
 
-
-        //[HttpGet("products")]
-        //public IActionResult SearchProducts([FromQuery] ProductSearchRequest request)
-        //{
-        //    if (request.PageSize is < 1 or > 100)
-        //        return BadRequest("PageSize must be between 1 and 100.");
-
-        //    var result = _searchService.Search(request);
-        //    return Ok(result);
-        //}
 
 
       
@@ -328,6 +322,65 @@ namespace Presentation
 
             repo.Commit();
             registry.Get(SearchIndexNames.Users).MaybeRefresh();
+
+            return Ok(new { indexed });
+        }
+
+
+
+
+
+
+
+
+        [HttpGet("usergroups")]
+        public async Task<ActionResult<UserGroupSearchResult>> Search(
+       [FromQuery] UserGroupSearchRequest request,
+       CancellationToken ct)
+        {
+            var result = await _userGroupSearchService.SearchAsync(request, ct);
+            return Ok(result);
+        }
+
+        [HttpPost("usergroups/rebuild")]
+        //[Authorize(Roles = "Admin")]
+        public async Task<IActionResult> Rebuild(
+            [FromServices] ApplicationDbContext db,
+            [FromServices] UserGroupDocumentMapper mapper,
+            [FromServices] IUserGroupSearchRepository repo,
+            [FromServices] ILuceneIndexRegistry registry,
+            CancellationToken ct)
+        {
+            var ids = await db.UserGroups
+                .AsNoTracking()
+                .Select(g => g.UserGroupId)
+                .ToListAsync(ct);
+
+            var indexed = 0;
+
+            foreach (var id in ids)
+            {
+                var group = await db.UserGroups
+                    .AsNoTracking()
+                    .Include(g => g.GroupType)
+                    .Include(g => g.Address)
+                    .FirstOrDefaultAsync(g => g.UserGroupId == id, ct);
+
+                if (group is null) continue;
+
+                var memberCount = await db.GroupMembers
+                    .AsNoTracking()
+                    .CountAsync(gm => gm.UserGroupId == id, ct);
+
+                var dto = mapper.Map(group, memberCount);
+                repo.AddOrUpdate(dto);
+                indexed++;
+
+                if (indexed % 200 == 0) repo.Commit();
+            }
+
+            repo.Commit();
+            registry.Get(SearchIndexNames.UserGroups).MaybeRefresh();
 
             return Ok(new { indexed });
         }

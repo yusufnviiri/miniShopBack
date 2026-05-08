@@ -15,6 +15,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Services
 {
@@ -29,10 +30,12 @@ namespace Services
         private readonly SlugService _slugService;
         private readonly IProductIndexer _indexer;
         private readonly ITradeIndexer _tradeIndexer;
+        private readonly IUserIndexer _userIndexer;
 
 
 
-        public SellerProfileService(ILoggerManager logger, IRepositoryManager repository, IMapper mapper, UserManager<ApplicationUser> userManager, SlugService slugService, IProductIndexer productIndexer, ITradeIndexer tradeIndexer)
+
+        public SellerProfileService(ILoggerManager logger, IRepositoryManager repository, IMapper mapper, UserManager<ApplicationUser> userManager, SlugService slugService, IProductIndexer productIndexer, ITradeIndexer tradeIndexer, IUserIndexer userIndexer)
         {
             _userManager = userManager;
             _logger = logger;
@@ -41,6 +44,7 @@ namespace Services
             _slugService = slugService;
             _indexer = productIndexer;
             _tradeIndexer = tradeIndexer;
+            _userIndexer = userIndexer;
 
 
         }
@@ -68,6 +72,8 @@ namespace Services
                 {
                     user.SellerProfileId = sellerProfile.SellerProfileId;
                     _repoManager.UserProfileRepo.UpdateUserProfile(user);
+                    await _userIndexer.QueueIndexAsync(sellerProfile.SellerId, ct);
+
                     var groupMember = await _repoManager.GroupMemberRepo.FindGroupMemberByUserProfileId(sellerProfile.SellerId);
                     if (groupMember != null&& groupMember.UserGroupId!=Guid.Empty)
                     {

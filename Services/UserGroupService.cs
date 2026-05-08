@@ -31,9 +31,10 @@ namespace Services
         private readonly SlugService _slugService;
         private readonly IProductIndexer _indexer;
         private readonly ITradeIndexer _tradeIndexer;
+        private readonly IUserGroupIndexer _userGroupIndexer;
 
 
-        public UserGroupService(ILoggerManager logger, IRepositoryManager repository, IMapper mapper, UserManager<ApplicationUser> userManager, SlugService slugService, IProductIndexer productIndexer, ITradeIndexer tradeIndexer)
+        public UserGroupService(ILoggerManager logger, IRepositoryManager repository, IMapper mapper, UserManager<ApplicationUser> userManager, SlugService slugService, IProductIndexer productIndexer, ITradeIndexer tradeIndexer, IUserGroupIndexer userGroupIndexer)
         {
             _userManager = userManager;
             _logger = logger;
@@ -42,8 +43,7 @@ namespace Services
             _tradeIndexer = tradeIndexer;
             _slugService = slugService;
             _indexer = productIndexer;
-
-
+            _userGroupIndexer = userGroupIndexer;
         }
 
         private string CreateUserGroupSlug(string name)
@@ -93,7 +93,7 @@ namespace Services
             userGroupEntity.Slug = $"groups={CreateUserGroupSlug(userGroup.UserGroupName)}-{numberOfUserGroups + 1}";
 
             userGroupEntity.AddressId=addressEntity.AddressId;
-            _repoManager.UserGroupRepo.CreateUserGroup(userGroupEntity);
+          var newGroupId =  _repoManager.UserGroupRepo.CreateUserGroup(userGroupEntity);
 
 
             await _repoManager.SaveRepoDataAsync();
@@ -124,12 +124,13 @@ namespace Services
                 sellerProfile.Slug = $"seller={CreateUserGroupSlug(sellerProfile.SellerName)}-{numberOfSellers + 1}";
                 _repoManager.SellerProfileRepo.CreateSellerProfile(sellerProfile);
                 await _repoManager.SaveRepoDataAsync();
+                await _userGroupIndexer.QueueIndexAsync(newGroupId, ct);
                 await _indexer.QueueReindexBySellerAsync(sellerProfile.SellerProfileId,ct);
                 await _tradeIndexer.QueueReindexBySellerAsync(sellerProfile.SellerProfileId, ct);
 
             }
         }
-    public async Task UpdateUserGroupAsync(NewUserGroupDto userGroup)
+    public async Task UpdateUserGroupAsync(NewUserGroupDto userGroup, CancellationToken ct = default)
         {
             if (userGroup == null)
             {
@@ -147,8 +148,10 @@ namespace Services
             }
 
             await _repoManager.SaveRepoDataAsync();
+            await _userGroupIndexer.QueueIndexAsync(userGroup.UserGroupId, ct);
+
         }
-     public async  Task<ShowUserGroupDto> GetUserGroupByIdAsync(Guid userGroupId)=>await _repoManager.UserGroupRepo.GetUserGroupById(userGroupId);
+        public async  Task<ShowUserGroupDto?> GetUserGroupByIdAsync(Guid userGroupId)=>await _repoManager.UserGroupRepo.GetUserGroupById(userGroupId);
 
         public async Task DeleteUserGroupAsync(Guid userGroupId)
         {
