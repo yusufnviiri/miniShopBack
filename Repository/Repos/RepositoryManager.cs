@@ -77,7 +77,7 @@ namespace Repository.Repos
             _productRepo = new Lazy<IProductRepo>(()=>new ProductRepo(dbContext,cache));
             _userGroupRepo = new Lazy<IUserGroupRepo>(()=>new UserGroupRepo(dbContext));
             _userRepo = new Lazy<IApplicationUserRepo>(()=>new ApplicationUserRepo(dbContext));
-            _categoryRepo = new Lazy<ICategoryRepo>(()=>new CategoryRepo(dbContext));
+            _categoryRepo = new Lazy<ICategoryRepo>(()=>new CategoryRepo(cache, dbContext));
             _subCategoryRepo = new Lazy<ISubCategoryRepo>(()=>new SubCategoryRepo(dbContext));
             _subCategoryCategoryRepo = new Lazy<ISubCategoryCategoryRepo>(()=>new SubCategoryCategoryRepo(dbContext));
             _wishListItemRepo = new Lazy<IWishListItemRepo>(()=> new WishListItemRepo(dbContext));

@@ -26,6 +26,7 @@ namespace Contracts.Repo
         void CreateCategory(Category category);
         void UpdateCategory(Category category);
         void DeleteCategory(Category category);
+        void Invalidate();
 
     }
 }

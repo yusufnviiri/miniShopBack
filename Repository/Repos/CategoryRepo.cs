@@ -1,6 +1,7 @@
 ﻿using Contracts.Repo;
 using Entities.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Caching.Memory;
 using Repository.context;
 using Shared.Dtos;
 using System;
@@ -13,14 +14,22 @@ namespace Repository.Repos
 {
     public class CategoryRepo : RepositoryBase<Category>, ICategoryRepo
     {
-        public CategoryRepo(ApplicationDbContext _db) : base(_db)
-        {
+        private readonly IMemoryCache _cache;
+        private const string ProductTreeKey = "category-tree:products";
+        private const string TradeTreeKey = "category-tree:trades";
 
+        public CategoryRepo(IMemoryCache cache, ApplicationDbContext _db) : base(_db)
+        {
+_cache = cache;
         }
 
         public async Task<IEnumerable<CategoryTreeDto>> TradeCategories()
         {
-            return await FindByCondition(k => k.Type != null && EF.Functions.Like(k.Type, "%trade%"), false)
+
+            if (_cache.TryGetValue(TradeTreeKey, out IEnumerable<CategoryTreeDto>? cached))
+                return cached!;
+
+            var result = await FindByCondition(k => k.Type != null && EF.Functions.Like(k.Type, "%trade%"), false)
 
                 .Select(c => new CategoryTreeDto
                 {
@@ -48,12 +57,19 @@ namespace Repository.Repos
                 })
                 .OrderBy(c => c.CategoryName)
                 .ToListAsync();
+
+            _cache.Set(TradeTreeKey, result, TimeSpan.FromHours(1));
+            return result;
+
         }
         public IQueryable<Category> CategoriesQueryData()=>FindAll(false);
 
         public async Task<IEnumerable<CategoryTreeDto>> ProductCategories()
         {
-            return await FindByCondition(c => c.Type != null && EF.Functions.Like(c.Type, "%product%"), false)
+            if (_cache.TryGetValue(ProductTreeKey, out IEnumerable<CategoryTreeDto>? cached))
+                return cached!;
+
+            var result = await FindByCondition(c => c.Type != null && EF.Functions.Like(c.Type, "%product%"), false)
 
                 .Select(c => new CategoryTreeDto
                 {
@@ -81,6 +97,8 @@ namespace Repository.Repos
                 })
                 .OrderBy(c => c.CategoryName)
                 .ToListAsync();
+            _cache.Set(ProductTreeKey, result, TimeSpan.FromHours(2));
+            return result;
         }
        
         public async  Task<IEnumerable<CategoryDto>> GetAllCategoriesWithSubCategories (bool tracking)
@@ -161,6 +179,12 @@ namespace Repository.Repos
                 Type=p.Type,
                 GeneralCategoryId=p.GeneralCategoryId,
             }).ToListAsync();
+        }
+
+        public void Invalidate()
+        {
+            _cache.Remove(ProductTreeKey);
+            _cache.Remove(TradeTreeKey);
         }
 
     }

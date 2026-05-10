@@ -44,6 +44,8 @@ namespace Services
             var categoryEntity = _mapper.Map<SubCategory>(category);
             _repoManager.SubCategoryRepo.CreateSubCategory(categoryEntity);
             await _repoManager.SaveRepoDataAsync();
+            _repoManager.CategoryRepo.Invalidate();
+
         }
         public async Task UpdateSubCategoryAsync(SubCategory category)
         {
@@ -56,6 +58,8 @@ namespace Services
             categoryEntity.SubCategoryName = category.SubCategoryName;
             //_mapper.Map(category, categoryEntity);
             await _repoManager.SaveRepoDataAsync();
+            _repoManager.CategoryRepo.Invalidate();
+
         }
         public async Task DeleteSubCategory(int categoryId)
         {
@@ -67,6 +71,8 @@ namespace Services
             }
             _repoManager.SubCategoryRepo.DeleteSubCategory(categoryEntity);
             await _repoManager.SaveRepoDataAsync();
+            _repoManager.CategoryRepo.Invalidate();
+
         }
         public async Task<SubCategory?> FindSubCategoryByIdWithSubCategoriesAsync(int subCategoryId)=>await _repoManager.SubCategoryRepo.FindSubCategoryByIdWithSubCategories(subCategoryId);
         public async Task<IEnumerable<SubCategoryRefDto>> FindCategorySubCategoryRefByIdAsync(int categoryId)=>

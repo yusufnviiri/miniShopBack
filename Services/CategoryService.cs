@@ -50,6 +50,7 @@ namespace Services
                 
             _repoManager.CategoryRepo.CreateCategory(categoryEntity);
             await _repoManager.SaveRepoDataAsync();
+            _repoManager.CategoryRepo.Invalidate();
         }
         public async Task UpdateCategoryAsync(CategoryDto category)
         {
@@ -62,6 +63,8 @@ namespace Services
 
             categoryEntity.CategoryName = category.CategoryName;
             await _repoManager.SaveRepoDataAsync();
+            _repoManager.CategoryRepo.Invalidate();
+
         }
         public async Task DeleteCategoryAsync(int categoryId)
         {
@@ -73,6 +76,8 @@ namespace Services
             }
             _repoManager.CategoryRepo.DeleteCategory(category);
             await _repoManager.SaveRepoDataAsync();
+            _repoManager.CategoryRepo.Invalidate();
+
         }
         public async Task<Category?> FindCategoryDtoByIdAsync(int categoryId, bool tracking)=> await _repoManager.CategoryRepo.FindCategoryById(categoryId,tracking);
         public async Task<CategoryDto?> FindCategoryWithSubCategoriesAsync(int categoryId) => await _repoManager.CategoryRepo.FindCategoryWithSubCategories(categoryId);
