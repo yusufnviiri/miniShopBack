@@ -13,7 +13,7 @@ namespace Contracts.Service
         Task<IEnumerable<ShowGroupMemberDto>> GetAllGroupMembersAsync();
         Task<ShowGroupMemberDto?> GetGroupMemberByIdAsync(Guid userGroupId, Guid userProfileId, bool tracking);
         Task<GroupMember?> FindGroupMemberByIdAsync(Guid memberID, bool tracking);
-        Task CreateGroupMemberAsync(GroupMemberDto groupMember, CancellationToken ct = default);
+        Task<string> CreateGroupMemberAsync(GroupMemberDto groupMember, CancellationToken ct = default);
         Task UpdateGroupMemberAsync(GroupMemberDto groupMember );
         Task UpdateGroupMemberProfileAsync(ShowGroupMemberDto groupMember);
         Task DeleteGroupMemberAsync(Guid memberID );

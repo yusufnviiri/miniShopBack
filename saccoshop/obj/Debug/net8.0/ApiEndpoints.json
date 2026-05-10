@@ -2114,6 +2114,22 @@
   },
   {
     "ContainingType": "Presentation.TradeController",
+    "Method": "DeleteTrade",
+    "RelativePath": "api/trades/deletetrade/{tradeId}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "tradeId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Presentation.TradeController",
     "Method": "DeleteTradeImage",
     "RelativePath": "api/trades/deletetradeimage",
     "HttpMethod": "POST",

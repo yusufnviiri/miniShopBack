@@ -3229,6 +3229,30 @@
         }
       }
     },
+    "/api/trades/deletetrade/{tradeId}": {
+      "delete": {
+        "tags": [
+          "Trade"
+        ],
+        "parameters": [
+          {
+            "name": "tradeId",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
     "/api/trade/images/{tradeId}/{fileName}/{size}": {
       "get": {
         "tags": [

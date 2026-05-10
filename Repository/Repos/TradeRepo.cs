@@ -115,6 +115,7 @@ namespace Repository.Repos
                         Impressions = t.TradeImpressions.Count(),
                         TradeSlugName=t.Slug,
                         SellerSlugName = t.SellerProfile != null ? t.SellerProfile.Slug : "unknown",
+                        WhatsAppNumber = t.SellerProfile != null ? t.SellerProfile.WhatsAppNumber : string.Empty,
 
                         Description = t.Description,                       
                         CreatedAt = t.CreatedAt,
@@ -217,6 +218,8 @@ namespace Repository.Repos
                     SellerName = p.SellerProfile != null ? $"{p.SellerProfile.SellerName}" : "Unkown Seller",
                     TradeSlugName = p.Slug,
                     SellerSlugName = p.SellerProfile != null ? p.SellerProfile.Slug : "unknown",
+                    WhatsAppNumber = p.SellerProfile != null ? p.SellerProfile.WhatsAppNumber : string.Empty,
+
 
                     Reviews =  new List<ShowReviewDto>(),
 
@@ -261,6 +264,8 @@ namespace Repository.Repos
                         Category = t.Category != null ? t.Category.CategoryName : "Not Categorised",
                         CategoryName = t.Category != null ? t.Category.CategoryName : "Not Categorised",
                         ReviewSummary = t.TradeReviews.Any() ? (int)t.TradeReviews.Average(r => r.Rating) : 0,
+                        WhatsAppNumber = t.SellerProfile != null ? t.SellerProfile.WhatsAppNumber : string.Empty,
+
                         TradeImageId = t.Images
                             .OrderByDescending(i => i.IsPrimary)
                             .Select(i => i.TradeImageId)
@@ -324,6 +329,7 @@ namespace Repository.Repos
                         CreatedAt = t.CreatedAt,
                         SellerProfileId = t.SellerProfileId,
                         SellerUserProfileId = t.SellerProfile != null ? t.SellerProfile.SellerId : Guid.Empty,
+                        WhatsAppNumber = t.SellerProfile != null ? t.SellerProfile.WhatsAppNumber : string.Empty,
 
                         SellerName = t.SellerProfile != null
                             ? t.SellerProfile.SellerName

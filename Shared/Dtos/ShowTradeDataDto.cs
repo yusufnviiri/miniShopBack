@@ -33,6 +33,8 @@ namespace Shared.Dtos
         public ICollection<TradeBooking> TradeBookings { get; set; } = [];
         public string? TradeSlugName { get; set; } = string.Empty;
         public string? SellerSlugName { get; set; } = string.Empty;
+        public string? WhatsAppNumber { get; set; } = string.Empty;
+
 
 
 

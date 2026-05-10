@@ -4,6 +4,7 @@ using Contracts;
 using Contracts.Lucene;
 using Contracts.Repo;
 using Contracts.Service;
+using Entities.Exceptions;
 using Entities.Models;
 using Microsoft.AspNetCore.Identity;
 using Shared.Dtos;
@@ -42,22 +43,25 @@ namespace Services
 
         public async Task<IEnumerable<ShowGroupMemberDto>> GetAllGroupMembersAsync() => await _repoManager.GroupMemberRepo.GetAllGroupMembers();
         public async Task<GroupMember?> FindGroupMemberByIdAsync(Guid memberID, bool tracking) => await _repoManager.GroupMemberRepo.FindGroupMemberById(memberID, tracking);
-        public async Task CreateGroupMemberAsync(GroupMemberDto groupMember, CancellationToken ct = default)
+        public async Task<string> CreateGroupMemberAsync(GroupMemberDto groupMember, CancellationToken ct = default)
         {
 
-            if (groupMember == null  ) return;
+            if (groupMember == null  ) throw new ObjectBadRequestExeption("member data not specified");
             var memberExists = await _repoManager.GroupMemberRepo.IsUserInGroup(groupMember.UserProfileId, groupMember.UserGroupId);
-            if (memberExists) return;
+            if (memberExists) throw new ObjectBadRequestExeption("member already exists");
             var newMember = _mapper.Map<GroupMember>(groupMember);
             _repoManager.GroupMemberRepo.CreateGroupMember(newMember);
             await _repoManager.SaveRepoDataAsync();
             var user = await _repoManager.UserProfileRepo.FindUserProfileById(groupMember.UserProfileId, true);
-            if (user == null) return;
+            if (user == null) throw new ObjectBadRequestExeption("member data corrupted");
             user.ActiveGroupId = groupMember.UserGroupId;
             _repoManager.UserProfileRepo.UpdateUserProfile(user);
             await _repoManager.SaveRepoDataAsync();
 
             await _userIndexer.QueueIndexAsync(user.UserProfileId, ct);
+
+            var groupSlugName = await _repoManager.UserGroupRepo.GetGroupSlugNameOnly(groupMember.UserGroupId);
+            return groupSlugName??string.Empty;
 
 
         }

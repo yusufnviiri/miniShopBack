@@ -18,6 +18,9 @@ namespace Contracts.Repo
        Task< string?> GetGroupGroupName(Guid userGroupId);
         Task<string?> GetGroupGroupSlugName(Guid userGroupId);
 
+        Task<string> GetGroupSlugNameOnly(Guid userGroupId);
+
+
 
 
         Task<bool> IsGroupMember(Guid userProfileId, Guid userGroupId);

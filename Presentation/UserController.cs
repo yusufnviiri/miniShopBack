@@ -100,14 +100,28 @@ namespace Presentation
         }
 
             [HttpPost("addusertogroup")]
-            public async Task<IActionResult> AddUserToGroup([FromBody] GroupMemberDto newMember)
-            {
-                if (newMember is null)
-                    return BadRequest("member object is null");
+        public async Task<IActionResult> AddUserToGroup([FromBody] GroupMemberDto newMember)
+        {
+            if (newMember is null)
+                return BadRequest("Member object is null");
+
+            var groupSlugName =
                 await _service.GroupMemberService.CreateGroupMemberAsync(newMember);
-                return Ok(new { message = "group member added" });
+
+            if (string.IsNullOrWhiteSpace(groupSlugName))
+            {
+                return BadRequest(new
+                {
+                    message = "Group slug was not generated"
+                });
             }
-            [HttpPut("groupmember/edit")]
+
+            return Ok(new
+            {
+                data = groupSlugName
+            });
+        }
+        [HttpPut("groupmember/edit")]
         public async Task<ActionResult> UpdateGroupMember(GroupMemberDto groupMember )
         {
             if (groupMember is null) { return BadRequest("Object is null"); }

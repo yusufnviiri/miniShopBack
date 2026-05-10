@@ -248,5 +248,13 @@ namespace Presentation
             return Ok(new { message = "success" });
         }
 
+        [HttpDelete("deletetrade/{tradeId:Guid}")]
+        public async Task<ActionResult> DeleteTrade([FromRoute] Guid tradeId)
+        {
+            if (tradeId == Guid.Empty) { return BadRequest(new { message = "Id is not specified" }); }
+            await _service.TradeService.DeleteTradeAsync(tradeId);
+            return Ok(new { message = "Item Deleted" });
+        }
+
     }
 }

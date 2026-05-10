@@ -128,7 +128,11 @@ namespace Repository.Repos
         }
         public Task<string?>  GetGroupGroupName(Guid userGroupId)=> FindByCondition(p=>p.UserGroupId==userGroupId, false).Select(g=>g.UserGroupName).FirstOrDefaultAsync();
         public Task<string?> GetGroupGroupSlugName(Guid userGroupId) => FindByCondition(p => p.UserGroupId == userGroupId, false).Select(g => g.Slug).FirstOrDefaultAsync();
-        
+
+        public async Task<string> GetGroupSlugNameOnly(Guid userGroupId) =>await FindByCondition(p => p.UserGroupId == userGroupId, false).Select(g => g.Slug).FirstOrDefaultAsync();
+
+
+
 
 
         public void UpdateUserGroup(UserGroup userGroup)=>UpdateBase(userGroup);
