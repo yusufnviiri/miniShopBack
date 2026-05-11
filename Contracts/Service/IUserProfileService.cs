@@ -17,7 +17,7 @@ namespace Contracts.Service
         Task<UserProfileDto?> ShowUserProfileBySlugAsync(string slug);
 
         Task<Guid> CreateUserProfileAsync(NewUserDataDto userProfile);
-        Task CreateUserProfileWithMemberAsync(GroupMemberJoinNewUserProfileDataDto dataDto);
+        Task<string> CreateUserProfileWithMemberAsync(GroupMemberJoinNewUserProfileDataDto dataDto);
         Task UpdateUserProfileAsync(NewUserDataDto userProfile, CancellationToken ct = default);
         Task DeleteUserProfileAsync(Guid userProfile, CancellationToken ct = default);
         Task VerifyPhoneAsync(VerifyOtpRequest request);

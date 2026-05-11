@@ -95,8 +95,24 @@ namespace Presentation
         {
             if (newMember is null)
                 return BadRequest("member object is null");
-            await _service.UserProfileService.CreateUserProfileWithMemberAsync(newMember);
-            return Ok(new { message = "group member added" });
+            //await _service.UserProfileService.CreateUserProfileWithMemberAsync(newMember);
+
+
+            var groupSlugName =
+              await _service.UserProfileService.CreateUserProfileWithMemberAsync(newMember);
+
+            if (string.IsNullOrWhiteSpace(groupSlugName))
+            {
+                return BadRequest(new
+                {
+                    message = "Group slug was not generated"
+                });
+            }
+
+            return Ok(new
+            {
+                data = groupSlugName
+            });
         }
 
             [HttpPost("addusertogroup")]
