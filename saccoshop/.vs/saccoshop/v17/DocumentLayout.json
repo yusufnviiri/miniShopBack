@@ -3,13 +3,26 @@
   "WorkspaceRootPath": "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\saccoshop\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\saccoshop\\Migrations\\20260511220728_usergroupcard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Migrations\\20260511220728_usergroupcard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1CED077F-4043-49AB-801B-B4191EC78E98}|..\\Entities\\Entities.csproj|c:\\users\\darc\\source\\repos\\monisaccoshopback\\entities\\models\\homepagecardcategory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1CED077F-4043-49AB-801B-B4191EC78E98}|..\\Entities\\Entities.csproj|c:\\users\\darc\\source\\repos\\monisaccoshopback\\entities\\models\\homepagecard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8B631997-5DF7-4FA8-9908-73EBAB0D1360}|..\\Services\\Services.csproj|c:\\users\\darc\\source\\repos\\monisaccoshopback\\services\\productservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{8B631997-5DF7-4FA8-9908-73EBAB0D1360}|..\\Services\\Services.csproj|c:\\users\\darc\\source\\repos\\monisaccoshopback\\services\\groupmemberservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DD9C04E6-593F-42AD-8DBE-B47BE69DDBF0}|..\\Contracts\\Contracts.csproj|c:\\users\\darc\\source\\repos\\monisaccoshopback\\contracts\\service\\igroupmemberservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{7E37078D-26E4-48B6-8F3D-8841A03D4B58}|..\\Presentation\\Presentation.csproj|c:\\users\\darc\\source\\repos\\monisaccoshopback\\presentation\\usergroupcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7E37078D-26E4-48B6-8F3D-8841A03D4B58}|..\\Presentation\\Presentation.csproj|c:\\users\\darc\\source\\repos\\monisaccoshopback\\presentation\\usergroupcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{DD9C04E6-593F-42AD-8DBE-B47BE69DDBF0}|..\\Contracts\\Contracts.csproj|c:\\users\\darc\\source\\repos\\monisaccoshopback\\contracts\\service\\igroupmemberservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{7E37078D-26E4-48B6-8F3D-8841A03D4B58}|..\\Presentation\\Presentation.csproj|c:\\users\\darc\\source\\repos\\monisaccoshopback\\presentation\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
@@ -58,9 +71,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{C1494A3A-3588-4154-93B4-90B43525B2C8}|saccoshop.csproj|c:\\users\\darc\\source\\repos\\monisaccoshopback\\saccoshop\\extensions\\serviceextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C1494A3A-3588-4154-93B4-90B43525B2C8}|saccoshop.csproj|solutionrelative:extensions\\serviceextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8B631997-5DF7-4FA8-9908-73EBAB0D1360}|..\\Services\\Services.csproj|c:\\users\\darc\\source\\repos\\monisaccoshopback\\services\\productservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{DD9C04E6-593F-42AD-8DBE-B47BE69DDBF0}|..\\Contracts\\Contracts.csproj|c:\\users\\darc\\source\\repos\\monisaccoshopback\\contracts\\service\\iproductservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
@@ -286,9 +296,6 @@
       "AbsoluteMoniker": "D:0:0:{1CED077F-4043-49AB-801B-B4191EC78E98}|..\\Entities\\Entities.csproj|c:\\users\\darc\\source\\repos\\monisaccoshopback\\entities\\models\\userpreference.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1CED077F-4043-49AB-801B-B4191EC78E98}|..\\Entities\\Entities.csproj|c:\\users\\darc\\source\\repos\\monisaccoshopback\\entities\\models\\homepagecardcategory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{0262AC5E-9978-4191-93EA-7C87D60B83F8}|..\\Repository\\Repository.csproj|c:\\users\\darc\\source\\repos\\monisaccoshopback\\repository\\repos\\userpreferencerepo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -299,11 +306,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 26,
+          "SelectedChildIndex": 29,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 55,
+              "DocumentIndex": 58,
               "Title": "AuthController.cs",
               "DocumentMoniker": "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\Presentation\\AuthController.cs",
               "RelativeDocumentMoniker": "..\\Presentation\\AuthController.cs",
@@ -316,7 +323,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 91,
+              "DocumentIndex": 94,
               "Title": "UserPreference.cs",
               "DocumentMoniker": "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\Entities\\Models\\UserPreference.cs",
               "RelativeDocumentMoniker": "..\\Entities\\Models\\UserPreference.cs",
@@ -329,7 +336,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 93,
+              "DocumentIndex": 95,
               "Title": "UserPreferenceRepo.cs",
               "DocumentMoniker": "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\Repository\\Repos\\UserPreferenceRepo.cs",
               "RelativeDocumentMoniker": "..\\Repository\\Repos\\UserPreferenceRepo.cs",
@@ -342,7 +349,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 89,
+              "DocumentIndex": 92,
               "Title": "IUserPreferenceService.cs",
               "DocumentMoniker": "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\Contracts\\Service\\IUserPreferenceService.cs",
               "RelativeDocumentMoniker": "..\\Contracts\\Service\\IUserPreferenceService.cs",
@@ -355,7 +362,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 84,
+              "DocumentIndex": 87,
               "Title": "UserPreferenceService.cs",
               "DocumentMoniker": "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\Services\\UserPreferenceService.cs",
               "RelativeDocumentMoniker": "..\\Services\\UserPreferenceService.cs",
@@ -368,7 +375,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 90,
+              "DocumentIndex": 93,
               "Title": "IUserPreferenceRepo.cs",
               "DocumentMoniker": "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\Contracts\\Repo\\IUserPreferenceRepo.cs",
               "RelativeDocumentMoniker": "..\\Contracts\\Repo\\IUserPreferenceRepo.cs",
@@ -381,7 +388,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 16,
               "Title": "IServiceManager.cs",
               "DocumentMoniker": "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\Contracts\\Service\\IServiceManager.cs",
               "RelativeDocumentMoniker": "..\\Contracts\\Service\\IServiceManager.cs",
@@ -394,7 +401,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 20,
               "Title": "ServiceManager.cs",
               "DocumentMoniker": "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\Services\\ServiceManager.cs",
               "RelativeDocumentMoniker": "..\\Services\\ServiceManager.cs",
@@ -407,7 +414,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 88,
+              "DocumentIndex": 91,
               "Title": "NewUserPreferenceDto.cs",
               "DocumentMoniker": "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\Shared\\Dtos\\NewUserPreferenceDto.cs",
               "RelativeDocumentMoniker": "..\\Shared\\Dtos\\NewUserPreferenceDto.cs",
@@ -420,7 +427,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 86,
+              "DocumentIndex": 89,
               "Title": "IHomePageCardRepo.cs",
               "DocumentMoniker": "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\Contracts\\Repo\\IHomePageCardRepo.cs",
               "RelativeDocumentMoniker": "..\\Contracts\\Repo\\IHomePageCardRepo.cs",
@@ -433,7 +440,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 83,
+              "DocumentIndex": 86,
               "Title": "TradeImpression.cs",
               "DocumentMoniker": "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\Entities\\Models\\TradeImpression.cs",
               "RelativeDocumentMoniker": "..\\Entities\\Models\\TradeImpression.cs",
@@ -446,7 +453,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 73,
+              "DocumentIndex": 76,
               "Title": "ProductImpression.cs",
               "DocumentMoniker": "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\Entities\\Models\\ProductImpression.cs",
               "RelativeDocumentMoniker": "..\\Entities\\Models\\ProductImpression.cs",
@@ -459,7 +466,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 24,
               "Title": "Product.cs",
               "DocumentMoniker": "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\Entities\\Models\\Product.cs",
               "RelativeDocumentMoniker": "..\\Entities\\Models\\Product.cs",
@@ -472,7 +479,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 87,
+              "DocumentIndex": 90,
               "Title": "Trade.cs",
               "DocumentMoniker": "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\Entities\\Models\\Trade.cs",
               "RelativeDocumentMoniker": "..\\Entities\\Models\\Trade.cs",
@@ -485,7 +492,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 67,
+              "DocumentIndex": 70,
               "Title": "IProductImpressionRepo.cs",
               "DocumentMoniker": "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\Contracts\\Repo\\IProductImpressionRepo.cs",
               "RelativeDocumentMoniker": "..\\Contracts\\Repo\\IProductImpressionRepo.cs",
@@ -498,7 +505,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 72,
+              "DocumentIndex": 75,
               "Title": "ProductImpressionRepo.cs",
               "DocumentMoniker": "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\Repository\\Repos\\ProductImpressionRepo.cs",
               "RelativeDocumentMoniker": "..\\Repository\\Repos\\ProductImpressionRepo.cs",
@@ -511,7 +518,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 79,
+              "DocumentIndex": 82,
               "Title": "ApplicationDbContext.cs",
               "DocumentMoniker": "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\Repository\\context\\ApplicationDbContext.cs",
               "RelativeDocumentMoniker": "..\\Repository\\context\\ApplicationDbContext.cs",
@@ -524,7 +531,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 21,
               "Title": "ServiceExtensions.cs",
               "DocumentMoniker": "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\saccoshop\\Extensions\\ServiceExtensions.cs",
               "RelativeDocumentMoniker": "Extensions\\ServiceExtensions.cs",
@@ -537,7 +544,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 64,
+              "DocumentIndex": 67,
               "Title": "SellerProfileRepo.cs",
               "DocumentMoniker": "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\Repository\\Repos\\SellerProfileRepo.cs",
               "RelativeDocumentMoniker": "..\\Repository\\Repos\\SellerProfileRepo.cs",
@@ -550,7 +557,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 9,
               "Title": "UserGroupService.cs",
               "DocumentMoniker": "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\Services\\UserGroupService.cs",
               "RelativeDocumentMoniker": "..\\Services\\UserGroupService.cs",
@@ -559,12 +566,11 @@
               "ViewState": "AgIAAD0AAAAAAAAAAAAMwEMAAABHAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-05-04T17:03:48.1Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 3,
               "Title": "ProductService.cs",
               "DocumentMoniker": "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\Services\\ProductService.cs",
               "RelativeDocumentMoniker": "..\\Services\\ProductService.cs",
@@ -573,11 +579,12 @@
               "ViewState": "AgIAAGEAAAAAAAAAAAAswGYAAAAoAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-05-04T16:58:10.791Z",
-              "IsPinned": true
+              "IsPinned": true,
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 19,
               "Title": "SellerProfileService.cs",
               "DocumentMoniker": "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\Services\\SellerProfileService.cs",
               "RelativeDocumentMoniker": "..\\Services\\SellerProfileService.cs",
@@ -590,7 +597,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 13,
               "Title": "appsettings.json",
               "DocumentMoniker": "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\saccoshop\\appsettings.json",
               "RelativeDocumentMoniker": "appsettings.json",
@@ -599,12 +606,11 @@
               "ViewState": "AgIAABkAAAAAAAAAAAAowB4AAACWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
               "WhenOpened": "2026-04-08T04:41:33.156Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 11,
               "Title": "UserProfileService.cs",
               "DocumentMoniker": "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\Services\\UserProfileService.cs",
               "RelativeDocumentMoniker": "..\\Services\\UserProfileService.cs",
@@ -613,12 +619,11 @@
               "ViewState": "AgIAAH4BAAAAAAAAAAApwIIBAAAuAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-05-07T17:14:49.6Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 17,
               "Title": "SearchController.cs",
               "DocumentMoniker": "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\Presentation\\SearchController.cs",
               "RelativeDocumentMoniker": "..\\Presentation\\SearchController.cs",
@@ -631,7 +636,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 18,
               "Title": "UserIndexingBackgroundService.cs",
               "DocumentMoniker": "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\saccoshop\\backgroundservices\\UserIndexingBackgroundService.cs",
               "RelativeDocumentMoniker": "backgroundservices\\UserIndexingBackgroundService.cs",
@@ -644,13 +649,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 4,
               "Title": "GroupMemberService.cs",
               "DocumentMoniker": "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\Services\\GroupMemberService.cs",
               "RelativeDocumentMoniker": "..\\Services\\GroupMemberService.cs",
               "ToolTip": "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\Services\\GroupMemberService.cs",
               "RelativeToolTip": "..\\Services\\GroupMemberService.cs",
-              "ViewState": "AgIAAJkAAAAAAAAAAAAowJ0AAAA5AAAAAAAAAA==",
+              "ViewState": "AgIAAHEAAAAAAAAAAIAwwHkAAAAdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-05-08T12:05:32.497Z",
               "IsPinned": true,
@@ -658,7 +663,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 7,
               "Title": "UserController.cs",
               "DocumentMoniker": "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\Presentation\\UserController.cs",
               "RelativeDocumentMoniker": "..\\Presentation\\UserController.cs",
@@ -667,21 +672,45 @@
               "ViewState": "AgIAAIgAAAAAAAAAAAAIwI0AAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-05-08T10:03:40.489Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 5,
               "Title": "UserGroupController.cs",
               "DocumentMoniker": "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\Presentation\\UserGroupController.cs",
               "RelativeDocumentMoniker": "..\\Presentation\\UserGroupController.cs",
               "ToolTip": "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\Presentation\\UserGroupController.cs",
               "RelativeToolTip": "..\\Presentation\\UserGroupController.cs",
-              "ViewState": "AgIAAFEAAAAAAAAAAAAAwFgAAAA5AAAAAAAAAA==",
+              "ViewState": "AgIAAFEAAAAAAAAAAAAAwFQAAABQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-05-08T10:03:43.95Z",
-              "IsPinned": true,
+              "IsPinned": true
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "20260511220728_usergroupcard.cs",
+              "DocumentMoniker": "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\saccoshop\\Migrations\\20260511220728_usergroupcard.cs",
+              "RelativeDocumentMoniker": "Migrations\\20260511220728_usergroupcard.cs",
+              "ToolTip": "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\saccoshop\\Migrations\\20260511220728_usergroupcard.cs",
+              "RelativeToolTip": "Migrations\\20260511220728_usergroupcard.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-11T22:07:32.606Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "HomePageCard.cs",
+              "DocumentMoniker": "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\Entities\\Models\\HomePageCard.cs",
+              "RelativeDocumentMoniker": "..\\Entities\\Models\\HomePageCard.cs",
+              "ToolTip": "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\Entities\\Models\\HomePageCard.cs",
+              "RelativeToolTip": "..\\Entities\\Models\\HomePageCard.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAA1wBEAAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-11T22:00:01.647Z",
               "EditorCaption": ""
             },
             {
@@ -702,20 +731,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "UserGroupRepo.cs",
-              "DocumentMoniker": "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\Repository\\Repos\\UserGroupRepo.cs",
-              "RelativeDocumentMoniker": "..\\Repository\\Repos\\UserGroupRepo.cs",
-              "ToolTip": "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\Repository\\Repos\\UserGroupRepo.cs",
-              "RelativeToolTip": "..\\Repository\\Repos\\UserGroupRepo.cs",
-              "ViewState": "AgIAAFsAAAAAAAAAAAApwGcAAAA2AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-11T17:03:35.361Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 23,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\saccoshop\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
@@ -727,7 +743,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 12,
               "Title": "IUserProfileService.cs",
               "DocumentMoniker": "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\Contracts\\Service\\IUserProfileService.cs",
               "RelativeDocumentMoniker": "..\\Contracts\\Service\\IUserProfileService.cs",
@@ -735,12 +751,11 @@
               "RelativeToolTip": "..\\Contracts\\Service\\IUserProfileService.cs",
               "ViewState": "AgIAAA4AAAAAAAAAAAAswBMAAAAgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-07T17:14:28.818Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-07T17:14:28.818Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 15,
               "Title": "IUserProfileRepo.cs",
               "DocumentMoniker": "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\Contracts\\Repo\\IUserProfileRepo.cs",
               "RelativeDocumentMoniker": "..\\Contracts\\Repo\\IUserProfileRepo.cs",
@@ -752,7 +767,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 14,
               "Title": "UserProfileRepo.cs",
               "DocumentMoniker": "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\Repository\\Repos\\UserProfileRepo.cs",
               "RelativeDocumentMoniker": "..\\Repository\\Repos\\UserProfileRepo.cs",
@@ -764,7 +779,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 22,
               "Title": "IProductService.cs",
               "DocumentMoniker": "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\Contracts\\Service\\IProductService.cs",
               "RelativeDocumentMoniker": "..\\Contracts\\Service\\IProductService.cs",
@@ -776,7 +791,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 6,
               "Title": "IGroupMemberService.cs",
               "DocumentMoniker": "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\Contracts\\Service\\IGroupMemberService.cs",
               "RelativeDocumentMoniker": "..\\Contracts\\Service\\IGroupMemberService.cs",
@@ -784,12 +799,36 @@
               "RelativeToolTip": "..\\Contracts\\Service\\IGroupMemberService.cs",
               "ViewState": "AgIAAA4AAAAAAAAAAAASwBEAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-08T12:09:29.434Z",
+              "WhenOpened": "2026-05-08T12:09:29.434Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "HomePageCardCategory.cs",
+              "DocumentMoniker": "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\Entities\\Models\\HomePageCardCategory.cs",
+              "RelativeDocumentMoniker": "..\\Entities\\Models\\HomePageCardCategory.cs",
+              "ToolTip": "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\Entities\\Models\\HomePageCardCategory.cs",
+              "RelativeToolTip": "..\\Entities\\Models\\HomePageCardCategory.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAtwA4AAAA0AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-09T09:07:58.514Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 8,
+              "Title": "UserGroupRepo.cs",
+              "DocumentMoniker": "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\Repository\\Repos\\UserGroupRepo.cs",
+              "RelativeDocumentMoniker": "..\\Repository\\Repos\\UserGroupRepo.cs",
+              "ToolTip": "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\Repository\\Repos\\UserGroupRepo.cs",
+              "RelativeToolTip": "..\\Repository\\Repos\\UserGroupRepo.cs",
+              "ViewState": "AgIAAFsAAAAAAAAAAAApwGcAAAA2AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-11T17:03:35.361Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
               "Title": "IUserGroupService.cs",
               "DocumentMoniker": "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\Contracts\\Service\\IUserGroupService.cs",
               "RelativeDocumentMoniker": "..\\Contracts\\Service\\IUserGroupService.cs",
@@ -797,12 +836,11 @@
               "RelativeToolTip": "..\\Contracts\\Service\\IUserGroupService.cs",
               "ViewState": "AgIAAAgAAAAAAAAAAAAAABAAAAArAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-08T12:18:01.315Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-08T12:18:01.315Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 25,
               "Title": "UserGroupSearchService.cs",
               "DocumentMoniker": "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\Services\\Lucene\\UserGroupSearchService.cs",
               "RelativeDocumentMoniker": "..\\Services\\Lucene\\UserGroupSearchService.cs",
@@ -814,7 +852,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 26,
               "Title": "UserGroupIndexingBackgroundService.cs",
               "DocumentMoniker": "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\saccoshop\\backgroundservices\\UserGroupIndexingBackgroundService.cs",
               "RelativeDocumentMoniker": "backgroundservices\\UserGroupIndexingBackgroundService.cs",
@@ -826,7 +864,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 27,
               "Title": "UserGroupIndexer.cs",
               "DocumentMoniker": "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\Services\\Lucene\\UserGroupIndexer.cs",
               "RelativeDocumentMoniker": "..\\Services\\Lucene\\UserGroupIndexer.cs",
@@ -838,7 +876,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 28,
               "Title": "UserGroupIndexingQueue.cs",
               "DocumentMoniker": "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\Services\\Lucene\\UserGroupIndexingQueue.cs",
               "RelativeDocumentMoniker": "..\\Services\\Lucene\\UserGroupIndexingQueue.cs",
@@ -850,7 +888,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 29,
               "Title": "UserGroupDocumentMapper.cs",
               "DocumentMoniker": "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\Services\\Lucene\\UserGroupDocumentMapper.cs",
               "RelativeDocumentMoniker": "..\\Services\\Lucene\\UserGroupDocumentMapper.cs",
@@ -862,7 +900,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
+              "DocumentIndex": 31,
               "Title": "UserGroupCardProjector.cs",
               "DocumentMoniker": "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\Repository\\lucene\\UserGroupCardProjector.cs",
               "RelativeDocumentMoniker": "..\\Repository\\lucene\\UserGroupCardProjector.cs",
@@ -874,7 +912,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 29,
+              "DocumentIndex": 32,
               "Title": "UserGroupQueryBuilder.cs",
               "DocumentMoniker": "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\Repository\\lucene\\UserGroupQueryBuilder.cs",
               "RelativeDocumentMoniker": "..\\Repository\\lucene\\UserGroupQueryBuilder.cs",
@@ -886,7 +924,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 30,
+              "DocumentIndex": 33,
               "Title": "UserGroupSearchRepository.cs",
               "DocumentMoniker": "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\Repository\\lucene\\UserGroupSearchRepository.cs",
               "RelativeDocumentMoniker": "..\\Repository\\lucene\\UserGroupSearchRepository.cs",
@@ -898,7 +936,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 30,
               "Title": "UserGroup.cs",
               "DocumentMoniker": "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\Entities\\Models\\UserGroup.cs",
               "RelativeDocumentMoniker": "..\\Entities\\Models\\UserGroup.cs",
@@ -910,7 +948,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 32,
+              "DocumentIndex": 35,
               "Title": "UserGroupIndexFields.cs",
               "DocumentMoniker": "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\Repository\\lucene\\UserGroupIndexFields.cs",
               "RelativeDocumentMoniker": "..\\Repository\\lucene\\UserGroupIndexFields.cs",
@@ -922,7 +960,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 35,
+              "DocumentIndex": 38,
               "Title": "UserGroupIndexDocument.cs",
               "DocumentMoniker": "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\Contracts\\Lucene\\UserGroupIndexDocument.cs",
               "RelativeDocumentMoniker": "..\\Contracts\\Lucene\\UserGroupIndexDocument.cs",
@@ -934,7 +972,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 34,
+              "DocumentIndex": 37,
               "Title": "IUserGroupSearchService.cs",
               "DocumentMoniker": "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\Contracts\\Lucene\\IUserGroupSearchService.cs",
               "RelativeDocumentMoniker": "..\\Contracts\\Lucene\\IUserGroupSearchService.cs",
@@ -946,7 +984,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 31,
+              "DocumentIndex": 34,
               "Title": "LuceneIndexRegistry.cs",
               "DocumentMoniker": "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\Repository\\lucene\\LuceneIndexRegistry.cs",
               "RelativeDocumentMoniker": "..\\Repository\\lucene\\LuceneIndexRegistry.cs",
@@ -958,7 +996,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 36,
+              "DocumentIndex": 39,
               "Title": "UserGroupSearchResult.cs",
               "DocumentMoniker": "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\Shared\\Lucene\\UserGroupSearchResult.cs",
               "RelativeDocumentMoniker": "..\\Shared\\Lucene\\UserGroupSearchResult.cs",
@@ -970,7 +1008,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 33,
+              "DocumentIndex": 36,
               "Title": "IUserGroupSearchRepository.cs",
               "DocumentMoniker": "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\Contracts\\Lucene\\IUserGroupSearchRepository.cs",
               "RelativeDocumentMoniker": "..\\Contracts\\Lucene\\IUserGroupSearchRepository.cs",
@@ -982,7 +1020,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 37,
+              "DocumentIndex": 40,
               "Title": "UserGroupSearchRequest.cs",
               "DocumentMoniker": "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\Shared\\Lucene\\UserGroupSearchRequest.cs",
               "RelativeDocumentMoniker": "..\\Shared\\Lucene\\UserGroupSearchRequest.cs",
@@ -994,7 +1032,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 38,
+              "DocumentIndex": 41,
               "Title": "UserGroupCardDto.cs",
               "DocumentMoniker": "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\Shared\\Dtos\\UserGroupCardDto.cs",
               "RelativeDocumentMoniker": "..\\Shared\\Dtos\\UserGroupCardDto.cs",
@@ -1006,7 +1044,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 39,
+              "DocumentIndex": 42,
               "Title": "IUserGroupIndexer.cs",
               "DocumentMoniker": "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\Contracts\\Lucene\\IUserGroupIndexer.cs",
               "RelativeDocumentMoniker": "..\\Contracts\\Lucene\\IUserGroupIndexer.cs",
@@ -1018,7 +1056,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 44,
+              "DocumentIndex": 47,
               "Title": "UserCardProjector.cs",
               "DocumentMoniker": "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\Repository\\lucene\\UserCardProjector.cs",
               "RelativeDocumentMoniker": "..\\Repository\\lucene\\UserCardProjector.cs",
@@ -1030,7 +1068,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 46,
+              "DocumentIndex": 49,
               "Title": "UserQueryBuilder.cs",
               "DocumentMoniker": "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\Repository\\lucene\\UserQueryBuilder.cs",
               "RelativeDocumentMoniker": "..\\Repository\\lucene\\UserQueryBuilder.cs",
@@ -1042,7 +1080,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 40,
+              "DocumentIndex": 43,
               "Title": "SearchIndexNames.cs",
               "DocumentMoniker": "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\Contracts\\Lucene\\SearchIndexNames.cs",
               "RelativeDocumentMoniker": "..\\Contracts\\Lucene\\SearchIndexNames.cs",
@@ -1054,7 +1092,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 47,
+              "DocumentIndex": 50,
               "Title": "UserSearchRepository.cs",
               "DocumentMoniker": "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\Repository\\lucene\\UserSearchRepository.cs",
               "RelativeDocumentMoniker": "..\\Repository\\lucene\\UserSearchRepository.cs",
@@ -1066,7 +1104,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 45,
+              "DocumentIndex": 48,
               "Title": "UserCardDto.cs",
               "DocumentMoniker": "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\Shared\\Dtos\\UserCardDto.cs",
               "RelativeDocumentMoniker": "..\\Shared\\Dtos\\UserCardDto.cs",
@@ -1078,7 +1116,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 43,
+              "DocumentIndex": 46,
               "Title": "IUserIndexer.cs",
               "DocumentMoniker": "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\Contracts\\Lucene\\IUserIndexer.cs",
               "RelativeDocumentMoniker": "..\\Contracts\\Lucene\\IUserIndexer.cs",
@@ -1090,7 +1128,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 42,
+              "DocumentIndex": 45,
               "Title": "IUserSearchRepository.cs",
               "DocumentMoniker": "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\Contracts\\Lucene\\IUserSearchRepository.cs",
               "RelativeDocumentMoniker": "..\\Contracts\\Lucene\\IUserSearchRepository.cs",
@@ -1102,7 +1140,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 41,
+              "DocumentIndex": 44,
               "Title": "IUserSearchService.cs",
               "DocumentMoniker": "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\Contracts\\Lucene\\IUserSearchService.cs",
               "RelativeDocumentMoniker": "..\\Contracts\\Lucene\\IUserSearchService.cs",
@@ -1114,7 +1152,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 48,
+              "DocumentIndex": 51,
               "Title": "UserIndexFields.cs",
               "DocumentMoniker": "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\Repository\\lucene\\UserIndexFields.cs",
               "RelativeDocumentMoniker": "..\\Repository\\lucene\\UserIndexFields.cs",
@@ -1126,7 +1164,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 49,
+              "DocumentIndex": 52,
               "Title": "UserSearchResult.cs",
               "DocumentMoniker": "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\Shared\\Lucene\\UserSearchResult.cs",
               "RelativeDocumentMoniker": "..\\Shared\\Lucene\\UserSearchResult.cs",
@@ -1138,7 +1176,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 50,
+              "DocumentIndex": 53,
               "Title": "UserSearchRequest.cs",
               "DocumentMoniker": "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\Shared\\Lucene\\UserSearchRequest.cs",
               "RelativeDocumentMoniker": "..\\Shared\\Lucene\\UserSearchRequest.cs",
@@ -1150,7 +1188,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 51,
+              "DocumentIndex": 54,
               "Title": "UserIndexDocument.cs",
               "DocumentMoniker": "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\Contracts\\Lucene\\UserIndexDocument.cs",
               "RelativeDocumentMoniker": "..\\Contracts\\Lucene\\UserIndexDocument.cs",
@@ -1162,7 +1200,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 56,
+              "DocumentIndex": 59,
               "Title": "LuceneIndexContext.cs",
               "DocumentMoniker": "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\Repository\\lucene\\LuceneIndexContext.cs",
               "RelativeDocumentMoniker": "..\\Repository\\lucene\\LuceneIndexContext.cs",
@@ -1174,7 +1212,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 54,
+              "DocumentIndex": 57,
               "Title": "ProductSearchRequest.cs",
               "DocumentMoniker": "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\Shared\\Dtos\\ProductSearchRequest.cs",
               "RelativeDocumentMoniker": "..\\Shared\\Dtos\\ProductSearchRequest.cs",
@@ -1186,7 +1224,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 53,
+              "DocumentIndex": 56,
               "Title": "UserProfileDto.cs",
               "DocumentMoniker": "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\Shared\\Dtos\\UserProfileDto.cs",
               "RelativeDocumentMoniker": "..\\Shared\\Dtos\\UserProfileDto.cs",
@@ -1198,7 +1236,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 52,
+              "DocumentIndex": 55,
               "Title": "UserProfile.cs",
               "DocumentMoniker": "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\Entities\\Models\\UserProfile.cs",
               "RelativeDocumentMoniker": "..\\Entities\\Models\\UserProfile.cs",
@@ -1210,7 +1248,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 57,
+              "DocumentIndex": 60,
               "Title": "IProductSearchRepository.cs",
               "DocumentMoniker": "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\Contracts\\Lucene\\IProductSearchRepository.cs",
               "RelativeDocumentMoniker": "..\\Contracts\\Lucene\\IProductSearchRepository.cs",
@@ -1222,7 +1260,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 58,
+              "DocumentIndex": 61,
               "Title": "ProductCardProjector.cs",
               "DocumentMoniker": "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\Repository\\lucene\\ProductCardProjector.cs",
               "RelativeDocumentMoniker": "..\\Repository\\lucene\\ProductCardProjector.cs",
@@ -1234,7 +1272,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 59,
+              "DocumentIndex": 62,
               "Title": "ProductSearchResponse.cs",
               "DocumentMoniker": "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\Shared\\Lucene\\ProductSearchResponse.cs",
               "RelativeDocumentMoniker": "..\\Shared\\Lucene\\ProductSearchResponse.cs",
@@ -1246,7 +1284,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 60,
+              "DocumentIndex": 63,
               "Title": "ProductSearchRepository.cs",
               "DocumentMoniker": "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\Repository\\lucene\\ProductSearchRepository.cs",
               "RelativeDocumentMoniker": "..\\Repository\\lucene\\ProductSearchRepository.cs",
@@ -1258,7 +1296,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 61,
+              "DocumentIndex": 64,
               "Title": "ProductQueryBuilder.cs",
               "DocumentMoniker": "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\Repository\\lucene\\ProductQueryBuilder.cs",
               "RelativeDocumentMoniker": "..\\Repository\\lucene\\ProductQueryBuilder.cs",
@@ -1270,7 +1308,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 62,
+              "DocumentIndex": 65,
               "Title": "IndexingBackgroundService.cs",
               "DocumentMoniker": "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\saccoshop\\backgroundservices\\IndexingBackgroundService.cs",
               "RelativeDocumentMoniker": "backgroundservices\\IndexingBackgroundService.cs",
@@ -1282,7 +1320,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 63,
+              "DocumentIndex": 66,
               "Title": "SearcherRefreshService.cs",
               "DocumentMoniker": "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\saccoshop\\backgroundservices\\SearcherRefreshService.cs",
               "RelativeDocumentMoniker": "backgroundservices\\SearcherRefreshService.cs",
@@ -1294,7 +1332,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 66,
+              "DocumentIndex": 69,
               "Title": "IProductIndexer.cs",
               "DocumentMoniker": "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\Contracts\\Lucene\\IProductIndexer.cs",
               "RelativeDocumentMoniker": "..\\Contracts\\Lucene\\IProductIndexer.cs",
@@ -1306,7 +1344,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 65,
+              "DocumentIndex": 68,
               "Title": "ProductIndexer.cs",
               "DocumentMoniker": "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\Services\\Lucene\\ProductIndexer.cs",
               "RelativeDocumentMoniker": "..\\Services\\Lucene\\ProductIndexer.cs",
@@ -1318,7 +1356,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 68,
+              "DocumentIndex": 71,
               "Title": "SellerProfile.cs",
               "DocumentMoniker": "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\Entities\\Models\\SellerProfile.cs",
               "RelativeDocumentMoniker": "..\\Entities\\Models\\SellerProfile.cs",
@@ -1330,7 +1368,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 70,
+              "DocumentIndex": 73,
               "Title": "Repository.csproj",
               "DocumentMoniker": "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\Repository\\Repository.csproj",
               "RelativeDocumentMoniker": "..\\Repository\\Repository.csproj",
@@ -1342,7 +1380,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 69,
+              "DocumentIndex": 72,
               "Title": "IndexingQueue.cs",
               "DocumentMoniker": "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\Services\\Lucene\\IndexingQueue.cs",
               "RelativeDocumentMoniker": "..\\Services\\Lucene\\IndexingQueue.cs",
@@ -1354,7 +1392,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 71,
+              "DocumentIndex": 74,
               "Title": "ProductDocumentMapper.cs",
               "DocumentMoniker": "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\Services\\Lucene\\ProductDocumentMapper.cs",
               "RelativeDocumentMoniker": "..\\Services\\Lucene\\ProductDocumentMapper.cs",
@@ -1366,7 +1404,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 75,
+              "DocumentIndex": 78,
               "Title": "ProductIndexDocument.cs",
               "DocumentMoniker": "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\Contracts\\Lucene\\ProductIndexDocument.cs",
               "RelativeDocumentMoniker": "..\\Contracts\\Lucene\\ProductIndexDocument.cs",
@@ -1378,7 +1416,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 74,
+              "DocumentIndex": 77,
               "Title": "ProductIndexFields.cs",
               "DocumentMoniker": "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\Repository\\lucene\\ProductIndexFields.cs",
               "RelativeDocumentMoniker": "..\\Repository\\lucene\\ProductIndexFields.cs",
@@ -1390,7 +1428,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 76,
+              "DocumentIndex": 79,
               "Title": "ProductImage.cs",
               "DocumentMoniker": "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\Entities\\Models\\ProductImage.cs",
               "RelativeDocumentMoniker": "..\\Entities\\Models\\ProductImage.cs",
@@ -1402,7 +1440,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 77,
+              "DocumentIndex": 80,
               "Title": "ILuceneIndexRegistry.cs",
               "DocumentMoniker": "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\Repository\\lucene\\ILuceneIndexRegistry.cs",
               "RelativeDocumentMoniker": "..\\Repository\\lucene\\ILuceneIndexRegistry.cs",
@@ -1414,7 +1452,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 78,
+              "DocumentIndex": 81,
               "Title": "LuceneOptions.cs",
               "DocumentMoniker": "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\Repository\\lucene\\LuceneOptions.cs",
               "RelativeDocumentMoniker": "..\\Repository\\lucene\\LuceneOptions.cs",
@@ -1426,19 +1464,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 92,
-              "Title": "HomePageCardCategory.cs",
-              "DocumentMoniker": "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\Entities\\Models\\HomePageCardCategory.cs",
-              "RelativeDocumentMoniker": "..\\Entities\\Models\\HomePageCardCategory.cs",
-              "ToolTip": "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\Entities\\Models\\HomePageCardCategory.cs",
-              "RelativeToolTip": "..\\Entities\\Models\\HomePageCardCategory.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAIBJwAgAAAARAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-09T09:07:58.514Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 81,
+              "DocumentIndex": 84,
               "Title": "HomePageController.cs",
               "DocumentMoniker": "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\Presentation\\HomePageController.cs",
               "RelativeDocumentMoniker": "..\\Presentation\\HomePageController.cs",
@@ -1450,7 +1476,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 80,
+              "DocumentIndex": 83,
               "Title": "ITradeImpressionRepo.cs",
               "DocumentMoniker": "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\Contracts\\Repo\\ITradeImpressionRepo.cs",
               "RelativeDocumentMoniker": "..\\Contracts\\Repo\\ITradeImpressionRepo.cs",
@@ -1462,7 +1488,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 82,
+              "DocumentIndex": 85,
               "Title": "HomePageCardService.cs",
               "DocumentMoniker": "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\Services\\HomePageCardService.cs",
               "RelativeDocumentMoniker": "..\\Services\\HomePageCardService.cs",
@@ -1474,7 +1500,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 85,
+              "DocumentIndex": 88,
               "Title": "HomePageCardRepo.cs",
               "DocumentMoniker": "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\Repository\\Repos\\HomePageCardRepo.cs",
               "RelativeDocumentMoniker": "..\\Repository\\Repos\\HomePageCardRepo.cs",

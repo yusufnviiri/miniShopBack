@@ -11,6 +11,8 @@ namespace Entities.Models
         public int HomePageCardCategoryId { get; set; }
         public int HomePageCardId { get; set; }
         public int CategoryId { get; set; }
+        public Guid UserGroupId { get; set; } = Guid.NewGuid();     
+        public bool IsGroupCard { get; set; }=false;
         public HomePageCard? HomePageCard { get; set; }
     }
 }
