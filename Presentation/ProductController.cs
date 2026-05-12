@@ -106,9 +106,9 @@ namespace Presentation
         }
 
         [HttpPost("makeproductsfeatured")]
-        public ActionResult MakeProductsFeatured()
+        public async Task<ActionResult> MakeProductsFeatured()
         {
-            _service.ProductService.MakeAllProductsFeautured();
+            await _service.ProductService.MakeAllProductsFeatured();
             return Ok(new { message = "success" });
         }
 

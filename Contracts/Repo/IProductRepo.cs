@@ -13,7 +13,7 @@ namespace Contracts.Repo
     {
         Task<IEnumerable<ShowProductMiniDetailsDto>> GetAllProducts(bool tracking);
         //void MakeProductFeautured(Guid productId);
-        void MakeAllProductsFeautured();
+        Task MakeAllProductsFeatured();
         Task<HomePageCustomProductsDto?> HomePageCustomProducts ();
 
         Task<PagedList<HomePageProductDto>> GetHomePageProducts(ProductRequestParameters requestParameters);

@@ -15,9 +15,9 @@ namespace Contracts.Repo
         Task<PagedList<HomePageTradeDto>> GetHomePageTrades(ProductRequestParameters requestParameters);
         Task<TradeDataDto?> GetTradeData(Guid tradeId);
         Task<ShowTradeDataDto?> FindSellerTrade(Guid TradeId);
-        void MakeTradeFeautured(Guid tradeId);
-        void MakeAllTradesFeautured();
+        Task MakeTradeFeautured(Guid tradeId);
         Task<int> NumberOfTrades();
+        Task MakeAllTradesFeautured();
 
 
         Task<Trade?> FindTradeForUpdate(Guid tradeId);

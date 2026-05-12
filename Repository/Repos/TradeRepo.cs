@@ -1,463 +1,676 @@
 ﻿using Contracts.Repo;
 using Entities.Models;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Caching.Memory;
+using Microsoft.Extensions.Primitives;
 using Repository.context;
 using Shared.Dtos;
 using Shared.RequestFeatures;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
+using System.Linq.Expressions;
 
-namespace Repository.Repos
+namespace Repository.Repos;
+
+public sealed class TradeRepo : RepositoryBase<Trade>, ITradeRepo
 {
-    public class TradeRepo : RepositoryBase<Trade>, ITradeRepo
+    private readonly ApplicationDbContext _context;
+    private readonly IMemoryCache _cache;
+
+    private CancellationTokenSource _tradeListCacheReset = new();
+
+    private const string UnknownSeller = "Unknown Seller";
+    private const string UnknownSlug = "unknown";
+    private const string DefaultCategory = "Not Categorised";
+
+    public TradeRepo(
+        ApplicationDbContext context,
+        IMemoryCache cache) : base(context)
     {
-
-        private readonly IMemoryCache _cache;
-        ApplicationDbContext _context;
-        public TradeRepo(ApplicationDbContext _db, IMemoryCache cache) : base(_db)
-            {
-                            _cache = cache;
-                _context = _db;
-        }
-
-
-        public async Task<PagedList<HomePageTradeDto>> GetHomePageTrades(ProductRequestParameters requestParameters)
-        {
-            //const string cacheKey = "homepage_trades";
-
-            //if (_cache.TryGetValue(cacheKey, out ICollection<SellerProductsListDto> cached))
-            //    return cached;
-            var query = FindAll(false)
-               .Where(p => p.IsActive && p.IsFeatured && !p.IsDeleted && p.SellerProfile != null ? p.SellerProfile.SellerTypeId == 1 : true);
-
-            // 🔎 Filter by Category
-            if (requestParameters.CategoryId.HasValue && requestParameters.CategoryId.Value > 0)
-            {
-                var category = requestParameters.CategoryId;
-                query = query.Where(p =>
-                    p.Category != null &&
-                    p.Category.CategoryId == category);
-            }
-
-
-            // 🔎 Filter by SubCategory
-            if (requestParameters.SubCategoryId.HasValue && requestParameters.SubCategoryId.Value > 0)
-            {
-
-                var subCategory = requestParameters.SubCategoryId;
-                query = query.Where(p =>
-                    p.SubCategory != null &&
-                    p.SubCategory.SubCategoryId == subCategory);
-
-            }
-          
-
-            // 🔤 Product Name Search
-            if (!string.IsNullOrWhiteSpace(requestParameters.ProductName))
-            {
-                var name = requestParameters.ProductName.Trim().ToLower();
-                query = query.Where(p => p.TradeName.ToLower().Contains(name));
-            }
-
-            query = query.OrderByDescending(p => p.CreatedAt);
-
-            var count = await query.CountAsync();
-
-            var items = await query
-                .Skip((requestParameters.PageNumber - 1) * requestParameters.PageSize)
-                .Take(requestParameters.PageSize)
-                .Select(p => new HomePageTradeDto
-                {
-                    TradeId = p.TradeId,                  
-                    TradeName = p.TradeName,
-                    Description = p.Description,
-                    SellerName = p.SellerProfile != null
-                        ? p.SellerProfile.SellerName
-                        : "Unknown",
-                    SellerProfileId = p.SellerProfileId,
-                    SellerSlugName = p.SellerProfile != null
-                        ? p.SellerProfile.Slug
-                        : "unknown",
-                    TradeSlugName = p.Slug,
-
-                    TradeImageId = p.Images
-                        .OrderByDescending(i => i.IsPrimary)
-                        .Select(i => i.TradeImageId)
-                        .FirstOrDefault()
-                })
-                .ToListAsync();
-
-            return PagedList<HomePageTradeDto>.ToPagedList(items, requestParameters.PageNumber, requestParameters.PageSize);
-        }
-
-
-
-        public async Task<TradeDataDto?> GetTradeData(Guid tradeId)
-        {
-
-            string cacheKey = $"trade_data {tradeId}";
-
-            if (_cache.TryGetValue(cacheKey, out TradeDataDto cached))
-                return cached;
-            var result = await FindByCondition(t => t.TradeId == tradeId, false)
-                .Select(t => new
-                {
-                    Trade = new TradeDataDto
-                    {
-                        TradeId = t.TradeId,
-                        TradeName = t.TradeName,
-                        Impressions = t.TradeImpressions.Count(),
-                        TradeSlugName=t.Slug,
-                        SellerSlugName = t.SellerProfile != null ? t.SellerProfile.Slug : "unknown",
-                        WhatsAppNumber = t.SellerProfile != null ? t.SellerProfile.WhatsAppNumber : string.Empty,
-
-                        Description = t.Description,                       
-                        CreatedAt = t.CreatedAt,
-                        SellerProfileId = t.SellerProfileId,
-                        SellerUserProfileId = t.SellerProfile != null ? t.SellerProfile.SellerId : Guid.Empty,
-
-                        SellerName = t.SellerProfile != null
-                            ? t.SellerProfile.SellerName
-                            : "Unknown Seller",
-                        Category = t.Category != null
-                            ? t.Category.CategoryName
-                            : "Not Categorised",               
-                        Reviews = t.TradeReviews
-                            .Select(r => new ShowReviewDto
-                            {
-                                ReviewId = r.TradeReviewId,
-                                ReviewerName = r.Reviewer != null
-                                    ? r.Reviewer.IdentityUser.FirstName + " " + r.Reviewer.IdentityUser.LastName
-                                    : "Unknown",
-                                Rating = r.Rating,
-                                Comment = r.Comment,
-                                CreatedAt = r.CreatedAt
-                            })
-                            .ToList(),
-
-                        TradeImageRefDtos = t.Images
-                            .Select(i => new TradeImageRefDto
-                            {
-                                TradeImageId = i.TradeImageId,
-                                IsPrimary = i.IsPrimary,
-                                IsProcessed = i.IsProcessed
-                            })
-                            .ToList()
-                    },
-                    t.CategoryId
-                })
-                .FirstOrDefaultAsync();
-
-            if (result == null)
-                return null;
-
-            var relatedTrades = await FindByCondition(
-                    t => t.CategoryId == result.CategoryId && t.TradeId != tradeId,
-                    false)
-                .Select(t => new HomePageTradeDto
-                {
-                    TradeId = t.TradeId,
-                    TradeName = t.TradeName,                   
-                    SellerName = t.SellerProfile != null
-                        ? t.SellerProfile.SellerName
-                        : "Unknown",
-                    SellerProfileId = t.SellerProfileId,
-                    TradeSlugName = t.Slug,
-                    SellerSlugName = t.SellerProfile != null ? t.SellerProfile.Slug : "unknown",
-                    TradeImageId = t.Images
-                        .OrderByDescending(i => i.IsPrimary)
-                        .Select(i => i.TradeImageId)
-                        .FirstOrDefault()
-                })
-                .Take(6)
-                .ToListAsync();
-
-            result.Trade.RelatedTrades = relatedTrades;
-            _cache.Set(cacheKey, result.Trade,
-           new MemoryCacheEntryOptions()
-               .SetAbsoluteExpiration(TimeSpan.FromMinutes(10))
-               .SetSlidingExpiration(TimeSpan.FromMinutes(1)));
-
-            return result.Trade;
-        }
-
-
-        public Task<Trade?> FindTradeForUpdate(Guid tradeId)
-        {
-            return FindByCondition(p => p.TradeId == tradeId, true).FirstOrDefaultAsync();
-        }
-        public Guid CreateTrade(Trade trade)
-        {
-            CreateBase(trade);
-            return trade.TradeId;
-        }
-        public void UpdateTrade(Trade trade) => UpdateBase(trade);
-        public void DeleteTrade(Trade trade) => DeleteBase(trade);
-
-
-        public async Task<ShowTradeDataDto?> FindSellerTrade(Guid tradeId)
-        {
-            var tradeQ = FindByCondition(p => p.TradeId == tradeId, false);
-
-            return await tradeQ
-                .Select(p => new ShowTradeDataDto
-                {
-                    TradeId = p.TradeId,
-                    TradeName = p.TradeName,                 
-                    TradeBookings = p.TradeBookings,
-                    Category = p.Category != null ? p.Category.CategoryName : "Not Categorised",
-                    CreatedAt = p.CreatedAt,
-                    HasImage = p.HasImage,
-                    SellerProfileId = p.SellerProfileId,
-                    SellerName = p.SellerProfile != null ? $"{p.SellerProfile.SellerName}" : "Unkown Seller",
-                    TradeSlugName = p.Slug,
-                    SellerSlugName = p.SellerProfile != null ? p.SellerProfile.Slug : "unknown",
-                    WhatsAppNumber = p.SellerProfile != null ? p.SellerProfile.WhatsAppNumber : string.Empty,
-
-
-                    Reviews =  new List<ShowReviewDto>(),
-
-                    TradeImageRefs = p.Images.Select(i => new TradeImageRefDto
-                    {
-                        TradeImageId = i.TradeImageId,
-                        IsPrimary = i.IsPrimary,
-                        IsProcessed = i.IsProcessed,
-                    }).ToList()
-                })
-                .FirstOrDefaultAsync();
-        }
-                
-
-        public async Task<ICollection<SellerTradeListDto>> GetGroupMembersTrades(IList<Guid> groupMemberIds,Guid groupId)
-        {
-            if (groupMemberIds == null || !groupMemberIds.Any())
-                return [];
-
-            string cacheKey = $"group_members_display_trades {groupId}";
-
-
-            if (_cache.TryGetValue(cacheKey, out ICollection<SellerTradeListDto> cached))
-                return cached;
-
-
-            var trades = await FindByCondition(p => p.SellerProfileId!=Guid.Empty &&
-                         groupMemberIds.Contains(p.SellerProfileId) &&
-                         !p.IsDeleted &&
-                         p.IsActive,
-                    false)
-                .Select(t => new
-                {
-                    SellerId = t.SellerProfileId,
-                    Trade = new SellerTradeDto
-                    {
-                        TradeId = t.TradeId,
-                        TradeName = t.TradeName,
-                        Description = t.Description,
-                        TradeSlugName = t.Slug,
-                        SellerSlugName = t.SellerProfile != null ? t.SellerProfile.Slug : "unknown",
-                        Category = t.Category != null ? t.Category.CategoryName : "Not Categorised",
-                        CategoryName = t.Category != null ? t.Category.CategoryName : "Not Categorised",
-                        ReviewSummary = t.TradeReviews.Any() ? (int)t.TradeReviews.Average(r => r.Rating) : 0,
-                        WhatsAppNumber = t.SellerProfile != null ? t.SellerProfile.WhatsAppNumber : string.Empty,
-
-                        TradeImageId = t.Images
-                            .OrderByDescending(i => i.IsPrimary)
-                            .Select(i => i.TradeImageId)
-                            .FirstOrDefault(),                    
-                        SellerName = t.SellerProfile != null
-                            ? t.SellerProfile.SellerName
-                            : "Unknown Seller"
-                    }
-                })
-                .ToListAsync();
-
-            var result = trades
-                .GroupBy(t => t.SellerId)
-                .Select(g => new SellerTradeListDto
-                {
-                    SellerTrades = g.Select(x => x.Trade).ToList()
-                })
-                .ToList();
-
-            _cache.Set(cacheKey, result,
-                       new MemoryCacheEntryOptions()
-                           .SetAbsoluteExpiration(TimeSpan.FromMinutes(10))
-                           .SetSlidingExpiration(TimeSpan.FromMinutes(1)));
-
-            return result;
-        }
-
-        public void MakeAllTradesFeautured()
-        {
-            var query = FindAll(false).Where(p => !p.IsFeatured).ExecuteUpdateAsync(setters => setters.SetProperty(p => p.IsFeatured, true));
-        }
-
-        public void MakeTradeFeautured(Guid tradeId)
-        {
-            var query = FindByCondition(p => p.TradeId == tradeId, false).ExecuteUpdateAsync(setters => setters.SetProperty(p => p.IsFeatured, true));
-
-        }
-        public Task<int> NumberOfTrades() => FindAll(false).CountAsync();
-        public Task<Guid> GetTradeIdBySlugName(string slug) => FindByCondition(p => p.Slug == slug, false).Select(k => k.TradeId).FirstOrDefaultAsync();
-
-
-        public async Task<TradeDataDto?> GetTradeDataUsingSlugName(string slugName)
-        {
-
-            string cacheKey = $"trade_data {slugName}";
-
-            if (_cache.TryGetValue(cacheKey, out TradeDataDto cached))
-                return cached;
-            var result = await FindByCondition(t => t.Slug == slugName, false)
-                .Select(t => new
-                {
-                    Trade = new TradeDataDto
-                    {
-                        TradeId = t.TradeId,
-                        TradeName = t.TradeName,
-                        Impressions = t.TradeImpressions.Count(),
-                        TradeSlugName = t.Slug,
-                        SellerSlugName = t.SellerProfile != null ? t.SellerProfile.Slug : "unknown",
-
-                        Description = t.Description,
-                        CreatedAt = t.CreatedAt,
-                        SellerProfileId = t.SellerProfileId,
-                        SellerUserProfileId = t.SellerProfile != null ? t.SellerProfile.SellerId : Guid.Empty,
-                        WhatsAppNumber = t.SellerProfile != null ? t.SellerProfile.WhatsAppNumber : string.Empty,
-
-                        SellerName = t.SellerProfile != null
-                            ? t.SellerProfile.SellerName
-                            : "Unknown Seller",
-                        Category = t.Category != null
-                            ? t.Category.CategoryName
-                            : "Not Categorised",
-                        Reviews = t.TradeReviews
-                            .Select(r => new ShowReviewDto
-                            {
-                                ReviewId = r.TradeReviewId,
-                                ReviewerName = r.Reviewer != null
-                                    ? r.Reviewer.IdentityUser.FirstName + " " + r.Reviewer.IdentityUser.LastName
-                                    : "Unknown",
-                                Rating = r.Rating,
-                                Comment = r.Comment,
-                                CreatedAt = r.CreatedAt
-                            })
-                            .ToList(),
-
-                        TradeImageRefDtos = t.Images
-                            .Select(i => new TradeImageRefDto
-                            {
-                                TradeImageId = i.TradeImageId,
-                                IsPrimary = i.IsPrimary,
-                                IsProcessed = i.IsProcessed
-                            })
-                            .ToList()
-                    },
-                    t.CategoryId
-                })
-                .FirstOrDefaultAsync();
-
-            if (result == null)
-                return null;
-
-            var relatedTrades = await FindByCondition(
-                    t => t.CategoryId == result.CategoryId && t.Slug != slugName,
-                    false)
-                .Select(t => new HomePageTradeDto
-                {
-                    TradeId = t.TradeId,
-                    TradeName = t.TradeName,
-                    SellerName = t.SellerProfile != null
-                        ? t.SellerProfile.SellerName
-                        : "Unknown",
-                    SellerProfileId = t.SellerProfileId,
-                    TradeSlugName = t.Slug,
-                    SellerSlugName = t.SellerProfile != null ? t.SellerProfile.Slug : "unknown",
-                    TradeImageId = t.Images
-                        .OrderByDescending(i => i.IsPrimary)
-                        .Select(i => i.TradeImageId)
-                        .FirstOrDefault()
-                })
-                .Take(6)
-                .ToListAsync();
-
-            result.Trade.RelatedTrades = relatedTrades;
-            _cache.Set(cacheKey, result.Trade,
-           new MemoryCacheEntryOptions()
-               .SetAbsoluteExpiration(TimeSpan.FromMinutes(10))
-               .SetSlidingExpiration(TimeSpan.FromMinutes(1)));
-
-            return result.Trade;
-        }
-
-
-        public async Task<ShowTradeDataDto?> FindSellerTradeUsingSlugName(bool tracking, string slugName)
-        {
-            var tradeQ = FindByCondition(p => p.Slug == slugName, tracking);
-
-            return await tradeQ
-                .Select(p => new ShowTradeDataDto
-                {
-                    TradeId = p.TradeId,
-                    TradeName = p.TradeName,
-                    TradeBookings = p.TradeBookings,
-                    Category = p.Category != null ? p.Category.CategoryName : "Not Categorised",
-                    CreatedAt = p.CreatedAt,
-                    HasImage = p.HasImage,
-                    SellerProfileId = p.SellerProfileId,
-                    SellerName = p.SellerProfile != null ? $"{p.SellerProfile.SellerName}" : "Unkown Seller",
-                    TradeSlugName = p.Slug,
-                    SellerSlugName = p.SellerProfile != null ? p.SellerProfile.Slug : "unknown",
-
-                    Reviews = new List<ShowReviewDto>(),
-
-                    TradeImageRefs = p.Images.Select(i => new TradeImageRefDto
-                    {
-                        TradeImageId = i.TradeImageId,
-                        IsPrimary = i.IsPrimary,
-                        IsProcessed = i.IsProcessed,
-                    }).ToList()
-                })
-                .FirstOrDefaultAsync();
-        }
-
-
-        public async Task<ShowTradeDataDto?> FindTradeBySlugName(bool tracking, string slugName)
-        {
-            var tradeQ = FindByCondition(p => p.Slug == slugName, tracking);
-
-            return await tradeQ
-                .Select(p => new ShowTradeDataDto
-                {
-                    TradeId = p.TradeId,
-                    TradeName = p.TradeName,
-                    TradeBookings = p.TradeBookings,
-                    Category = p.Category != null ? p.Category.CategoryName : "Not Categorised",
-                    CreatedAt = p.CreatedAt,
-                    HasImage = p.HasImage,
-                    SellerProfileId = p.SellerProfileId,
-                    SellerName = p.SellerProfile != null ? $"{p.SellerProfile.SellerName}" : "Unkown Seller",
-                    TradeSlugName = p.Slug,
-                    SellerSlugName = p.SellerProfile != null ? p.SellerProfile.Slug : "unknown",
-
-                    Reviews = new List<ShowReviewDto>(),
-
-                    TradeImageRefs = p.Images.Select(i => new TradeImageRefDto
-                    {
-                        TradeImageId = i.TradeImageId,
-                        IsPrimary = i.IsPrimary,
-                        IsProcessed = i.IsProcessed,
-                    }).ToList()
-                })
-                .FirstOrDefaultAsync();
-        }
-    
+        _context = context;
+        _cache = cache;
     }
-}
 
+    #region Base Query
+
+    private IQueryable<Trade> BaseQuery(bool tracking = false)
+    {
+        return tracking
+            ? FindAll(true)
+            : FindAll(false).AsNoTracking();
+    }
+
+    #endregion
+
+    #region Cache
+
+    private static class CacheKeys
+    {
+        public static string Trade(Guid id)
+            => $"trade:{id}";
+
+        public static string TradeSlug(string slug)
+            => $"trade:slug:{slug}";
+
+        public static string GroupTrades(Guid groupId)
+            => $"group-trades:{groupId}";
+
+        public static string HomePageTrades(
+            ProductRequestParameters p)
+            => $"homepage-trades:{p.CategoryId}:{p.SubCategoryId}:{p.ProductName}:{p.PageNumber}:{p.PageSize}";
+    }
+
+    private async Task<T?> GetOrCreateCacheAsync<T>(
+        string key,
+        Func<Task<T?>> factory,
+        int minutes = 20,
+        bool useGlobalToken = false)
+    {
+        return await _cache.GetOrCreateAsync(
+            key,
+            async entry =>
+            {
+                entry.AbsoluteExpirationRelativeToNow =
+                    TimeSpan.FromMinutes(minutes);
+
+                if (useGlobalToken)
+                {
+                    entry.AddExpirationToken(
+                        new CancellationChangeToken(
+                            _tradeListCacheReset.Token));
+                }
+
+                return await factory();
+            });
+    }
+
+    private void ResetTradeListCaches()
+    {
+        var old = Interlocked.Exchange(
+            ref _tradeListCacheReset,
+            new CancellationTokenSource());
+
+        old.Cancel();
+        old.Dispose();
+    }
+
+    private void InvalidateSingleTradeCache(
+        Guid tradeId,
+        string? slug)
+    {
+        _cache.Remove(CacheKeys.Trade(tradeId));
+
+        if (!string.IsNullOrWhiteSpace(slug))
+        {
+            _cache.Remove(
+                CacheKeys.TradeSlug(slug));
+        }
+    }
+
+    #endregion
+
+    #region Projections
+
+    private static readonly Expression<Func<Trade, HomePageTradeDto>>
+        HomeTradeProjection = t => new HomePageTradeDto
+        {
+            TradeId = t.TradeId,
+            TradeName = t.TradeName,
+            Description = t.Description,
+
+            SellerName = t.SellerProfile.SellerName,
+
+            SellerProfileId = t.SellerProfileId,
+
+            SellerSlugName =
+                t.SellerProfile.Slug,
+
+            TradeSlugName = t.Slug,
+
+            TradeImageId = t.Images
+                .OrderByDescending(i => i.IsPrimary)
+                .Select(i => i.TradeImageId)
+                .FirstOrDefault()
+        };
+
+    private static readonly Expression<Func<Trade, SellerTradeDto>>
+        SellerTradeProjection = t => new SellerTradeDto
+        {
+            TradeId = t.TradeId,
+            TradeName = t.TradeName,
+            Description = t.Description,
+
+            TradeSlugName = t.Slug,
+
+            SellerSlugName =
+                t.SellerProfile.Slug,
+
+            SellerName =
+                t.SellerProfile.SellerName,
+
+            WhatsAppNumber =
+                t.SellerProfile.WhatsAppNumber,
+
+            Category = t.Category != null
+                ? t.Category.CategoryName
+                : DefaultCategory,
+
+            CategoryName = t.Category != null
+                ? t.Category.CategoryName
+                : DefaultCategory,
+
+            ReviewSummary =
+                t.TradeReviews.Any()
+                    ? (int)t.TradeReviews
+                        .Average(r => r.Rating)
+                    : 0,
+
+            TradeImageId = t.Images
+                .OrderByDescending(i => i.IsPrimary)
+                .Select(i => i.TradeImageId)
+                .FirstOrDefault()
+        };
+
+    private static readonly Expression<Func<Trade, ShowTradeDataDto>>
+        ShowTradeProjection = t => new ShowTradeDataDto
+        {
+            TradeId = t.TradeId,
+            TradeName = t.TradeName,
+
+            Category = t.Category != null
+                ? t.Category.CategoryName
+                : DefaultCategory,
+
+            CreatedAt = t.CreatedAt,
+
+            HasImage = t.HasImage,
+
+            SellerProfileId = t.SellerProfileId,
+
+            SellerName =
+                t.SellerProfile.SellerName,
+
+            SellerSlugName =
+                t.SellerProfile.Slug,
+
+            TradeSlugName = t.Slug,
+
+            WhatsAppNumber =
+                t.SellerProfile.WhatsAppNumber,
+
+            Reviews = new List<ShowReviewDto>(),
+
+            TradeImageRefs = t.Images
+                .Select(i => new TradeImageRefDto
+                {
+                    TradeImageId = i.TradeImageId,
+                    IsPrimary = i.IsPrimary,
+                    IsProcessed = i.IsProcessed
+                })
+                .ToList()
+        };
+
+    #endregion
+
+    #region CRUD
+
+    public Guid CreateTrade(Trade trade)
+    {
+        CreateBase(trade);
+
+        ResetTradeListCaches();
+
+        return trade.TradeId;
+    }
+
+    public void UpdateTrade(Trade trade)
+    {
+        UpdateBase(trade);
+
+        InvalidateSingleTradeCache(
+            trade.TradeId,
+            trade.Slug);
+
+        ResetTradeListCaches();
+    }
+
+    public void DeleteTrade(Trade trade)
+    {
+        DeleteBase(trade);
+
+        InvalidateSingleTradeCache(
+            trade.TradeId,
+            trade.Slug);
+
+        ResetTradeListCaches();
+    }
+
+    #endregion
+
+    #region Featured
+
+    public Task MakeAllTradesFeautured()
+    {
+        ResetTradeListCaches();
+
+        return BaseQuery(true)
+            .Where(t => !t.IsFeatured)
+            .ExecuteUpdateAsync(setters =>
+                setters.SetProperty(
+                    p => p.IsFeatured,
+                    true));
+    }
+
+    public async Task MakeTradeFeautured(Guid tradeId)
+    {
+        var slug = await BaseQuery()
+            .Where(t => t.TradeId == tradeId)
+            .Select(t => t.Slug)
+            .FirstOrDefaultAsync();
+
+        await BaseQuery(true)
+            .Where(t => t.TradeId == tradeId)
+            .ExecuteUpdateAsync(setters =>
+                setters.SetProperty(
+                    p => p.IsFeatured,
+                    true));
+
+        InvalidateSingleTradeCache(
+            tradeId,
+            slug);
+
+        ResetTradeListCaches();
+    }
+
+    #endregion
+
+    #region Basic Queries
+
+    public Task<int> NumberOfTrades()
+        => BaseQuery()
+            .CountAsync();
+
+    public Task<Guid> GetTradeIdBySlugName(
+        string slug)
+        => BaseQuery()
+            .Where(t => t.Slug == slug)
+            .Select(t => t.TradeId)
+            .FirstOrDefaultAsync();
+
+    public Task<Trade?> FindTradeForUpdate(
+        Guid tradeId)
+        => BaseQuery(true)
+            .FirstOrDefaultAsync(
+                t => t.TradeId == tradeId);
+
+    #endregion
+
+    #region Homepage Trades
+
+    public async Task<PagedList<HomePageTradeDto>>
+        GetHomePageTrades(
+            ProductRequestParameters request)
+    {
+        var cacheKey =
+            CacheKeys.HomePageTrades(request);
+
+        var cached =
+            await GetOrCreateCacheAsync(
+                cacheKey,
+                async () =>
+                {
+                    var query = BaseQuery()
+                        .Where(t =>
+                            t.IsActive);
+
+                    if (request.CategoryId>0)
+                    {
+                        query = query.Where(t =>
+                            t.CategoryId ==
+                            request.CategoryId.Value);
+                    }
+
+                    if (request.SubCategoryId > 0)
+                    {
+                        query = query.Where(t =>
+                            t.SubCategoryId ==
+                            request.SubCategoryId.Value);
+                    }
+
+                    if (!string.IsNullOrWhiteSpace(
+                            request.ProductName))
+                    {
+                        var search =
+                            request.ProductName.Trim();
+
+                        query = query.Where(t =>
+                            EF.Functions.Like(
+                                t.TradeName,
+                                $"%{search}%"));
+                    }
+
+                    query = query
+                        .OrderByDescending(
+                            t => t.CreatedAt);
+
+                    var count =
+                        await query.CountAsync();
+
+                    var items = await query
+                        .Skip(
+                            (request.PageNumber - 1) *
+                            request.PageSize)
+                        .Take(request.PageSize)
+                        .Select(HomeTradeProjection)
+                        .ToListAsync();
+
+                    return PagedList<HomePageTradeDto>
+                        .ToPagedList(
+                            items,
+                            request.PageNumber,
+                            request.PageSize);
+                },
+                60,
+                true);
+
+        return cached!;
+    }
+
+    #endregion
+
+    #region Trade Details
+
+    public async Task<TradeDataDto?> GetTradeData(
+        Guid tradeId)
+    {
+        var cacheKey =
+            CacheKeys.Trade(tradeId);
+
+        return await GetOrCreateCacheAsync(
+            cacheKey,
+            async () =>
+            {
+                var result = await BaseQuery()
+                    .Where(t =>
+                        t.TradeId == tradeId &&
+                        t.IsActive &&
+                        !t.IsDeleted)
+                    .Select(t => new
+                    {
+                        Trade = new TradeDataDto
+                        {
+                            TradeId = t.TradeId,
+                            TradeName = t.TradeName,
+
+                            Impressions =
+                                t.TradeImpressions.Count(),
+
+                            TradeSlugName = t.Slug,
+
+                            SellerSlugName =
+                                t.SellerProfile.Slug,
+
+                            WhatsAppNumber =
+                                t.SellerProfile
+                                    .WhatsAppNumber,
+
+                            Description =
+                                t.Description,
+
+                            CreatedAt =
+                                t.CreatedAt,
+
+                            SellerProfileId =
+                                t.SellerProfileId,
+
+                            SellerUserProfileId =
+                                t.SellerProfile
+                                    .SellerId,
+
+                            SellerName =
+                                t.SellerProfile
+                                    .SellerName,
+
+                            Category =
+                                t.Category != null
+                                    ? t.Category.CategoryName
+                                    : DefaultCategory,
+
+                            Reviews = t.TradeReviews
+                                .Select(r =>
+                                    new ShowReviewDto
+                                    {
+                                        ReviewId =
+                                            r.TradeReviewId,
+
+                                        ReviewerName =
+                                            r.Reviewer != null
+                                                ? (
+                                                    r.Reviewer
+                                                        .IdentityUser
+                                                        .FirstName +
+                                                    " " +
+                                                    r.Reviewer
+                                                        .IdentityUser
+                                                        .LastName
+                                                  ).Trim()
+                                                : "Unknown",
+
+                                        Rating = r.Rating,
+                                        Comment = r.Comment,
+                                        CreatedAt =
+                                            r.CreatedAt
+                                    })
+                                .ToList(),
+
+                            TradeImageRefDtos =
+                                t.Images
+                                    .Select(i =>
+                                        new TradeImageRefDto
+                                        {
+                                            TradeImageId =
+                                                i.TradeImageId,
+
+                                            IsPrimary =
+                                                i.IsPrimary,
+
+                                            IsProcessed =
+                                                i.IsProcessed
+                                        })
+                                    .ToList()
+                        },
+
+                        t.CategoryId
+                    })
+                    .FirstOrDefaultAsync();
+
+                if (result == null)
+                    return null;
+
+                result.Trade.RelatedTrades =
+                    await BaseQuery()
+                        .Where(t =>
+                            t.IsActive &&
+                            !t.IsDeleted &&
+                            t.CategoryId ==
+                            result.CategoryId &&
+                            t.TradeId != tradeId)
+                        .OrderByDescending(
+                            t => t.CreatedAt)
+                        .Take(6)
+                        .Select(HomeTradeProjection)
+                        .ToListAsync();
+
+                return result.Trade;
+            },
+            15);
+    }
+
+    public async Task<TradeDataDto?>
+        GetTradeDataUsingSlugName(
+            string slug)
+    {
+        var cacheKey =
+            CacheKeys.TradeSlug(slug);
+
+        return await GetOrCreateCacheAsync(
+            cacheKey,
+            async () =>
+            {
+                var tradeId = await BaseQuery()
+                    .Where(t => t.Slug == slug)
+                    .Select(t => t.TradeId)
+                    .FirstOrDefaultAsync();
+
+                if (tradeId == Guid.Empty)
+                    return null;
+
+                return await GetTradeData(tradeId);
+            },
+            15);
+    }
+
+    #endregion
+
+    #region Seller Trades
+
+    public Task<ShowTradeDataDto?>
+        FindSellerTrade(Guid tradeId)
+    {
+        return BaseQuery()
+            .Where(t => t.TradeId == tradeId)
+            .Select(ShowTradeProjection)
+            .FirstOrDefaultAsync();
+    }
+
+    public Task<ShowTradeDataDto?>
+        FindSellerTradeUsingSlugName(
+            bool tracking,
+            string slug)
+    {
+        return BaseQuery(tracking)
+            .Where(t => t.Slug == slug)
+            .Select(ShowTradeProjection)
+            .FirstOrDefaultAsync();
+    }
+
+    public Task<ShowTradeDataDto?>
+        FindTradeBySlugName(
+            bool tracking,
+            string slug)
+    {
+        return BaseQuery(tracking)
+            .Where(t => t.Slug == slug)
+            .Select(ShowTradeProjection)
+            .FirstOrDefaultAsync();
+    }
+
+    #endregion
+
+    #region Group Trades
+
+    public async Task<ICollection<SellerTradeListDto>>
+        GetGroupMembersTrades(
+            IList<Guid> groupMemberIds,
+            Guid groupId)
+    {
+        if (groupMemberIds == null ||
+            groupMemberIds.Count == 0)
+        {
+            return [];
+        }
+
+        var cacheKey =
+            CacheKeys.GroupTrades(groupId);
+
+        return await GetOrCreateCacheAsync(
+            cacheKey,
+            async () =>
+            {
+                var sellerIds =
+                    groupMemberIds.ToHashSet();
+
+                var trades = await BaseQuery()
+                    .Where(t =>
+                        t.IsActive &&
+                        !t.IsDeleted &&
+                        sellerIds.Contains(
+                            t.SellerProfileId))
+                    .OrderByDescending(
+                        t => t.CreatedAt)
+                    .Select(t => new
+                    {
+                        t.SellerProfileId,
+
+                        Trade =
+                            new SellerTradeDto
+                            {
+                                TradeId = t.TradeId,
+                                TradeName =
+                                    t.TradeName,
+
+                                Description =
+                                    t.Description,
+
+                                TradeSlugName =
+                                    t.Slug,
+
+                                SellerSlugName =
+                                    t.SellerProfile
+                                        .Slug,
+
+                                SellerName =
+                                    t.SellerProfile
+                                        .SellerName,
+
+                                WhatsAppNumber =
+                                    t.SellerProfile
+                                        .WhatsAppNumber,
+
+                                Category =
+                                    t.Category != null
+                                        ? t.Category
+                                            .CategoryName
+                                        : DefaultCategory,
+
+                                CategoryName =
+                                    t.Category != null
+                                        ? t.Category
+                                            .CategoryName
+                                        : DefaultCategory,
+
+                                ReviewSummary =
+                                    t.TradeReviews.Any()
+                                        ? (int)t
+                                            .TradeReviews
+                                            .Average(r =>
+                                                r.Rating)
+                                        : 0,
+
+                                TradeImageId =
+                                    t.Images
+                                        .OrderByDescending(i =>
+                                            i.IsPrimary)
+                                        .Select(i =>
+                                            i.TradeImageId)
+                                        .FirstOrDefault()
+                            }
+                    })
+                    .ToListAsync();
+
+                return trades
+                    .GroupBy(x =>
+                        x.SellerProfileId)
+                    .Select(g =>
+                        new SellerTradeListDto
+                        {
+                            SellerTrades =
+                                g.Select(x => x.Trade)
+                                    .ToList()
+                        })
+                    .ToList();
+            },
+            20,
+            true) ?? [];
+    }
+
+    #endregion
+}

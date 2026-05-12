@@ -157,9 +157,9 @@ namespace Services
                 throw new ObjectBadRequestExeption($"product with id {productId} not found");
             }
         }
-        public async Task MakeAllProductsFeautured()
+        public async Task MakeAllProductsFeatured()
         {
-            _repoManager.ProductRepo.MakeAllProductsFeautured();
+          await  _repoManager.ProductRepo.MakeAllProductsFeatured();
             await _repoManager.SaveRepoDataAsync();
         }
         public async Task ToggleProductFeaturedState(Guid productId)
