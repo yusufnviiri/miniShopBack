@@ -72,7 +72,18 @@ namespace Services
             {
                 return;
             }
-            _mapper.Map(member, groupMember);
+
+            if (member.GroupRoleId != groupMember.GroupRoleId && member.GroupRoleId!=0)
+            {
+                groupMember.GroupRoleId = member.GroupRoleId;
+            }
+
+            if(member.MemberStatusId != groupMember.MemberStatusId && member.MemberStatusId != 0)
+            {
+                groupMember.MemberStatusId = member.MemberStatusId;
+
+            }
+            //_mapper.Map(member, groupMember);
             _repoManager.GroupMemberRepo.UpdateGroupMember(groupMember);
             await _repoManager.SaveRepoDataAsync();
         }
@@ -144,6 +155,7 @@ namespace Services
                 return;
             }
             groupMember.MemberStatusId = member.MemberStatusId;
+            groupMember.GroupRoleId = member.GroupRoleId;
             _repoManager.GroupMemberRepo.UpdateGroupMember(groupMember);
             await _repoManager.SaveRepoDataAsync();
         }

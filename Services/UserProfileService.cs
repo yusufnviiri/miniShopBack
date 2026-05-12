@@ -334,7 +334,7 @@ namespace Services
         }
 
 
-public async Task CreateUserProfileWithMemberAsync(GroupMemberJoinNewUserProfileDataDto dataDto)
+public async Task<string> CreateUserProfileWithMemberAsync(GroupMemberJoinNewUserProfileDataDto dataDto)
         {
          
             await CheckIfPhoneNumberExists(dataDto.PhoneNumber);
@@ -384,6 +384,8 @@ public async Task CreateUserProfileWithMemberAsync(GroupMemberJoinNewUserProfile
                 createdMember.ActiveGroupId = dataDto.UserGroupId;
             }
             await _repoManager.SaveRepoDataAsync();
+            var groupSlugName = await _repoManager.UserGroupRepo.GetGroupSlugNameOnly(groupMember.UserGroupId);
+            return groupSlugName ?? string.Empty;
         }
 
 

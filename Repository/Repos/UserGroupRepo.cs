@@ -101,6 +101,7 @@ namespace Repository.Repos
 
                         JoinedAt = m.JoinedAt,
                         UserProfileId = m.UserProfileId,
+                        GroupMemberId=m.GroupMemberId,
 
                         IsSeller = m.GroupSellers!=null? m.GroupSellers.Any(p => p.UserGroupId == userGroupId):false
                     }).ToList()
