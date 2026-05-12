@@ -12,6 +12,9 @@ namespace Contracts.Repo
     {
         Task<IEnumerable<HomePageCard>> GetAllHomePageCards();
      IQueryable<HomePageCard> HomePageCardsQueryData();
+        Task<int> HomePageCardCount();
+        Task<bool> CheckIfGroupHomePageCardExists(Guid userGroupId);
+
 
         //Task<IEnumerable<HomePageCardDto>> GetAllHomePageCardDtos();
         Task<HomePageCard?> FindHomePageCardById(int homePageCardId , bool tracking);

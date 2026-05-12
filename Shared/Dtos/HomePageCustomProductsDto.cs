@@ -10,6 +10,9 @@ namespace Shared.Dtos
     {
         public ICollection<HomePageProductDto> FeaturedProducts { get; set; } = [];
         public ICollection<HomeProductCardDto> AdvertisedProducts { get; set; } = [];
+
+        public ICollection<HomeProductCardDto> SelectedGroups { get; set; } = [];
+
         public ICollection<HomePageProductDto> GroupProducts { get; set; } = [];
     }
 }

@@ -15,6 +15,11 @@ namespace Entities.Models
         public bool IsActive { get; set; } = true;
         public bool IsRow { get; set; } = false;
         public int Index { get; set; }
+
+        public string? SellerSlugName { get; set; } = string.Empty;
+
+        public Guid? UserGroupId { get; set; } =Guid.Empty;
+        public bool IsGroupCard { get; set; } = false;
         public ICollection<HomePageCardCategory> CategoryLinks { get; set; } = new List<HomePageCardCategory>();
     }
 }

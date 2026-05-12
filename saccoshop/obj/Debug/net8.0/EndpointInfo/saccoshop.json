@@ -4799,6 +4799,18 @@
             "type": "integer",
             "format": "int32"
           },
+          "sellerSlugName": {
+            "type": "string",
+            "nullable": true
+          },
+          "userGroupId": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "isGroupCard": {
+            "type": "boolean"
+          },
           "categoryLinks": {
             "type": "array",
             "items": {

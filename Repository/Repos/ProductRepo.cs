@@ -21,28 +21,26 @@ public sealed class ProductRepo : RepositoryBase<Product>, IProductRepo
     private const string UnknownSeller = "Unknown Seller";
     private const string DefaultCategory = "Not Categorised";
 
-    public ProductRepo(
-        ApplicationDbContext context,
-        IMemoryCache cache) : base(context)
+    public ProductRepo(ApplicationDbContext context, IMemoryCache cache)
+        : base(context)
     {
         _context = context;
         _cache = cache;
     }
 
-    #region Base Query
+    // ============================================================
+    //  Base query
+    // ============================================================
 
     private IQueryable<Product> BaseQuery(bool tracking = false)
     {
-        var query = tracking
-            ? FindAll(true)
-            : FindAll(false).AsNoTracking();
-
+        var query = tracking ? FindAll(true) : FindAll(false).AsNoTracking();
         return query.Where(p => !p.IsDeleted);
     }
 
-    #endregion
-
-    #region Projections
+    // ============================================================
+    //  Projections
+    // ============================================================
 
     private static readonly Expression<Func<Product, ShowProductMiniDetailsDto>>
         MiniProductProjection = p => new ShowProductMiniDetailsDto
@@ -52,21 +50,10 @@ public sealed class ProductRepo : RepositoryBase<Product>, IProductRepo
             Price = p.Price,
             Condition = p.Condition,
             SlugName = p.Slug,
-
-            CategoryName = p.Category != null
-                ? p.Category.CategoryName
-                : DefaultCategory,
-
+            CategoryName = p.Category != null ? p.Category.CategoryName : DefaultCategory,
             SellerProfileId = p.SellerProfileId,
-
-            SellerName = p.SellerProfile != null
-                ? p.SellerProfile.SellerName
-                : UnknownSeller,
-
-            SellerSlugName = p.SellerProfile != null
-                ? p.SellerProfile.Slug
-                : UnknownSeller,
-
+            SellerName = p.SellerProfile != null ? p.SellerProfile.SellerName : UnknownSeller,
+            SellerSlugName = p.SellerProfile != null ? p.SellerProfile.Slug : UnknownSeller,
             ProductImageRefs = p.Images
                 .Select(i => new ProductImageRefDto
                 {
@@ -85,50 +72,26 @@ public sealed class ProductRepo : RepositoryBase<Product>, IProductRepo
             OldPrice = p.OldPrice,
             Condition = p.Condition,
             SlugName = p.Slug,
-
             SellerProfileId = p.SellerProfileId,
-
-            SellerName = p.SellerProfile != null
-                ? p.SellerProfile.SellerName
-                : UnknownSeller,
-
-            SellerSlugName = p.SellerProfile != null
-                ? p.SellerProfile.Slug
-                : UnknownSeller,
-
-            SellerUserProfileId = p.SellerProfile != null
-                ? p.SellerProfile.SellerId
-                : Guid.Empty,
-
-            Category = p.Category != null
-                ? p.Category.CategoryName
-                : DefaultCategory,
-
+            SellerName = p.SellerProfile != null ? p.SellerProfile.SellerName : UnknownSeller,
+            SellerSlugName = p.SellerProfile != null ? p.SellerProfile.Slug : UnknownSeller,
+            SellerUserProfileId = p.SellerProfile != null ? p.SellerProfile.SellerId : Guid.Empty,
+            Category = p.Category != null ? p.Category.CategoryName : DefaultCategory,
             CreatedAt = p.CreatedAt,
-
             HasImage = p.HasImage,
-
             Reviews = p.ProductReviews
                 .Select(r => new ShowReviewDto
                 {
                     ReviewId = r.ProductReviewId,
-
-                    ReviewerName =
-                        r.Reviewer != null &&
-                        r.Reviewer.IdentityUser != null
-                            ? (
-                                (r.Reviewer.IdentityUser.FirstName ?? "") +
-                                " " +
-                                (r.Reviewer.IdentityUser.LastName ?? "")
-                              ).Trim()
-                            : "Unknown",
-
+                    ReviewerName = r.Reviewer != null && r.Reviewer.IdentityUser != null
+                        ? ((r.Reviewer.IdentityUser.FirstName ?? "") + " " +
+                           (r.Reviewer.IdentityUser.LastName ?? "")).Trim()
+                        : "Unknown",
                     Rating = r.Rating,
                     Comment = r.Comment,
                     CreatedAt = r.CreatedAt
                 })
                 .ToList(),
-
             ProductImageRefs = p.Images
                 .Select(i => new ProductImageRefDto
                 {
@@ -147,17 +110,9 @@ public sealed class ProductRepo : RepositoryBase<Product>, IProductRepo
             Price = p.Price,
             OldPrice = p.OldPrice,
             SlugName = p.Slug,
-
             SellerProfileId = p.SellerProfileId,
-
-            SellerName = p.SellerProfile != null
-                ? p.SellerProfile.SellerName
-                : UnknownSeller,
-
-            SellerSlugName = p.SellerProfile != null
-                ? p.SellerProfile.Slug
-                : UnknownSeller,
-
+            SellerName = p.SellerProfile != null ? p.SellerProfile.SellerName : UnknownSeller,
+            SellerSlugName = p.SellerProfile != null ? p.SellerProfile.Slug : UnknownSeller,
             ProductImageId = p.Images
                 .OrderByDescending(i => i.IsPrimary)
                 .Select(i => i.ProductImageId)
@@ -172,32 +127,21 @@ public sealed class ProductRepo : RepositoryBase<Product>, IProductRepo
             Price = p.Price,
             Condition = p.Condition,
             SlugName = p.Slug,
-
-            SellerName = p.SellerProfile != null
-                ? p.SellerProfile.SellerName
-                : UnknownSeller,
-
-            SellerSlugName = p.SellerProfile != null
-                ? p.SellerProfile.Slug
-                : UnknownSeller,
-
-            CategoryName = p.Category != null
-                ? p.Category.CategoryName
-                : DefaultCategory,
-
+            SellerName = p.SellerProfile != null ? p.SellerProfile.SellerName : UnknownSeller,
+            SellerSlugName = p.SellerProfile != null ? p.SellerProfile.Slug : UnknownSeller,
+            CategoryName = p.Category != null ? p.Category.CategoryName : DefaultCategory,
             ReviewSummary = p.ProductReviews.Any()
                 ? (int)p.ProductReviews.Average(r => r.Rating)
                 : 0,
-
             ProductImageId = p.Images
                 .OrderByDescending(i => i.IsPrimary)
                 .Select(i => i.ProductImageId)
                 .FirstOrDefault()
         };
 
-    #endregion
-
-    #region Cache
+    // ============================================================
+    //  Cache
+    // ============================================================
 
     private async Task<T?> GetOrCreateCacheAsync<T>(
         string key,
@@ -206,730 +150,652 @@ public sealed class ProductRepo : RepositoryBase<Product>, IProductRepo
     {
         return await _cache.GetOrCreateAsync(key, async entry =>
         {
-            entry.AbsoluteExpirationRelativeToNow =
-                TimeSpan.FromMinutes(minutes);
-
+            entry.AbsoluteExpirationRelativeToNow = TimeSpan.FromMinutes(minutes);
             entry.AddExpirationToken(
-                new CancellationChangeToken(
-                    _productCacheReset.Token));
-
+                new CancellationChangeToken(_productCacheReset.Token));
             return await factory();
         });
     }
 
     private void ResetProductCache()
     {
-        var old = Interlocked.Exchange(
-            ref _productCacheReset,
-            new CancellationTokenSource());
-
+        var old = Interlocked.Exchange(ref _productCacheReset, new CancellationTokenSource());
         old.Cancel();
         old.Dispose();
     }
 
+    /// <summary>
+    /// Surgically invalidate only the homepage-custom payload.
+    /// Call this from HomePageCard create/update/delete paths so
+    /// new cards appear immediately without flushing every other
+    /// product cache entry.
+    /// </summary>
+    public void InvalidateHomePageCards()
+    {
+        _cache.Remove(CacheKeys.HomePageCustom);
+    }
+
     private static class CacheKeys
     {
-        public static string Product(Guid id)
-            => $"product:{id}";
+        public static string Product(Guid id) => $"product:{id}";
+        public static string ProductSlug(string slug) => $"product:slug:{slug}";
+        public static string GroupProducts(Guid groupId) => $"group-products:{groupId}";
+        public static string GroupMembers(string hash) => $"group-members:{hash}";
 
-        public static string ProductSlug(string slug)
-            => $"product:slug:{slug}";
-
-        public static string GroupProducts(Guid groupId)
-            => $"group-products:{groupId}";
-
-        public static string GroupMembers(string hash)
-            => $"group-members:{hash}";
-
-        public static string HomePage(ProductRequestParameters p)
-            => $"homepage:{p.CategoryId}:{p.SubCategoryId}:{p.PageNumber}:{p.PageSize}:{p.ProductName}:{p.MinPrice}:{p.MaxPrice}";
+        public static string HomePage(ProductRequestParameters p) =>
+            $"homepage:{p.CategoryId}:{p.SubCategoryId}:{p.PageNumber}:" +
+            $"{p.PageSize}:{p.ProductName}:{p.MinPrice}:{p.MaxPrice}";
 
         public const string HomePageCustom = "homepage-custom";
     }
 
-    #endregion
-
-    #region CRUD
+    // ============================================================
+    //  CRUD
+    // ============================================================
 
     public Guid CreateProduct(Product product)
     {
         CreateBase(product);
-
         ResetProductCache();
-
         return product.ProductId;
     }
 
     public void UpdateProduct(Product product)
     {
         UpdateBase(product);
-
         ResetProductCache();
     }
 
     public void DeleteProduct(Product product)
     {
         DeleteBase(product);
-
         ResetProductCache();
     }
 
-    #endregion
+    // ============================================================
+    //  Basic queries
+    // ============================================================
 
-    #region Basic Queries
+    public Task<int> NumberOfProducts() => BaseQuery().CountAsync();
 
-    public Task<int> NumberOfProducts()
-        => BaseQuery().CountAsync();
-
-    public Task<Guid> GetProductIdBySlugName(string slug)
-        => BaseQuery()
+    public Task<Guid> GetProductIdBySlugName(string slug) =>
+        BaseQuery()
             .Where(p => p.Slug == slug)
             .Select(p => p.ProductId)
             .FirstOrDefaultAsync();
 
-    public Task<Product?> FindProductForUpdate(Guid productId)
-        => BaseQuery(true)
-            .FirstOrDefaultAsync(p => p.ProductId == productId);
+    public Task<Product?> FindProductForUpdate(Guid productId) =>
+        BaseQuery(true).FirstOrDefaultAsync(p => p.ProductId == productId);
 
-    public Task MakeAllProductsFeatured()
-        => BaseQuery(true)
+    public Task MakeAllProductsFeatured() =>
+        BaseQuery(true)
             .Where(p => !p.IsFeatured)
-            .ExecuteUpdateAsync(s =>
-                s.SetProperty(p => p.IsFeatured, true));
+            .ExecuteUpdateAsync(s => s.SetProperty(p => p.IsFeatured, true));
 
-    #endregion
+    // ============================================================
+    //  Product lists
+    // ============================================================
 
-    #region Product Lists
+    public async Task<IEnumerable<ShowProductMiniDetailsDto>> GetAllProducts(bool tracking) =>
+        await BaseQuery(tracking).Select(MiniProductProjection).ToListAsync();
 
-    public async Task<IEnumerable<ShowProductMiniDetailsDto>>
-        GetAllProducts(bool tracking)
-    {
-        return await BaseQuery(tracking)
+    public async Task<IEnumerable<ShowProductMiniDetailsDto>> GetAllProductsByCategory(
+        bool tracking, string categoryName) =>
+        await BaseQuery(tracking)
+            .Where(p => p.Category != null && p.Category.CategoryName == categoryName)
             .Select(MiniProductProjection)
             .ToListAsync();
-    }
 
-    public async Task<IEnumerable<ShowProductMiniDetailsDto>>
-        GetAllProductsByCategory(
-            bool tracking,
-            string categoryName)
-    {
-        return await BaseQuery(tracking)
-            .Where(p =>
-                p.Category != null &&
-                p.Category.CategoryName == categoryName)
-            .Select(MiniProductProjection)
-            .ToListAsync();
-    }
+    // ============================================================
+    //  Product details
+    // ============================================================
 
-    #endregion
-
-    #region Product Details
-
-    public Task<ShowProductDto?> FindProductById(
-        bool tracking,
-        Guid productId)
-    {
-        return BaseQuery(tracking)
+    public Task<ShowProductDto?> FindProductById(bool tracking, Guid productId) =>
+        BaseQuery(tracking)
             .Where(p => p.ProductId == productId)
             .Select(ShowProductProjection)
             .FirstOrDefaultAsync();
-    }
 
-    public Task<ShowProductDto?> FindProductBySlugName(
-        bool tracking,
-        string slug)
-    {
-        return BaseQuery(tracking)
+    public Task<ShowProductDto?> FindProductBySlugName(bool tracking, string slug) =>
+        BaseQuery(tracking)
             .Where(p => p.Slug == slug)
             .Select(ShowProductProjection)
             .FirstOrDefaultAsync();
-    }
 
-    public Task<ShowProductDto?> FindSellerProduct(Guid productId)
-        => FindProductById(false, productId);
+    public Task<ShowProductDto?> FindSellerProduct(Guid productId) =>
+        FindProductById(false, productId);
 
-    public Task<ShowProductDto?> FindSellerProductUsingSlugName(
-        bool tracking,
-        string slug)
-        => FindProductBySlugName(tracking, slug);
+    public Task<ShowProductDto?> FindSellerProductUsingSlugName(bool tracking, string slug) =>
+        FindProductBySlugName(tracking, slug);
 
-    #endregion
-
-    #region Product Data
+    // ============================================================
+    //  Product data (+ related)
+    // ============================================================
 
     public async Task<ProductDataDto?> GetProductData(Guid productId)
     {
-        var cacheKey = CacheKeys.Product(productId);
-
-        return await GetOrCreateCacheAsync(
-            cacheKey,
-            async () =>
-            {
-                var product = await BaseQuery()
-                    .Where(p => p.ProductId == productId)
-                    .Select(p => new
+        return await GetOrCreateCacheAsync(CacheKeys.Product(productId), async () =>
+        {
+            var product = await BaseQuery()
+                .Where(p => p.ProductId == productId)
+                .Select(p => new
+                {
+                    Product = new ProductDataDto
                     {
-                        Product = new ProductDataDto
-                        {
-                            ProductId = p.ProductId,
-                            ProductName = p.ProductName,
-                            Price = p.Price,
-                            OldPrice = p.OldPrice,
-                            Condition = p.Condition,
-                            SlugName = p.Slug,
+                        ProductId = p.ProductId,
+                        ProductName = p.ProductName,
+                        Price = p.Price,
+                        OldPrice = p.OldPrice,
+                        Condition = p.Condition,
+                        SlugName = p.Slug,
+                        SellerProfileId = p.SellerProfileId,
+                        SellerName = p.SellerProfile != null
+                            ? p.SellerProfile.SellerName : UnknownSeller,
+                        SellerSlugName = p.SellerProfile != null
+                            ? p.SellerProfile.Slug : UnknownSeller,
+                        SellerUserProfileId = p.SellerProfile != null
+                            ? p.SellerProfile.SellerId : Guid.Empty,
+                        Category = p.Category != null
+                            ? p.Category.CategoryName : DefaultCategory,
+                        CreatedAt = p.CreatedAt,
+                        Impressions = p.ProductImpressions.Count(),
+                        Reviews = p.ProductReviews
+                            .Select(r => new ShowReviewDto
+                            {
+                                ReviewId = r.ProductReviewId,
+                                ReviewerName = r.Reviewer != null && r.Reviewer.IdentityUser != null
+                                    ? ((r.Reviewer.IdentityUser.FirstName ?? "") + " " +
+                                       (r.Reviewer.IdentityUser.LastName ?? "")).Trim()
+                                    : "Unknown",
+                                Rating = r.Rating,
+                                Comment = r.Comment,
+                                CreatedAt = r.CreatedAt
+                            })
+                            .ToList(),
+                        ProductImageRefs = p.Images
+                            .Select(i => new ProductImageRefDto
+                            {
+                                ProductImageId = i.ProductImageId,
+                                IsPrimary = i.IsPrimary,
+                                IsProcessed = i.IsProcessed
+                            })
+                            .ToList()
+                    },
+                    p.CategoryId
+                })
+                .FirstOrDefaultAsync();
 
-                            SellerProfileId = p.SellerProfileId,
+            if (product == null) return null;
 
-                            SellerName = p.SellerProfile != null
-                                ? p.SellerProfile.SellerName
-                                : UnknownSeller,
-
-                            SellerSlugName = p.SellerProfile != null
-                                ? p.SellerProfile.Slug
-                                : UnknownSeller,
-
-                            SellerUserProfileId =
-                                p.SellerProfile != null
-                                    ? p.SellerProfile.SellerId
-                                    : Guid.Empty,
-
-                            Category = p.Category != null
-                                ? p.Category.CategoryName
-                                : DefaultCategory,
-
-                            CreatedAt = p.CreatedAt,
-
-                            Impressions =
-                                p.ProductImpressions.Count(),
-
-                            Reviews = p.ProductReviews
-                                .Select(r => new ShowReviewDto
-                                {
-                                    ReviewId = r.ProductReviewId,
-
-                                    ReviewerName =
-                                        r.Reviewer != null &&
-                                        r.Reviewer.IdentityUser != null
-                                            ? (
-                                                (r.Reviewer.IdentityUser.FirstName ?? "") +
-                                                " " +
-                                                (r.Reviewer.IdentityUser.LastName ?? "")
-                                              ).Trim()
-                                            : "Unknown",
-
-                                    Rating = r.Rating,
-                                    Comment = r.Comment,
-                                    CreatedAt = r.CreatedAt
-                                })
-                                .ToList(),
-
-                            ProductImageRefs = p.Images
-                                .Select(i => new ProductImageRefDto
-                                {
-                                    ProductImageId =
-                                        i.ProductImageId,
-
-                                    IsPrimary = i.IsPrimary,
-                                    IsProcessed = i.IsProcessed
-                                })
-                                .ToList()
-                        },
-
-                        p.CategoryId
-                    })
-                    .FirstOrDefaultAsync();
-
-                if (product == null)
-                    return null;
-
-                product.Product.RelatedProducts =
-                    await BaseQuery()
-                        .Where(r =>
-                            r.CategoryId == product.CategoryId &&
+            product.Product.RelatedProducts = await BaseQuery()
+                .Where(r => r.CategoryId == product.CategoryId &&
                             r.ProductId != product.Product.ProductId)
-                        .OrderByDescending(r => r.CreatedAt)
-                        .Take(12)
-                        .Select(HomeProductProjection)
-                        .ToListAsync();
+                .OrderByDescending(r => r.CreatedAt)
+                .Take(12)
+                .Select(HomeProductProjection)
+                .ToListAsync();
 
-                return product.Product;
-            });
+            return product.Product;
+        });
     }
 
-    public async Task<ProductDataDto?> GetProductDataUsingSlugName(
-        string slug)
+    public async Task<ProductDataDto?> GetProductDataUsingSlugName(string slug)
     {
         var productId = await GetProductIdBySlugName(slug);
-
-        if (productId == Guid.Empty)
-            return null;
-
-        return await GetProductData(productId);
+        return productId == Guid.Empty ? null : await GetProductData(productId);
     }
 
-    #endregion
+    // ============================================================
+    //  Paged homepage products (filters)
+    // ============================================================
 
-    #region Homepage Products
-
-    public async Task<PagedList<HomePageProductDto>>
-        GetHomePageProducts(
-            ProductRequestParameters request)
+    public async Task<PagedList<HomePageProductDto>> GetHomePageProducts(
+        ProductRequestParameters request)
     {
-        var cacheKey = CacheKeys.HomePage(request);
+        var cached = await GetOrCreateCacheAsync(CacheKeys.HomePage(request), async () =>
+        {
+            var query = BaseQuery()
+                .Where(p => p.IsActive && p.SellerProfileId != Guid.Empty);
 
-        var cached =
-            await GetOrCreateCacheAsync(cacheKey,async () =>  {
-                    var query = BaseQuery().Where(p =>
-                            p.IsActive &&
-                            (
-                                p.SellerProfileId!=Guid.Empty
-                            ));
+            if (request.CategoryId > 0)
+                query = query.Where(p => p.CategoryId == request.CategoryId.Value);
 
-                    if (request.CategoryId>0)
-                    {
-                        query = query.Where(p =>
-                            p.CategoryId ==
-                            request.CategoryId.Value);
-                    }
+            if (request.SubCategoryId > 0)
+                query = query.Where(p => p.SubCategoryId == request.SubCategoryId.Value);
 
-                    if (request.SubCategoryId > 0)
-                    {
-                        query = query.Where(p =>
-                            p.SubCategoryId ==
-                            request.SubCategoryId.Value);
-                    }
+            if (request.MinPrice > 0)
+                query = query.Where(p => p.Price >= request.MinPrice.Value);
 
-                    if (request.MinPrice > 0)
-                    {
-                        query = query.Where(p =>
-                            p.Price >= request.MinPrice.Value);
-                    }
+            if (request.MaxPrice.HasValue)
+                query = query.Where(p => p.Price <= request.MaxPrice.Value);
 
-                    if (request.MaxPrice.HasValue)
-                    {
-                        query = query.Where(p =>
-                            p.Price <= request.MaxPrice.Value);
-                    }
+            if (!string.IsNullOrWhiteSpace(request.ProductName))
+            {
+                var search = request.ProductName.Trim();
+                query = query.Where(p => EF.Functions.Like(p.ProductName, $"%{search}%"));
+            }
 
-                    if (!string.IsNullOrWhiteSpace(
-                            request.ProductName))
-                    {
-                        var search =
-                            request.ProductName.Trim();
+            if (!string.IsNullOrWhiteSpace(request.ProductDescription))
+            {
+                var desc = request.ProductDescription.Trim();
+                query = query.Where(p => EF.Functions.Like(p.Description, $"%{desc}%"));
+            }
 
-                        query = query.Where(p =>
-                            EF.Functions.Like(
-                                p.ProductName,
-                                $"%{search}%"));
-                    }
+            query = query.OrderByDescending(p => p.CreatedAt);
 
-                    if (!string.IsNullOrWhiteSpace(
-                            request.ProductDescription))
-                    {
-                        var desc =
-                            request.ProductDescription.Trim();
+            var items = await query
+                .Skip((request.PageNumber - 1) * request.PageSize)
+                .Take(request.PageSize)
+                .Select(HomeProductProjection)
+                .ToListAsync();
 
-                        query = query.Where(p =>
-                            EF.Functions.Like(
-                                p.Description,
-                                $"%{desc}%"));
-                    }
-
-                    query = query
-                        .OrderByDescending(p => p.CreatedAt);
-
-                    var count = await query.CountAsync();
-
-                    var items = await query
-                        .Skip(
-                            (request.PageNumber - 1) *
-                            request.PageSize)
-                        .Take(request.PageSize)
-                        .Select(HomeProductProjection)
-                        .ToListAsync();
-
-                    return PagedList<HomePageProductDto>
-                        .ToPagedList(
-                            items,
-                            request.PageNumber,
-                            request.PageSize);
-                });
+            return PagedList<HomePageProductDto>.ToPagedList(
+                items, request.PageNumber, request.PageSize);
+        });
 
         return cached!;
     }
 
-    #endregion
+    // ============================================================
+    //  Homepage custom (featured + top-group + cards + groups)
+    // ============================================================
 
-    #region Homepage Custom
-
-    public async Task<HomePageCustomProductsDto?>
-        HomePageCustomProducts()
+    public async Task<HomePageCustomProductsDto?> HomePageCustomProducts()
     {
-        return await GetOrCreateCacheAsync(
-            CacheKeys.HomePageCustom,
-            async () =>
+        return await GetOrCreateCacheAsync(CacheKeys.HomePageCustom, async () =>
+        {
+            var baseQuery = BaseQuery()
+                .Where(p =>
+                    p.IsActive &&
+                    (p.SellerProfile == null || p.SellerProfile.SellerTypeId == 1));
+
+            // -------- Featured products --------
+            var featuredProducts = await baseQuery
+                .Where(p => p.IsFeatured)
+                .OrderByDescending(p => p.CreatedAt)
+                .Take(20)
+                .Select(HomeProductProjection)
+                .ToListAsync();
+
+            // -------- Top-group products --------
+            var groupProducts = await GetTopGroupProducts(baseQuery);
+
+            // -------- Cards: split by kind once --------
+            var cards = await _context.HomePageCards
+                .AsNoTracking()
+                .Include(c => c.CategoryLinks)
+                .Where(c => c.IsActive)
+                .OrderBy(c => c.Index)
+                .ToListAsync();
+
+            var categoryCards = cards.Where(c => !c.IsGroupCard).ToList();
+            var groupCards = cards
+                .Where(c => c.IsGroupCard && c.UserGroupId != Guid.Empty)
+                .ToList();
+
+            var advertisedProducts = await BuildCategoryCards(categoryCards, baseQuery);
+            var selectedGroups = await BuildGroupCards(groupCards, baseQuery);
+
+            return new HomePageCustomProductsDto
             {
-                var baseQuery = BaseQuery()
-                    .Where(p =>
-                        p.IsActive &&
-                        (
-                            p.SellerProfile == null ||
-                            p.SellerProfile.SellerTypeId == 1
-                        ));
-
-                var featuredProducts = await baseQuery
-                    .Where(p => p.IsFeatured)
-                    .OrderByDescending(p => p.CreatedAt)
-                    .Take(20)
-                    .Select(HomeProductProjection)
-                    .ToListAsync();
-
-                var topGroupId = await _context.GroupMembers
-                    .AsNoTracking()
-                    .GroupBy(g => g.UserGroupId)
-                    .OrderByDescending(g => g.Count())
-                    .Select(g => g.Key)
-                    .FirstOrDefaultAsync();
-
-                var groupProducts =
-                    new List<HomePageProductDto>();
-
-                if (topGroupId != Guid.Empty)
-                {
-                    var sellerIds =
-                        await _context.GroupMembers
-                            .AsNoTracking()
-                            .Where(g =>
-                                g.UserGroupId == topGroupId)
-                            .Select(g => g.UserProfileId)
-                            .ToListAsync();
-
-                    groupProducts = await baseQuery
-                        .Where(p =>
-                            sellerIds.Contains(
-                                p.SellerProfileId))
-                        .OrderByDescending(p => p.CreatedAt)
-                        .Take(20)
-                        .Select(HomeProductProjection)
-                        .ToListAsync();
-                }
-
-                var cards = await _context.HomePageCards
-                    .AsNoTracking()
-                    .Include(c => c.CategoryLinks)
-                    .Where(c => c.IsActive)
-                    .OrderBy(c => c.Index)
-                    .ToListAsync();
-
-                var allCategoryIds = cards
-                    .SelectMany(c =>
-                        c.CategoryLinks
-                            .Select(cl => cl.CategoryId))
-                    .Distinct()
-                    .ToList();
-
-                var allProducts = await baseQuery
-                    .Where(p =>
-                        allCategoryIds.Contains(
-                            p.CategoryId))
-                    .Select(p => new
-                    {
-                        p.CategoryId,
-                        Product = new HomePageProductDto
-                        {
-                            ProductId = p.ProductId,
-                            ProductName = p.ProductName,
-                            Price = p.Price,
-                            OldPrice = p.OldPrice,
-                            SlugName = p.Slug,
-
-                            SellerProfileId =
-                                p.SellerProfileId,
-
-                            SellerName =
-                                p.SellerProfile != null
-                                    ? p.SellerProfile.SellerName
-                                    : UnknownSeller,
-
-                            SellerSlugName =
-                                p.SellerProfile != null
-                                    ? p.SellerProfile.Slug
-                                    : UnknownSeller,
-
-                            ProductImageId = p.Images
-                                .OrderByDescending(i =>
-                                    i.IsPrimary)
-                                .Select(i =>
-                                    i.ProductImageId)
-                                .FirstOrDefault()
-                        }
-                    })
-                    .ToListAsync();
-
-                var groupedProducts = allProducts
-                    .GroupBy(x => x.CategoryId)
-                    .ToDictionary(
-                        g => g.Key,
-                        g => g.Select(x => x.Product)
-                              .ToList());
-
-                var advertisedProducts =
-                    new List<HomeProductCardDto>();
-
-                foreach (var card in cards)
-                {
-                    var categoryIds = card.CategoryLinks
-                        .Select(cl => cl.CategoryId);
-
-                    var take = card.IsRow ? 15 : 4;
-
-                    var products = categoryIds
-                        .Where(groupedProducts.ContainsKey)
-                        .SelectMany(id =>
-                            groupedProducts[id])
-                        .Take(take)
-                        .ToList();
-
-                    advertisedProducts.Add(
-                        new HomeProductCardDto
-                        {
-                            HomePageCardId =
-                                card.HomePageCardId,
-
-                            Title = card.Title,
-                            Color = card.Color,
-                            LinkLabel = card.LinkLabel,
-                            Index = card.Index,
-                            IsRow = card.IsRow,
-                            Products = products
-                        });
-                }
-
-                return new HomePageCustomProductsDto
-                {
-                    FeaturedProducts = featuredProducts,
-                    GroupProducts = groupProducts,
-                    AdvertisedProducts = advertisedProducts
-                };
-            },
-            30);
+                FeaturedProducts = featuredProducts,
+                GroupProducts = groupProducts,
+                AdvertisedProducts = advertisedProducts,
+                SelectedGroups = selectedGroups
+            };
+        }, 30);
     }
 
-    #endregion
+    // ---------- Top-group products helper ----------
 
-    #region Group Products
-
-    public async Task<ICollection<SellerProductsListDto>>
-        GetGroupMembersProducts(
-            IList<Guid> groupMemberIds)
+    private async Task<List<HomePageProductDto>> GetTopGroupProducts(
+        IQueryable<Product> baseQuery)
     {
-        if (groupMemberIds == null ||
-            groupMemberIds.Count == 0)
+        var topGroupId = await _context.GroupMembers
+            .AsNoTracking()
+            .GroupBy(g => g.UserGroupId)
+            .OrderByDescending(g => g.Count())
+            .Select(g => g.Key)
+            .FirstOrDefaultAsync();
+
+        if (topGroupId == Guid.Empty) return new List<HomePageProductDto>();
+
+        var memberUserProfileIds = await _context.GroupMembers
+            .AsNoTracking()
+            .Where(g => g.UserGroupId == topGroupId)
+            .Select(g => g.UserProfileId)
+            .ToListAsync();
+
+        if (memberUserProfileIds.Count == 0) return new List<HomePageProductDto>();
+
+        // NOTE: original code matched UserProfileId directly against
+        // Product.SellerProfileId. That conflates two different keys.
+        // Going through SellerProfile.SellerId is the correct chain.
+        var sellerProfileIds = await _context.SellerProfiles
+            .AsNoTracking()
+            .Where(s => memberUserProfileIds.Contains(s.SellerId))
+            .Select(s => s.SellerProfileId)
+            .ToListAsync();
+
+        if (sellerProfileIds.Count == 0) return new List<HomePageProductDto>();
+
+        return await baseQuery
+            .Where(p => sellerProfileIds.Contains(p.SellerProfileId))
+            .OrderByDescending(p => p.CreatedAt)
+            .Take(20)
+            .Select(HomeProductProjection)
+            .ToListAsync();
+    }
+
+    // ---------- Category cards helper ----------
+
+    private async Task<List<HomeProductCardDto>> BuildCategoryCards(
+        List<HomePageCard> cards,
+        IQueryable<Product> baseQuery)
+    {
+        var result = new List<HomeProductCardDto>();
+        if (cards.Count == 0) return result;
+
+        var allCategoryIds = cards
+            .SelectMany(c => c.CategoryLinks.Select(cl => cl.CategoryId))
+            .Distinct()
+            .ToList();
+
+        var rows = await baseQuery
+            .Where(p => allCategoryIds.Contains(p.CategoryId))
+            .Select(p => new
+            {
+                p.CategoryId,
+                Product = new HomePageProductDto
+                {
+                    ProductId = p.ProductId,
+                    ProductName = p.ProductName,
+                    Price = p.Price,
+                    OldPrice = p.OldPrice,
+                    SlugName = p.Slug,
+                    SellerProfileId = p.SellerProfileId,
+                    SellerName = p.SellerProfile != null
+                        ? p.SellerProfile.SellerName : UnknownSeller,
+                    SellerSlugName = p.SellerProfile != null
+                        ? p.SellerProfile.Slug : UnknownSeller,
+                    ProductImageId = p.Images
+                        .OrderByDescending(i => i.IsPrimary)
+                        .Select(i => i.ProductImageId)
+                        .FirstOrDefault()
+                }
+            })
+            .ToListAsync();
+
+        var byCategory = rows
+            .GroupBy(x => x.CategoryId)
+            .ToDictionary(g => g.Key, g => g.Select(x => x.Product).ToList());
+
+        foreach (var card in cards)
         {
-            return [];
+            var take = card.IsRow ? 15 : 4;
+
+            var products = card.CategoryLinks
+                .Select(cl => cl.CategoryId)
+                .Where(byCategory.ContainsKey)
+                .SelectMany(id => byCategory[id])
+                .Take(take)
+                .ToList();
+
+            result.Add(ToCardDto(card, products));
         }
+
+        return result;
+    }
+
+    // ---------- Group cards helper (NEW) ----------
+
+    private async Task<List<HomeProductCardDto>> BuildGroupCards(
+        List<HomePageCard> cards,
+        IQueryable<Product> baseQuery)
+    {
+        var result = new List<HomeProductCardDto>();
+        if (cards.Count == 0) return result;
+
+        // 1. Cards → group memberships (one query)
+        var groupIds = cards.Select(c => c.UserGroupId).Distinct().ToList();
+
+        var membership = await _context.GroupMembers
+            .AsNoTracking()
+            .Where(g => groupIds.Contains(g.UserGroupId))
+            .Select(g => new { g.UserGroupId, g.UserProfileId })
+            .ToListAsync();
+
+        var membersByGroup = membership
+            .GroupBy(m => m.UserGroupId)
+            .ToDictionary(g => g.Key, g => g.Select(m => m.UserProfileId).ToList());
+
+        var allUserProfileIds = membership
+            .Select(m => m.UserProfileId)
+            .Distinct()
+            .ToList();
+
+        if (allUserProfileIds.Count == 0)
+        {
+            foreach (var card in cards)
+                result.Add(ToCardDto(card, new List<HomePageProductDto>()));
+            return result;
+        }
+
+        // 2. UserProfile.Id → SellerProfileId (one query)
+        var sellerLinks = await _context.SellerProfiles
+            .AsNoTracking()
+            .Where(s => allUserProfileIds.Contains(s.SellerId))
+            .Select(s => new { s.SellerId, s.SellerProfileId })
+            .ToListAsync();
+
+        // One user may own multiple seller profiles — flatten to a list.
+        var sellerProfileIdsByUserId = sellerLinks
+            .GroupBy(s => s.SellerId)
+            .ToDictionary(g => g.Key, g => g.Select(x => x.SellerProfileId).ToList());
+
+        var allSellerProfileIds = sellerLinks
+            .Select(s => s.SellerProfileId)
+            .Distinct()
+            .ToList();
+
+        if (allSellerProfileIds.Count == 0)
+        {
+            foreach (var card in cards)
+                result.Add(ToCardDto(card, new List<HomePageProductDto>()));
+            return result;
+        }
+
+        // 3. SellerProfileId → featured Products (one query)
+        var productRows = await baseQuery
+            .Where(p => p.IsFeatured && allSellerProfileIds.Contains(p.SellerProfileId))
+            .OrderByDescending(p => p.CreatedAt)
+            .Select(p => new
+            {
+                p.SellerProfileId,
+                Product = new HomePageProductDto
+                {
+                    ProductId = p.ProductId,
+                    ProductName = p.ProductName,
+                    Price = p.Price,
+                    OldPrice = p.OldPrice,
+                    SlugName = p.Slug,
+                    SellerProfileId = p.SellerProfileId,
+                    SellerName = p.SellerProfile != null
+                        ? p.SellerProfile.SellerName : UnknownSeller,
+                    SellerSlugName = p.SellerProfile != null
+                        ? p.SellerProfile.Slug : UnknownSeller,
+                    ProductImageId = p.Images
+                        .OrderByDescending(i => i.IsPrimary)
+                        .Select(i => i.ProductImageId)
+                        .FirstOrDefault()
+                }
+            })
+            .ToListAsync();
+
+        var productsBySeller = productRows
+            .GroupBy(x => x.SellerProfileId)
+            .ToDictionary(g => g.Key, g => g.Select(x => x.Product).ToList());
+
+        // 4. Assemble cards in original index order
+        foreach (var card in cards)
+        {
+            var take = card.IsRow ? 15 : 4;
+
+            var memberIds = membersByGroup.TryGetValue((Guid)card.UserGroupId, out var mids)
+                ? mids
+                : new List<Guid>();
+
+            var products = memberIds
+                .Where(sellerProfileIdsByUserId.ContainsKey)
+                .SelectMany(uid => sellerProfileIdsByUserId[uid])
+                .Where(productsBySeller.ContainsKey)
+                .SelectMany(spid => productsBySeller[spid])
+                .Take(take)
+                .ToList();
+
+            result.Add(ToCardDto(card, products));
+        }
+
+        return result;
+    }
+
+    private static HomeProductCardDto ToCardDto(
+        HomePageCard card,
+        List<HomePageProductDto> products) => new()
+        {
+            HomePageCardId = card.HomePageCardId,
+            Title = card.Title,
+            Color = card.Color,
+            LinkLabel = card.LinkLabel,
+            Index = card.Index,
+            IsRow = card.IsRow,
+            SellerSlugName=card.SellerSlugName??"",
+            Products = products
+        };
+
+    // ============================================================
+    //  Group members' products
+    // ============================================================
+
+    public async Task<ICollection<SellerProductsListDto>> GetGroupMembersProducts(
+        IList<Guid> groupMemberIds)
+    {
+        if (groupMemberIds == null || groupMemberIds.Count == 0) return [];
 
         var hash = ComputeHash(groupMemberIds);
 
-        var cacheKey =
-            CacheKeys.GroupMembers(hash);
+        return await GetOrCreateCacheAsync(CacheKeys.GroupMembers(hash), async () =>
+        {
+            var sellerIds = groupMemberIds.ToHashSet();
 
-        return await GetOrCreateCacheAsync(
-            cacheKey,
-            async () =>
-            {
-                var sellerIds =
-                    groupMemberIds.ToHashSet();
-
-                var products = await BaseQuery()
-                    .Where(p =>
-                        p.IsActive &&
-                        sellerIds.Contains(
-                            p.SellerProfileId))
-                    .Select(p => new
+            var products = await BaseQuery()
+                .Where(p => p.IsActive && sellerIds.Contains(p.SellerProfileId))
+                .Select(p => new
+                {
+                    p.SellerProfileId,
+                    Product = new SellerProductDto
                     {
-                        p.SellerProfileId,
-                        Product =
-                            new SellerProductDto
-                            {
-                                ProductId = p.ProductId,
-                                ProductName =
-                                    p.ProductName,
+                        ProductId = p.ProductId,
+                        ProductName = p.ProductName,
+                        Price = p.Price,
+                        Condition = p.Condition,
+                        SlugName = p.Slug,
+                        SellerName = p.SellerProfile != null
+                            ? p.SellerProfile.SellerName : UnknownSeller,
+                        SellerSlugName = p.SellerProfile != null
+                            ? p.SellerProfile.Slug : UnknownSeller,
+                        CategoryName = p.Category != null
+                            ? p.Category.CategoryName : DefaultCategory,
+                        ReviewSummary = p.ProductReviews.Any()
+                            ? (int)p.ProductReviews.Average(r => r.Rating)
+                            : 0,
+                        ProductImageId = p.Images
+                            .OrderByDescending(i => i.IsPrimary)
+                            .Select(i => i.ProductImageId)
+                            .FirstOrDefault()
+                    }
+                })
+                .ToListAsync();
 
-                                Price = p.Price,
-                                Condition =
-                                    p.Condition,
-
-                                SlugName = p.Slug,
-
-                                SellerName =
-                                    p.SellerProfile != null
-                                        ? p.SellerProfile.SellerName
-                                        : UnknownSeller,
-
-                                SellerSlugName =
-                                    p.SellerProfile != null
-                                        ? p.SellerProfile.Slug
-                                        : UnknownSeller,
-
-                                CategoryName =
-                                    p.Category != null
-                                        ? p.Category.CategoryName
-                                        : DefaultCategory,
-
-                                ReviewSummary =
-                                    p.ProductReviews.Any()
-                                        ? (int)p.ProductReviews
-                                            .Average(r =>
-                                                r.Rating)
-                                        : 0,
-
-                                ProductImageId =
-                                    p.Images
-                                        .OrderByDescending(i =>
-                                            i.IsPrimary)
-                                        .Select(i =>
-                                            i.ProductImageId)
-                                        .FirstOrDefault()
-                            }
-                    })
-                    .ToListAsync();
-
-                return products
-                    .GroupBy(x => x.SellerProfileId)
-                    .Select(g =>
-                        new SellerProductsListDto
-                        {
-                            SellerProducts =
-                                g.Select(x => x.Product)
-                                    .ToList()
-                        })
-                    .ToList();
-            }) ?? [];
+            return products
+                .GroupBy(x => x.SellerProfileId)
+                .Select(g => new SellerProductsListDto
+                {
+                    SellerProducts = g.Select(x => x.Product).ToList()
+                })
+                .ToList();
+        }) ?? [];
     }
 
-    public async Task<ICollection<SellerProductsListDto>>
-        GetGroupMembersForDisplayProducts(
-            IList<Guid> groupMemberIds,
-            Guid groupId)
+    public async Task<ICollection<SellerProductsListDto>> GetGroupMembersForDisplayProducts(
+        IList<Guid> groupMemberIds, Guid groupId)
     {
-        if (groupMemberIds == null ||
-            groupMemberIds.Count == 0)
-        {
-            return [];
-        }
+        if (groupMemberIds == null || groupMemberIds.Count == 0) return [];
 
         const int MaxProducts = 50;
 
-        return await GetOrCreateCacheAsync(
-            CacheKeys.GroupProducts(groupId),
-            async () =>
-            {
-                var featuredIds =
-                    await _context.GroupFeaturedProducts
-                        .AsNoTracking()
-                        .Where(x =>
-                            x.UserGroupId == groupId)
-                        .Select(x => x.ProductId)
-                        .Take(MaxProducts)
-                        .ToListAsync();
+        return await GetOrCreateCacheAsync(CacheKeys.GroupProducts(groupId), async () =>
+        {
+            var featuredIds = await _context.GroupFeaturedProducts
+                .AsNoTracking()
+                .Where(x => x.UserGroupId == groupId)
+                .Select(x => x.ProductId)
+                .Take(MaxProducts)
+                .ToListAsync();
 
-                var sellerIds =
-                    groupMemberIds.ToHashSet();
+            var sellerIds = groupMemberIds.ToHashSet();
 
-                var products = await BaseQuery()
-                    .Where(p =>
-                        p.IsActive &&
-                        sellerIds.Contains(
-                            p.SellerProfileId))
-                    .OrderByDescending(p =>
-                        featuredIds.Contains(
-                            p.ProductId))
-                    .ThenByDescending(p =>
-                        p.CreatedAt)
-                    .Take(MaxProducts)
-                    .Select(p => new
+            var products = await BaseQuery()
+                .Where(p => p.IsActive && sellerIds.Contains(p.SellerProfileId))
+                .OrderByDescending(p => featuredIds.Contains(p.ProductId))
+                .ThenByDescending(p => p.CreatedAt)
+                .Take(MaxProducts)
+                .Select(p => new
+                {
+                    p.SellerProfileId,
+                    Product = new SellerProductDto
                     {
-                        p.SellerProfileId,
-                        Product =
-                            new SellerProductDto
-                            {
-                                ProductId = p.ProductId,
-                                ProductName =
-                                    p.ProductName,
+                        ProductId = p.ProductId,
+                        ProductName = p.ProductName,
+                        Price = p.Price,
+                        Condition = p.Condition,
+                        SlugName = p.Slug,
+                        SellerName = p.SellerProfile != null
+                            ? p.SellerProfile.SellerName : UnknownSeller,
+                        SellerSlugName = p.SellerProfile != null
+                            ? p.SellerProfile.Slug : UnknownSeller,
+                        CategoryName = p.Category != null
+                            ? p.Category.CategoryName : DefaultCategory,
+                        ReviewSummary = p.ProductReviews.Any()
+                            ? (int)p.ProductReviews.Average(r => r.Rating)
+                            : 0,
+                        ProductImageId = p.Images
+                            .OrderByDescending(i => i.IsPrimary)
+                            .Select(i => i.ProductImageId)
+                            .FirstOrDefault()
+                    }
+                })
+                .ToListAsync();
 
-                                Price = p.Price,
-                                Condition =
-                                    p.Condition,
-
-                                SlugName = p.Slug,
-
-                                SellerName =
-                                    p.SellerProfile != null
-                                        ? p.SellerProfile.SellerName
-                                        : UnknownSeller,
-
-                                SellerSlugName =
-                                    p.SellerProfile != null
-                                        ? p.SellerProfile.Slug
-                                        : UnknownSeller,
-
-                                CategoryName =
-                                    p.Category != null
-                                        ? p.Category.CategoryName
-                                        : DefaultCategory,
-
-                                ReviewSummary =
-                                    p.ProductReviews.Any()
-                                        ? (int)p.ProductReviews
-                                            .Average(r =>
-                                                r.Rating)
-                                        : 0,
-
-                                ProductImageId =
-                                    p.Images
-                                        .OrderByDescending(i =>
-                                            i.IsPrimary)
-                                        .Select(i =>
-                                            i.ProductImageId)
-                                        .FirstOrDefault()
-                            }
-                    })
-                    .ToListAsync();
-
-                return products
-                    .GroupBy(x => x.SellerProfileId)
-                    .Select(g =>
-                        new SellerProductsListDto
-                        {
-                            SellerProducts =
-                                g.Select(x => x.Product)
-                                    .ToList()
-                        })
-                    .ToList();
-            },
-            30) ?? [];
+            return products
+                .GroupBy(x => x.SellerProfileId)
+                .Select(g => new SellerProductsListDto
+                {
+                    SellerProducts = g.Select(x => x.Product).ToList()
+                })
+                .ToList();
+        }, 30) ?? [];
     }
 
-    #endregion
+    // ============================================================
+    //  Helpers
+    // ============================================================
 
-    #region Helpers
-
-    private static string ComputeHash(
-        IList<Guid> ids)
+    private static string ComputeHash(IList<Guid> ids)
     {
         var ordered = ids.OrderBy(x => x);
-
         using var md5 = MD5.Create();
-
-        var bytes = ordered
-            .SelectMany(x => x.ToByteArray())
-            .ToArray();
-
-        return Convert.ToHexString(
-            md5.ComputeHash(bytes));
+        var bytes = ordered.SelectMany(x => x.ToByteArray()).ToArray();
+        return Convert.ToHexString(md5.ComputeHash(bytes));
     }
-
-    #endregion
 }

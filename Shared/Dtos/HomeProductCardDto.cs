@@ -14,6 +14,8 @@ namespace Shared.Dtos
         public string LinkLabel { get; set; } = string.Empty;
         public bool IsRow { get; set; } = false;
         public int Index { get; set; }
+        public string? SellerSlugName { get; set; } = string.Empty;
+
         public ICollection<HomePageProductDto> Products { get; set; } = new List<HomePageProductDto>();
 
     }

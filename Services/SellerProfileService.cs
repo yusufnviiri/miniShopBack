@@ -175,6 +175,7 @@ namespace Services
             if (groupDetails != null)
             {
                 groupShopDto.GroupDetails = groupDetails;
+                groupShopDto.SellerSlug = groupDetails.SlugName;
             }
             //if (isMember)
             //{
@@ -210,6 +211,8 @@ namespace Services
             if (groupDetails != null)
             {
                 groupShopDto.GroupDetails = groupDetails;
+                groupShopDto.SellerSlug = groupDetails.SlugName;
+
             }
             //if (isMember)
             //{
@@ -241,6 +244,7 @@ namespace Services
             if (groupDetails != null)
             {
                 groupShopDto.GroupDetails = groupDetails;
+                groupShopDto.SellerSlug = slug;
             }
             //if (isMember)
             //{
@@ -284,11 +288,13 @@ namespace Services
             GroupShopDto groupShopDto = new();
             var sellerId = await _repoManager.UserGroupRepo.GetUserGroupIdBySlugName(slug);
 
+
             var sellerProfileId = await _repoManager.SellerProfileRepo.GetSellerProfileId(sellerId);
             var groupDetails = await _repoManager.SellerProfileRepo.FindMiniGroupDetailsById(sellerProfileId);
             if (groupDetails != null)
             {
                 groupShopDto.GroupDetails = groupDetails;
+                groupShopDto.SellerSlug = slug;
             }
             //if (isMember)
             //{

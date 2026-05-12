@@ -39,6 +39,8 @@ namespace Contracts.Repo
 
         //Task <IEnumerable<ShowProductMiniDetailsDto>> GetAllSellerProducts(Guid sellerProfileId);
         // Task<IEnumerable<ShowProductMiniDetailsDto>> GetAllStockedSellerProducts(Guid sellerProfileId);
+        void InvalidateHomePageCards();
+
 
 
     }

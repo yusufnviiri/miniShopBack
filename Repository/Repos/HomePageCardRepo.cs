@@ -34,10 +34,15 @@ namespace Repository.Repos
             var homePageCard = await FindByCondition(h => h.HomePageCardId == homePageCardId, true).FirstOrDefaultAsync();
             return homePageCard;
         }
-
-
         public void CreateHomePageCard(HomePageCard pageCard) => CreateBase(pageCard);
         public void UpdateHomePageCard(HomePageCard pageCard) => UpdateBase(pageCard);
         public void DeleteHomePageCard(HomePageCard pageCard) => DeleteBase(pageCard);
+        public Task<int> HomePageCardCount() => FindAll(false).CountAsync();
+
+        public async Task<bool> CheckIfGroupHomePageCardExists(Guid userGroupId)
+        {
+            return await FindByCondition(h=> h.UserGroupId == userGroupId, false).AnyAsync();
+        }
+
     }
 }
