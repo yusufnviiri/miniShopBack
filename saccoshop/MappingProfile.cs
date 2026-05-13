@@ -10,6 +10,8 @@ namespace saccoshop
         public MappingProfile()
         {           //source,destination
             CreateMap<NewProductDto, Product>();
+            CreateMap<GroupMemberSellerprofileDto, SellerProfile>();
+
             CreateMap<TradeImageDto, TradeImage>();
             CreateMap<NewTradeDto, Trade>();
             CreateMap<Product, ShowProductDto>();

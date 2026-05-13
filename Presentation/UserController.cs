@@ -162,6 +162,18 @@ namespace Presentation
             return Ok(new { message = "seller added" });
         }
 
+
+
+        [HttpPost("makegroupmemberseller")]
+        public async Task<IActionResult> MakeGroupMemberSeller([FromBody] GroupMemberSellerprofileDto sellerProfile)
+        {
+            if (sellerProfile is null)
+                return BadRequest("object is null");
+            sellerProfile.SellerTypeId = 1; // default to individual
+            await _service.SellerProfileService.MakeGroupMemberSeller(sellerProfile);
+            return Ok(new { message = "seller added" });
+        }
+
         [HttpPost("addsellertouserpreferences")]
         public async Task<IActionResult> AddSellerToUserPreferences([FromBody] UserProfileJoinSellerDto userProfileJoin )
         {

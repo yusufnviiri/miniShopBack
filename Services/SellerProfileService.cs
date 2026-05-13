@@ -62,7 +62,7 @@ namespace Services
             {
 
                 var numberOfSellers = await _repoManager.SellerProfileRepo.NumberOfSellers();
-                sellerProfile.Slug = $"seller={CreateSellerProfileSlug(sellerProfile.SellerName)}-{numberOfSellers + 1}";
+                sellerProfile.Slug = $"merchant-{CreateSellerProfileSlug(sellerProfile.SellerName)}-{numberOfSellers + 1}";
                 
                 
                 _repoManager.SellerProfileRepo.CreateSellerProfile(sellerProfile);
@@ -73,23 +73,10 @@ namespace Services
                     user.SellerProfileId = sellerProfile.SellerProfileId;
                     _repoManager.UserProfileRepo.UpdateUserProfile(user);
                     await _userIndexer.QueueIndexAsync(sellerProfile.SellerId, ct);
+                                     
+                      
 
-                    var groupMember = await _repoManager.GroupMemberRepo.FindGroupMemberByUserProfileId(sellerProfile.SellerId);
-                    if (groupMember != null&& groupMember.UserGroupId!=Guid.Empty)
-                    {
-
- 
-
-                       GroupSeller groupSeller = new ()
-                        {
-                            SellerProfileId = sellerProfile.SellerProfileId,
-                            UserGroupId= groupMember.UserGroupId,
-                            GroupMemberId= groupMember.GroupMemberId,
-                            
-                       };
-                        _repoManager.GroupSellerRepo.CreateGroupSeller(groupSeller);
-
-                    }
+                    
                     await _repoManager.SaveRepoDataAsync();
                     await _indexer.QueueReindexBySellerAsync(sellerProfile.SellerProfileId,ct);
                     await _tradeIndexer.QueueReindexBySellerAsync(sellerProfile.SellerProfileId, ct);
@@ -103,6 +90,76 @@ namespace Services
                 throw new ObjectBadRequestExeption($"Seller Profile for user with id: {sellerProfile.SellerId} already exists");
             }
         }
+
+        public async Task MakeGroupMemberSeller(GroupMemberSellerprofileDto sellerProfile, CancellationToken ct = default)
+        {
+            UserProfile?  user ;
+
+            var IsExist = await _repoManager.SellerProfileRepo.CheckifUserIsSeller(sellerProfile.SellerId);
+            if (!IsExist)
+            {
+
+                var numberOfSellers = await _repoManager.SellerProfileRepo.NumberOfSellers();
+                sellerProfile.Slug = $"merchant-{CreateSellerProfileSlug(sellerProfile.SellerName)}-{numberOfSellers + 1}";
+                var newSellerProfile = _mapper.Map<SellerProfile>(sellerProfile);
+
+                _repoManager.SellerProfileRepo.CreateSellerProfile(newSellerProfile);
+                await _repoManager.SaveRepoDataAsync();
+                user = await _repoManager.UserProfileRepo.FindUserProfileById(sellerProfile.SellerId, true);
+                if (user != null)
+                {
+                    user.SellerProfileId = sellerProfile.SellerProfileId;
+                    _repoManager.UserProfileRepo.UpdateUserProfile(user);
+                    await _userIndexer.QueueIndexAsync(sellerProfile.SellerId, ct);
+
+
+                    await _indexer.QueueReindexBySellerAsync(sellerProfile.SellerProfileId, ct);
+                    await _tradeIndexer.QueueReindexBySellerAsync(sellerProfile.SellerProfileId, ct);
+
+                }
+
+            }
+            else
+            {
+                var existingSellerprofile = await _repoManager.SellerProfileRepo.GetSellerProfileId(sellerProfile.SellerId);
+                if (existingSellerprofile == Guid.Empty)
+                {
+                    throw new ObjectBadRequestExeption($"Insuffiecient Seller Profile Data ");
+
+                }
+                else {
+                    sellerProfile.SellerProfileId = existingSellerprofile;
+                }
+            }
+                    var groupMember = await _repoManager.GroupMemberRepo.FindGroupMemberByUserProfileId(sellerProfile.SellerId);
+            if (groupMember != null && groupMember.UserGroupId != Guid.Empty)
+            {
+                var groupSellerExists = await _repoManager.GroupSellerRepo.CheckIfSellerExistsInGroup(sellerProfile.SellerProfileId, sellerProfile.UserGroupId);
+                if (!groupSellerExists)
+                {
+
+
+                    GroupSeller groupSeller = new()
+                    {
+                        SellerProfileId = sellerProfile.SellerProfileId,
+                        UserGroupId = groupMember.UserGroupId,
+                        GroupMemberId = groupMember.GroupMemberId,
+
+                    };
+                    _repoManager.GroupSellerRepo.CreateGroupSeller(groupSeller);
+                }
+
+            }
+            await _repoManager.SaveRepoDataAsync();
+            await _indexer.QueueReindexBySellerAsync(sellerProfile.SellerProfileId, ct);
+            await _tradeIndexer.QueueReindexBySellerAsync(sellerProfile.SellerProfileId, ct);
+
+
+
+
+
+        }
+
         public async Task UpdateSellerProfile(SellerProfileDto sellerProfile, CancellationToken ct = default)
         {
             var existingSellerProfile = await _repoManager.SellerProfileRepo.FindSellerProfileById(sellerProfile.SellerProfileId, true);

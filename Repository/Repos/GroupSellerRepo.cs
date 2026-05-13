@@ -30,6 +30,8 @@ namespace Repository.Repos
         public void CreateGroupSeller(GroupSeller groupSeller)=>CreateBase(groupSeller);
         public void UpdateGroupSeller(GroupSeller groupSeller)=>UpdateBase(groupSeller);
         public void DeleteGroupSeller(GroupSeller groupSeller)=>DeleteBase(groupSeller);
+        public async Task<bool> CheckIfSellerExistsInGroup(Guid sellerProfileId, Guid groupId)=>await FindByCondition(p=>p.UserGroupId==groupId&&p.SellerProfileId==sellerProfileId,false).AnyAsync();
+
 
     }
 }

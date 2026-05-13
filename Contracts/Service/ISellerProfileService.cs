@@ -13,6 +13,8 @@ namespace Contracts.Service
         Task<IEnumerable<SellerProfileDto>> GetAllSellerProfiles();
         Task<SellerProfile?> FindSellerProfileById(Guid sellerProfileId, bool tracking);
         Task CreateSellerProfile(SellerProfile sellerProfile, CancellationToken ct = default);
+        Task MakeGroupMemberSeller(GroupMemberSellerprofileDto sellerProfile, CancellationToken ct = default);
+
         Task UpdateSellerProfile(SellerProfileDto sellerProfile, CancellationToken ct = default);
         Task DeleteSellerProfile(Guid sellerProfileId, CancellationToken ct = default);
         Task<SellerShopDto?> GetSellerShopDetailsAsync(Guid sellerProfileId);

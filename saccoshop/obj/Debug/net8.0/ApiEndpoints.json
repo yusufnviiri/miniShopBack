@@ -2393,6 +2393,22 @@
   },
   {
     "ContainingType": "Presentation.UserController",
+    "Method": "MakeGroupMemberSeller",
+    "RelativePath": "api/users/makegroupmemberseller",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "sellerProfile",
+        "Type": "Entities.Models.SellerProfile",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Presentation.UserController",
     "Method": "MakeUserSeller",
     "RelativePath": "api/users/makeuserseller",
     "HttpMethod": "POST",

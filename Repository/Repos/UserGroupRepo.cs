@@ -103,7 +103,7 @@ namespace Repository.Repos
                         UserProfileId = m.UserProfileId,
                         GroupMemberId=m.GroupMemberId,
 
-                        IsSeller = m.GroupSellers!=null? m.GroupSellers.Any(p => p.UserGroupId == userGroupId):false
+                        IsSeller = m.GroupSellers!=null? m.GroupSellers.Any(p => p.GroupMemberId == m.GroupMemberId&&p.UserGroupId==m.UserGroupId):false
                     }).ToList()
                 })
                 .FirstOrDefaultAsync();
