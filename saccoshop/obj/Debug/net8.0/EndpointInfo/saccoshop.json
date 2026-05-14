@@ -3621,17 +3621,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/SellerProfile"
+                "$ref": "#/components/schemas/GroupMemberSellerprofileDto"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/SellerProfile"
+                "$ref": "#/components/schemas/GroupMemberSellerprofileDto"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/SellerProfile"
+                "$ref": "#/components/schemas/GroupMemberSellerprofileDto"
               }
             }
           }
@@ -4741,6 +4741,66 @@
           "identityUserId": {
             "type": "string",
             "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "GroupMemberSellerprofileDto": {
+        "type": "object",
+        "properties": {
+          "sellerProfileId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "sellerId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "userGroupId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "sellerName": {
+            "type": "string",
+            "nullable": true
+          },
+          "whatsAppNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "sellerLocation": {
+            "type": "string",
+            "nullable": true
+          },
+          "sellerOfferingId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "sellerTypeId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "slug": {
+            "type": "string",
+            "nullable": true
+          },
+          "maximumAllowedItems": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "sellerPolicyId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "sellerPolicy": {
+            "$ref": "#/components/schemas/SellerPolicy"
+          },
+          "sellerTierId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "isVerified": {
+            "type": "boolean"
           }
         },
         "additionalProperties": false

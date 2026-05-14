@@ -13,9 +13,10 @@ namespace Repository.Repos
 {
   public class UserGroupRepo : RepositoryBase<UserGroup>, IUserGroupRepo
     {
+        private readonly ApplicationDbContext context;
         public UserGroupRepo(ApplicationDbContext _db) : base(_db)
         {
-
+            context = _db;
         }
 
        public async Task<IEnumerable<ShowUserGroupDto>> GetUserGroups()
@@ -33,8 +34,7 @@ namespace Repository.Repos
                     Country = g.Address.Country,
                     Company = g.Address.Company,
                     AboutGroup=g.AboutGroup,
-                    UserGroupSlugName=g.Slug,
-                    
+                    UserGroupSlugName=g.Slug,                    
                     MemberCount = g.Members.Count()
                 }).ToListAsync();
         }
@@ -55,9 +55,7 @@ namespace Repository.Repos
                 GroupTypeId=g.GroupTypeId,
                 AddressId = g.AddressId,
                 UserGroupSlugName = g.Slug,
-
-                AboutGroup = g.AboutGroup,
-                
+                AboutGroup = g.AboutGroup,            
 
                 MemberCount = g.Members.Count()
             }).FirstOrDefaultAsync();
@@ -65,47 +63,69 @@ namespace Repository.Repos
 
         public async Task<ShowuserGroupWithMembersDto?> GetUserGroupWithMembers(Guid userGroupId)
         {
-            return await FindByCondition(g => g.UserGroupId == userGroupId, trackChanges: false)
+            return await FindByCondition(
+                    g => g.UserGroupId == userGroupId,
+                    trackChanges: false)
                 .Select(g => new ShowuserGroupWithMembersDto
                 {
                     UserGroupId = g.UserGroupId,
                     UserGroupName = g.UserGroupName,
                     AboutGroup = g.AboutGroup,
                     UserGroupSlugName = g.Slug,
-                    City = g.Address!=null?g.Address.City:"unkown",
-                    Region = g.Address != null ? g.Address.Region:"unkown",
-                    Country = g.Address != null ? g.Address.Country : "unkown"  ,
-                    Company = g.Address != null ? g.Address.Company : "unkown",
-                    
+
+                    City = g.Address != null
+                        ? g.Address.City
+                        : "unknown",
+
+                    Region = g.Address != null
+                        ? g.Address.Region
+                        : "unknown",
+
+                    Country = g.Address != null
+                        ? g.Address.Country
+                        : "unknown",
+
+                    Company = g.Address != null
+                        ? g.Address.Company
+                        : "unknown",
 
                     Contact = g.Contact,
-                    GroupType =g.GroupType!=null? g.GroupType.Description:"No description",
+
+                    GroupType = g.GroupType != null
+                        ? g.GroupType.Description
+                        : "No description",
 
                     MemberCount = g.Members.Count(),
 
-                    Members = g.Members.Select(m => new ShowGroupMemberDto
-                    {
-                        FirstName = m.UserProfile.IdentityUser.FirstName,
-                        LastName = m.UserProfile.IdentityUser.LastName,
-                        Email = m.UserProfile.IdentityUser.Email,
-                        PhoneNumber = m.UserProfile.IdentityUser.PhoneNumber,
-                        SlugName=m.UserProfile.Slug,
+                    Members = g.Members
+                        .Select(m => new ShowGroupMemberDto
+                        {
+                            FirstName = m.UserProfile.IdentityUser.FirstName,
+                            LastName = m.UserProfile.IdentityUser.LastName,
+                            Email = m.UserProfile.IdentityUser.Email,
+                            PhoneNumber = m.UserProfile.IdentityUser.PhoneNumber,
+                            SlugName = m.UserProfile.Slug,
 
-                        GroupRole = m.GroupRole != null
-                            ? m.GroupRole.Description
-                            : string.Empty,
+                            GroupRole = m.GroupRole != null
+                                ? m.GroupRole.Description
+                                : string.Empty,
 
-                        MemberStatus = m.MemberStatus != null
-                            ? m.MemberStatus.Description
-                            : string.Empty,
+                            MemberStatus = m.MemberStatus != null
+                                ? m.MemberStatus.Description
+                                : string.Empty,
 
-                        JoinedAt = m.JoinedAt,
-                        UserProfileId = m.UserProfileId,
-                        GroupMemberId=m.GroupMemberId,
+                            JoinedAt = m.JoinedAt,
+                            UserProfileId = m.UserProfileId,
+                            GroupMemberId = m.GroupMemberId,
 
-                        IsSeller = m.GroupSellers!=null? m.GroupSellers.Any(p => p.GroupMemberId == m.GroupMemberId&&p.UserGroupId==m.UserGroupId):false
-                    }).ToList()
+                            IsSeller = context.GroupSellers
+                                .Any(gs =>
+                                    gs.GroupMemberId == m.GroupMemberId &&
+                                    gs.UserGroupId == g.UserGroupId)
+                        })
+                        .ToList()
                 })
+                .AsSplitQuery()
                 .FirstOrDefaultAsync();
         }
         public async Task<UserGroup?> FindUserGroupById(Guid userGroupId, bool tracking)=>await FindByCondition(g=>g.UserGroupId==userGroupId,tracking).FirstOrDefaultAsync();

@@ -16,6 +16,7 @@ namespace Contracts.Repo
         Task<ShowGroupMemberDto?> GetGroupMemberById(Guid userGroupId, Guid userProfileId, bool tracking);
         Task<GroupMember?> FindGroupMemberById(Guid memberId, bool tracking);
         Task<GroupMember?> FindGroupMemberByUserProfileId(Guid userProfileId);
+        Task<GroupMember?> FindGroupMemberByUserProfileIdWithTracking(Guid userProfileId, Guid userGroupId, bool tracking);
         Task<bool> IsUserInGroup(Guid userProfileId, Guid userGroupId);
         void CreateGroupMember(GroupMember groupMember);
         void UpdateGroupMember(GroupMember groupMember);

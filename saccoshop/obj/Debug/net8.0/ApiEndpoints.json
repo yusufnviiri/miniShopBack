@@ -2401,7 +2401,7 @@
     "Parameters": [
       {
         "Name": "sellerProfile",
-        "Type": "Entities.Models.SellerProfile",
+        "Type": "Shared.Dtos.GroupMemberSellerprofileDto",
         "IsRequired": true
       }
     ],

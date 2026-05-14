@@ -17,5 +17,7 @@ namespace Contracts.Repo
         void UpdateGroupSeller(GroupSeller groupSeller);
         void DeleteGroupSeller(GroupSeller groupSeller);
         Task<bool> CheckIfSellerExistsInGroup(Guid sellerProfileId, Guid groupId);
+        Task<bool> CheckIfMemberExists(Guid memberId, Guid groupId);
+
     }
 }

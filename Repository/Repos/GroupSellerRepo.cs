@@ -33,5 +33,8 @@ namespace Repository.Repos
         public async Task<bool> CheckIfSellerExistsInGroup(Guid sellerProfileId, Guid groupId)=>await FindByCondition(p=>p.UserGroupId==groupId&&p.SellerProfileId==sellerProfileId,false).AnyAsync();
 
 
+        public async Task<bool> CheckIfMemberExists(Guid memberId, Guid groupId) => await FindByCondition(p => p.UserGroupId == groupId && p.GroupMemberId == memberId, false).AnyAsync();
+
+
     }
 }

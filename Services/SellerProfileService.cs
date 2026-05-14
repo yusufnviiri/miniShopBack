@@ -131,7 +131,7 @@ namespace Services
                     sellerProfile.SellerProfileId = existingSellerprofile;
                 }
             }
-                    var groupMember = await _repoManager.GroupMemberRepo.FindGroupMemberByUserProfileId(sellerProfile.SellerId);
+                    var groupMember = await _repoManager.GroupMemberRepo.FindGroupMemberByUserProfileIdWithTracking(sellerProfile.SellerId,sellerProfile.UserGroupId,true);
             if (groupMember != null && groupMember.UserGroupId != Guid.Empty)
             {
                 var groupSellerExists = await _repoManager.GroupSellerRepo.CheckIfSellerExistsInGroup(sellerProfile.SellerProfileId, sellerProfile.UserGroupId);
@@ -142,11 +142,12 @@ namespace Services
                     GroupSeller groupSeller = new()
                     {
                         SellerProfileId = sellerProfile.SellerProfileId,
-                        UserGroupId = groupMember.UserGroupId,
+                        UserGroupId = sellerProfile.UserGroupId,
                         GroupMemberId = groupMember.GroupMemberId,
 
                     };
                     _repoManager.GroupSellerRepo.CreateGroupSeller(groupSeller);
+                    groupMember.GroupSellers.Add(groupSeller);
                 }
 
             }

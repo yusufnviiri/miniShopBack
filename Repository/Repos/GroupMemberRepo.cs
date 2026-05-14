@@ -82,8 +82,15 @@ namespace Repository.Repos
             return await FindByCondition(m => m.UserProfileId == userProfileId, false).Select(p=>new GroupMember() {GroupMemberId=p.GroupMemberId,UserGroupId=p.UserGroupId,UserProfileId=p.UserProfileId,GroupRoleId=p.GroupRoleId,MemberStatusId=p.MemberStatusId }).FirstOrDefaultAsync();
 
         }
-        
-    
+
+
+        public async Task<GroupMember?> FindGroupMemberByUserProfileIdWithTracking(Guid userProfileId,Guid userGroupId,bool tracking)
+        {
+            return await FindByCondition(m => m.UserProfileId == userProfileId&&m.UserGroupId==userGroupId, tracking).Select(p => new GroupMember() { GroupMemberId = p.GroupMemberId, UserGroupId = p.UserGroupId, UserProfileId = p.UserProfileId, GroupRoleId = p.GroupRoleId, MemberStatusId = p.MemberStatusId }).FirstOrDefaultAsync();
+
+        }
+
+
 
 
 
