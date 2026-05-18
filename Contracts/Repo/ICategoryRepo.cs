@@ -20,6 +20,8 @@ namespace Contracts.Repo
         Task<IEnumerable<CategoryRefDto>> GetAllCategoryReferences();
         Task<IEnumerable<CategoryDto>> GetAllCategoriesWithSubCategories(bool tracking);
         Task<CategoryDto?> FindCategoryWithSubCategories(int categoryId);
+        Task<List<SlugInfo>> GetAllCategorySlugsAsync();
+
 
         Task<Category?> FindCategoryById(int categoryId,bool tracking);
         Task<IEnumerable<CategoryDto>> FindCategoryByName(string categoryName, bool tracking);

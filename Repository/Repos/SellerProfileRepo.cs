@@ -1,10 +1,12 @@
 ﻿using Contracts.Repo;
 using Entities.Models;
+using Lucene.Net.Store;
 using Microsoft.EntityFrameworkCore;
 using Repository.context;
 using Shared.Dtos;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,8 +15,11 @@ namespace Repository.Repos
 {
     public class SellerProfileRepo:RepositoryBase<SellerProfile>,ISellerProfileRepo
     {
+        private readonly ApplicationDbContext _context;
         public SellerProfileRepo(ApplicationDbContext dbContext):base(dbContext)
         {
+            _context = dbContext;
+
         }
         public async Task<Guid> GetSellerId(Guid sellerProfile)
         {
@@ -53,6 +58,8 @@ namespace Repository.Repos
             return await FindByCondition(sp => sp.SellerProfileId == sellerProfileId, tracking)
                 .FirstOrDefaultAsync();
         }
+
+
         public  void CreateSellerProfile(SellerProfile sellerProfile)=>CreateBase(sellerProfile);
         public void UpdateSellerProfile(SellerProfile sellerProfile)=>UpdateBase(sellerProfile);
         public void DeleteSellerProfile(SellerProfile sellerProfile)=>DeleteBase(sellerProfile);
@@ -177,6 +184,26 @@ namespace Repository.Repos
 
 
 
+        public async Task<long> NextSellerProfileSlugNumberAsync()
+        {
+            var connection = _context.Database.GetDbConnection();
+
+            if (connection.State != ConnectionState.Open)
+                await connection.OpenAsync();
+
+            await using var command = connection.CreateCommand();
+
+            command.CommandText = "SELECT NEXT VALUE FOR SellerProfileSlugSeq";
+
+            var result = await command.ExecuteScalarAsync();
+
+            return Convert.ToInt64(result);
+        }
+
+
+
+
+
         public async Task<SellerShopDto?> GetSellerShopDetailsBySellerSlug(string slug)
         {
             return await FindByCondition(p => p.Slug == slug, false).Select(s => new SellerShopDto()
@@ -286,6 +313,16 @@ namespace Repository.Repos
 
 
 
+        public async Task<List<SlugInfo>> GetAllSellerSlugsAsync()
+        {
+            return await FindAll(false)
+                .Select(sp => new SlugInfo
+                {
+                    UpdatedAt = DateTime.UtcNow,
+                    Slug = sp.Slug
+                })
+                .ToListAsync();
+        }
 
 
 
@@ -293,6 +330,5 @@ namespace Repository.Repos
 
 
 
-
-    }
+        }
 }

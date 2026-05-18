@@ -22,6 +22,16 @@ namespace saccoshop.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.HasSequence("ProductSlugSeq");
+
+            modelBuilder.HasSequence("SellerProfileSlugSeq");
+
+            modelBuilder.HasSequence("TradeSlugSeq");
+
+            modelBuilder.HasSequence("UserGroupSlugSeq");
+
+            modelBuilder.HasSequence("UserSlugSeq");
+
             modelBuilder.Entity("Entities.Models.Address", b =>
                 {
                     b.Property<int>("AddressId")
@@ -167,8 +177,8 @@ namespace saccoshop.Migrations
                             Id = "42cd3af3-f319-4118-a604-4442d487b923",
                             AccessFailedCount = 0,
                             AccountConfirmed = false,
-                            ConcurrencyStamp = "47e4fc1f-397c-4c46-ba5b-dee34aa0183d",
-                            CreatedAt = new DateTime(2026, 5, 12, 13, 18, 49, 395, DateTimeKind.Utc).AddTicks(9996),
+                            ConcurrencyStamp = "1ee278cf-f9d8-4c93-b95f-4a4e96bbf717",
+                            CreatedAt = new DateTime(2026, 5, 17, 7, 3, 42, 34, DateTimeKind.Utc).AddTicks(7540),
                             Email = "gdevol417@gmail.com",
                             EmailConfirmed = true,
                             FirstName = "George",
@@ -177,14 +187,14 @@ namespace saccoshop.Migrations
                             MfaEnabled = false,
                             NormalizedEmail = "GDEVOL417@GMAIL.COM",
                             NormalizedUserName = "+256709958370",
-                            PasswordHash = "AQAAAAIAAYagAAAAEGAjliLRjUZJNp8F894W3iIlih3HDMUNxABvgLkSW8xIKBPtr3NNC9o9slx0cXmUQQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEDadBkIzR270hivhxDSiF4IPJFlRaNhkohB+xUgD0oNaxOq7PJnNuI6RPxVT062O9Q==",
                             PhoneNumber = "+256709958370",
                             PhoneNumberConfirmed = false,
                             PhoneNumberVerified = false,
                             RecoveryAnswer = "",
                             RecoveryPhoneNumber = "",
                             RecoveryQuestion = "",
-                            SecurityStamp = "430e3f87-afe6-4cce-987e-28f7b3950b8e",
+                            SecurityStamp = "9387818d-9b37-49b7-8266-c6510404a4ac",
                             TwoFactorEnabled = false,
                             UserName = "+256709958370"
                         },
@@ -193,8 +203,8 @@ namespace saccoshop.Migrations
                             Id = "5f2b8a40-d899-4345-aa3e-7b98712bc112",
                             AccessFailedCount = 0,
                             AccountConfirmed = false,
-                            ConcurrencyStamp = "c37416f8-b56c-47d2-9f18-0e73baef02ae",
-                            CreatedAt = new DateTime(2026, 5, 12, 13, 18, 49, 497, DateTimeKind.Utc).AddTicks(7387),
+                            ConcurrencyStamp = "6563d0f4-a2b6-45cc-87cb-f633d5f5b57d",
+                            CreatedAt = new DateTime(2026, 5, 17, 7, 3, 42, 133, DateTimeKind.Utc).AddTicks(2503),
                             Email = "canabill@gmail.com",
                             EmailConfirmed = true,
                             FirstName = "Canada",
@@ -203,14 +213,14 @@ namespace saccoshop.Migrations
                             MfaEnabled = false,
                             NormalizedEmail = "CANADABILL@GMAIL.COM",
                             NormalizedUserName = "+256726186350",
-                            PasswordHash = "AQAAAAIAAYagAAAAEKOD2x9ps1o/7XmBWRKLkon66t1dsWeQhjJTGK3FerT1wuiqqoJp7RCGKpC2mRrCZw==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEPnSkFegeujQdW0wA9Yy0Tb0gyDWzJ9ftZcvqGrZ4VL9fDzcK8Albtyn7ra866HGEQ==",
                             PhoneNumber = "+256726186350",
                             PhoneNumberConfirmed = false,
                             PhoneNumberVerified = false,
                             RecoveryAnswer = "",
                             RecoveryPhoneNumber = "",
                             RecoveryQuestion = "",
-                            SecurityStamp = "8fb039c5-ef8b-415e-bf69-4d88f886d1cd",
+                            SecurityStamp = "4ef554da-a085-4e98-95d9-a214de7d6eca",
                             TwoFactorEnabled = false,
                             UserName = "+256726186350"
                         },
@@ -219,8 +229,8 @@ namespace saccoshop.Migrations
                             Id = "bd363936-63d0-4ace-bc46-a2f1348cb61e",
                             AccessFailedCount = 0,
                             AccountConfirmed = false,
-                            ConcurrencyStamp = "cd2bd50a-1549-4589-b232-0dd513a14a3d",
-                            CreatedAt = new DateTime(2026, 5, 12, 13, 18, 49, 611, DateTimeKind.Utc).AddTicks(5204),
+                            ConcurrencyStamp = "ff726111-ce00-4879-b4ac-ea57b8d71954",
+                            CreatedAt = new DateTime(2026, 5, 17, 7, 3, 42, 228, DateTimeKind.Utc).AddTicks(9175),
                             Email = "monorib@gmail.com",
                             EmailConfirmed = false,
                             FirstName = "Monorib",
@@ -229,14 +239,14 @@ namespace saccoshop.Migrations
                             MfaEnabled = false,
                             NormalizedEmail = "MONORIB@GMAIL.COM",
                             NormalizedUserName = "+256777471583",
-                            PasswordHash = "AQAAAAIAAYagAAAAEHtXXlggDpDkeOOlCzjBkBLfCBrJgTgFNxHvLXto8ogMFhNEZLcSnhoa5PgaZIGxZw==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEGXDp8G8XHZPmof+n6rncD6KMgKrLWu67a2tX0pOcbU7xvax01PkAyYWQZMD6j7mxA==",
                             PhoneNumber = "+256777471583",
                             PhoneNumberConfirmed = false,
                             PhoneNumberVerified = false,
                             RecoveryAnswer = "",
                             RecoveryPhoneNumber = "",
                             RecoveryQuestion = "",
-                            SecurityStamp = "1c877195-839b-4664-b572-fef69d58b143",
+                            SecurityStamp = "ebbdf6ba-db87-4bac-a3b2-e2dc3d40abe7",
                             TwoFactorEnabled = false,
                             UserName = "+256777471583"
                         },
@@ -245,8 +255,8 @@ namespace saccoshop.Migrations
                             Id = "d9c8e5b0-4dec-4f8e-9a2b-c41c725a1513",
                             AccessFailedCount = 0,
                             AccountConfirmed = false,
-                            ConcurrencyStamp = "4be12e79-3bf2-4943-8f58-2a893e4f4599",
-                            CreatedAt = new DateTime(2026, 5, 12, 13, 18, 49, 710, DateTimeKind.Utc).AddTicks(9776),
+                            ConcurrencyStamp = "731f2876-0e2c-4a12-aa52-a85e77341b22",
+                            CreatedAt = new DateTime(2026, 5, 17, 7, 3, 42, 325, DateTimeKind.Utc).AddTicks(1384),
                             Email = "chiyiya@gmail.com",
                             EmailConfirmed = true,
                             FirstName = "Chiyiya",
@@ -255,14 +265,14 @@ namespace saccoshop.Migrations
                             MfaEnabled = false,
                             NormalizedEmail = "CHIYIYA@GMAIL.COM",
                             NormalizedUserName = "+256782909090",
-                            PasswordHash = "AQAAAAIAAYagAAAAEH7ZVWq/xnUXWOlEjQwRzerapksWqOltjAdGye5RjuWOfC0PSW3LFpuQXDnRekjEgg==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEP1p03Kk5dSXNpRgBhJn/8w+LdGy0y7r/sbmUtWMY0iKb7pcvMo4KaYJzK4Gwx77Jw==",
                             PhoneNumber = "+256782909090",
                             PhoneNumberConfirmed = false,
                             PhoneNumberVerified = false,
                             RecoveryAnswer = "",
                             RecoveryPhoneNumber = "",
                             RecoveryQuestion = "",
-                            SecurityStamp = "25e24921-f19b-4224-b709-4b23fd6a3cc0",
+                            SecurityStamp = "cd558e55-cbeb-4cbf-b0c2-8b91e93f56af",
                             TwoFactorEnabled = false,
                             UserName = "+256782909090"
                         });
@@ -5400,6 +5410,9 @@ namespace saccoshop.Migrations
                     b.Property<bool>("HasImage")
                         .HasColumnType("bit");
 
+                    b.Property<bool>("HiddenOnHome")
+                        .HasColumnType("bit");
+
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
 
@@ -5408,6 +5421,10 @@ namespace saccoshop.Migrations
 
                     b.Property<bool>("IsFeatured")
                         .HasColumnType("bit");
+
+                    b.Property<string>("Manufacturer")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("OldPrice")
                         .HasPrecision(18, 2)
@@ -8931,7 +8948,7 @@ namespace saccoshop.Migrations
                         {
                             UserProfileId = new Guid("220cc6eb-238a-424d-962b-2dca18f731d1"),
                             AddressId = 1,
-                            CreatedAt = new DateTime(2026, 5, 12, 13, 18, 49, 813, DateTimeKind.Utc).AddTicks(6707),
+                            CreatedAt = new DateTime(2026, 5, 17, 7, 3, 42, 426, DateTimeKind.Utc).AddTicks(1067),
                             IdentityUserId = "42cd3af3-f319-4118-a604-4442d487b923",
                             Slug = "",
                             UserStatusId = 1
@@ -8940,7 +8957,7 @@ namespace saccoshop.Migrations
                         {
                             UserProfileId = new Guid("440a45a7-dd82-4586-883a-6b2b1205dfad"),
                             AddressId = 1,
-                            CreatedAt = new DateTime(2026, 5, 12, 13, 18, 49, 813, DateTimeKind.Utc).AddTicks(6759),
+                            CreatedAt = new DateTime(2026, 5, 17, 7, 3, 42, 426, DateTimeKind.Utc).AddTicks(1108),
                             IdentityUserId = "5f2b8a40-d899-4345-aa3e-7b98712bc112",
                             Slug = "",
                             UserStatusId = 1
@@ -8949,7 +8966,7 @@ namespace saccoshop.Migrations
                         {
                             UserProfileId = new Guid("4970c779-c767-4eb8-8ae4-12f38514fd5e"),
                             AddressId = 1,
-                            CreatedAt = new DateTime(2026, 5, 12, 13, 18, 49, 813, DateTimeKind.Utc).AddTicks(6763),
+                            CreatedAt = new DateTime(2026, 5, 17, 7, 3, 42, 426, DateTimeKind.Utc).AddTicks(1112),
                             IdentityUserId = "bd363936-63d0-4ace-bc46-a2f1348cb61e",
                             Slug = "",
                             UserStatusId = 1
@@ -8958,7 +8975,7 @@ namespace saccoshop.Migrations
                         {
                             UserProfileId = new Guid("bb69367c-b5e1-4090-d8f4-08de930d2678"),
                             AddressId = 1,
-                            CreatedAt = new DateTime(2026, 5, 12, 13, 18, 49, 813, DateTimeKind.Utc).AddTicks(6767),
+                            CreatedAt = new DateTime(2026, 5, 17, 7, 3, 42, 426, DateTimeKind.Utc).AddTicks(1116),
                             IdentityUserId = "d9c8e5b0-4dec-4f8e-9a2b-c41c725a1513",
                             Slug = "",
                             UserStatusId = 1

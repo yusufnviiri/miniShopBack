@@ -1,10 +1,12 @@
 ﻿using Contracts.Repo;
 using Entities.Models;
+using Lucene.Net.Store;
 using Microsoft.EntityFrameworkCore;
 using Repository.context;
 using Shared.Dtos;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -159,6 +161,26 @@ namespace Repository.Repos
         public void UpdateUserGroup(UserGroup userGroup)=>UpdateBase(userGroup);
         public void DeleteUserGroup(UserGroup userGroup)=>DeleteBase(userGroup);
         public Task<int> NumberOfUserGroups() => FindAll(false).CountAsync();
+
+        
+
+
+        public async Task<long> NextUserGroupSlugNumberAsync()
+        {
+            var connection = context.Database.GetDbConnection();
+
+            if (connection.State != ConnectionState.Open)
+                await connection.OpenAsync();
+
+            await using var command = connection.CreateCommand();
+
+            command.CommandText = "SELECT NEXT VALUE FOR UserGroupSlugSeq";
+
+            var result = await command.ExecuteScalarAsync();
+
+            return Convert.ToInt64(result);
+        }
+
 
         public Task<Guid> GetUserGroupIdBySlugName(string slug) => FindByCondition(p => p.Slug == slug, false).Select(k => k.UserGroupId).FirstOrDefaultAsync();
 

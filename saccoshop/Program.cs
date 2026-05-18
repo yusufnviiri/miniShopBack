@@ -108,7 +108,11 @@ app.ConfigureExceptionHandler(logger);
 
 if (app.Environment.IsProduction())
     app.UseHsts();
+
 app.UseHttpsRedirection();
+//app.UseMiddleware<SocialScraperMiddleware>();
+
+
 app.UseStaticFiles();
 app.UseForwardedHeaders(new ForwardedHeadersOptions
 {

@@ -4,6 +4,8 @@ using Contracts.Repo;
 using Contracts.Service;
 using Entities.Models;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+using Services.BusinessRules;
 using Shared.Dtos;
 using System;
 using System.Collections.Generic;
@@ -21,17 +23,23 @@ namespace Services
         private readonly IMapper _mapper;
         private ApplicationUser? _user = new();
         private readonly UserManager<ApplicationUser> _userManager;
+        private readonly SlugService _slugService;
 
-        public CategoryService(ILoggerManager logger, IRepositoryManager repository, IMapper mapper, UserManager<ApplicationUser> userManager)
+
+        public CategoryService(ILoggerManager logger, IRepositoryManager repository, IMapper mapper, UserManager<ApplicationUser> userManager, SlugService slugService)
         {
             _userManager = userManager;
             _logger = logger;
             _repoManager = repository;
             _mapper = mapper;
+            _slugService = slugService;
+        }
+        private string CreateCategorySlug(string name)
+        {
+            return _slugService.Generate(name);
         }
 
-
-       public async Task<IEnumerable<ShowAllCategoriesDto>> GetAllCategoriesAsync()=>
+        public async Task<IEnumerable<ShowAllCategoriesDto>> GetAllCategoriesAsync()=>
             await _repoManager.CategoryRepo.GetAllCategories();
         public async Task<IEnumerable<CategoryRefDto>> GetAllTradeCategoriesAsync() =>
          await _repoManager.CategoryRepo.GetAllTradeCategories();
@@ -117,6 +125,14 @@ namespace Services
             return subs;
 
         }
+
+     
+
+        public async Task<List<SlugInfo>> GetAllCategorySlugsAsync() => await _repoManager.CategoryRepo.CategoriesQueryData().Select(c => new SlugInfo()
+        {
+            UpdatedAt = DateTime.Now,
+            Slug = CreateCategorySlug(c.CategoryName)
+        }).ToListAsync(); 
 
 
     }

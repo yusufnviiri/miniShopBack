@@ -18,7 +18,7 @@ using System.Threading.Tasks;
 
 namespace Services
 {
-    internal class ProductService:IProductService
+    internal class ProductService : IProductService
     {
         private readonly ILoggerManager _logger;
         private readonly IRepositoryManager _repoManager;
@@ -31,7 +31,7 @@ namespace Services
 
 
 
-        public ProductService(ILoggerManager logger, IRepositoryManager repository, IMapper mapper, UserManager<ApplicationUser> userManager,SlugService slugService, IProductIndexer productIndexer)
+        public ProductService(ILoggerManager logger, IRepositoryManager repository, IMapper mapper, UserManager<ApplicationUser> userManager, SlugService slugService, IProductIndexer productIndexer)
         {
             _userManager = userManager;
             _logger = logger;
@@ -42,14 +42,22 @@ namespace Services
 
         }
 
-        private  string CreateSlug(string name)
+        private string CreateSlug(string name)
         {
             return _slugService.Generate(name);
         }
 
-        public async Task<IEnumerable<ShowProductMiniDetailsDto>> GetAllProductsAsync()=>await _repoManager.ProductRepo.GetAllProducts(tracking: false);
-        public async Task<IEnumerable<ShowProductMiniDetailsDto>> GetAllProductsByCategoryAsync(string categoryName)=>await _repoManager.ProductRepo.GetAllProductsByCategory(tracking: false, categoryName);
-        public async Task<ShowProductDto?> FindProductByIdAsync(bool tracking, Guid productId)=>await _repoManager.ProductRepo.FindProductById(tracking, productId);
+        public async Task<IEnumerable<ShowProductMiniDetailsDto>> GetAllProductsAsync() => await _repoManager.ProductRepo.GetAllProducts(tracking: false);
+
+        public async Task<(IEnumerable<HomePageProductDto> productsData, MetaData MetaData)>
+    GetLatestFeaturedProductsAsync(ProductRequestParameters parameters)
+        {
+            var products = await _repoManager.ProductRepo.GetOtherProducts(parameters);
+
+            return (productsData: products, MetaData: products.MetaData);
+        }
+        public async Task<IEnumerable<ShowProductMiniDetailsDto>> GetAllProductsByCategoryAsync(string categoryName) => await _repoManager.ProductRepo.GetAllProductsByCategory(tracking: false, categoryName);
+        public async Task<ShowProductDto?> FindProductByIdAsync(bool tracking, Guid productId) => await _repoManager.ProductRepo.FindProductById(tracking, productId);
 
         public async Task<ProductDataDto?> GetProductDataAsync(Guid productId)
         {
@@ -57,7 +65,7 @@ namespace Services
 
             if (product != null)
             {
-                product.Contact = await _repoManager.UserProfileRepo.GetUserContact(product.SellerUserProfileId)??"";
+                product.Contact = await _repoManager.UserProfileRepo.GetUserContact(product.SellerUserProfileId) ?? "";
                 product.WhatsAppNumber = await _repoManager.SellerProfileRepo.GetSellerWhatsAppNumber(product.SellerUserProfileId) ?? "";
 
             }
@@ -81,8 +89,8 @@ namespace Services
         public async Task<Product> CreateProductAsync(NewProductDto product, CancellationToken ct = default)
         {
             var productEntity = _mapper.Map<Product>(product);
-            var numberOfProducts = await _repoManager.ProductRepo.NumberOfProducts();
-            productEntity.Slug = $"{CreateSlug(product.ProductName)}-{numberOfProducts + 1}";
+            var numberOfProducts = await _repoManager.ProductRepo.NextProductSlugNumberAsync();
+            productEntity.Slug = $"{CreateSlug(product.ProductName)}-{numberOfProducts}";
 
             var (commodityClass, sellerProfileId) =
                 await SellerRules.CommodityClassToSellerRef(product.SellerId, _repoManager);
@@ -102,12 +110,12 @@ namespace Services
             var productEntity = _mapper.Map<Product>(product);
             _repoManager.ProductRepo.UpdateProduct(productEntity);
             await _repoManager.SaveRepoDataAsync();
-            await _indexer.QueueIndexAsync(product.ProductId,ct);
+            await _indexer.QueueIndexAsync(product.ProductId, ct);
 
         }
         public async Task DeleteProductAsync(Guid productId, CancellationToken ct = default)
         {
-            var productEntity = await _repoManager.ProductRepo.FindProductForUpdate( productId);
+            var productEntity = await _repoManager.ProductRepo.FindProductForUpdate(productId);
             if (productEntity == null)
             {
                 _logger.LogError($"Product with id: {productId} not found.");
@@ -115,21 +123,22 @@ namespace Services
             }
             _repoManager.ProductRepo.DeleteProduct(productEntity);
             await _repoManager.SaveRepoDataAsync();
-            await _indexer.QueueRemoveAsync(productId,ct);
+            await _indexer.QueueRemoveAsync(productId, ct);
 
         }
 
 
 
 
-        public async Task<(ICollection<HomePageProductDto> productsData, MetaData MetaData) >GetHomePageProductsAsync(
-        ProductRequestParameters requestParameters) {
-          var products=  await _repoManager.ProductRepo.GetHomePageProducts(requestParameters);
+        public async Task<(ICollection<HomePageProductDto> productsData, MetaData MetaData)> GetHomePageProductsAsync(
+        ProductRequestParameters requestParameters, CancellationToken ct = default)
+        {
+            var products = await _repoManager.ProductRepo.GetHomePageProducts(requestParameters, ct);
             return (productsData: products, products.MetaData);
 
         }
-        public async Task<ShowProductDto?> FindSellerProductAsync(Guid productId)=>await _repoManager.ProductRepo.FindSellerProduct(productId);
-        public async Task<ShowProductDto?> FindSellerProductBySlugAsync(string slug)=>await _repoManager.ProductRepo.FindProductBySlugName(false,slug);
+        public async Task<ShowProductDto?> FindSellerProductAsync(Guid productId) => await _repoManager.ProductRepo.FindSellerProduct(productId);
+        public async Task<ShowProductDto?> FindSellerProductBySlugAsync(string slug) => await _repoManager.ProductRepo.FindProductBySlugName(false, slug);
 
         public async Task UpdateProductPriceAsync(Guid productId, decimal newPrice)
         {
@@ -138,7 +147,8 @@ namespace Services
             {
                 productForUpdate.Price = newPrice;
                 await _repoManager.SaveRepoDataAsync();
-            } else
+            }
+            else
             {
                 throw new ObjectBadRequestExeption($"product with id {productId} not found");
             }
@@ -159,7 +169,7 @@ namespace Services
         }
         public async Task MakeAllProductsFeatured()
         {
-          await  _repoManager.ProductRepo.MakeAllProductsFeatured();
+            await _repoManager.ProductRepo.MakeAllProductsFeatured();
             await _repoManager.SaveRepoDataAsync();
         }
         public async Task ToggleProductFeaturedState(Guid productId)
@@ -194,5 +204,9 @@ namespace Services
 
         }
         public async Task<HomePageCustomProductsDto?> HomePageCustomProductsAsync() => await _repoManager.ProductRepo.HomePageCustomProducts();
+
+        public async Task<List<SlugInfo>> GetAllProductSlugsAsync() => await _repoManager.ProductRepo.GetAllProductSlugsAsync();
+
+        public async Task<ProductPreviewDto?> FindProductBySlugForPreviewAsync(string slug) => await _repoManager.ProductRepo.FindProductBySlugForPreviewAsync(slug);
     }
 }

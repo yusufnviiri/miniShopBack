@@ -242,9 +242,9 @@ namespace Services
                 IdentityUserId = identityUserId,
                 AddressId = addressId
             };
-            var numberOfUsers = await _repoManager.UserProfileRepo.NumberOfUserProfiles();
+            var numberOfUsers = await _repoManager.UserProfileRepo.NextUserSlugNumberAsync();
 
-            profile.Slug = $"user={CreateUserProfileSlug(username)}-{numberOfUsers + 1}";
+            profile.Slug = $"{CreateUserProfileSlug(username)}-{numberOfUsers}";
 
             _repoManager.UserProfileRepo.CreateUserProfile(profile);
             await _repoManager.SaveRepoDataAsync();

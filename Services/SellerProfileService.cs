@@ -53,32 +53,32 @@ namespace Services
         {
             return _slugService.Generate(name);
         }
-        public async  Task<IEnumerable<SellerProfileDto>> GetAllSellerProfiles()=>await _repoManager.SellerProfileRepo.GetAllSellerProfiles();
-        public async Task<SellerProfile?> FindSellerProfileById(Guid sellerProfileId, bool tracking)=>await _repoManager.SellerProfileRepo.FindSellerProfileById(sellerProfileId,tracking);
+        public async Task<IEnumerable<SellerProfileDto>> GetAllSellerProfiles() => await _repoManager.SellerProfileRepo.GetAllSellerProfiles();
+        public async Task<SellerProfile?> FindSellerProfileById(Guid sellerProfileId, bool tracking) => await _repoManager.SellerProfileRepo.FindSellerProfileById(sellerProfileId, tracking);
         public async Task CreateSellerProfile(SellerProfile sellerProfile, CancellationToken ct = default)
         {
             var IsExist = await _repoManager.SellerProfileRepo.CheckifUserIsSeller(sellerProfile.SellerId);
             if (!IsExist)
             {
 
-                var numberOfSellers = await _repoManager.SellerProfileRepo.NumberOfSellers();
-                sellerProfile.Slug = $"merchant-{CreateSellerProfileSlug(sellerProfile.SellerName)}-{numberOfSellers + 1}";
-                
-                
+                var numberOfSellers = await _repoManager.SellerProfileRepo.NextSellerProfileSlugNumberAsync();
+                sellerProfile.Slug = $"{CreateSellerProfileSlug(sellerProfile.SellerName)}-{numberOfSellers}";
+
+
                 _repoManager.SellerProfileRepo.CreateSellerProfile(sellerProfile);
                 await _repoManager.SaveRepoDataAsync();
-                var user = await _repoManager.UserProfileRepo.FindUserProfileById(sellerProfile.SellerId,true);
+                var user = await _repoManager.UserProfileRepo.FindUserProfileById(sellerProfile.SellerId, true);
                 if (user != null)
                 {
                     user.SellerProfileId = sellerProfile.SellerProfileId;
                     _repoManager.UserProfileRepo.UpdateUserProfile(user);
                     await _userIndexer.QueueIndexAsync(sellerProfile.SellerId, ct);
-                                     
-                      
 
-                    
+
+
+
                     await _repoManager.SaveRepoDataAsync();
-                    await _indexer.QueueReindexBySellerAsync(sellerProfile.SellerProfileId,ct);
+                    await _indexer.QueueReindexBySellerAsync(sellerProfile.SellerProfileId, ct);
                     await _tradeIndexer.QueueReindexBySellerAsync(sellerProfile.SellerProfileId, ct);
 
                 }
@@ -86,21 +86,21 @@ namespace Services
             }
             else
             {
-                
+
                 throw new ObjectBadRequestExeption($"Seller Profile for user with id: {sellerProfile.SellerId} already exists");
             }
         }
 
         public async Task MakeGroupMemberSeller(GroupMemberSellerprofileDto sellerProfile, CancellationToken ct = default)
         {
-            UserProfile?  user ;
+            UserProfile? user;
 
             var IsExist = await _repoManager.SellerProfileRepo.CheckifUserIsSeller(sellerProfile.SellerId);
             if (!IsExist)
             {
 
-                var numberOfSellers = await _repoManager.SellerProfileRepo.NumberOfSellers();
-                sellerProfile.Slug = $"merchant-{CreateSellerProfileSlug(sellerProfile.SellerName)}-{numberOfSellers + 1}";
+                var numberOfSellers = await _repoManager.SellerProfileRepo.NextSellerProfileSlugNumberAsync();
+                sellerProfile.Slug = $"{CreateSellerProfileSlug(sellerProfile.SellerName)}-{numberOfSellers}";
                 var newSellerProfile = _mapper.Map<SellerProfile>(sellerProfile);
 
                 _repoManager.SellerProfileRepo.CreateSellerProfile(newSellerProfile);
@@ -127,11 +127,12 @@ namespace Services
                     throw new ObjectBadRequestExeption($"Insuffiecient Seller Profile Data ");
 
                 }
-                else {
+                else
+                {
                     sellerProfile.SellerProfileId = existingSellerprofile;
                 }
             }
-                    var groupMember = await _repoManager.GroupMemberRepo.FindGroupMemberByUserProfileIdWithTracking(sellerProfile.SellerId,sellerProfile.UserGroupId,true);
+            var groupMember = await _repoManager.GroupMemberRepo.FindGroupMemberByUserProfileIdWithTracking(sellerProfile.SellerId, sellerProfile.UserGroupId, true);
             if (groupMember != null && groupMember.UserGroupId != Guid.Empty)
             {
                 var groupSellerExists = await _repoManager.GroupSellerRepo.CheckIfSellerExistsInGroup(sellerProfile.SellerProfileId, sellerProfile.UserGroupId);
@@ -171,10 +172,10 @@ namespace Services
             }
 
             existingSellerProfile.SellerTierId = sellerProfile.SellerTierId;
-            existingSellerProfile. SellerTypeId = sellerProfile.SellerTypeId;
+            existingSellerProfile.SellerTypeId = sellerProfile.SellerTypeId;
             existingSellerProfile.SellerPolicyId = sellerProfile.SellerPolicyId;
 
-        _repoManager.SellerProfileRepo.UpdateSellerProfile(existingSellerProfile);
+            _repoManager.SellerProfileRepo.UpdateSellerProfile(existingSellerProfile);
             await _repoManager.SaveRepoDataAsync();
             await _indexer.QueueReindexBySellerAsync(sellerProfile.SellerProfileId, ct);
             await _tradeIndexer.QueueReindexBySellerAsync(sellerProfile.SellerProfileId, ct);
@@ -194,14 +195,15 @@ namespace Services
                 await _repoManager.SaveRepoDataAsync();
                 await _indexer.QueueReindexBySellerAsync(sellerProfileId, ct);
                 await _tradeIndexer.QueueReindexBySellerAsync(sellerProfileId, ct);
-            } }
+            }
+        }
 
         public async Task<SellerShopDto?> GetSellerShopDetailsAsync(Guid sellerProfileId)
         {
             var groupData = await _repoManager.UserProfileRepo.GetSellerGroupsIds(sellerProfileId);
             var sellerShopDto = await _repoManager.SellerProfileRepo.GetSellerShopDetails(sellerProfileId);
             var followers = await _repoManager.UserPreferenceRepo.GetSellerFollowers(sellerProfileId);
-            if (groupData != null && sellerShopDto!=null)
+            if (groupData != null && sellerShopDto != null)
             {
                 foreach (var item in groupData)
                 {
@@ -209,7 +211,7 @@ namespace Services
                     {
                         GroupName = await _repoManager.UserGroupRepo.GetGroupGroupName(item) ?? "",
                         GroupId = item,
-                        SellerSlugName= await _repoManager.UserGroupRepo.GetGroupGroupSlugName(item) ?? ""
+                        SellerSlugName = await _repoManager.UserGroupRepo.GetGroupGroupSlugName(item) ?? ""
                     };
                     sellerShopDto.Groups.Add(groupDto);
                 }
@@ -245,7 +247,7 @@ namespace Services
             if (membersellerProfileIds.Any())
             {
                 var memberProducts = await _repoManager.ProductRepo.GetGroupMembersProducts([.. membersellerProfileIds]);
-                var memberTrades = await _repoManager.TradeRepo.GetGroupMembersTrades([.. membersellerProfileIds],sellerId);
+                var memberTrades = await _repoManager.TradeRepo.GetGroupMembersTrades([.. membersellerProfileIds], sellerId);
                 groupShopDto.MemberProducts = memberProducts;
                 groupShopDto.MemberTrades = memberTrades;
 
@@ -281,8 +283,8 @@ namespace Services
             var membersellerProfileIds = await _repoManager.SellerProfileRepo.GetGroupMemberSellerProfileIds(memberprofileIds);
             if (membersellerProfileIds.Any())
             {
-                var memberProducts = await _repoManager.ProductRepo.GetGroupMembersForDisplayProducts([.. membersellerProfileIds],sellerId);
-                var memberTrades = await _repoManager.TradeRepo.GetGroupMembersTrades([.. membersellerProfileIds],sellerId);
+                var memberProducts = await _repoManager.ProductRepo.GetGroupMembersForDisplayProducts([.. membersellerProfileIds], sellerId);
+                var memberTrades = await _repoManager.TradeRepo.GetGroupMembersTrades([.. membersellerProfileIds], sellerId);
                 groupShopDto.MemberProducts = memberProducts;
                 groupShopDto.MemberTrades = memberTrades;
 
@@ -327,7 +329,7 @@ namespace Services
         public async Task<SellerShopDto?> GetSellerShopDetailsBySlugAsync(string slug)
         {
 
-   var sellerProfileId = await _repoManager.SellerProfileRepo.GetSellerProfileIdBySlugName(slug);
+            var sellerProfileId = await _repoManager.SellerProfileRepo.GetSellerProfileIdBySlugName(slug);
             if (sellerProfileId != Guid.Empty)
             {
                 return await GetSellerShopDetailsAsync(sellerProfileId);
@@ -373,5 +375,10 @@ namespace Services
 
         }
 
+        public async Task<List<SlugInfo>> GetAllSellerSlugsAsync()
+        {
+            return await _repoManager.SellerProfileRepo.GetAllSellerSlugsAsync();
+
+        }
     }
 }

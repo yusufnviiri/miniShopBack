@@ -6,6 +6,7 @@ using Microsoft.Extensions.Primitives;
 using Repository.context;
 using Shared.Dtos;
 using Shared.RequestFeatures;
+using System.Data;
 using System.Linq.Expressions;
 
 namespace Repository.Repos;
@@ -15,7 +16,8 @@ public sealed class TradeRepo : RepositoryBase<Trade>, ITradeRepo
     private readonly ApplicationDbContext _context;
     private readonly IMemoryCache _cache;
 
-    private CancellationTokenSource _tradeListCacheReset = new();
+
+    private static CancellationTokenSource _tradeListCacheReset = new();
 
     private const string UnknownSeller = "Unknown Seller";
     private const string UnknownSlug = "unknown";
@@ -287,6 +289,32 @@ public sealed class TradeRepo : RepositoryBase<Trade>, ITradeRepo
     public Task<int> NumberOfTrades()
         => BaseQuery()
             .CountAsync();
+    //public async Task<long> NextTradeSlugNumberAsync() =>
+    //await _context.Database.SqlQuery<long>(
+    //    $"SELECT NEXT VALUE FOR TradeSlugSeq").SingleAsync();
+
+
+
+
+    public async Task<long> NextTradeSlugNumberAsync()
+    {
+        var connection = _context.Database.GetDbConnection();
+
+        if (connection.State != ConnectionState.Open)
+            await connection.OpenAsync();
+
+        await using var command = connection.CreateCommand();
+
+        command.CommandText = "SELECT NEXT VALUE FOR TradeSlugSeq";
+
+        var result = await command.ExecuteScalarAsync();
+
+        return Convert.ToInt64(result);
+    }
+
+
+
+
 
     public Task<Guid> GetTradeIdBySlugName(
         string slug)
@@ -564,6 +592,12 @@ public sealed class TradeRepo : RepositoryBase<Trade>, ITradeRepo
     }
 
     #endregion
+
+
+
+    public Task<List<SlugInfo>> GetAllTradesSlugsAsync() => BaseQuery().Where(p => p.IsActive).Select(p => new SlugInfo{Slug = p.Slug,UpdatedAt = p.CreatedAt })         .ToListAsync();
+
+
 
     #region Group Trades
 

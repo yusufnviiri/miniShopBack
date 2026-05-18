@@ -12,7 +12,10 @@ namespace Contracts.Service
     public interface IProductService
     {
         Task<IEnumerable<ShowProductMiniDetailsDto>> GetAllProductsAsync();
-        Task<(ICollection<HomePageProductDto> productsData, MetaData MetaData)> GetHomePageProductsAsync(ProductRequestParameters requestParameters);
+        Task<(ICollection<HomePageProductDto> productsData, MetaData MetaData)> GetHomePageProductsAsync(ProductRequestParameters requestParameters, CancellationToken ct = default);
+
+        Task<(IEnumerable<HomePageProductDto> productsData, MetaData MetaData)>
+    GetLatestFeaturedProductsAsync(ProductRequestParameters parameters);
         Task<IEnumerable<ShowProductMiniDetailsDto>> GetAllProductsByCategoryAsync( string categoryName);
         Task<ShowProductDto?> FindProductByIdAsync(bool tracking, Guid productId);
         Task<ProductDataDto?> GetProductDataAsync(Guid productId);
@@ -29,9 +32,8 @@ namespace Contracts.Service
         Task UpdateProductPriceAsync(Guid productId, decimal newPrice);
         Task UpdateProductDescription(SharedUpdatesDto sharedUpdates);
         Task<HomePageCustomProductsDto?> HomePageCustomProductsAsync();
-
-
-
+        Task<List<SlugInfo>> GetAllProductSlugsAsync();
+        Task<ProductPreviewDto?> FindProductBySlugForPreviewAsync(string slug);
 
     }
 }

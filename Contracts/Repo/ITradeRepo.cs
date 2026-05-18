@@ -17,7 +17,10 @@ namespace Contracts.Repo
         Task<ShowTradeDataDto?> FindSellerTrade(Guid TradeId);
         Task MakeTradeFeautured(Guid tradeId);
         Task<int> NumberOfTrades();
+        Task<long> NextTradeSlugNumberAsync();
+
         Task MakeAllTradesFeautured();
+        Task<List<SlugInfo>> GetAllTradesSlugsAsync();
 
 
         Task<Trade?> FindTradeForUpdate(Guid tradeId);

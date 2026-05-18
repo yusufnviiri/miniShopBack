@@ -186,6 +186,13 @@ _cache = cache;
             _cache.Remove(ProductTreeKey);
             _cache.Remove(TradeTreeKey);
         }
-
+       public async Task<List<SlugInfo>> GetAllCategorySlugsAsync()
+       {
+           return await FindAll(false).Select(c => new SlugInfo()
+           {
+               UpdatedAt = DateTime.Now,
+               Slug = c.CategoryName
+           }).ToListAsync();
+       }
     }
 }

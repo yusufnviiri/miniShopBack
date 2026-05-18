@@ -83,7 +83,7 @@ namespace Services
             _productImageService = new Lazy<IProductImageService>(()=>new ProductImageService(logger, repository, mapper, userManager,env));
             _userGroupService = new Lazy<IUserGroupService>(()=> new UserGroupService(logger, repository, mapper, userManager, slugService, productIndexer, tradeIndexer,userGroupIndexer));
             _userService = new Lazy<IApplicationUserService>(()=> new ApplicationUserService(logger, repository, mapper, userManager,configuration,signInManager));  
-            _categoryService = new Lazy<ICategoryService>(()=>new CategoryService(logger, repository, mapper,userManager));
+            _categoryService = new Lazy<ICategoryService>(()=>new CategoryService(logger, repository, mapper,userManager, slugService));
             _subCategoryService = new Lazy<ISubCategoryService>(()=> new SubCategoryService(logger, repository, mapper, userManager));
             _subCategoryCategoryService = new Lazy<ISubCategoryCategoryService>(()=>new SubCategoryCategoryService(logger, repository, mapper, userManager));
             _addressService = new Lazy<IAddressService>(()=> new AddressService(logger, repository, mapper, userManager));

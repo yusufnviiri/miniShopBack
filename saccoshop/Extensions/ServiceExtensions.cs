@@ -269,6 +269,12 @@ namespace saccoshop.Extensions
 
             return services;
         }
+
+        public static IServiceCollection AddTempFileCleanupService(this IServiceCollection services)
+        {
+            services.AddHostedService<TempFileCleanupService>();
+            return services;
+        }
     }
 
 }

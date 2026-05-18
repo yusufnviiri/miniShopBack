@@ -16,7 +16,7 @@ namespace Contracts.Repo
         Task MakeAllProductsFeatured();
         Task<HomePageCustomProductsDto?> HomePageCustomProducts ();
 
-        Task<PagedList<HomePageProductDto>> GetHomePageProducts(ProductRequestParameters requestParameters);
+        Task<PagedList<HomePageProductDto>> GetHomePageProducts(ProductRequestParameters requestParameters, CancellationToken ct = default);
 
 
         Task<IEnumerable<ShowProductMiniDetailsDto>> GetAllProductsByCategory(bool tracking,string categoryName);
@@ -32,7 +32,10 @@ namespace Contracts.Repo
         void UpdateProduct(Product product);
         void DeleteProduct(Product productId);
         Task<int> NumberOfProducts();
+        Task<long> NextProductSlugNumberAsync();
+        Task<PagedList<HomePageProductDto>> GetOtherProducts(ProductRequestParameters request);
         Task<Guid> GetProductIdBySlugName(string slug);
+        Task<List<SlugInfo>> GetAllProductSlugsAsync();
 
         Task<ICollection<SellerProductsListDto>> GetGroupMembersProducts(IList<Guid> groupMemberIds);
         Task<ICollection<SellerProductsListDto>> GetGroupMembersForDisplayProducts(IList<Guid> groupMemberIds, Guid groupId);
@@ -40,7 +43,7 @@ namespace Contracts.Repo
         //Task <IEnumerable<ShowProductMiniDetailsDto>> GetAllSellerProducts(Guid sellerProfileId);
         // Task<IEnumerable<ShowProductMiniDetailsDto>> GetAllStockedSellerProducts(Guid sellerProfileId);
         void InvalidateHomePageCards();
-
+        Task<ProductPreviewDto?> FindProductBySlugForPreviewAsync(string slug);
 
 
     }

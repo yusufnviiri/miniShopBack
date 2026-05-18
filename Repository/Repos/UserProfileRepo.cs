@@ -5,6 +5,7 @@ using Repository.context;
 using Shared.Dtos;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,9 +14,11 @@ namespace Repository.Repos
 {
     public class UserProfileRepo : RepositoryBase<UserProfile>, IUserProfileRepo
     {
+        private readonly ApplicationDbContext _context;
+
         public UserProfileRepo(ApplicationDbContext dbContext) : base(dbContext)
         {
-
+            _context = dbContext;
         }
 
         public async Task<IEnumerable<UserProfileDto>> GetAllUserProfilesWithoutGroups()
@@ -212,7 +215,22 @@ namespace Repository.Repos
         }
 
         public Task<int> NumberOfUserProfiles() => FindAll(false).CountAsync();
+     
+        public async Task<long> NextUserSlugNumberAsync()
+        {
+            var connection = _context.Database.GetDbConnection();
 
+            if (connection.State != ConnectionState.Open)
+                await connection.OpenAsync();
+
+            await using var command = connection.CreateCommand();
+
+            command.CommandText = "SELECT NEXT VALUE FOR UserSlugSeq";
+
+            var result = await command.ExecuteScalarAsync();
+
+            return Convert.ToInt64(result);
+        }
         public Task<Guid> GetUserProfileIdBySlugName(string slug) => FindByCondition(p => p.Slug == slug, false).Select(k => k.UserProfileId).FirstOrDefaultAsync();
 
     }

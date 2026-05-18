@@ -79,8 +79,8 @@ namespace Services
             tradeEntity.CommodityClassId = commodityClass;
             tradeEntity.SellerProfileId = sellerProfileId;
 
-            var numberOfTrades = await _repoManager.TradeRepo.NumberOfTrades();
-            tradeEntity.Slug =  $"{CreateTradeSlug(tradeDto.TradeName)}-{numberOfTrades + 1}";
+            var numberOfTrades = await _repoManager.TradeRepo.NextTradeSlugNumberAsync();
+            tradeEntity.Slug =  $"{CreateTradeSlug(tradeDto.TradeName)}-{numberOfTrades}";
             _repoManager.TradeRepo.CreateTrade(tradeEntity);
 
             try
@@ -161,14 +161,12 @@ namespace Services
         }
 
 
-
-
-
-
       public async   Task<ShowTradeDataDto?> FindTradeBySlugNameAsync(bool tracking, string slugName)=> await _repoManager.TradeRepo.FindTradeBySlugName(tracking,slugName);
 
         public async Task<TradeDataDto?> GetTradeDataUsingSlugNameAsync(string slugName)=> await _repoManager.TradeRepo.GetTradeDataUsingSlugName(slugName);
         public async Task<ShowTradeDataDto?> FindSellerTradeUsingSlugNameAsync(bool tracking, string slugName)=> await _repoManager.TradeRepo.FindSellerTradeUsingSlugName(tracking,slugName);
+
+        public async Task<List<SlugInfo>> GetAllTradesSlugsAsync() => await _repoManager.TradeRepo.GetAllTradesSlugsAsync();
 
 
     }

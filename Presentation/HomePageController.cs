@@ -1,6 +1,7 @@
 ﻿using Contracts.Service;
 using Entities.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Shared.Dtos;
 using Shared.RequestFeatures;
@@ -183,6 +184,17 @@ namespace Presentation
             var products = await _service.ProductService.HomePageCustomProductsAsync();
             return Ok(products);
 
+        }
+
+        [HttpGet("latest-featured")]
+        public async Task<ActionResult> LatestFeaturedProducts([FromQuery] ProductRequestParameters parameters)
+        {
+            var products = await _service.ProductService.GetLatestFeaturedProductsAsync(parameters);
+
+            var pagination = System.Text.Json.JsonSerializer.Serialize(products.MetaData);
+            Response.Headers.Append("X-Pagination", pagination);
+
+            return Ok(products.productsData);
         }
     }
 }

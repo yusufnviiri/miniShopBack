@@ -90,16 +90,18 @@ namespace Presentation
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateTrade([FromForm] string payload, [FromForm] List<IFormFile> images)
+        public async Task<IActionResult> CreateTrade(
+      [FromForm] string payload,
+      [FromForm] List<IFormFile> images)
         {
+            // --- Validate inputs ---
             if (string.IsNullOrWhiteSpace(payload))
-                return BadRequest(new { message = "Reference Data  is required." });
+                return BadRequest(new { message = "Reference Data is required." });
 
-            if (images.Count == 0)
-            {
-                return BadRequest( new { message = "trade image is required" });
-            }
+            if (images is null || images.Count == 0)
+                return BadRequest(new { message = "Trade image is required." });
 
+            // --- Parse payload ---
             JObject jsonNode;
             try
             {
@@ -110,79 +112,69 @@ namespace Presentation
                 return BadRequest(new { message = "Invalid JSON payload." });
             }
 
-            // Map basic product info
+            var sellerIdString = jsonNode["sellerId"]?.Value<string>();
+            if (!Guid.TryParse(sellerIdString, out var sellerId))
+                return BadRequest(new { message = "Invalid SellerId." });
+
             var tradeDto = new NewTradeDto
             {
                 TradeName = jsonNode["tradeName"]?.Value<string>() ?? string.Empty,
                 Description = jsonNode["description"]?.Value<string>() ?? string.Empty,
-                MinimumPrice = jsonNode["minimumPrice"]?.Value<decimal>() ?? 0,              
+                MinimumPrice = jsonNode["minimumPrice"]?.Value<decimal>() ?? 0,
                 CategoryId = jsonNode["categoryId"]?.Value<int>() ?? 0,
                 SubCategoryId = jsonNode["subCategoryId"]?.Value<int>() ?? 0,
                 SubCategoryCategoryId = jsonNode["subCategoryCategoryId"]?.Value<int>() ?? 0,
-
+                SellerId = sellerId,
+                HasImage = true,
             };
 
+            // --- Filter usable files ---
+            var validImages = images.Where(f => f.Length > 0).ToList();
+            if (validImages.Count == 0)
+                return BadRequest(new { message = "Trade image is required." });
 
+            // --- Write all images to temp disk in parallel ---
+            // Each write happens concurrently rather than awaiting one after another.
+            // Memory stays low, disk is durable across app pool recycles, and the
+            // background worker can resume processing from the temp path.
+            var tempDir = Path.Combine(_env.ContentRootPath, "uploads", "tmp");
+            Directory.CreateDirectory(tempDir);
 
-
-            var sellerIdString = jsonNode["sellerId"]?.Value<string>();
-            if (!Guid.TryParse(sellerIdString, out var sellerId))
-                return BadRequest(new { message = "Invalid SellerId." });
-            tradeDto.SellerId = sellerId;
-
-           
-            if (images?.Count > 0)
+            var savedFiles = await Task.WhenAll(validImages.Select(async file =>
             {
-                tradeDto.HasImage = true;
-            }
+                var imageId = Guid.NewGuid();
+                var tempPath = Path.Combine(tempDir, $"{imageId}.bin");
 
-            // Create product
+                await using var stream = System.IO.File.Create(tempPath);
+                await file.CopyToAsync(stream);
+
+                return (ImageId: imageId, TempPath: tempPath);
+            }));
+
+            // --- Create the trade ---
             var trade = await _service.TradeService.CreateTradeAsync(tradeDto);
 
-            // Process images
-            if (images?.Count > 0)
+            // --- Build TradeImage rows and enqueue background jobs ---
+            var tradeImages = new List<TradeImage>(savedFiles.Length);
+            foreach (var (imageId, tempPath) in savedFiles)
             {
-                var tradeImages = new List<TradeImage>();
-                foreach (var file in images)
+                tradeImages.Add(new TradeImage
                 {
-                    if (file.Length == 0) continue;
+                    TradeImageId = imageId,
+                    TradeId = trade.TradeId,
+                    Folder = $"images/trades/{trade.TradeId}",
+                    FileName = imageId.ToString(),
+                    IsPrimary = false,
+                    IsProcessed = false,
+                    CreatedAt = DateTime.UtcNow,
+                });
 
-                    var imageId = Guid.NewGuid();
-
-                    var tempDir = Path.Combine(_env.ContentRootPath, "uploads", "tmp");
-                    Directory.CreateDirectory(tempDir);
-                    var tempPath = Path.Combine(tempDir, $"{imageId}.bin");
-
-
-                    await using (var stream = System.IO.File.Create(tempPath))
-                        await file.CopyToAsync(stream);
-
-                    _jobQueue.Enqueue(new TradeImageJob(imageId, trade.TradeId, tempPath));
-
-
-                    TradeImage tradeImage = new TradeImage()
-                    {
-                        TradeImageId = imageId,
-                        TradeId = trade.TradeId,
-                        Folder = $"images/trades/{trade.TradeId}",
-                        FileName = imageId.ToString(),
-                        IsPrimary = false,
-                        IsProcessed = false,
-                        CreatedAt = DateTime.UtcNow,
-
-                    };
-                    tradeImages.Add(tradeImage);
-
-                }
-
-                if (tradeImages.Count > 0)
-                    await _service.TradeImageService.CreateTradeImageListAsync(tradeImages);
+                _jobQueue.Enqueue(new TradeImageJob(imageId, trade.TradeId, tempPath));
             }
 
+            await _service.TradeImageService.CreateTradeImageListAsync(tradeImages);
+
             return Ok(new { data = trade.Slug });
-
-
-            //return Ok(new { message = "Product Added" });
         }
 
         [Authorize]

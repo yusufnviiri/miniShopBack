@@ -32,6 +32,8 @@ namespace Contracts.Repo
         void UpdateUserGroup(UserGroup userGroup);
         void DeleteUserGroup(UserGroup userGroup);
         Task<int> NumberOfUserGroups();
+        Task<long> NextUserGroupSlugNumberAsync();
+
         Task<Guid> GetUserGroupIdBySlugName(string slug);
  
     }

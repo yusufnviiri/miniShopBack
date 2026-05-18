@@ -24,6 +24,8 @@ namespace Contracts.Service
         Task<IEnumerable<MiniCategoryDto>> GetAllCategoriesInDbAsync();
         Task<AllCategoriesRef> GetAllCategoriesRefInDbAsync();
         Task<CategoriesSubCategoryCategoryDto> GetAllCategorySeedDataAsync();
+        Task<List<SlugInfo>> GetAllCategorySlugsAsync();
+
 
 
 

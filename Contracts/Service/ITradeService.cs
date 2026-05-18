@@ -29,5 +29,7 @@ namespace Contracts.Service
 
         Task<TradeDataDto?> GetTradeDataUsingSlugNameAsync(string slugName);
         Task<ShowTradeDataDto?> FindSellerTradeUsingSlugNameAsync(bool tracking, string slugName);
+        Task<List<SlugInfo>> GetAllTradesSlugsAsync();
+
     }
 }

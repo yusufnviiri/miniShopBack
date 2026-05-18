@@ -25,6 +25,7 @@ namespace Contracts.Service
 
         Task<GroupShopDto?> GetGroupShopDetailsBySlugAsync(string slug, bool isMember);
         Task<GroupShopDto?> GetGroupShopDisplay(Guid sellerId);
+        Task<List<SlugInfo>> GetAllSellerSlugsAsync();
 
 
     }

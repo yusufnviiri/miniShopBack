@@ -38,6 +38,11 @@ namespace Contracts.Repo
         Task<string?> GetSellerWhatsAppNumber(Guid userProfileId);
         Task<int> NumberOfSellers();
 
+        Task<long> NextSellerProfileSlugNumberAsync();
+
+        Task<List<SlugInfo>> GetAllSellerSlugsAsync();
+
+
 
 
 

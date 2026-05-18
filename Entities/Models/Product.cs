@@ -17,12 +17,15 @@ namespace Entities.Models
         public Category? Category { get; set; }
         public SubCategory? SubCategory { get; set; }
         public SubCategoryCategory? SubCategoryCategory { get; set; }
+        public bool HiddenOnHome { get; set; }=false;
         public decimal Price { get; set; }
         public decimal OldPrice { get; set; }
         public bool IsActive { get; set; } = true;
         public bool IsDeleted { get; set; }
         public bool IsFeatured { get; set; }
         public bool HasImage { get; set; }
+        public string Manufacturer { get; set; } = string.Empty;
+
         public string Description { get; set; } = string.Empty;
         public string Condition { get; set; } = string.Empty;
         public string Slug { get; set; }= string.Empty;

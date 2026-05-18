@@ -6,8 +6,10 @@ using Microsoft.Extensions.Primitives;
 using Repository.context;
 using Shared.Dtos;
 using Shared.RequestFeatures;
+using System.Data;
 using System.Linq.Expressions;
 using System.Security.Cryptography;
+using System.Threading;
 
 namespace Repository.Repos;
 
@@ -16,8 +18,7 @@ public sealed class ProductRepo : RepositoryBase<Product>, IProductRepo
     private readonly ApplicationDbContext _context;
     private readonly IMemoryCache _cache;
 
-    private CancellationTokenSource _productCacheReset = new();
-
+    private static CancellationTokenSource _productCacheReset = new();
     private const string UnknownSeller = "Unknown Seller";
     private const string DefaultCategory = "Not Categorised";
 
@@ -187,6 +188,8 @@ public sealed class ProductRepo : RepositoryBase<Product>, IProductRepo
             $"{p.PageSize}:{p.ProductName}:{p.MinPrice}:{p.MaxPrice}";
 
         public const string HomePageCustom = "homepage-custom";
+        public static string LatestFeatured(int pageNumber, int pageSize) =>
+    $"latest-featured:{pageNumber}:{pageSize}";
     }
 
     // ============================================================
@@ -217,6 +220,27 @@ public sealed class ProductRepo : RepositoryBase<Product>, IProductRepo
     // ============================================================
 
     public Task<int> NumberOfProducts() => BaseQuery().CountAsync();
+
+    //public async Task<long> NextProductSlugNumberAsync() =>
+    //await _context.Database.SqlQuery<long>(
+    //    $"SELECT NEXT VALUE FOR ProductSlugSeq").SingleAsync();
+
+    public async Task<long> NextProductSlugNumberAsync()
+    {
+        var connection = _context.Database.GetDbConnection();
+
+        if (connection.State != ConnectionState.Open)
+            await connection.OpenAsync();
+
+        await using var command = connection.CreateCommand();
+
+        command.CommandText = "SELECT NEXT VALUE FOR ProductSlugSeq";
+
+        var result = await command.ExecuteScalarAsync();
+
+        return Convert.ToInt64(result);
+    }
+
 
     public Task<Guid> GetProductIdBySlugName(string slug) =>
         BaseQuery()
@@ -350,7 +374,7 @@ public sealed class ProductRepo : RepositoryBase<Product>, IProductRepo
     // ============================================================
 
     public async Task<PagedList<HomePageProductDto>> GetHomePageProducts(
-        ProductRequestParameters request)
+        ProductRequestParameters request, CancellationToken ct = default)
     {
         var cached = await GetOrCreateCacheAsync(CacheKeys.HomePage(request), async () =>
         {
@@ -387,11 +411,37 @@ public sealed class ProductRepo : RepositoryBase<Product>, IProductRepo
                 .Skip((request.PageNumber - 1) * request.PageSize)
                 .Take(request.PageSize)
                 .Select(HomeProductProjection)
-                .ToListAsync();
+                .ToListAsync(ct);
 
             return PagedList<HomePageProductDto>.ToPagedList(
                 items, request.PageNumber, request.PageSize);
         });
+
+        return cached!;
+    }
+
+
+    public async Task<PagedList<HomePageProductDto>> GetOtherProducts(
+       ProductRequestParameters request)
+    {
+        var cached = await GetOrCreateCacheAsync(
+            CacheKeys.LatestFeatured(request.PageNumber, request.PageSize),
+            async () =>
+            {
+                var items = await BaseQuery()
+                    .Where(p => p.IsActive
+                             && p.SellerProfileId != Guid.Empty)
+                    .OrderByDescending(p => p.IsFeatured)       // featured first (true > false)
+                    .ThenByDescending(p => p.CreatedAt)         // then newest within each group
+                    .Skip((request.PageNumber - 1) * request.PageSize)
+                    .Take(request.PageSize)
+                    .Select(HomeProductProjection)
+                    .ToListAsync();
+
+                return PagedList<HomePageProductDto>.ToPagedList(
+                    items, request.PageNumber, request.PageSize);
+            },
+            minutes: 5);
 
         return cached!;
     }
@@ -798,4 +848,35 @@ public sealed class ProductRepo : RepositoryBase<Product>, IProductRepo
         var bytes = ordered.SelectMany(x => x.ToByteArray()).ToArray();
         return Convert.ToHexString(md5.ComputeHash(bytes));
     }
+
+    // ProductRepo
+    public Task<List<SlugInfo>> GetAllProductSlugsAsync() =>
+        BaseQuery()
+            .Where(p => p.IsActive)
+            .Select(p => new SlugInfo
+            {
+                Slug = p.Slug,
+                UpdatedAt =  p.CreatedAt
+            })
+            .ToListAsync();
+
+    public Task<ProductPreviewDto?> FindProductBySlugForPreviewAsync(string slug) =>
+    BaseQuery()
+        .Where(p => p.Slug == slug && p.IsActive)
+        .Select(p => new ProductPreviewDto
+        {
+            ProductId = p.ProductId,
+            Slug = p.Slug,
+            ProductName = p.ProductName,
+            Description = p.Description,            
+            Price = p.Price,
+            SellerName = p.SellerProfile != null ? p.SellerProfile.SellerName : null,
+            PrimaryImageId = p.Images
+                .OrderByDescending(i => i.IsPrimary)
+                .Select(i => i.ProductImageId.ToString())
+                .FirstOrDefault()
+        })
+        .FirstOrDefaultAsync();
+
+    // Repeat the pattern in SellerRepo and CategoryRepo
 }

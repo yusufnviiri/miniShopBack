@@ -26,8 +26,29 @@ namespace Repository.context
             ConfigureFilters(modelBuilder);
             ConfigureIndexes(modelBuilder);
             SeedUserData(modelBuilder);
+                CreateSlugReference(modelBuilder);
         }
+        private void CreateSlugReference(ModelBuilder modelBuilder)
+        {
 
+
+            modelBuilder.HasSequence<long>("ProductSlugSeq")
+                .StartsAt(1)
+                .IncrementsBy(1);
+            modelBuilder.HasSequence<long>("TradeSlugSeq")
+                .StartsAt(1)
+                .IncrementsBy(1);
+
+            modelBuilder.HasSequence<long>("UserSlugSeq")
+                .StartsAt(1)
+                .IncrementsBy(1);
+            modelBuilder.HasSequence<long>("UserGroupSlugSeq")
+            .StartsAt(1)
+            .IncrementsBy(1);
+            modelBuilder.HasSequence<long>("SellerProfileSlugSeq")
+.StartsAt(1)
+.IncrementsBy(1);
+        }
         private void SeedUserData(ModelBuilder modelBuilder)
         {
             string appUserAId = "42cd3af3-f319-4118-a604-4442d487b923";

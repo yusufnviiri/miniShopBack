@@ -88,9 +88,9 @@ namespace Services
     
         var userGroupEntity = _mapper.Map<UserGroup>(userGroup);
             await _repoManager.SaveRepoDataAsync();
-            var numberOfUserGroups = await _repoManager.UserGroupRepo.NumberOfUserGroups();
+            var numberOfUserGroups = await _repoManager.UserGroupRepo.NextUserGroupSlugNumberAsync();
 
-            userGroupEntity.Slug = $"groups={CreateUserGroupSlug(userGroup.UserGroupName)}-{numberOfUserGroups + 1}";
+            userGroupEntity.Slug = $"{CreateUserGroupSlug(userGroup.UserGroupName)}-{numberOfUserGroups}";
 
             userGroupEntity.AddressId=addressEntity.AddressId;
           var newGroupId =  _repoManager.UserGroupRepo.CreateUserGroup(userGroupEntity);
@@ -120,8 +120,8 @@ namespace Services
                     3 => 3,
                     _ => 2,
                 };
-                var numberOfSellers = await _repoManager.SellerProfileRepo.NumberOfSellers();
-                sellerProfile.Slug = $"seller={CreateUserGroupSlug(sellerProfile.SellerName)}-{numberOfSellers + 1}";
+                var numberOfSellers = await _repoManager.SellerProfileRepo.NextSellerProfileSlugNumberAsync();
+                sellerProfile.Slug = $"{CreateUserGroupSlug(sellerProfile.SellerName)}-{numberOfSellers}";
                 _repoManager.SellerProfileRepo.CreateSellerProfile(sellerProfile);
                 await _repoManager.SaveRepoDataAsync();
                 await _userGroupIndexer.QueueIndexAsync(newGroupId, ct);

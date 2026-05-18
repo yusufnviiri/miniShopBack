@@ -4,6 +4,7 @@ using Entities.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http.Json;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Caching.Memory;
@@ -13,6 +14,7 @@ using Services;
 using Services.Redis;
 using Shared.Dtos;
 using Shared.RequestFeatures;
+using System.Text.Json;
 
 namespace Presentation
 {
@@ -48,7 +50,7 @@ namespace Presentation
 
       
         [HttpGet("searchproducts")]
-        public async Task<IActionResult> Search([FromQuery] string query)
+        public  IActionResult Search([FromQuery] string query)
         {
             //var results = await _searchService.Search(query);
             //return Ok(results);
@@ -56,22 +58,30 @@ namespace Presentation
         }
 
         [HttpGet]
-        public async Task<ActionResult> GetAllProducts([FromQuery]ProductRequestParameters parameters)
+        [ProducesResponseType(typeof(IEnumerable<HomePageProductDto>), StatusCodes.Status200OK)]
+        public async Task<IActionResult> GetAllProducts(
+       [FromQuery] ProductRequestParameters parameters,
+       CancellationToken cancellationToken)
         {
-       
-                     
-            var products = await _service.ProductService.GetHomePageProductsAsync( parameters);
+            var result = await _service.ProductService
+                .GetHomePageProductsAsync(parameters, cancellationToken);
 
-            var pagination = System.Text.Json.JsonSerializer.Serialize(products.MetaData);
-            Response.Headers.Append("X-Pagination", pagination);
-            return Ok(products.productsData);
+            Response.Headers.Append(
+                "X-Pagination",
+                System.Text.Json.JsonSerializer.Serialize(result.MetaData, _jsonOptions));
+
+            return Ok(result.productsData);
         }
+
+
+        private static readonly JsonSerializerOptions _jsonOptions = new()
+        {
+            PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+        };
 
         [HttpGet("index")]
         public async Task<ActionResult> HomePageProducts([FromQuery] ProductRequestParameters parameters)
         {
-           
-
             var products = await _service.ProductService.GetHomePageProductsAsync(parameters);
             var pagination = System.Text.Json.JsonSerializer.Serialize(products.MetaData);
             Response.Headers.Append("X-Pagination", pagination);
@@ -81,21 +91,21 @@ namespace Presentation
 
 
         [HttpGet("{id:Guid}", Name = "ProductById")]
-        public async Task<ActionResult> GetProductData(Guid id)
+        public async Task<IActionResult> GetProductData(Guid id)
         {
             var product = await _service.ProductService.GetProductDataAsync(id);
             return Ok(product);
         }
 
         [HttpGet("{slugName}", Name = "ProductBySlugName")]
-        public async Task<ActionResult> GetProductDataBySlugName(string slugName)
+        public async Task<IActionResult> GetProductDataBySlugName(string slugName)
         {
             var product = await _service.ProductService.GetProductDataBySlugNameAsync(slugName);
             return Ok(product);
         }
 
         [HttpPost("makeproductfeatured")]
-        public async Task<ActionResult> ToggleProductFeaturedState([FromBody] MiniProductImageDto imageDto )
+        public async Task<IActionResult> ToggleProductFeaturedState([FromBody] MiniProductImageDto imageDto )
         {
             if(imageDto==null || imageDto.ProductId == Guid.Empty)
             {
@@ -176,17 +186,18 @@ namespace Presentation
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateProduct([FromForm] string payload, [FromForm] List<IFormFile> images)
+        public async Task<IActionResult> CreateProduct(
+     [FromForm] string payload,
+     [FromForm] List<IFormFile> images)
         {
+            // --- Validate inputs ---
             if (string.IsNullOrWhiteSpace(payload))
-                return BadRequest( new { message = "Payload is required." });
+                return BadRequest(new { message = "Payload is required." });
 
-            if(images.Count == 0)
-            {
-                return BadRequest(new { message = "Product image is required" });
+            if (images is null || images.Count == 0)
+                return BadRequest(new { message = "Product image is required." });
 
-            }
-
+            // --- Parse payload ---
             JObject jsonNode;
             try
             {
@@ -194,86 +205,78 @@ namespace Presentation
             }
             catch (JsonReaderException)
             {
-                return BadRequest("Invalid JSON payload.");
+                return BadRequest(new { message = "Invalid JSON payload." });
             }
 
-            // Map basic product info
+            var sellerIdString = jsonNode["sellerId"]?.Value<string>();
+            if (!Guid.TryParse(sellerIdString, out var sellerId))
+                return BadRequest(new { message = "Invalid SellerId." });
+
+            var price = jsonNode["price"]?.Value<decimal>() ?? 0;
+            var oldPriceRate = Math.Round(1m + (decimal)_random.NextDouble(), 1);
+
             var productDto = new NewProductDto
             {
                 ProductName = jsonNode["productName"]?.Value<string>() ?? string.Empty,
                 Description = jsonNode["description"]?.Value<string>() ?? string.Empty,
                 Condition = jsonNode["condition"]?.Value<string>() ?? string.Empty,
-
-                Price = jsonNode["price"]?.Value<decimal>() ?? 0,
+                Price = price,
                 CategoryId = jsonNode["categoryId"]?.Value<int>() ?? 0,
                 SubCategoryId = jsonNode["subCategoryId"]?.Value<int>() ?? 0,
                 SubCategoryCategoryId = jsonNode["subCategoryCategoryId"]?.Value<int>() ?? 0,
-              
-
+                SellerId = sellerId,
+                OldPrice = Math.Abs(price * oldPriceRate),
+                HasImage = true,
             };
 
-            // Parse SellerId safely
-            decimal OldPriceRate = Math.Round(1m + (decimal)_random.NextDouble(), 1);
+            // --- Filter usable files ---
+            var validImages = images.Where(f => f.Length > 0).ToList();
+            if (validImages.Count == 0)
+                return BadRequest(new { message = "Product image is required." });
 
-            var sellerIdString = jsonNode["sellerId"]?.Value<string>();
-            if (!Guid.TryParse(sellerIdString, out var sellerId))
-                return BadRequest("Invalid SellerId.");
-            productDto.SellerId = sellerId;
-            productDto.OldPrice = Math.Abs(productDto.Price * OldPriceRate);
+            // --- Write all images to temp disk in parallel ---
+            // Each write happens concurrently rather than awaiting one after another.
+            // Memory stays low (no buffering full bytes), and disk is durable across
+            // app pool recycles so the background worker can resume if needed.
+            var tempDir = Path.Combine(_env.ContentRootPath, "uploads", "tmp");
+            Directory.CreateDirectory(tempDir);
 
-            // Map attributes
-           
-            if (images?.Count > 0)
+            var savedFiles = await Task.WhenAll(validImages.Select(async file =>
             {
-                productDto.HasImage = true;
-            }
+                var imageId = Guid.NewGuid();
+                var tempPath = Path.Combine(tempDir, $"{imageId}.bin");
 
-                // Create product
-                var product = await _service.ProductService.CreateProductAsync(productDto);
+                await using var stream = System.IO.File.Create(tempPath);
+                await file.CopyToAsync(stream);
 
-            // Process images
-            if (images?.Count > 0)
+                return (ImageId: imageId, TempPath: tempPath);
+            }));
+
+            // --- Create the product ---
+            var product = await _service.ProductService.CreateProductAsync(productDto);
+
+            // --- Build ProductImage rows and enqueue background jobs ---
+            var productImages = new List<ProductImage>(savedFiles.Length);
+            foreach (var (imageId, tempPath) in savedFiles)
             {
-                var productImages = new List<ProductImage>();
-                foreach (var file in images)
+                productImages.Add(new ProductImage
                 {
-                    if (file.Length == 0) continue;
+                    ProductImageId = imageId,
+                    ProductId = product.ProductId,
+                    Folder = $"images/products/{product.ProductId}",
+                    FileName = imageId.ToString(),
+                    IsPrimary = false,
+                    IsProcessed = false,
+                    CreatedAt = DateTime.UtcNow,
+                });
 
-                    var imageId = Guid.NewGuid();
-
-                    var tempDir = Path.Combine(_env.ContentRootPath, "uploads", "tmp");
-                    Directory.CreateDirectory(tempDir);
-                    var tempPath = Path.Combine(tempDir, $"{imageId}.bin");
-
-
-                    await using (var stream = System.IO.File.Create(tempPath))
-                        await file.CopyToAsync(stream);
-
-                    _jobQueue.Enqueue(new ImageJob(imageId, product.ProductId, tempPath));
-
-
-                    ProductImage productImage = new ProductImage()
-                    {
-                        ProductImageId = imageId,
-                        ProductId = product.ProductId,
-                        Folder = $"images/products/{product.ProductId}",
-                        FileName = imageId.ToString(),
-                        IsPrimary = false,
-                        IsProcessed = false,
-                        CreatedAt = DateTime.UtcNow,
-                    };
-                    productImages.Add(productImage);
-                }
-
-                if (productImages.Count > 0)
-                  await _service.ProductImageService.CreateProductImageListAsync(productImages);
+                _jobQueue.Enqueue(new ImageJob(imageId, product.ProductId, tempPath));
             }
+
+            await _service.ProductImageService.CreateProductImageListAsync(productImages);
 
             return Ok(new { data = product.Slug });
-
-            //return Ok(new { message = "Product Added" });
         }
-
 
         [HttpPost("primary-image")]
         public async Task<ActionResult> MakeImagePrimary([FromBody] MiniProductImageDto miniProduct)
@@ -382,6 +385,17 @@ namespace Presentation
             }
             await _service.ProductImpressionService.CreateProductImpressionAsync(newImpression);
             return Ok(new { message = "success" });
+        }
+
+
+        [HttpGet("by-slug/{slug}")]
+        public async Task<ActionResult> GetProductBySlug(string slug)
+        {
+            var product = await _service.ProductService.FindProductBySlugForPreviewAsync(slug);
+              // your existing service method
+
+            if (product == null) return NotFound();
+            return Ok(product);
         }
 
     }
