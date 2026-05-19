@@ -3050,7 +3050,33 @@
         ],
         "responses": {
           "200": {
-            "description": "Success"
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/HomePageTradeDto"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/HomePageTradeDto"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/HomePageTradeDto"
+                  }
+                }
+              }
+            }
           }
         }
       },
@@ -5178,6 +5204,51 @@
           "score": {
             "type": "number",
             "format": "float"
+          }
+        },
+        "additionalProperties": false
+      },
+      "HomePageTradeDto": {
+        "type": "object",
+        "properties": {
+          "tradeId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "tradeName": {
+            "type": "string",
+            "nullable": true
+          },
+          "category": {
+            "type": "string",
+            "nullable": true
+          },
+          "isFeatured": {
+            "type": "boolean"
+          },
+          "sellerProfileId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "tradeImageId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "sellerName": {
+            "type": "string",
+            "nullable": true
+          },
+          "tradeSlugName": {
+            "type": "string",
+            "nullable": true
+          },
+          "sellerSlugName": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false

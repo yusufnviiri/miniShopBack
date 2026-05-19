@@ -335,7 +335,7 @@ public sealed class TradeRepo : RepositoryBase<Trade>, ITradeRepo
 
     public async Task<PagedList<HomePageTradeDto>>
         GetHomePageTrades(
-            ProductRequestParameters request)
+            ProductRequestParameters request, CancellationToken ct = default)
     {
         var cacheKey =
             CacheKeys.HomePageTrades(request);
@@ -388,7 +388,7 @@ public sealed class TradeRepo : RepositoryBase<Trade>, ITradeRepo
                             request.PageSize)
                         .Take(request.PageSize)
                         .Select(HomeTradeProjection)
-                        .ToListAsync();
+                        .ToListAsync(ct);
 
                     return PagedList<HomePageTradeDto>
                         .ToPagedList(

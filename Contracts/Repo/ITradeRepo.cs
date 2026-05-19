@@ -12,7 +12,7 @@ namespace Contracts.Repo
     public interface ITradeRepo
     {
 
-        Task<PagedList<HomePageTradeDto>> GetHomePageTrades(ProductRequestParameters requestParameters);
+        Task<PagedList<HomePageTradeDto>> GetHomePageTrades(ProductRequestParameters requestParameters, CancellationToken ct = default);
         Task<TradeDataDto?> GetTradeData(Guid tradeId);
         Task<ShowTradeDataDto?> FindSellerTrade(Guid TradeId);
         Task MakeTradeFeautured(Guid tradeId);

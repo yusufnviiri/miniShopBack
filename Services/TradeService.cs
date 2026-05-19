@@ -47,9 +47,9 @@ namespace Services
         {
             return _slugService.Generate(name);
         }
-        public async Task<(ICollection<HomePageTradeDto> tradersData, MetaData MetaData)> GetHomePageTradesAsync(ProductRequestParameters requestParameters)
+        public async Task<(ICollection<HomePageTradeDto> tradersData, MetaData MetaData)> GetHomePageTradesAsync(ProductRequestParameters requestParameters, CancellationToken ct = default)
         {
-            var tradesPagedList = await _repoManager.TradeRepo.GetHomePageTrades(requestParameters);
+            var tradesPagedList = await _repoManager.TradeRepo.GetHomePageTrades(requestParameters,ct);
             return (tradersData: tradesPagedList, tradesPagedList.MetaData);
         }
         public async Task<TradeDataDto?> GetTradeDataAsync(Guid tradeId)

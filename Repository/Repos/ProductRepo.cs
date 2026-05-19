@@ -147,7 +147,7 @@ public sealed class ProductRepo : RepositoryBase<Product>, IProductRepo
     private async Task<T?> GetOrCreateCacheAsync<T>(
         string key,
         Func<Task<T?>> factory,
-        int minutes = 20)
+        int minutes = 50)
     {
         return await _cache.GetOrCreateAsync(key, async entry =>
         {

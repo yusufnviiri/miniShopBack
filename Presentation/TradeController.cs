@@ -8,6 +8,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Shared.Dtos;
 using Shared.RequestFeatures;
+using System.Text.Json;
 
 namespace Presentation
 {
@@ -34,19 +35,52 @@ namespace Presentation
             //_context = context;
         }
 
+        //[HttpGet]
+        //public async Task<ActionResult> GetAllHomePageTrades([FromQuery] ProductRequestParameters parameters)
+        //{
+
+        //    var trades = await _service.TradeService.GetHomePageTradesAsync(parameters);
+
+        //    var pagination = System.Text.Json.JsonSerializer.Serialize(trades.MetaData);
+        //    Response.Headers.Append("X-Pagination", pagination);
+        //    return Ok(trades.tradersData);
+        //}
+
+
+
         [HttpGet]
-        public async Task<ActionResult> GetAllHomePageTrades([FromQuery] ProductRequestParameters parameters)
+        [ProducesResponseType(typeof(IEnumerable<HomePageTradeDto>), StatusCodes.Status200OK)]
+        public async Task<IActionResult> GetAllHomePageTrades(
+      [FromQuery] ProductRequestParameters parameters,
+      CancellationToken cancellationToken)
         {
+            var result = await _service.TradeService
+                .GetHomePageTradesAsync(parameters, cancellationToken);
 
-            var trades = await _service.TradeService.GetHomePageTradesAsync(parameters);
+            Response.Headers.Append(
+                "X-Pagination",
+                System.Text.Json.JsonSerializer.Serialize(result.MetaData, _jsonOptions));
 
-            var pagination = System.Text.Json.JsonSerializer.Serialize(trades.MetaData);
-            Response.Headers.Append("X-Pagination", pagination);
-            return Ok(trades.tradersData);
+            return Ok(result.tradersData);
         }
 
-      
-            [HttpPost("maketradefeatured")]
+
+        private static readonly JsonSerializerOptions _jsonOptions = new()
+        {
+            PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+        };
+
+
+
+
+
+
+
+
+
+
+
+        [HttpPost("maketradefeatured")]
         public ActionResult MakeTradeFeatured(Guid id)
         {
             _service.TradeService.MakeTradeFeautured(id);

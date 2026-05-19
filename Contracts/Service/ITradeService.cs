@@ -13,7 +13,7 @@ namespace Contracts.Service
     {
 
 
-        Task<(ICollection<HomePageTradeDto> tradersData, MetaData MetaData)> GetHomePageTradesAsync(ProductRequestParameters requestParameters);
+        Task<(ICollection<HomePageTradeDto> tradersData, MetaData MetaData)> GetHomePageTradesAsync(ProductRequestParameters requestParameters, CancellationToken ct = default);
         Task<TradeDataDto?> GetTradeDataAsync(Guid tradeId);
         Task<ShowTradeDataDto?> FindSellerTradeAsync(Guid TradeId);
         Task<Trade?> FindTradeForUpdateAsync(Guid tradeId);
