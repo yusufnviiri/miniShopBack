@@ -174,16 +174,8 @@ namespace Services
         }
         public async Task ToggleProductFeaturedState(Guid productId)
         {
-            var productForUpdate = await _repoManager.ProductRepo.FindProductForUpdate(productId);
-            if (productForUpdate != null)
-            {
-                productForUpdate.IsFeatured = !productForUpdate.IsFeatured;
-                await _repoManager.SaveRepoDataAsync();
-            }
-            else
-            {
-                throw new ObjectBadRequestExeption($"product with id {productId} not found");
-            }
+            await _repoManager.ProductRepo.ToggleProductFeaturedState(productId);
+
 
         }
 

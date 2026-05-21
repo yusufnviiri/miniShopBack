@@ -1,5 +1,6 @@
 ﻿using Entities.Models;
 using Shared.Dtos;
+using Shared.RequestFeatures;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +11,7 @@ namespace Contracts.Repo
 {
     public interface IUserGroupRepo
     {
-        Task<IEnumerable<ShowUserGroupDto>> GetUserGroups();
+        Task<PagedList<ShowUserGroupDto>> GetUserGroups(GeneralRequestParameters parameters , CancellationToken cancellationToken);
 
         Task<ShowUserGroupDto?> GetUserGroupById(Guid userGroupId);
 

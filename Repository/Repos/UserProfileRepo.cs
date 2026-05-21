@@ -1,8 +1,10 @@
 ﻿using Contracts.Repo;
 using Entities.Models;
+using Lucene.Net.Index;
 using Microsoft.EntityFrameworkCore;
 using Repository.context;
 using Shared.Dtos;
+using Shared.RequestFeatures;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -20,6 +22,9 @@ namespace Repository.Repos
         {
             _context = dbContext;
         }
+
+
+
 
         public async Task<IEnumerable<UserProfileDto>> GetAllUserProfilesWithoutGroups()
         {
@@ -42,13 +47,52 @@ namespace Repository.Repos
         }
 
 
-        public async Task<IEnumerable<UserProfileDto>> GetSellerUserProfiles()
+
+
+
+        public async Task<PagedList<UserProfileDto>> GetSellerUserProfiles(
+        UserRequestParameters request,
+        CancellationToken cancellationToken = default)
         {
-            return await FindByCondition(p => p.SellerProfileId != Guid.Empty && p.SellerProfile != null && p.ActiveGroupId == null, false)
+            // 1) Base query: active sellers without a current group
+            var query = FindByCondition(
+                p => p.SellerProfileId != null
+                  && p.SellerProfileId != Guid.Empty
+                  && p.SellerProfile != null
+                  && p.ActiveGroupId == null,
+                trackChanges: false);
+
+            // 2) Ordering — always applied, with a stable tie-breaker
+            query = request.OrderBy switch
+            {
+                "name-desc" => query
+                    .OrderByDescending(p => p.IdentityUser.FirstName)
+                    .ThenByDescending(p => p.IdentityUser.LastName)
+                    .ThenBy(p => p.UserProfileId),
+                "newest" => query
+                    .OrderByDescending(p => p.CreatedAt)
+                    .ThenBy(p => p.UserProfileId),
+                _ => query
+                    .OrderBy(p => p.IdentityUser.FirstName)
+                    .ThenBy(p => p.IdentityUser.LastName)
+                    .ThenBy(p => p.UserProfileId),
+            };
+
+            // 3) Count BEFORE paging so PagedList metadata is correct
+            var totalCount = await query.CountAsync(cancellationToken);
+
+            // 4) Page + project in a single query
+            var users = await query
+                .Skip((request.PageNumber - 1) * request.PageSize)
+                .Take(request.PageSize)
                 .Select(p => new UserProfileDto
                 {
                     UserProfileId = p.UserProfileId,
-                    IsSeller = p.SellerProfileId != Guid.Empty && p.SellerProfileId != null ? true : false,
+                    SlugName = p.Slug,
+                    IsSeller = true,   // filter guarantees this
+                    SellerSlugName = p.SellerProfile.Slug,
+                    CreatedAt = p.CreatedAt,
+
                     ApplicationUser = new ShowApplicationUserDto
                     {
                         IdentityUserId = p.IdentityUserId,
@@ -57,34 +101,66 @@ namespace Repository.Repos
                         PhoneNumber = p.IdentityUser.PhoneNumber,
                         City = p.Address != null ? p.Address.City : "Not Specified",
                         Country = p.Address != null ? p.Address.Country : "Not Specified",
-                        Company = p.SellerProfile != null ? p.SellerProfile.SellerName : "Not Specified",
+                        Company = p.SellerProfile.SellerName,
                         SellerId = p.SellerProfileId,
-                        SlugName = p.Slug
-
-
+                        SlugName = p.Slug,
                     },
-                    SlugName = p.Slug,
-                    SellerSlugName= p.SellerProfileId != Guid.Empty && p.SellerProfile != null ? p.SellerProfile.Slug : "Not Specified",
-
-                    CreatedAt = p.CreatedAt
                 })
-                .ToListAsync();
+                .ToListAsync(cancellationToken);
+
+            return new PagedList<UserProfileDto>(
+                users, totalCount, request.PageNumber, request.PageSize);
         }
 
-
-
-        public async Task<IEnumerable<UserProfileDto>> GetAllUserProfiles()
+        public async Task<PagedList<UserProfileDto>> GetAllUserProfiles(
+        UserRequestParameters request,
+        CancellationToken cancellationToken = default)
         {
-            return await FindAll(false)
+            // 1) Build the filtered query (no ordering yet)
+            var query = FindAll(trackChanges: false);
+
+            query = request.Filter switch
+            {
+                "grouped" => query.Where(p => p.GroupMemberships.Any()),
+                "with-details" => query.Where(p => p.IdentityUserId != null),
+                _ => query,
+            };
+
+            // 2) Apply ordering — ALWAYS, before paginating.
+            //    "recent" is just a name for the default order here.
+            query = request.OrderBy switch
+            {
+                "name" => query.OrderBy(p => p.IdentityUser.FirstName)
+                               .ThenBy(p => p.IdentityUser.LastName),
+                _ => query.OrderByDescending(p => p.CreatedAt),
+            };
+
+            // 3) Count the filtered set BEFORE paging (one cheap SQL COUNT)
+            var totalCount = await query.CountAsync(cancellationToken);
+
+            // 4) Page + project in a single query
+            var users = await query
+                .Skip((request.PageNumber - 1) * request.PageSize)
+                .Take(request.PageSize)
+                .AsSplitQuery()
                 .Select(p => new UserProfileDto
                 {
                     UserProfileId = p.UserProfileId,
-                    SlugName=p.Slug,
-                    IsSeller = p.SellerProfileId != Guid.Empty && p.SellerProfileId != null ? true : false,
+                    SlugName = p.Slug,
+                    IsSeller = p.SellerProfileId != null
+                                 && p.SellerProfileId != Guid.Empty,
+                    CreatedAt = p.CreatedAt,
 
+                    ApplicationUser = new ShowApplicationUserDto
+                    {
+                        IdentityUserId = p.IdentityUserId,
+                        FirstName = p.IdentityUser.FirstName,
+                        LastName = p.IdentityUser.LastName,
+                        SlugName = p.Slug,
+                    },
 
-                    UserGroups = p.GroupMemberships.Any()
-                        ? p.GroupMemberships.Select(g => new ShowUserGroupDto
+                    UserGroups = p.GroupMemberships
+                        .Select(g => new ShowUserGroupDto
                         {
                             UserGroupId = g.Group.UserGroupId,
                             UserGroupName = g.Group.UserGroupName,
@@ -92,23 +168,91 @@ namespace Repository.Repos
                             Region = g.Group.Address.Region,
                             Country = g.Group.Address.Country,
                             Company = g.Group.Address.Company,
-                            UserGroupSlugName=g.Group.Slug
-                            
-                        }).ToList()
-                        : new List<ShowUserGroupDto>(),
-
-                    ApplicationUser = new ShowApplicationUserDto
-                    {
-                        IdentityUserId = p.IdentityUserId,
-                        FirstName = p.IdentityUser.FirstName,
-                        LastName = p.IdentityUser.LastName,
-                        SlugName=p.Slug
-                    },
-
-                    CreatedAt = p.CreatedAt
+                            UserGroupSlugName = g.Group.Slug,
+                        })
+                        .ToList(),
                 })
-                .ToListAsync();
+                .ToListAsync(cancellationToken);
+
+            return new PagedList<UserProfileDto>(
+                users, totalCount, request.PageNumber, request.PageSize);
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         public async Task<UserProfileDto?> ShowUserProfile(Guid UserProfileId)
         {
 

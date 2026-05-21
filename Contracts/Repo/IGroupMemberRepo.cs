@@ -11,8 +11,8 @@ namespace Contracts.Repo
     public interface IGroupMemberRepo
     {
         Task<IEnumerable<ShowGroupMemberDto>> GetAllGroupMembers();
+        IQueryable<GroupMember> GroupMembersQuery(bool tracking);
         Task<IEnumerable<GroupMemberRolesDto>> GetAllMemberRoles(Guid userProfileId);
-
         Task<ShowGroupMemberDto?> GetGroupMemberById(Guid userGroupId, Guid userProfileId, bool tracking);
         Task<GroupMember?> FindGroupMemberById(Guid memberId, bool tracking);
         Task<GroupMember?> FindGroupMemberByUserProfileId(Guid userProfileId);
@@ -22,6 +22,7 @@ namespace Contracts.Repo
         void UpdateGroupMember(GroupMember groupMember);
         void DeleteGroupMember(GroupMember groupMember);
         Task<IReadOnlyList<Guid>> GetGroupMemberProfileIds(Guid groupId);
+        void DeleteGroupMembers(ICollection<GroupMember> members);
 
     }
 }

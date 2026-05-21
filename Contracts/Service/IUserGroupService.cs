@@ -1,5 +1,6 @@
 ﻿using Entities.Models;
 using Shared.Dtos;
+using Shared.RequestFeatures;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +11,10 @@ namespace Contracts.Service
 {
     public interface IUserGroupService
     {
-        Task<IEnumerable<ShowUserGroupDto>> GetUserGroupsAsync();
+
+
+        Task<(ICollection<ShowUserGroupDto> groupsData, MetaData MetaData)> GetUserGroupsAsync(GeneralRequestParameters requestParameters, CancellationToken cancellationToken);
+
         Task<ShowUserGroupDto?> GetUserGroupByIdAsync(Guid userGroupId);
 
         Task<ShowuserGroupWithMembersDto?> GetUserGroupWithMembersAsync(Guid userGroupId);

@@ -15,5 +15,6 @@ namespace Contracts.Repo
         void CreateBase(T entity);
         void UpdateBase(T entity);
         void DeleteBase(T entity);
+        void DeleteRange(IEnumerable<T> entities);
     }
 }

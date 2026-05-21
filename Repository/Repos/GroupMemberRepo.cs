@@ -77,6 +77,10 @@ namespace Repository.Repos
             return await FindByCondition(m => m.GroupMemberId == memberId, tracking).FirstOrDefaultAsync();
 
         }
+        public IQueryable<GroupMember> GroupMembersQuery(bool tracking)
+        {
+            return FindAll(tracking);
+        }
         public async Task<GroupMember?> FindGroupMemberByUserProfileId(Guid userProfileId)
         {
             return await FindByCondition(m => m.UserProfileId == userProfileId, false).Select(p=>new GroupMember() {GroupMemberId=p.GroupMemberId,UserGroupId=p.UserGroupId,UserProfileId=p.UserProfileId,GroupRoleId=p.GroupRoleId,MemberStatusId=p.MemberStatusId }).FirstOrDefaultAsync();
@@ -89,6 +93,9 @@ namespace Repository.Repos
             return await FindByCondition(m => m.UserProfileId == userProfileId&&m.UserGroupId==userGroupId, tracking).Select(p => new GroupMember() { GroupMemberId = p.GroupMemberId, UserGroupId = p.UserGroupId, UserProfileId = p.UserProfileId, GroupRoleId = p.GroupRoleId, MemberStatusId = p.MemberStatusId }).FirstOrDefaultAsync();
 
         }
+
+        public void DeleteGroupMembers(ICollection<GroupMember> members)=>DeleteRange(members);
+
 
 
 

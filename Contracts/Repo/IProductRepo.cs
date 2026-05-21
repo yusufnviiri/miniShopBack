@@ -23,6 +23,8 @@ namespace Contracts.Repo
         Task<ShowProductDto?> FindProductById(bool tracking, Guid productId);
         Task<ShowProductDto?> FindProductBySlugName(bool tracking, string slugName);
 
+        Task ToggleProductFeaturedState(Guid productId);
+
         Task<ProductDataDto?> GetProductData( Guid productId);
         Task<ProductDataDto?> GetProductDataUsingSlugName(string slugName);
         Task<ShowProductDto?> FindSellerProduct( Guid productId);

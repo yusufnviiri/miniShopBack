@@ -1,12 +1,15 @@
 ﻿using Contracts.Service;
 using Entities.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Shared.Dtos;
+using Shared.RequestFeatures;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace Presentation
@@ -23,14 +26,43 @@ namespace Presentation
         {
             _service = service;
         }
+     
+
+
+
+
         [HttpGet]
-        public async Task<ActionResult> GetAllUserGroups()
+        [ProducesResponseType(typeof(IEnumerable<ShowUserGroupDto>), StatusCodes.Status200OK)]
+        public async Task<IActionResult> GetSellerUserProfilesAsync([FromQuery] GeneralRequestParameters parameters, CancellationToken cancellationToken)
         {
+            var result = await _service.UserGroupService.GetUserGroupsAsync(parameters,cancellationToken);
 
-            var groups = await _service.UserGroupService.GetUserGroupsAsync();
-            return Ok(groups);
+            Response.Headers.Append(
+                "X-Pagination",
+                System.Text.Json.JsonSerializer.Serialize(result.MetaData, _jsonOptions));
 
+            return Ok(result.groupsData);
         }
+
+
+        private static readonly JsonSerializerOptions _jsonOptions = new()
+        {
+            PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+        };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         [HttpGet("{id:Guid}", Name = "userGroupById")]
         public async Task<ActionResult> GetUserGroup(Guid id)
         {
@@ -120,6 +152,18 @@ namespace Presentation
             var groupshop = await _service.SellerProfileService.GetGroupShopDisplayBySlugAsync(slug);
             return Ok(groupshop);
         }
+
+
+
+        [HttpDelete("{groupId}/delete")]
+        public async Task<ActionResult> DeleteGroup([FromRoute] Guid groupId)
+        {
+            if (groupId == Guid.Empty) { return BadRequest("Id is zero"); }
+            await _service.UserGroupService.DeleteUserGroupAsync(groupId);
+            return Ok(new { message = "Group Deleted" });
+        }
+
+
         //[Authorize]
         //[HttpPost("{groupId}/products")]
         //public async Task<IActionResult> CreateProduct(Guid groupId, CreateProductRequest request)

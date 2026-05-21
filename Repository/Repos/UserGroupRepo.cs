@@ -4,6 +4,7 @@ using Lucene.Net.Store;
 using Microsoft.EntityFrameworkCore;
 using Repository.context;
 using Shared.Dtos;
+using Shared.RequestFeatures;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -21,25 +22,61 @@ namespace Repository.Repos
             context = _db;
         }
 
-       public async Task<IEnumerable<ShowUserGroupDto>> GetUserGroups()
+        public async Task<PagedList<ShowUserGroupDto>> GetUserGroups(
+         GeneralRequestParameters request,
+         CancellationToken cancellationToken = default)
         {
-            return await FindAll(false)
+            var query = FindAll(trackChanges: false);
+
+            // Ordering — always applied, with a stable tie-breaker.
+            // Default to newest-first; UserGroupName as a secondary sort.
+            query = request.OrderBy switch
+            {
+                "name" => query.OrderBy(g => g.UserGroupName)
+                                    .ThenBy(g => g.UserGroupId),
+                "name-desc" => query.OrderByDescending(g => g.UserGroupName)
+                                    .ThenBy(g => g.UserGroupId),
+                "members" => query.OrderByDescending(g => g.Members.Count())
+                                    .ThenBy(g => g.UserGroupId),
+                _ => query.OrderByDescending(g => g.CreatedAt)
+                                    .ThenBy(g => g.UserGroupId),
+            };
+
+            // Count BEFORE paging so PagedList metadata is correct
+            var totalCount = await query.CountAsync(cancellationToken);
+
+            var groups = await query
+                .Skip((request.PageNumber - 1) * request.PageSize)
+                .Take(request.PageSize)
                 .Select(g => new ShowUserGroupDto
                 {
                     UserGroupId = g.UserGroupId,
                     UserGroupName = g.UserGroupName,
+                    UserGroupSlugName = g.Slug,
                     Contact = g.Contact,
                     Email = g.Email,
-                    GroupType = g.GroupType.Description,
-                    City = g.Address.City,
-                    Region = g.Address.Region,
-                    Country = g.Address.Country,
-                    Company = g.Address.Company,
-                    AboutGroup=g.AboutGroup,
-                    UserGroupSlugName=g.Slug,                    
-                    MemberCount = g.Members.Count()
-                }).ToListAsync();
+                    AboutGroup = g.AboutGroup,
+                    GroupType = g.GroupType != null ? g.GroupType.Description : null,
+                    City = g.Address != null ? g.Address.City : null,
+                    Region = g.Address != null ? g.Address.Region : null,
+                    Country = g.Address != null ? g.Address.Country : null,
+                    Company = g.Address != null ? g.Address.Company : null,
+                    MemberCount = g.Members.Count(),
+                })
+                .ToListAsync(cancellationToken);
+
+            return new PagedList<ShowUserGroupDto>(
+                groups, totalCount, request.PageNumber, request.PageSize);
         }
+
+
+
+
+
+
+
+
+
 
         public async Task<ShowUserGroupDto?> GetUserGroupById(Guid userGroupId)
         {

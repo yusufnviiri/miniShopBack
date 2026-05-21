@@ -1,13 +1,17 @@
 ﻿using Contracts.Service;
 using Entities.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http.Json;
 using Microsoft.AspNetCore.Mvc;
 using Repository.Repos;
 using Shared.Dtos;
+using Shared.RequestFeatures;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
@@ -24,18 +28,71 @@ namespace Presentation
         {
             _service = service;
         }
+
+
+
         [HttpGet]
-        public async Task<ActionResult> GetAllUserProfiles()
+        [ProducesResponseType(typeof(IEnumerable<UserProfileDto>), StatusCodes.Status200OK)]
+        public async Task<IActionResult> GetAllUserProfiles(
+  [FromQuery] UserRequestParameters parameters, CancellationToken cancellationToken)
         {
-            var users = await _service.UserProfileService.GetAllUserProfilesAsync();
-            return Ok(users);
+            var result = await _service.UserProfileService.GetAllUserProfilesAsync(parameters,cancellationToken);
+
+            Response.Headers.Append(
+                "X-Pagination",
+                System.Text.Json.JsonSerializer.Serialize(result.MetaData, _jsonOptions));
+
+            return Ok(result.usersData);
         }
+
+
         [HttpGet("sellers")]
-        public async Task<ActionResult> GetSellerUserProfiles()
+        [ProducesResponseType(typeof(IEnumerable<UserProfileDto>), StatusCodes.Status200OK)]
+        public async Task<IActionResult> GetSellerUserProfilesAsync(
+            [FromQuery] UserRequestParameters parameters,
+            CancellationToken cancellationToken)
         {
-            var users = await _service.UserProfileService.GetSellerUserProfilesAsync();
-            return Ok(users);
+            var result = await _service.UserProfileService
+                .GetSellerUserProfilesAsync(parameters, cancellationToken);
+
+            Response.Headers.Append(
+                "X-Pagination",
+                JsonSerializer.Serialize(result.MetaData, _jsonOptions));
+
+            return Ok(result.sellersData);
         }
+
+
+
+    //    [HttpGet("sellers")]
+    //    [ProducesResponseType(typeof(IEnumerable<UserProfileDto>), StatusCodes.Status200OK)]
+    //    public async Task<IActionResult> GetSellers(
+    //[FromQuery] UserRequestParameters parameters,
+    //CancellationToken cancellationToken)
+    //    {
+    //        var result = await _service.UserProfileService
+    //            .GetSellerUserProfilesAsync(parameters, cancellationToken);
+
+    //        Response.Headers.Append(
+    //            "X-Pagination",
+    //            JsonSerializer.Serialize(result.MetaData, _jsonOptions));
+
+    //        return Ok(result);  // or result.Items if PagedList<T> exposes that
+    //    }
+
+
+
+
+
+        private static readonly JsonSerializerOptions _jsonOptions = new()
+        {
+            PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+        };
+
+
+
+
+      
         [HttpGet("withoutgroups")]
         public async Task<ActionResult> GetUsersWithoutGroup()
         {

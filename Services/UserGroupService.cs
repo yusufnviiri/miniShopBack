@@ -8,8 +8,10 @@ using Entities.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.AspNetCore.Server.Kestrel.Transport.NamedPipes;
+using Microsoft.EntityFrameworkCore;
 using Services.BusinessRules;
 using Shared.Dtos;
+using Shared.RequestFeatures;
 using StackExchange.Redis;
 using System;
 using System.Collections.Generic;
@@ -52,8 +54,15 @@ namespace Services
         }
 
 
-        public async  Task<IEnumerable<ShowUserGroupDto>> GetUserGroupsAsync()=>await _repoManager.UserGroupRepo.GetUserGroups();
-     public async Task<ShowuserGroupWithMembersDto?> GetUserGroupWithMembersAsync(Guid userGroupId)=>await _repoManager.UserGroupRepo.GetUserGroupWithMembers(userGroupId);
+  
+
+
+        public async Task<(ICollection<ShowUserGroupDto> groupsData, MetaData MetaData)> GetUserGroupsAsync(GeneralRequestParameters requestParameters, CancellationToken cancellationToken)
+        {
+            var groupsPagedList = await _repoManager.UserGroupRepo.GetUserGroups(requestParameters,cancellationToken);
+            return (groupsData: groupsPagedList, groupsPagedList.MetaData);
+        }
+        public async Task<ShowuserGroupWithMembersDto?> GetUserGroupWithMembersAsync(Guid userGroupId)=>await _repoManager.UserGroupRepo.GetUserGroupWithMembers(userGroupId);
 
         public async Task<ShowuserGroupWithMembersDto?> GetUserGroupWithMembersWithSlugAsync(string slug){
             var usergroupId = await _repoManager.UserGroupRepo.GetUserGroupIdBySlugName(slug);
@@ -155,12 +164,26 @@ namespace Services
 
         public async Task DeleteUserGroupAsync(Guid userGroupId)
         {
-            var existingUserGroup = await _repoManager.UserGroupRepo.FindUserGroupById(userGroupId, true);
+            var existingUserGroup = await _repoManager.UserGroupRepo
+                .FindUserGroupById(userGroupId, true);
+
             if (existingUserGroup == null)
-            {
                 throw new ItemNotFoundException(userGroupId);
-            }
+
+            // Delete children first (database-side delete)
+            await _repoManager.GroupMemberRepo
+                .GroupMembersQuery(true)
+                .Where(gm => gm.UserGroupId == userGroupId)
+                .ExecuteDeleteAsync();
+
+            await _repoManager.GroupFeaturedProductRepo
+                .GroupFeaturedProductsQuery(true)
+                .Where(fp => fp.UserGroupId == userGroupId)
+                .ExecuteDeleteAsync();
+
+            // Delete parent
             _repoManager.UserGroupRepo.DeleteUserGroup(existingUserGroup);
+
             await _repoManager.SaveRepoDataAsync();
         }
     }

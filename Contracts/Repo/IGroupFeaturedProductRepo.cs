@@ -21,5 +21,8 @@ namespace Contracts.Repo
         void CreateGroupFeaturedProduct(GroupFeaturedProduct groupFeaturedProduct);
         void UpdateGroupFeaturedProduct(GroupFeaturedProduct groupFeaturedProduct);
         void DeleteGroupFeaturedProduct(GroupFeaturedProduct groupFeaturedProduct);
+        IQueryable<GroupFeaturedProduct> GroupFeaturedProductsQuery(bool tracking);
+        void DeleteGroupFeaturedProducts(ICollection<GroupFeaturedProduct> featuredProducts);
+
     }
 }

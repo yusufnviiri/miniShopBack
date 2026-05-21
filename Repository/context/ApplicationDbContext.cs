@@ -531,6 +531,34 @@ namespace Repository.context
             modelBuilder.Entity<TradeAttributeValue>()
                 .HasIndex(t => new { t.TradeId, t.CategoryAttributeId })
                 .IsUnique();
+
+
+
+            // UserProfile indexes
+            modelBuilder.Entity<UserProfile>()
+                .HasIndex(p => p.CreatedAt)
+                .IsDescending()
+                .HasDatabaseName("IX_UserProfiles_CreatedAt");
+
+            modelBuilder.Entity<UserProfile>()
+                .HasIndex(p => new { p.SellerProfileId, p.ActiveGroupId })
+                .HasDatabaseName("IX_UserProfiles_SellerProfileId_ActiveGroupId");
+
+            // IdentityUser composite index for name sort
+            modelBuilder.Entity<ApplicationUser>()   // your IdentityUser-derived class
+                .HasIndex(u => new { u.FirstName, u.LastName })
+                .HasDatabaseName("IX_IdentityUsers_FirstName_LastName");
+
+            // UserGroup index
+            modelBuilder.Entity<UserGroup>()
+                .HasIndex(g => g.CreatedAt)
+                .IsDescending()
+                .HasDatabaseName("IX_UserGroups_CreatedAt");
+
+            // GroupMembership FK index (probably already exists from the relationship)
+            modelBuilder.Entity<GroupMember>()
+                .HasIndex(m => m.UserGroupId)
+                .HasDatabaseName("IX_GroupMemberships_GroupId");
         }
         #endregion
 

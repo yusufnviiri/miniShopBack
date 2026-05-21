@@ -1,5 +1,6 @@
 ﻿using Entities.Models;
 using Shared.Dtos;
+using Shared.RequestFeatures;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +11,11 @@ namespace Contracts.Service
 {
     public interface IUserProfileService
     {
-        Task<IEnumerable<UserProfileDto>> GetAllUserProfilesAsync();
+
+        Task<(ICollection<UserProfileDto> usersData, MetaData MetaData)> GetAllUserProfilesAsync(UserRequestParameters requestParameters, CancellationToken ct = default);
+        Task<(ICollection<UserProfileDto> sellersData, MetaData MetaData)> GetSellerUserProfilesAsync(UserRequestParameters requestParameters, CancellationToken ct = default);
+
+
         Task<IEnumerable<UserProfileDto>> GetAllUserProfilesWithoutGroupsAsync();
         Task<UserProfile?> FindUserProfileByIdAsync(Guid UserProfileId, bool tracking);
         Task<UserProfileDto?> ShowUserProfileAsync(Guid UserProfileId);
@@ -24,7 +29,6 @@ namespace Contracts.Service
         Task CreateUserDevice(LoginRequestDto loginRequest, ApplicationUser user);
         Task<LoggedInUserDataDto?> GetLoggedInUserDataDtoAsync(Guid UserProfileId);
         Task<Guid> GetUserProfileIdFromIdentityUserAsync(string IdentityUserId);
-        Task<IEnumerable<UserProfileDto>> GetSellerUserProfilesAsync();
 
 
 

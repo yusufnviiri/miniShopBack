@@ -1,5 +1,6 @@
 ﻿using Entities.Models;
 using Shared.Dtos;
+using Shared.RequestFeatures;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,8 +12,11 @@ namespace Contracts.Repo
     public interface IUserProfileRepo
     {
 
-        Task<IEnumerable<UserProfileDto>> GetAllUserProfiles();
-        Task<IEnumerable<UserProfileDto>> GetSellerUserProfiles();
+        Task<PagedList<UserProfileDto>> GetAllUserProfiles(UserRequestParameters request, CancellationToken token = default);
+        Task<PagedList<UserProfileDto>> GetSellerUserProfiles(UserRequestParameters request,CancellationToken token=default);
+
+
+
         IQueryable<UserProfile> FindUserProfilesAsQueryable(Guid UserProfileId);
         Task<IEnumerable<UserProfileDto>> GetAllUserProfilesWithoutGroups();
         Task<UserProfileDto?> ShowUserProfile(Guid UserProfileId);
@@ -29,7 +33,11 @@ namespace Contracts.Repo
         Task<long> NextUserSlugNumberAsync();
 
         Task<Guid> GetUserProfileIdBySlugName(string slug);
-       
+
+
+
+
+
 
 
 

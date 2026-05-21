@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Services.BusinessRules;
 using Shared.Dtos;
+using Shared.RequestFeatures;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
 
@@ -51,7 +52,7 @@ namespace Services
             return _slugService.Generate(name);
         }
 
-        public async Task<IEnumerable<UserProfileDto>> GetAllUserProfilesAsync() => await _repoManager.UserProfileRepo.GetAllUserProfiles();
+       
         public  Task<UserProfile?> FindUserProfileByIdAsync(Guid UserProfileId, bool tracking)=>_repoManager.UserProfileRepo.FindUserProfileById(UserProfileId, tracking);
      public async Task UpdateUserProfileAsync(NewUserDataDto userProfile, CancellationToken ct = default)
         {
@@ -390,10 +391,16 @@ public async Task<string> CreateUserProfileWithMemberAsync(GroupMemberJoinNewUse
 
 
 public async   Task<IEnumerable<UserProfileDto>> GetAllUserProfilesWithoutGroupsAsync()=>await _repoManager.UserProfileRepo.GetAllUserProfilesWithoutGroups();
-
-        public async Task<IEnumerable<UserProfileDto>> GetSellerUserProfilesAsync()=>await _repoManager.UserProfileRepo.GetSellerUserProfiles();
-
-
+        public async Task<(ICollection<UserProfileDto> usersData, MetaData MetaData)> GetAllUserProfilesAsync(UserRequestParameters requestParameters, CancellationToken cancellationToken)
+        {
+            var usersPagedList = await _repoManager.UserProfileRepo.GetAllUserProfiles(requestParameters,cancellationToken);
+            return (usersData: usersPagedList, usersPagedList.MetaData);
+        }
+        public async Task<(ICollection<UserProfileDto> sellersData, MetaData MetaData)> GetSellerUserProfilesAsync(UserRequestParameters requestParameters, CancellationToken cancellationToken)
+        {
+            var sellersPagedList = await _repoManager.UserProfileRepo.GetSellerUserProfiles(requestParameters, cancellationToken);
+            return (sellersData: sellersPagedList, sellersPagedList.MetaData);
+        }
 
 
         private UserOtp CreateUserOtp(ApplicationUser user)

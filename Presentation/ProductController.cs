@@ -60,8 +60,7 @@ namespace Presentation
         [HttpGet]
         [ProducesResponseType(typeof(IEnumerable<HomePageProductDto>), StatusCodes.Status200OK)]
         public async Task<IActionResult> GetAllProducts(
-       [FromQuery] ProductRequestParameters parameters,
-       CancellationToken cancellationToken)
+       [FromQuery] ProductRequestParameters parameters,CancellationToken cancellationToken)
         {
             var result = await _service.ProductService
                 .GetHomePageProductsAsync(parameters, cancellationToken);

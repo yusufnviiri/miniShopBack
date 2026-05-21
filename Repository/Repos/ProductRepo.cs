@@ -1,4 +1,5 @@
 ﻿using Contracts.Repo;
+using Entities.Exceptions;
 using Entities.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Caching.Memory;
@@ -859,7 +860,33 @@ public sealed class ProductRepo : RepositoryBase<Product>, IProductRepo
                 UpdatedAt =  p.CreatedAt
             })
             .ToListAsync();
+    public async Task ToggleProductFeaturedState(Guid productId)
+    {
+        var rowsAffected = await FindByCondition(p => p.ProductId == productId,true)
+            .ExecuteUpdateAsync(setters => setters
+                .SetProperty(
+                    p => p.IsFeatured,
+                    p => !p.IsFeatured
+                ));
 
+        var rowsAffectedOnUpdate = await FindByCondition(p => p.ProductId == productId, true)
+          .ExecuteUpdateAsync(setters => setters
+              .SetProperty(
+                  p => p.CreatedAt,
+                  p => DateTime.UtcNow
+              ));
+
+        if (rowsAffected == 0)
+        {
+            throw new ObjectBadRequestExeption(
+                $"product with id {productId} not found");
+        }
+        else
+        {
+            ResetProductCache();
+
+        }
+    }
     public Task<ProductPreviewDto?> FindProductBySlugForPreviewAsync(string slug) =>
     BaseQuery()
         .Where(p => p.Slug == slug && p.IsActive)

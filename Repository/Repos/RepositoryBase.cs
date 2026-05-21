@@ -27,5 +27,11 @@ namespace Repository.Repos
 
         public void UpdateBase(T entity)=> _context.Set<T>().Update(entity);
       public  void DeleteBase(T entity)=> _context.Set<T>().Remove(entity);
+
+
+        public void DeleteRange(IEnumerable<T> entities)
+        {
+            _context.Set<T>().RemoveRange(entities);
+        }
     }
 }
