@@ -74,27 +74,17 @@ namespace Presentation
         //    return Ok(new { message = result });
         //}
         [HttpPost("login")]
+        [AllowAnonymous]
         public async Task<IActionResult> Login([FromBody] LoginRequestDto request)
         {
-
-            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-            var cacheKey = $"cachedUser_{userId}";
-            if (userId != null)
-            {
-                _cache.Remove(cacheKey);
-            }
-
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
             var token = await _service.AuthService.PasswordLoginAsync(request);
             if (token == null)
-                {
                 return Unauthorized(new { message = "Invalid credentials" });
-            }
 
             return Ok(token);
-        
         }
 
 

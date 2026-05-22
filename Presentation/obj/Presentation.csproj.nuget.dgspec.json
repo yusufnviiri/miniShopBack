@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Presentation\\Presentation.csproj": {}
+    "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\Presentation\\Presentation.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Contracts\\Contracts.csproj": {
+    "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\Contracts\\Contracts.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Contracts\\Contracts.csproj",
+        "projectUniqueName": "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\Contracts\\Contracts.csproj",
         "projectName": "Contracts",
-        "projectPath": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Contracts\\Contracts.csproj",
-        "packagesPath": "C:\\Users\\Darc\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Contracts\\obj\\",
+        "projectPath": "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\Contracts\\Contracts.csproj",
+        "packagesPath": "C:\\Users\\DARC\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\Contracts\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Darc\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\DARC\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -33,11 +33,11 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Entities\\Entities.csproj": {
-                "projectPath": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Entities\\Entities.csproj"
+              "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\Entities\\Entities.csproj": {
+                "projectPath": "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\Entities\\Entities.csproj"
               },
-              "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Shared\\Shared.csproj": {
-                "projectPath": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Shared\\Shared.csproj"
+              "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\Shared\\Shared.csproj": {
+                "projectPath": "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\Shared\\Shared.csproj"
               }
             }
           }
@@ -73,24 +73,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.311/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.314/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Entities\\Entities.csproj": {
+    "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\Entities\\Entities.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Entities\\Entities.csproj",
+        "projectUniqueName": "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\Entities\\Entities.csproj",
         "projectName": "Entities",
-        "projectPath": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Entities\\Entities.csproj",
-        "packagesPath": "C:\\Users\\Darc\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Entities\\obj\\",
+        "projectPath": "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\Entities\\Entities.csproj",
+        "packagesPath": "C:\\Users\\DARC\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\Entities\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Darc\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\DARC\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -149,24 +149,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.311/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.314/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\Darc\\source\\repos\\miniShopBack\\LoggerService\\LoggerService.csproj": {
+    "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\LoggerService\\LoggerService.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\LoggerService\\LoggerService.csproj",
+        "projectUniqueName": "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\LoggerService\\LoggerService.csproj",
         "projectName": "LoggerService",
-        "projectPath": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\LoggerService\\LoggerService.csproj",
-        "packagesPath": "C:\\Users\\Darc\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\LoggerService\\obj\\",
+        "projectPath": "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\LoggerService\\LoggerService.csproj",
+        "packagesPath": "C:\\Users\\DARC\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\LoggerService\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Darc\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\DARC\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -182,8 +182,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Contracts\\Contracts.csproj": {
-                "projectPath": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Contracts\\Contracts.csproj"
+              "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\Contracts\\Contracts.csproj": {
+                "projectPath": "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\Contracts\\Contracts.csproj"
               }
             }
           }
@@ -225,24 +225,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.311/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.314/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Presentation\\Presentation.csproj": {
+    "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\Presentation\\Presentation.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Presentation\\Presentation.csproj",
+        "projectUniqueName": "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\Presentation\\Presentation.csproj",
         "projectName": "Presentation",
-        "projectPath": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Presentation\\Presentation.csproj",
-        "packagesPath": "C:\\Users\\Darc\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Presentation\\obj\\",
+        "projectPath": "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\Presentation\\Presentation.csproj",
+        "packagesPath": "C:\\Users\\DARC\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\Presentation\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Darc\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\DARC\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -258,11 +258,11 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Services\\Services.csproj": {
-                "projectPath": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Services\\Services.csproj"
+              "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\Services\\Services.csproj": {
+                "projectPath": "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\Services\\Services.csproj"
               },
-              "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Shared\\Shared.csproj": {
-                "projectPath": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Shared\\Shared.csproj"
+              "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\Shared\\Shared.csproj": {
+                "projectPath": "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\Shared\\Shared.csproj"
               }
             }
           }
@@ -308,24 +308,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.311/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.314/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Repository\\Repository.csproj": {
+    "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\Repository\\Repository.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Repository\\Repository.csproj",
+        "projectUniqueName": "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\Repository\\Repository.csproj",
         "projectName": "Repository",
-        "projectPath": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Repository\\Repository.csproj",
-        "packagesPath": "C:\\Users\\Darc\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Repository\\obj\\",
+        "projectPath": "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\Repository\\Repository.csproj",
+        "packagesPath": "C:\\Users\\DARC\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\Repository\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Darc\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\DARC\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -341,11 +341,11 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Contracts\\Contracts.csproj": {
-                "projectPath": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Contracts\\Contracts.csproj"
+              "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\Contracts\\Contracts.csproj": {
+                "projectPath": "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\Contracts\\Contracts.csproj"
               },
-              "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Entities\\Entities.csproj": {
-                "projectPath": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Entities\\Entities.csproj"
+              "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\Entities\\Entities.csproj": {
+                "projectPath": "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\Entities\\Entities.csproj"
               }
             }
           }
@@ -423,24 +423,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.311/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.314/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Services\\Services.csproj": {
+    "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\Services\\Services.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Services\\Services.csproj",
+        "projectUniqueName": "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\Services\\Services.csproj",
         "projectName": "Services",
-        "projectPath": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Services\\Services.csproj",
-        "packagesPath": "C:\\Users\\Darc\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Services\\obj\\",
+        "projectPath": "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\Services\\Services.csproj",
+        "packagesPath": "C:\\Users\\DARC\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\Services\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Darc\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\DARC\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -456,17 +456,17 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Contracts\\Contracts.csproj": {
-                "projectPath": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Contracts\\Contracts.csproj"
+              "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\Contracts\\Contracts.csproj": {
+                "projectPath": "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\Contracts\\Contracts.csproj"
               },
-              "C:\\Users\\Darc\\source\\repos\\miniShopBack\\LoggerService\\LoggerService.csproj": {
-                "projectPath": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\LoggerService\\LoggerService.csproj"
+              "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\LoggerService\\LoggerService.csproj": {
+                "projectPath": "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\LoggerService\\LoggerService.csproj"
               },
-              "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Repository\\Repository.csproj": {
-                "projectPath": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Repository\\Repository.csproj"
+              "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\Repository\\Repository.csproj": {
+                "projectPath": "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\Repository\\Repository.csproj"
               },
-              "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Shared\\Shared.csproj": {
-                "projectPath": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Shared\\Shared.csproj"
+              "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\Shared\\Shared.csproj": {
+                "projectPath": "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\Shared\\Shared.csproj"
               }
             }
           }
@@ -548,24 +548,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.311/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.314/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Shared\\Shared.csproj": {
+    "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\Shared\\Shared.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Shared\\Shared.csproj",
+        "projectUniqueName": "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\Shared\\Shared.csproj",
         "projectName": "Shared",
-        "projectPath": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Shared\\Shared.csproj",
-        "packagesPath": "C:\\Users\\Darc\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Shared\\obj\\",
+        "projectPath": "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\Shared\\Shared.csproj",
+        "packagesPath": "C:\\Users\\DARC\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\Shared\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Darc\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\DARC\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -581,8 +581,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Entities\\Entities.csproj": {
-                "projectPath": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Entities\\Entities.csproj"
+              "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\Entities\\Entities.csproj": {
+                "projectPath": "C:\\Users\\DARC\\source\\repos\\monisaccoshopback\\Entities\\Entities.csproj"
               }
             }
           }
@@ -618,7 +618,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.311/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.314/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

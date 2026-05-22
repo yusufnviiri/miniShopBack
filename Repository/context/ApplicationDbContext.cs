@@ -559,6 +559,18 @@ namespace Repository.context
             modelBuilder.Entity<GroupMember>()
                 .HasIndex(m => m.UserGroupId)
                 .HasDatabaseName("IX_GroupMemberships_GroupId");
+
+
+            // ApplicationUser FK index (probably already exists from the relationship)
+            modelBuilder.Entity<ApplicationUser>()
+                .HasIndex(m => m.PhoneNumber)
+                .HasDatabaseName("IX_AspNetUsers_PhoneNumber");// GroupMembership FK index (probably already exists from the relationship)
+            modelBuilder.Entity<UserProfile>()
+                .HasIndex(m => m.IdentityUserId)
+                .HasDatabaseName("IX_UserProfiles_IdentityUserId");// GroupMembership FK index (probably already exists from the relationship)
+       
+
+
         }
         #endregion
 

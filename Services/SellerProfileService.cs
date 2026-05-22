@@ -96,11 +96,12 @@ namespace Services
             UserProfile? user;
 
             var IsExist = await _repoManager.SellerProfileRepo.CheckifUserIsSeller(sellerProfile.SellerId);
+            var numberOfSellers = await _repoManager.SellerProfileRepo.NextSellerProfileSlugNumberAsync();
+            sellerProfile.Slug = $"{CreateSellerProfileSlug(sellerProfile.SellerName)}-{numberOfSellers}";
             if (!IsExist)
             {
 
-                var numberOfSellers = await _repoManager.SellerProfileRepo.NextSellerProfileSlugNumberAsync();
-                sellerProfile.Slug = $"{CreateSellerProfileSlug(sellerProfile.SellerName)}-{numberOfSellers}";
+         
                 var newSellerProfile = _mapper.Map<SellerProfile>(sellerProfile);
 
                 _repoManager.SellerProfileRepo.CreateSellerProfile(newSellerProfile);
