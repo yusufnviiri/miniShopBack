@@ -42,19 +42,31 @@ namespace Services
             {
                 throw new ObjectBadRequestExeption($"Object properties not set");
             }
-            if (pageCard.UserGroupId != null && pageCard.UserGroupId != Guid.Empty)
+
+            if (pageCard.IsGroupCard == true)
             {
-                var groupExists = await _repoManager.HomePageCardRepo.CheckIfGroupHomePageCardExists(pageCard.UserGroupId.Value);
-                if (!groupExists)
+                if (pageCard.UserGroupId != null && pageCard.UserGroupId != Guid.Empty)
                 {
-                    var lastIndex = await _repoManager.HomePageCardRepo.HomePageCardCount();
-                    pageCard.Index = lastIndex + 1;
-                    _repoManager.HomePageCardRepo.CreateHomePageCard(pageCard);
-                    await _repoManager.SaveRepoDataAsync();
-                    _repoManager.ProductRepo.InvalidateHomePageCards();   // ← here                }
+                    var groupExists = await _repoManager.HomePageCardRepo.CheckIfGroupHomePageCardExists(pageCard.UserGroupId.Value);
+                    if (!groupExists)
+                    {
+                        var lastIndex = await _repoManager.HomePageCardRepo.HomePageCardCount();
+                        pageCard.Index = lastIndex + 1;
+                        _repoManager.HomePageCardRepo.CreateHomePageCard(pageCard);
+                        await _repoManager.SaveRepoDataAsync();
+                        _repoManager.ProductRepo.InvalidateHomePageCards();   // ← here                }
+                    }
+
+
                 }
-
-
+            }
+            else
+            {
+                var lastIndex = await _repoManager.HomePageCardRepo.HomePageCardCount();
+                pageCard.Index = lastIndex + 1;
+                _repoManager.HomePageCardRepo.CreateHomePageCard(pageCard);
+                await _repoManager.SaveRepoDataAsync();
+                _repoManager.ProductRepo.InvalidateHomePageCards();   // ← here        
             }
         }
         public async Task UpdateHomePageCardAsync(HomePageCard pageCard)
