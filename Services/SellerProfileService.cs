@@ -63,8 +63,7 @@ namespace Services
 
                 var numberOfSellers = await _repoManager.SellerProfileRepo.NextSellerProfileSlugNumberAsync();
                 sellerProfile.Slug = $"{CreateSellerProfileSlug(sellerProfile.SellerName)}-{numberOfSellers}";
-
-
+                sellerProfile.IsGlobalSeller=true ;
                 _repoManager.SellerProfileRepo.CreateSellerProfile(sellerProfile);
                 await _repoManager.SaveRepoDataAsync();
                 var user = await _repoManager.UserProfileRepo.FindUserProfileById(sellerProfile.SellerId, true);
@@ -73,10 +72,6 @@ namespace Services
                     user.SellerProfileId = sellerProfile.SellerProfileId;
                     _repoManager.UserProfileRepo.UpdateUserProfile(user);
                     await _userIndexer.QueueIndexAsync(sellerProfile.SellerId, ct);
-
-
-
-
                     await _repoManager.SaveRepoDataAsync();
                     await _indexer.QueueReindexBySellerAsync(sellerProfile.SellerProfileId, ct);
                     await _tradeIndexer.QueueReindexBySellerAsync(sellerProfile.SellerProfileId, ct);
@@ -91,9 +86,10 @@ namespace Services
             }
         }
 
-        public async Task MakeGroupMemberSeller(GroupMemberSellerprofileDto sellerProfile, CancellationToken ct = default)
+        public async Task MakeGroupMemberSellerByGroupAdmin(GroupMemberSellerprofileDto sellerProfile, CancellationToken ct = default)
         {
             UserProfile? user;
+            Guid CreatedSellerProfileId = Guid.Empty;
 
             var IsExist = await _repoManager.SellerProfileRepo.CheckifUserIsSeller(sellerProfile.SellerId);
             var numberOfSellers = await _repoManager.SellerProfileRepo.NextSellerProfileSlugNumberAsync();
@@ -103,8 +99,13 @@ namespace Services
 
          
                 var newSellerProfile = _mapper.Map<SellerProfile>(sellerProfile);
+                if (sellerProfile.IsAppAdmin == true)
+                {
+                    newSellerProfile.IsGlobalSeller = true;
+                }
 
-                _repoManager.SellerProfileRepo.CreateSellerProfile(newSellerProfile);
+                    _repoManager.SellerProfileRepo.CreateSellerProfile(newSellerProfile);
+                CreatedSellerProfileId = newSellerProfile.SellerProfileId;
                 await _repoManager.SaveRepoDataAsync();
                 user = await _repoManager.UserProfileRepo.FindUserProfileById(sellerProfile.SellerId, true);
                 if (user != null)
@@ -131,8 +132,11 @@ namespace Services
                 else
                 {
                     sellerProfile.SellerProfileId = existingSellerprofile;
+                    CreatedSellerProfileId = existingSellerprofile;
                 }
             }
+
+
             var groupMember = await _repoManager.GroupMemberRepo.FindGroupMemberByUserProfileIdWithTracking(sellerProfile.SellerId, sellerProfile.UserGroupId, true);
             if (groupMember != null && groupMember.UserGroupId != Guid.Empty)
             {
@@ -150,7 +154,16 @@ namespace Services
                     };
                     _repoManager.GroupSellerRepo.CreateGroupSeller(groupSeller);
                     groupMember.GroupSellers.Add(groupSeller);
-                }
+                    if (CreatedSellerProfileId != Guid.Empty)
+                    {
+
+                    var affectedRows =    await MakeExistingSellerGroupSeller(CreatedSellerProfileId);
+                        if (affectedRows == 0)
+                        {
+                            throw new ObjectBadRequestExeption($" Seller Profile not updated ");
+                        }
+                        }
+                    }
 
             }
             await _repoManager.SaveRepoDataAsync();
@@ -161,6 +174,12 @@ namespace Services
 
 
 
+        }
+        private async Task<int> MakeExistingSellerGroupSeller(Guid sellerProfileId) {
+            var affectedRows = await _repoManager.SellerProfileRepo.MakeSellerGroupSeller(sellerProfileId);
+            return affectedRows;
+         
+        
         }
 
         public async Task UpdateSellerProfile(SellerProfileDto sellerProfile, CancellationToken ct = default)

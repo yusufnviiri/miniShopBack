@@ -27,5 +27,7 @@ namespace Shared.Dtos
         public int SellerTierId { get; set; } = 1; //default tier
       
         public bool IsVerified { get; set; } = true;
+        public bool IsAppAdmin { get; set; } = false;
+
     }
 }

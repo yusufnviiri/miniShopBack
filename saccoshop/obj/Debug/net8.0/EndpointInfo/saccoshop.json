@@ -5190,6 +5190,9 @@
           },
           "isVerified": {
             "type": "boolean"
+          },
+          "isAppAdmin": {
+            "type": "boolean"
           }
         },
         "additionalProperties": false
@@ -6313,6 +6316,12 @@
             "nullable": true
           },
           "isVerified": {
+            "type": "boolean"
+          },
+          "isGlobalSeller": {
+            "type": "boolean"
+          },
+          "isGroupSeller": {
             "type": "boolean"
           }
         },

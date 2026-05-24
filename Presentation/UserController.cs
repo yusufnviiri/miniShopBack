@@ -227,7 +227,7 @@ namespace Presentation
             if (sellerProfile is null)
                 return BadRequest("object is null");
             sellerProfile.SellerTypeId = 1; // default to individual
-            await _service.SellerProfileService.MakeGroupMemberSeller(sellerProfile);
+            await _service.SellerProfileService.MakeGroupMemberSellerByGroupAdmin(sellerProfile);
             return Ok(new { message = "seller added" });
         }
 

@@ -16,11 +16,11 @@ namespace Contracts.Repo
       
         Task<MiniGroupDetailsDto?> FindMiniGroupDetailsBySlugName(string slugName);
         Task<SellerProfile?> FindSellerProfileById(Guid sellerProfileId, bool tracking);
+        Task<int> MakeSellerGroupSeller(Guid sellerProfileId);
+
         Task<SellerProfile?> FindSellerProfileBySellerSlug(string slug);
         Task<Guid> GetSellerProfileIdBySlugName(string slug);
-       
-
-        Task<SellerProfile?> FindSellerProfileBySellerId(Guid sellerId);
+        Task<SellerProfile?> FindSellerProfileBySellerId(Guid sellerId);    
 
         Task<bool> CheckifUserIsSeller(Guid userProfileId);
         Task<bool> CheckifUserGroupIsSeller(Guid userGroupId);

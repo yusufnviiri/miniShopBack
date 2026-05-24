@@ -295,6 +295,17 @@ namespace Repository.Repos
 
         }
 
+
+        public async Task<int> MakeSellerGroupSeller(Guid sellerProfileId)
+        {
+            var rowsAffected = await FindByCondition(p => p.SellerProfileId == sellerProfileId, true)
+                .ExecuteUpdateAsync(setters => setters
+                    .SetProperty(
+                        p => p.IsGroupSeller,  true
+                    ));
+            return rowsAffected;
+        }
+
         public async Task<SellerProfile?> FindSellerProfileBySellerSlug(string slug)
         {
             return await FindByCondition(sp => sp.Slug == slug, false)

@@ -26,7 +26,11 @@ namespace Entities.Models
         public ICollection<Product> Products { get; set; } = [];
         public ICollection<Trade> Trades { get; set; } = [];
         public ICollection<UserPreferenceSellerProfile> UserPreferenceSellerProfiles { get; set; } = [];
-        public bool IsVerified { get; set; }=true;
+        public bool IsVerified { get; set; }=false;
+        public bool IsGlobalSeller { get; set; } = true;
+        public bool IsGroupSeller { get; set; } = false;
+
+
 
 
 
