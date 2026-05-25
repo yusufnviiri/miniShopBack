@@ -63,16 +63,7 @@ namespace Presentation
 
 
 
-        //[HttpPost("login")]
-        //public async Task<IActionResult> Login([FromBody] LoginRequestDto request)
-        //{
-        //    if (!ModelState.IsValid)
-        //        return BadRequest(ModelState);
-
-        //    var result = await _service.AuthService.PasswordLoginAsync(request);
-        //    //return Ok(result);
-        //    return Ok(new { message = result });
-        //}
+      
         [HttpPost("login")]
         [AllowAnonymous]
         public async Task<IActionResult> Login([FromBody] LoginRequestDto request)
@@ -205,7 +196,7 @@ namespace Presentation
                 var userProfile = await _service.UserProfileService.GetLoggedInUserDataDtoAsync(profileId);
                 userProfile.IdentityRole = userRole;
                 var cacheOptions = new MemoryCacheEntryOptions()
-                           .SetAbsoluteExpiration(TimeSpan.FromMinutes(5)) // hard expiry
+                           .SetAbsoluteExpiration(TimeSpan.FromMinutes(30)) // hard expiry
                            .SetSlidingExpiration(TimeSpan.FromMinutes(2)); // refresh if used
 
                 _cache.Set(cacheKey, userProfile, cacheOptions);

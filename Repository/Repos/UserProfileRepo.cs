@@ -336,7 +336,7 @@ namespace Repository.Repos
                     UserProfileId = p.UserProfileId,
                     SlugName=p.Slug,
                     SellerprofileId = p.SellerProfileId != null ? p.SellerProfileId.Value : Guid.Empty,
-                    UserName = p.IdentityUser != null ? $"{p.IdentityUser.FirstName} {p.IdentityUser.LastName}" : "No Name",
+                    UserName = p.IdentityUser != null ? $"{p.IdentityUser.FirstName}" : "No Name",
                     IsAccountConfirmed = p.IdentityUser != null && p.IdentityUser.AccountConfirmed,
                     UserGroupData = p.GroupMemberships.Any()
                         ? p.GroupMemberships.Select(gm => new GroupMemberRolesDto

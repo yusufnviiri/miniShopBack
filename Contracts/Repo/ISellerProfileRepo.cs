@@ -26,7 +26,7 @@ namespace Contracts.Repo
         Task<bool> CheckifUserGroupIsSeller(Guid userGroupId);
         Task<Guid> GetSellerId(Guid sellerProfile);
         Task<Guid> GetSellerProfileId(Guid sellerId);
-        void CreateSellerProfile(SellerProfile sellerProfile );
+        Guid CreateSellerProfile(SellerProfile sellerProfile );
         void UpdateSellerProfile(SellerProfile sellerProfile);
         void DeleteSellerProfile(SellerProfile sellerProfile);
         Task<SellerShopDto?> GetSellerShopDetails(Guid sellerProfileId);

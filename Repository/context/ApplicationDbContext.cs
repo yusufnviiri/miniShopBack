@@ -342,6 +342,13 @@ namespace Repository.context
                 .HasForeignKey(x => x.CategoryId);
 
 
+            modelBuilder.Entity<UserProfile>()
+            .HasOne(u => u.SellerProfile)
+            .WithOne(s => s.UserProfile)
+            .HasForeignKey<UserProfile>(u => u.SellerProfileId)
+            .OnDelete(DeleteBehavior.SetNull);
+
+
             modelBuilder.Entity<UserPreferenceSellerProfile>()
     .ToTable("UserPreferenceSellerProfiles")
     .HasKey(x => new { x.UserPreferenceId, x.SellerProfileId });

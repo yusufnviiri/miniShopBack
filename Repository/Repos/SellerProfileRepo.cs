@@ -60,7 +60,10 @@ namespace Repository.Repos
         }
 
 
-        public  void CreateSellerProfile(SellerProfile sellerProfile)=>CreateBase(sellerProfile);
+        public Guid CreateSellerProfile(SellerProfile sellerProfile) { CreateBase(sellerProfile);
+            return sellerProfile.SellerProfileId;
+        
+        }
         public void UpdateSellerProfile(SellerProfile sellerProfile)=>UpdateBase(sellerProfile);
         public void DeleteSellerProfile(SellerProfile sellerProfile)=>DeleteBase(sellerProfile);
         public async Task<bool> CheckifUserIsSeller(Guid userProfileId)

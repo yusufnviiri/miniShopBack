@@ -6254,6 +6254,9 @@
             "type": "string",
             "nullable": true
           },
+          "userProfile": {
+            "$ref": "#/components/schemas/UserProfile"
+          },
           "sellerType": {
             "$ref": "#/components/schemas/SellerType"
           },

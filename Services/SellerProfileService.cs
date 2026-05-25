@@ -64,12 +64,12 @@ namespace Services
                 var numberOfSellers = await _repoManager.SellerProfileRepo.NextSellerProfileSlugNumberAsync();
                 sellerProfile.Slug = $"{CreateSellerProfileSlug(sellerProfile.SellerName)}-{numberOfSellers}";
                 sellerProfile.IsGlobalSeller=true ;
-                _repoManager.SellerProfileRepo.CreateSellerProfile(sellerProfile);
+             var createdProfileId=   _repoManager.SellerProfileRepo.CreateSellerProfile(sellerProfile);
                 await _repoManager.SaveRepoDataAsync();
                 var user = await _repoManager.UserProfileRepo.FindUserProfileById(sellerProfile.SellerId, true);
                 if (user != null)
                 {
-                    user.SellerProfileId = sellerProfile.SellerProfileId;
+                    user.SellerProfileId = createdProfileId;
                     _repoManager.UserProfileRepo.UpdateUserProfile(user);
                     await _userIndexer.QueueIndexAsync(sellerProfile.SellerId, ct);
                     await _repoManager.SaveRepoDataAsync();
@@ -103,20 +103,19 @@ namespace Services
                 {
                     newSellerProfile.IsGlobalSeller = true;
                 }
+            //_repoManager.SellerProfileRepo.CreateSellerProfile(newSellerProfile);
 
-                    _repoManager.SellerProfileRepo.CreateSellerProfile(newSellerProfile);
-                CreatedSellerProfileId = newSellerProfile.SellerProfileId;
+
+                CreatedSellerProfileId= _repoManager.SellerProfileRepo.CreateSellerProfile(newSellerProfile);
                 await _repoManager.SaveRepoDataAsync();
                 user = await _repoManager.UserProfileRepo.FindUserProfileById(sellerProfile.SellerId, true);
                 if (user != null)
                 {
-                    user.SellerProfileId = sellerProfile.SellerProfileId;
+                    user.SellerProfileId = CreatedSellerProfileId;
                     _repoManager.UserProfileRepo.UpdateUserProfile(user);
-                    await _userIndexer.QueueIndexAsync(sellerProfile.SellerId, ct);
+                    await _repoManager.SaveRepoDataAsync();
 
 
-                    await _indexer.QueueReindexBySellerAsync(sellerProfile.SellerProfileId, ct);
-                    await _tradeIndexer.QueueReindexBySellerAsync(sellerProfile.SellerProfileId, ct);
 
                 }
 
@@ -147,7 +146,7 @@ namespace Services
 
                     GroupSeller groupSeller = new()
                     {
-                        SellerProfileId = sellerProfile.SellerProfileId,
+                        SellerProfileId = CreatedSellerProfileId,
                         UserGroupId = sellerProfile.UserGroupId,
                         GroupMemberId = groupMember.GroupMemberId,
 
@@ -165,13 +164,18 @@ namespace Services
                         }
                     }
 
+
+               
+
             }
             await _repoManager.SaveRepoDataAsync();
+
+
+            await _userIndexer.QueueIndexAsync(sellerProfile.SellerId, ct);
+
+
             await _indexer.QueueReindexBySellerAsync(sellerProfile.SellerProfileId, ct);
             await _tradeIndexer.QueueReindexBySellerAsync(sellerProfile.SellerProfileId, ct);
-
-
-
 
 
         }

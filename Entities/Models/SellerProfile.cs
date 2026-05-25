@@ -13,6 +13,8 @@ namespace Entities.Models
         public string SellerName { get; set; } = string.Empty;
         public string WhatsAppNumber { get; set; } = string.Empty;
         public string SellerLocation { get; set; } = string.Empty;
+        public UserProfile? UserProfile { get; set; }
+
         public SellerType? SellerType { get; set; }
         public SellerOffering? SellerOffering { get; set; }
         public int SellerOfferingId { get; set; } = 1;
@@ -27,7 +29,7 @@ namespace Entities.Models
         public ICollection<Trade> Trades { get; set; } = [];
         public ICollection<UserPreferenceSellerProfile> UserPreferenceSellerProfiles { get; set; } = [];
         public bool IsVerified { get; set; }=false;
-        public bool IsGlobalSeller { get; set; } = true;
+        public bool IsGlobalSeller { get; set; } = false;
         public bool IsGroupSeller { get; set; } = false;
 
 
