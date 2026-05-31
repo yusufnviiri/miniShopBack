@@ -22,6 +22,10 @@ namespace Contracts.Repo
         Task<string> GetGroupSlugNameOnly(Guid userGroupId);
 
 
+        Task ToggleUserGroupIsPinnedState(Guid userGroupId);
+
+
+
 
 
         Task<bool> IsGroupMember(Guid userProfileId, Guid userGroupId);

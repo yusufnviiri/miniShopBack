@@ -344,12 +344,8 @@ namespace Presentation
 
         [HttpPost("usergroups/rebuild")]
         //[Authorize(Roles = "Admin")]
-        public async Task<IActionResult> Rebuild(
-            [FromServices] ApplicationDbContext db,
-            [FromServices] UserGroupDocumentMapper mapper,
-            [FromServices] IUserGroupSearchRepository repo,
-            [FromServices] ILuceneIndexRegistry registry,
-            CancellationToken ct)
+        public async Task<IActionResult> Rebuild([FromServices] ApplicationDbContext db,
+            [FromServices] UserGroupDocumentMapper mapper,[FromServices] IUserGroupSearchRepository repo,[FromServices] ILuceneIndexRegistry registry,CancellationToken ct)
         {
             var ids = await db.UserGroups
                 .AsNoTracking()

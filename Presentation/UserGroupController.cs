@@ -26,7 +26,7 @@ namespace Presentation
         {
             _service = service;
         }
-     
+
 
 
 
@@ -35,7 +35,7 @@ namespace Presentation
         [ProducesResponseType(typeof(IEnumerable<ShowUserGroupDto>), StatusCodes.Status200OK)]
         public async Task<IActionResult> GetSellerUserProfilesAsync([FromQuery] GeneralRequestParameters parameters, CancellationToken cancellationToken)
         {
-            var result = await _service.UserGroupService.GetUserGroupsAsync(parameters,cancellationToken);
+            var result = await _service.UserGroupService.GetUserGroupsAsync(parameters, cancellationToken);
 
             Response.Headers.Append(
                 "X-Pagination",
@@ -89,27 +89,27 @@ namespace Presentation
         public async Task<ActionResult> GetUserGroupMembers([FromRoute] Guid groupId)
         {
             if (groupId == Guid.Empty) { return BadRequest("Id is zero"); }
-         var groupData=   await _service.UserGroupService.GetUserGroupWithMembersAsync(groupId);
+            var groupData = await _service.UserGroupService.GetUserGroupWithMembersAsync(groupId);
 
             return Ok(groupData);
         }
 
 
         [HttpGet("{slug}/memberswithslug")]
-        public async Task<ActionResult> GetUserGroupMembersWithSlug([FromRoute] string slug )
+        public async Task<ActionResult> GetUserGroupMembersWithSlug([FromRoute] string slug)
         {
             if (string.IsNullOrWhiteSpace(slug)) { return BadRequest("Id is zero"); }
             var groupData = await _service.UserGroupService.GetUserGroupWithMembersWithSlugAsync(slug);
 
             return Ok(groupData);
         }
-        
+
 
         [HttpGet("{groupId}/members/{userProfileId}")]
         public async Task<ActionResult> GetUserGroupMember([FromRoute] Guid groupId, [FromRoute] Guid userProfileId)
         {
-            if (groupId == Guid.Empty|| userProfileId == Guid.Empty) { return BadRequest("Id is zero"); }
-            var groupMember = await _service.GroupMemberService.GetGroupMemberByIdAsync(groupId,userProfileId,false);
+            if (groupId == Guid.Empty || userProfileId == Guid.Empty) { return BadRequest("Id is zero"); }
+            var groupMember = await _service.GroupMemberService.GetGroupMemberByIdAsync(groupId, userProfileId, false);
 
             return Ok(groupMember);
         }
@@ -124,8 +124,8 @@ namespace Presentation
         [HttpGet("groupshop/{sellerId:Guid}", Name = "groupshop")]
         public async Task<ActionResult> GetGroupShop(Guid sellerId)
         {
-            if(sellerId==Guid.Empty) { return BadRequest(new { message = "Group Id not specified" }); }
-            var groupshop = await _service.SellerProfileService.GetGroupShopDetails(sellerId,true);
+            if (sellerId == Guid.Empty) { return BadRequest(new { message = "Group Id not specified" }); }
+            var groupshop = await _service.SellerProfileService.GetGroupShopDetails(sellerId, true);
             return Ok(groupshop);
         }
 
@@ -163,24 +163,37 @@ namespace Presentation
             return Ok(new { message = "Group Deleted" });
         }
 
-
-        //[Authorize]
-        //[HttpPost("{groupId}/products")]
-        //public async Task<IActionResult> CreateProduct(Guid groupId, CreateProductRequest request)
-        //{
-        //    var userId = User.GetUserId();
-
-        //    await _groupAuth.EnsureRoleAsync(
-        //        userId,
-        //        groupId,
-        //        GroupRole.Owner,
-        //        GroupRole.Admin,
-        //        GroupRole.Seller);
-
-        //    // create product
-        //    return Ok();
-        //}
+        [HttpPost("makeusergrouppinned/{groupId}")]
+        public async Task<IActionResult> ToggleUserGroupPinnedState([FromRoute] Guid groupId, CancellationToken cancellationToken)
+        {
+            {
+                if (groupId == Guid.Empty)
+                {
+                    return BadRequest(new { message = "groupId Id is required" });
+                }
+                await _service.UserGroupService.ToggleUserGroupIsPinnedStateAsync(groupId);
+                return Ok(new { message = "success" });
+            }
 
 
+            //[Authorize]
+            //[HttpPost("{groupId}/products")]
+            //public async Task<IActionResult> CreateProduct(Guid groupId, CreateProductRequest request)
+            //{
+            //    var userId = User.GetUserId();
+
+            //    await _groupAuth.EnsureRoleAsync(
+            //        userId,
+            //        groupId,
+            //        GroupRole.Owner,
+            //        GroupRole.Admin,
+            //        GroupRole.Seller);
+
+            //    // create product
+            //    return Ok();
+            //}
+
+
+        }
     }
 }

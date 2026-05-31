@@ -24,5 +24,7 @@ namespace Contracts.Service
         Task CreateUserGroupAsync(NewUserGroupDto userGroup, CancellationToken ct = default);
         Task UpdateUserGroupAsync(NewUserGroupDto userGroup, CancellationToken ct = default);
         Task DeleteUserGroupAsync(Guid userGroupId);
+        Task ToggleUserGroupIsPinnedStateAsync(Guid userGroupId, CancellationToken ct = default);
+
     }
 }

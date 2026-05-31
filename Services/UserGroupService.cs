@@ -139,7 +139,16 @@ namespace Services
 
             }
         }
-    public async Task UpdateUserGroupAsync(NewUserGroupDto userGroup, CancellationToken ct = default)
+
+        public async Task ToggleUserGroupIsPinnedStateAsync(Guid userGroupId, CancellationToken ct = default)
+        {
+           if(userGroupId == Guid.Empty) return;
+           await _repoManager.UserGroupRepo.ToggleUserGroupIsPinnedState(userGroupId);
+            await _userGroupIndexer.QueueIndexAsync(userGroupId, ct);
+
+
+        }
+        public async Task UpdateUserGroupAsync(NewUserGroupDto userGroup, CancellationToken ct = default)
         {
             if (userGroup == null)
             {

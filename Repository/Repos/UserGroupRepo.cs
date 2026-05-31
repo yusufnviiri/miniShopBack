@@ -1,4 +1,5 @@
 ﻿using Contracts.Repo;
+using Entities.Exceptions;
 using Entities.Models;
 using Lucene.Net.Store;
 using Microsoft.EntityFrameworkCore;
@@ -26,7 +27,7 @@ namespace Repository.Repos
          GeneralRequestParameters request,
          CancellationToken cancellationToken = default)
         {
-            var query = FindAll(trackChanges: false);
+            var query = FindAll(trackChanges: false).OrderByDescending(k=>k.IsPinned);
 
             // Ordering — always applied, with a stable tie-breaker.
             // Default to newest-first; UserGroupName as a secondary sort.
@@ -69,6 +70,26 @@ namespace Repository.Repos
                 groups, totalCount, request.PageNumber, request.PageSize);
         }
 
+
+
+        public async Task ToggleUserGroupIsPinnedState(Guid userGroupId)
+        {
+            var rowsAffected = await FindByCondition(p => p.UserGroupId == userGroupId, true)
+                .ExecuteUpdateAsync(setters => setters
+                    .SetProperty(
+                        p => p.IsPinned,
+                        p => !p.IsPinned
+                    ));
+
+        
+
+            if (rowsAffected == 0)
+            {
+                throw new ObjectBadRequestExeption(
+                    $"group with id {userGroupId} not found");
+            }
+           
+        }
 
 
 

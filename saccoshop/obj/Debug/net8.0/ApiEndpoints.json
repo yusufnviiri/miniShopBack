@@ -348,6 +348,22 @@
   },
   {
     "ContainingType": "Presentation.UserGroupController",
+    "Method": "ToggleUserGroupPinnedState",
+    "RelativePath": "api/groups/makeusergrouppinned/{groupId}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "groupId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Presentation.UserGroupController",
     "Method": "UpdateGroupMember",
     "RelativePath": "api/groups/member",
     "HttpMethod": "PUT",

@@ -4484,6 +4484,30 @@
           }
         }
       }
+    },
+    "/api/groups/makeusergrouppinned/{groupId}": {
+      "post": {
+        "tags": [
+          "UserGroup"
+        ],
+        "parameters": [
+          {
+            "name": "groupId",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
     }
   },
   "components": {
@@ -7325,6 +7349,9 @@
           },
           "buyerProfile": {
             "$ref": "#/components/schemas/BuyerProfile"
+          },
+          "isPinned": {
+            "type": "boolean"
           },
           "groupFeaturedProducts": {
             "type": "array",
