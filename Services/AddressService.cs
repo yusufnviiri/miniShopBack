@@ -57,7 +57,7 @@ namespace Services
             var addressEntity = await _repoManager.AddressRepo.FindAddressForUpdate(addressId);
             if (addressEntity == null)
             {
-                throw new ArgumentNullException(nameof(addressEntity), $"Address with ID {addressId} not found.");
+                throw new ArgumentNullException(nameof(addressEntity), $"Address with ID {addressId} not  found in database.");
             }
             _repoManager.AddressRepo.DeleteAddress(addressEntity);
             await _repoManager.SaveRepoDataAsync();
