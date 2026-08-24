@@ -47,8 +47,25 @@ namespace Presentation
 
             //_context = context;
         }
+        private static decimal ParseDecimal(JToken? token)
+        {
+            if (token is null || token.Type == JTokenType.Null)
+                return 0;
+            return decimal.TryParse(token.ToString(),
+                System.Globalization.NumberStyles.Any,
+                System.Globalization.CultureInfo.InvariantCulture, out var d) ? d : 0;
+        }
 
-      
+        private static int ParseInt(JToken? token)
+        {
+            if (token is null || token.Type == JTokenType.Null)
+                return 0;
+            return int.TryParse(token.ToString(),
+                System.Globalization.NumberStyles.Any,
+                System.Globalization.CultureInfo.InvariantCulture, out var n) ? n : 0;
+        }
+
+
         [HttpGet("searchproducts")]
         public  IActionResult Search([FromQuery] string query)
         {
@@ -211,7 +228,9 @@ namespace Presentation
             if (!Guid.TryParse(sellerIdString, out var sellerId))
                 return BadRequest(new { message = "Invalid SellerId." });
 
-            var price = jsonNode["price"]?.Value<decimal>() ?? 0;
+            //var price = jsonNode["price"]?.Value<decimal>() ?? 0;
+            var price = ParseDecimal(jsonNode["price"]);
+
             var oldPriceRate = Math.Round(1m + (decimal)_random.NextDouble(), 1);
 
             var productDto = new NewProductDto
@@ -220,9 +239,12 @@ namespace Presentation
                 Description = jsonNode["description"]?.Value<string>() ?? string.Empty,
                 Condition = jsonNode["condition"]?.Value<string>() ?? string.Empty,
                 Price = price,
-                CategoryId = jsonNode["categoryId"]?.Value<int>() ?? 0,
-                SubCategoryId = jsonNode["subCategoryId"]?.Value<int>() ?? 0,
-                SubCategoryCategoryId = jsonNode["subCategoryCategoryId"]?.Value<int>() ?? 0,
+                //CategoryId = jsonNode["categoryId"]?.Value<int>() ?? 0,
+                //SubCategoryId = jsonNode["subCategoryId"]?.Value<int>() ?? 0,
+                //SubCategoryCategoryId = jsonNode["subCategoryCategoryId"]?.Value<int>() ?? 0,
+                CategoryId = ParseInt(jsonNode["categoryId"]),
+                SubCategoryId = ParseInt(jsonNode["subCategoryId"]),
+                SubCategoryCategoryId = ParseInt(jsonNode["subCategoryCategoryId"]),
                 SellerId = sellerId,
                 OldPrice = Math.Abs(price * oldPriceRate),
                 HasImage = true,
