@@ -1295,7 +1295,7 @@
               "RelativeDocumentMoniker": "..\\Presentation\\ProductController.cs",
               "ToolTip": "C:\\Users\\Darc\\source\\repos\\miniShopBack\\Presentation\\ProductController.cs",
               "RelativeToolTip": "..\\Presentation\\ProductController.cs",
-              "ViewState": "AgIAAMAAAAAAAAAAAAAowM8AAAAIAAAAAAAAAA==",
+              "ViewState": "AgIAAMAAAAAAAAAAAAA5wM8AAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-04-04T09:58:52.364Z",
               "EditorCaption": ""
@@ -2666,8 +2666,7 @@
               "RelativeToolTip": "appsettings.json",
               "ViewState": "AgIAABIAAAAAAAAAAAAIwB4AAAACAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2026-04-04T12:00:05.329Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-04T12:00:05.329Z"
             },
             {
               "$type": "Document",
@@ -2703,7 +2702,8 @@
               "RelativeToolTip": "..\\Services\\ProductService.cs",
               "ViewState": "AgIAAFQAAAAAAAAAAAAWwGMAAAArAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-04T09:52:48.165Z"
+              "WhenOpened": "2026-04-04T09:52:48.165Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -2727,8 +2727,7 @@
               "RelativeToolTip": "..\\Repository\\Repos\\ProductRepo.cs",
               "ViewState": "AgIAAH4AAAAAAAAAAAAQwJMAAAAbAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-04T09:43:18.296Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-04T09:43:18.296Z"
             },
             {
               "$type": "Document",
